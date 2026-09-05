@@ -3,6 +3,7 @@ title = "Ilford DELTA 400"
 brand = "Ilford"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Ilford"
 discontinued = false
+
 [[resources]]
 src = "delta-400.jpg"
 [resources.params]

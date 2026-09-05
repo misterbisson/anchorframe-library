@@ -5,6 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Ilford_Imagin
 discontinued = false
 note = "The shop lists this film as six SKUs and three stocks: 24 exposures, 36, and a three-roll pack. Ilfocolor 400 Vintage tone, without PLUS, is an earlier and different film in different formats rather than another name for this one."
 aliases = ["/film/ilford-imaging-europe/ilford-ilfocolor-400-plus-vintage-tone/"]
+
 [[resources]]
 src = "ilfocolor-400-plus-vintage-tone.jpg"
 [resources.params]
