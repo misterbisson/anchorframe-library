@@ -114,19 +114,16 @@ answer is to re-check them and move the dates, not to raise the number.
 **The licence has to be one this repository can redistribute.** Public domain,
 CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
 
-**`CC BY-NC` and `CC BY-ND` are not `CC BY`**, however much they read like it,
-and both are refused.
+**`CC BY-NC` is not `CC BY`**, however much it reads like it, and it is refused.
+These pages support a paid application, so a picture licensed for
+non-commercial use only does not belong on them — that would be our breach as
+publisher, not a later contributor's.
 
-NC because these pages support a paid application, so a picture licensed for
-non-commercial use only does not belong on them — and because someone taking
-this data deserves a grant they can rely on without checking it image by image.
-
-ND because *you* will want to crop one. Serving an ND file is fine — CC 4.0
-explicitly allows the technical modifications needed to deliver a work, and
-resizing for display is not an adaptation — but the edits this repository exists
-to collect are, and an ND file turns an ordinary contribution into a breach.
-That is a policy choice about what is safe to accept here, not a claim about
-what the law forbids.
+**`CC BY-ND` is accepted, but do not edit one.** Serving it is fine: the resize
+that renders it is a technical modification the licence expressly allows, and
+`.Fit` scales rather than crops. Cropping or retouching it is not fine, and
+unlike the share-alike case there is no note you can add that makes it so. If a
+photograph needs an edit to be useful, find a differently-licensed one.
 
 **Except a film box, where no free photograph can exist.** The box is a graphic
 work and it is the whole subject, so a photograph of one has two owners and a
