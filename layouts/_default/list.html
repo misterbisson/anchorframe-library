@@ -12,8 +12,8 @@
        either way, and the link appears on its own the day the record earns one. */}}
   {{ $promoted := partial "promoted.html" . }}
   <li id="{{ path.Base .File.Dir }}">
-    {{ if $promoted }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    {{ else }}{{ .Title }}{{ end }}
+    {{ if $promoted }}<a href="{{ .RelPermalink }}">{{ partial "name.html" . }}</a>
+    {{ else }}{{ partial "name.html" . }}{{ end }}
   </li>{{ end }}
 </ul>{{ end }}
 {{ end }}

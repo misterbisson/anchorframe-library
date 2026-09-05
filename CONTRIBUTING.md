@@ -44,7 +44,27 @@ mount = ["canon-fd"]
 | `fixed_lens` | | The lens a body was built around. Never alongside `mount`. |
 | `discontinued` | films | `true` or `false`. Required on a film, refused elsewhere. |
 | `aliases` | | Other addresses that redirect here, as `["/lens/zeiss/planar-t-80mm-f2-8-c/"]`. Hugo's own field, so it builds the redirect. No `/library` prefix: Hugo adds it. |
+| `variant` | | An edition of this title — `New FD`, `CF`. See below. |
 | `note` | | Why, where a reader would otherwise ask. |
+
+## Editions of one product
+
+Canon's 1979 FD lenses say only `FD` on the barrel; `New FD` is Canon's word for
+the edition. Hasselblad's C/CF/CFi/CFE barrels are the same. When a marker
+distinguishes editions of one name rather than naming the thing itself, it goes
+in `variant`:
+
+```toml
+title = "FD 100mm f/2.8"
+variant = "New FD"
+```
+
+Two records may then share a title, so the **slug has to carry the variant** —
+`fd-100mm-f2-8-new-fd` — or the two editions would want one address. The
+validator refuses a slug that does not.
+
+Leave a marker in the title when it is simply how the thing was sold: Canon's
+`S.S.C.` coating and Rikenon's `XR Version` are part of those names.
 
 ## Prose and pictures are the most useful thing you can add
 

@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article>
-  <h1>{{ .Title }}</h1>
+  <h1>{{ partial "name.html" . }}</h1>
   <dl>
     <dt>Brand</dt><dd><a href="{{ .Parent.RelPermalink }}">{{ .Params.brand }}</a></dd>
     {{ with .Params.mount }}<dt>Mount</dt><dd>

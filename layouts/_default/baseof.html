@@ -29,7 +29,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} — {{ site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ partial "name.html" . }} — {{ site.Title }}{{ end }}</title>
 <link rel="canonical" href="{{ .Permalink }}">
 </head>
 <body>

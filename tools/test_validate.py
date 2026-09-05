@@ -103,7 +103,7 @@ class Corpus(Fixture):
     def test_a_slug_that_does_not_follow_from_the_title_is_caught(self):
         self.rewrite(self.cam, 'title = "Canon A-1"\nbrand = "Canon"\n'
                                'source = "https://x.example/a"')
-        self.assertObjects("is neither")
+        self.assertObjects("is none of")
 
     def test_a_source_that_is_not_a_url_is_caught(self):
         self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\nsource = "Wikipedia"')
@@ -234,6 +234,53 @@ class BrandPages(Fixture):
 
     def test_a_well_formed_brand_alias_is_accepted(self):
         page(self.brand, 'title = "Canon"\naliases = ["/camera/canonet/", "/camera/kwanon/"]')
+        self.assertEqual(validate(self.root), [])
+
+
+class Variants(Fixture):
+    """An edition of a product, where the product's own name does not name it.
+
+    Canon's second-generation FD lenses say only `FD` on the barrel; `New FD` is
+    Canon's word for the edition. Hasselblad's C/CF/CFi/CFE barrels are the same
+    shape. Two records can therefore share a title, which means the slug has to
+    carry the variant or they would share an address too.
+    """
+
+    def variant_page(self, slug, variant, title="Canon AE-1 Lens"):
+        page(f"{self.content}/lens/nikon/{slug}/index.md",
+             f'title = "{title}"\nbrand = "Nikon"\n'
+             f'variant = "{variant}"\nsource = "https://x.example/a"')
+
+    def test_two_editions_of_one_title_are_accepted(self):
+        page(f"{self.content}/lens/nikon/50mm-f1-4/index.md",
+             'title = "50mm f/1.4"\nbrand = "Nikon"\nsource = "https://x.example/a"')
+        page(f"{self.content}/lens/nikon/50mm-f1-4-ai-s/index.md",
+             'title = "50mm f/1.4"\nbrand = "Nikon"\nvariant = "AI-S"\n'
+             'source = "https://x.example/a"')
+        self.assertEqual(validate(self.root), [])
+
+    def test_a_slug_that_does_not_carry_the_variant_is_caught(self):
+        # Without this, the second edition wants the first one's address.
+        page(f"{self.content}/lens/nikon/50mm-f1-4/index.md",
+             'title = "50mm f/1.4"\nbrand = "Nikon"\nvariant = "AI-S"\n'
+             'source = "https://x.example/a"')
+        self.assertObjects("does not carry the variant")
+
+    def test_an_empty_variant_is_caught(self):
+        page(f"{self.content}/lens/nikon/50mm-f1-4-ai-s/index.md",
+             'title = "50mm f/1.4"\nbrand = "Nikon"\nvariant = "  "\n'
+             'source = "https://x.example/a"')
+        self.assertObjects("variant must be a non-empty string")
+
+    def test_a_variant_that_is_not_a_string_is_caught(self):
+        page(f"{self.content}/lens/nikon/50mm-f1-4-2/index.md",
+             'title = "50mm f/1.4"\nbrand = "Nikon"\nvariant = 2\n'
+             'source = "https://x.example/a"')
+        self.assertObjects("variant must be a non-empty string")
+
+    def test_a_record_without_a_variant_still_takes_the_plain_slug(self):
+        page(f"{self.content}/lens/nikon/50mm-f1-4/index.md",
+             'title = "50mm f/1.4"\nbrand = "Nikon"\nsource = "https://x.example/a"')
         self.assertEqual(validate(self.root), [])
 
 
