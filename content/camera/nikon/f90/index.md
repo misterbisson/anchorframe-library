@@ -12,4 +12,5 @@ license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Image of F90x camera with AF Nikkor 50mm f/1.8 lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_F90x.jpg"
+verified = "2026-09-04"
 +++

@@ -12,4 +12,5 @@ license = "GFDL 1.2"
 licenseUrl = "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html"
 alt = "Nikon F5"
 sourcePage = "https://commons.wikimedia.org/wiki/File:16-04-09_Nikon_F5_RalfR_WAT_6948.jpg"
+verified = "2026-09-04"
 +++

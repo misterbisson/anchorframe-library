@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Selfportrait by Elsa Dorfman, http://elsa.photo.net/photos/elsa-disk26-0003.3.jpg"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Elsa_Dorfman_with_her_camera.jpg"
+verified = "2026-09-04"
 +++

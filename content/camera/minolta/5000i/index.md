@@ -12,4 +12,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Fitted with 35-70mm autofocus zoom"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_Maxxum_5000i_SLR.jpg"
+verified = "2026-09-04"
 +++

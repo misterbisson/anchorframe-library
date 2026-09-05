@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Maxxum 7000 next to a Maxxum/Dynax 7"
 sourcePage = "https://commons.wikimedia.org/wiki/File:7K-front.jpg"
+verified = "2026-09-04"
 +++

@@ -12,4 +12,5 @@ license = "Attribution"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Photo © by Jeff Dean."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikonf.jpg"
+verified = "2026-09-04"
 +++

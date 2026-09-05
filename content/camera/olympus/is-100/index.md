@@ -11,4 +11,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Olumpus Is200 side with opaned flash"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Olympus_iS100_side_with_opened_flash.jpg"
+verified = "2026-09-04"
 +++

@@ -11,4 +11,5 @@ license = "CC BY-SA 2.0 fr"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en"
 alt = "Retina Reflex type III"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Retina_Reflex_mg_3805.jpg"
+verified = "2026-09-04"
 +++

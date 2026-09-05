@@ -11,4 +11,5 @@ license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Canon FTb (this is an FTb N model because it has the plastic tipped film advance lever)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_FTb.jpg"
+verified = "2026-09-04"
 +++

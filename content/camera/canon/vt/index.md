@@ -12,4 +12,5 @@ license = "CC BY-SA 2.0 fr"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en"
 alt = "Canon VT (?)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_img_1866.jpg"
+verified = "2026-09-04"
 +++

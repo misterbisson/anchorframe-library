@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "My Konica Hexar camera Mike Funnell"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Hexar-1-weba.jpg"
+verified = "2026-09-04"
 +++

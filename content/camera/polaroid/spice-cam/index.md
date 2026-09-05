@@ -12,4 +12,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "a photo of the Polaroid 600 Spice Cam"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Polaroid_600_Spice_Cam_2026_05.jpg"
+verified = "2026-09-04"
 +++

@@ -11,4 +11,5 @@ license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Nikon FM3A film SLR camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:NikonFM3A.jpg"
+verified = "2026-09-04"
 +++

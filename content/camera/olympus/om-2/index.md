@@ -12,4 +12,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Original Olympus OM-2 SLR camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:OM-2-2.jpg"
+verified = "2026-09-04"
 +++

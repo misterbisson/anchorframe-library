@@ -11,4 +11,5 @@ license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Canon T80 SLR camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_T80.jpg"
+verified = "2026-09-04"
 +++

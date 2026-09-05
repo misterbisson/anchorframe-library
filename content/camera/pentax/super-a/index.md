@@ -11,4 +11,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Pentax Super-A camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Pentax_Super-A_on_white_bg.jpg"
+verified = "2026-09-04"
 +++

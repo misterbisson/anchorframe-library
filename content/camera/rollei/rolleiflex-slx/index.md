@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "SLR medium format camera Rollei Rolleiflex SLX of the first generation equipped with a Rollei-HFT Planar 80mm / 1:2.8 lens, its dedicated lens hood and with fol"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Rollei_SLX_open.jpg"
+verified = "2026-09-04"
 +++

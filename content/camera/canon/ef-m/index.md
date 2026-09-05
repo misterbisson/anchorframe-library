@@ -13,4 +13,5 @@ license = "CC BY 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by/4.0"
 alt = "A Canon EF-M manual focus SLR camera."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EF-M_5454.jpg"
+verified = "2026-09-04"
 +++

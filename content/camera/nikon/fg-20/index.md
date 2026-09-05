@@ -11,4 +11,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Nikon FG-20 SLR camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:FG-20.JPG"
+verified = "2026-09-04"
 +++

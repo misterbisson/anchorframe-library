@@ -12,4 +12,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "DSCF5260 Minolta X-700"
 sourcePage = "https://commons.wikimedia.org/wiki/File:DSCF5260_Minolta_X-700_(5937670807).jpg"
+verified = "2026-09-04"
 +++

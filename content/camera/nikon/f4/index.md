@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Nikon F4 F4s Camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_F4_F4s_Guigiaro_Design_Austin_Calhoon_Photograph.jpg"
+verified = "2026-09-04"
 +++

@@ -12,4 +12,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "This is a Fujifilm Instax Wide 300 camera."
 sourcePage = "https://commons.wikimedia.org/wiki/File:FujifilmInstaxWide300March52019.jpg"
+verified = "2026-09-04"
 +++

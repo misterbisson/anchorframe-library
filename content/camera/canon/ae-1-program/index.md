@@ -12,4 +12,5 @@ license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "The Canon AE-1 Program, a manual focus SLR camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1_Program_Black2.jpg"
+verified = "2026-09-04"
 +++

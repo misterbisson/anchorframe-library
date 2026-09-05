@@ -12,4 +12,5 @@ license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "My Polaroid SX-70 which I found at a flea market a few years ago. I thought I paid much for this obsolete beast at the time, 20€. But when I checked on ebay a f"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Polaroid_SX-70_(4462345243).jpg"
+verified = "2026-09-04"
 +++

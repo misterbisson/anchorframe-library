@@ -11,4 +11,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Voigtlander Vito"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Voigtlander_Vito.jpg"
+verified = "2026-09-04"
 +++

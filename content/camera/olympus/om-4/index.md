@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Much-used Olympus OM-4T; mfunnell; 22JUL2006"
 sourcePage = "https://commons.wikimedia.org/wiki/File:OM-4T-1.jpg"
+verified = "2026-09-04"
 +++

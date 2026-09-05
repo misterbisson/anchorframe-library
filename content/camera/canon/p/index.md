@@ -12,4 +12,5 @@ license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Canon P søgerkamera fra 1960. Taget 23. maj på Vesterbro I København."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_p01.jpg"
+verified = "2026-09-04"
 +++

@@ -11,4 +11,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Contax RX with 1.4/50 lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Contax_RTS_III_with_1.4,_50mm_lens.JPG"
+verified = "2026-09-04"
 +++

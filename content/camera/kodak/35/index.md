@@ -11,4 +11,5 @@ license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "My photo of my camera taken by me free image"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak35Camera.jpg"
+verified = "2026-09-04"
 +++

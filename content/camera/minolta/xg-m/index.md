@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Minolta XG-M 35 mm film SLR camera with 35 mm f/1.8 lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_X-GM_series_camera_-front.JPG"
+verified = "2026-09-04"
 +++
