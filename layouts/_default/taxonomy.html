@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ with .Params.brand }}<p>Sold by {{ . }}.</p>{{ end }}
+{{ .Content }}
+{{ with .Params.note }}<p class="note">{{ . }}</p>{{ end }}
+{{ with .Params.spellings }}<p class="spellings">Also written:
+  {{ delimit . ", " }}</p>{{ end }}
+{{ range $kind := slice "camera" "lens" }}
+  {{ $in := where $.Pages "Section" $kind }}
+  {{ with $in }}<h2>{{ $kind | humanize }}s</h2><ul>
+    {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+  </ul>{{ end }}
+{{ end }}
+{{ end }}

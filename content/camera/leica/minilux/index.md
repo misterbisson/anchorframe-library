@@ -1,0 +1,6 @@
++++
+title = "Leica minilux"
+brand = "Leica"
+source = "https://en.wikipedia.org/wiki/Leica_minilux"
+fixed_lens = "f=40 mm (minilux & CM) or 35~70 mm (minilux zoom)"
++++

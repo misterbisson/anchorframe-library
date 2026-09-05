@@ -1,0 +1,4 @@
++++
+title = "Yashica"
+brand = "Yashica"
++++

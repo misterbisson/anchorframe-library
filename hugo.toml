@@ -1,0 +1,18 @@
+baseURL = "https://anchorframe.app/library/"
+locale = "en-US"
+title = "Anchorframe equipment library"
+enableRobotsTXT = true
+
+# A mount is the one thing here that cuts across the other three, so it is a
+# taxonomy rather than a section: its term page *is* its record, and the page
+# that says what a mount is is the same page that lists what fits it.
+[taxonomies]
+  mount = "mount"
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[params]
+  license = "CC BY-SA 4.0"
+  licenseURL = "https://creativecommons.org/licenses/by-sa/4.0/"
+  repo = "https://github.com/misterbisson/anchorframe-library"

@@ -1,0 +1,6 @@
++++
+title = "Konica Hexar RF"
+brand = "Konica"
+source = "https://en.wikipedia.org/wiki/Konica_Hexar_RF"
+mount = ["konica-km"]
++++

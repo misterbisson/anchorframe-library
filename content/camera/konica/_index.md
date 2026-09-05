@@ -1,0 +1,4 @@
++++
+title = "Konica"
+brand = "Konica"
++++

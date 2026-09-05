@@ -1,0 +1,6 @@
++++
+title = "Fortecolor Super FG plus"
+brand = "Forte"
+source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#Forte"
+discontinued = true
++++

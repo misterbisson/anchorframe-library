@@ -1,0 +1,4 @@
++++
+title = "Kono!"
+brand = "Kono!"
++++

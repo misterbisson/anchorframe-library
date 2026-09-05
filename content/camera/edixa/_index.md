@@ -1,0 +1,4 @@
++++
+title = "Edixa"
+brand = "Edixa"
++++

@@ -1,0 +1,5 @@
++++
+title = "Olympus iS-3000 QD"
+brand = "Olympus"
+source = "https://en.wikipedia.org/wiki/List_of_Olympus_products#Film_cameras"
++++

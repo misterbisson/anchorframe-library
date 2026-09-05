@@ -1,0 +1,6 @@
+{{ define "main" }}
+<h1>{{ site.Title }}</h1>
+{{ .Content }}
+<ul>{{ range site.Sections.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  <span>{{ len .RegularPagesRecursive }}</span></li>{{ end }}</ul>
+{{ end }}

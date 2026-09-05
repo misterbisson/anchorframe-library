@@ -1,0 +1,6 @@
++++
+title = "Sears 80–200mm f/4-5.6 Auto MC"
+brand = "Sears"
+source = "https://en.wikipedia.org/wiki/Pentax_K-mount#Sears"
+mount = ["pentax-k"]
++++

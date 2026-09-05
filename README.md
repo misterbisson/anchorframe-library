@@ -60,24 +60,65 @@ The path is the address, and it comes straight from the file's own path in
 
 ## A record
 
-```json
-{
-  "name": "Canon AE-1",
-  "brand": "Canon",
-  "mount": "canon-fd",
-  "source": "https://en.wikipedia.org/wiki/Canon_AE-1"
-}
+Every thing is a Hugo **leaf bundle** — a directory holding `index.md`, plus any
+images that belong to it.
+
+```
+content/camera/canon/ae-1/
+  index.md
+  ae-1-front.jpg        ← when someone contributes one
 ```
 
-`name`, `brand` and `source` are required on everything. A film says whether it
-is `discontinued`; a fixed-lens body names its `lens` instead of a `mount`, and
-never both. `note` carries a reason where one is needed. See
-[CONTRIBUTING.md](CONTRIBUTING.md) for the whole shape.
+```toml
++++
+title = "Canon AE-1"
+brand = "Canon"
+source = "https://en.wikipedia.org/wiki/Canon_AE-1"
+mount = ["canon-fd"]
++++
 
-Rulings that no rule could settle — line names folded onto their companies, the
-mount spellings, brands read out of an article's own prose — live in
-[`tools/rulings.py`](tools/rulings.py), each with the evidence that decided it,
-so they can be argued with rather than rediscovered.
+Prose about the camera goes here, and it is optional.
+```
+
+**It is a directory even when it holds one file, and that is the point.** An
+empty directory beside a record invites someone to drop a photograph into it; a
+bare `<slug>.md` does not. Promoting a flat file to a bundle later would be as
+disruptive as the move from JSON was, so everything is a bundle from the start.
+The validator refuses a bare file.
+
+Front matter is **TOML**, not YAML, for two reasons: `tomllib` is in Python's
+standard library from 3.11, so the validator needs nothing installed and a fork's
+pull request gets the same green tick as anyone else's; and YAML would silently
+retype a corpus this full of terse model codes — `NO`, `ON`, `Y` and anything
+version-shaped.
+
+`title`, `brand` and `source` are required. A film says whether it is
+`discontinued`; a fixed-lens body names its `fixed_lens` instead of a `mount`,
+and never both. See [CONTRIBUTING.md](CONTRIBUTING.md) for the whole shape.
+
+## How a record earns a page
+
+Most records are a name, a brand and a link, and a page of that is a page that
+exists in order not to be a 404. So an item's URL **redirects to its row in the
+brand list** until the record has something to show — prose in the body, or an
+image in the bundle. Then the page appears, at the address it always had.
+
+The threshold is computed on every build rather than recorded anywhere, so
+promotion happens the moment a contribution lands and nothing has to be
+withdrawn by hand. Nothing moves either way: the path was always the address, so
+promoting a record is *deleting* a redirect.
+
+`dist/redirects.json` carries both kinds, and they have different lifetimes — an
+alternate name is permanent, and a thin record's redirect lasts exactly as long
+as it has nothing to show.
+
+Rulings that no rule could settle travel with the thing they rule: a `note` on
+the record, so `content/camera/minolta/leitz-minolta-cl/` explains its own joint
+badge and `content/mount/m42/` explains why it has no brand. The rules that
+shaped the whole corpus — line names folded onto their companies, one spelling
+per company, who counts as the seller — are in
+[`docs/rulings.md`](docs/rulings.md), each with the evidence that decided it, so
+they can be argued with rather than rediscovered.
 
 ## Where it came from, and what that means for licensing
 
@@ -130,7 +171,13 @@ Named because a documented gap is a decision and an undocumented one is a trap.
 python3 -m unittest discover -s tools -p 'test_*.py' -t tools
 python3 tools/validate.py
 python3 tools/build.py          # -> dist/, which is not committed
+hugo server                     # the site, at localhost:1313
 ```
 
-CI runs exactly those three, with no credentials, so it passes for a pull
-request from a fork.
+CI runs those, plus `hugo --panicOnWarning`, with no credentials — so it passes
+for a pull request from a fork.
+
+**Hugo builds; Python judges.** Hugo will happily render a page with a missing
+brand, a mount nothing defines, or a slug that has nothing to do with its title;
+it has no opinion about any of that. `tools/validate.py` does, and every rule in
+it is mutation-tested.
