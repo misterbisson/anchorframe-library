@@ -114,10 +114,40 @@ Imation are addressed under 3M with an Imation alias.
 
 Each moved record keeps its `/film/ferrania/…` address.
 
-## What looked wrong and was not
+## An edition is not part of a name
 
-**`New FD` is Canon's own designation**, not a stray word. It names the
-second-generation FD mount of 1979, which locks by bayonet where the original
-locks by breech. 61 lenses carry it, and **14 of them have a matching non-`New`
-record with the same optical spec** — strip the word and those 14 collide, which
-is exactly the evidence that it carries product identity.
+`New FD` looked like a stray word and is not: it names Canon's second-generation
+FD mount of 1979, which locks by bayonet where the original locks by breech. 14
+lenses have a matching non-`New` record with the same optical spec, so the word
+carries product identity and cannot simply go.
+
+But **nothing on either barrel says `New`.** Canon's literature does; the lens
+says `FD`. So it is the *edition's* name rather than the lens's, and as a prefix
+it also put the two halves of each pair 60 rows apart in the brand list.
+
+That is the same shape as the Hasselblad barrel codes — C, CF, CFi, CFE, F, FE,
+CB — which had been welded into titles here as an admitted stopgap. Both now use
+a `variant` field:
+
+```toml
+title = "FD 100mm f/2.8"
+variant = "New FD"
+```
+
+**The test for adding a field was whether it was standalone, and it is not.** It
+covers 55 Canon lenses and 8 Hasselblad ones today, across two makers and two
+unrelated edition systems, and the Hasselblad re-extraction this file already
+owes will need somewhere to put the barrel codes it recovers — the source lists
+four 50 mm f/4 Distagons where this carries two.
+
+Two consequences worth knowing. Two records can now **share a title**, so the
+slug carries the variant or they would share an address; the validator refuses a
+variant that the slug does not carry. And the sorting fixed itself: with the
+edition out of the front of the name, each pair sorts adjacent, so no template
+needed a special case for the word "New".
+
+**What stays in the title.** `S.S.C.` and `S.C.` on Canon lenses, and Rikenon's
+`XR Version`, are how the source names those products and they cause neither
+ambiguity nor mis-sorting. The line is pragmatic rather than principled, and it
+can move: a marker becomes a `variant` when it distinguishes editions of one
+name, and stays in the title when it is simply how the thing was sold.

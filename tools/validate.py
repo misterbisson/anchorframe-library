@@ -23,7 +23,7 @@ from content import KINDS, load, load_brands
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
-OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note")
+OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant")
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
 BRAND_KEYS = ("title", "brand", "aliases", "note")
 
@@ -126,12 +126,27 @@ def validate(root: str) -> list[str]:
         # be *derivable* from the title — with the brand prefix dropped where the
         # title repeats it — or nothing connects the address to the thing.
         title = r.meta.get("title")
+        variant = r.meta.get("variant")
+        if variant is not None and (not isinstance(variant, str) or not variant.strip()):
+            bad(rel, "variant must be a non-empty string")
+            variant = None
         if isinstance(title, str):
-            full = slugify(title)
-            trimmed = (full[len(r.brand_slug) + 1:]
-                       if full.startswith(r.brand_slug + "-") else full)
-            if r.slug not in (full, trimmed):
-                bad(rel, f"slug {r.slug!r} is neither {full!r} nor {trimmed!r}")
+            # A variant is an edition of a product, so two records can share a
+            # title and be told apart by it — which means the slug has to carry
+            # it, or they would share an address as well.
+            names = [title] + ([f"{title} {variant}"] if variant else [])
+            ok = set()
+            for n in names:
+                full = slugify(n)
+                ok.add(full)
+                if full.startswith(r.brand_slug + "-"):
+                    ok.add(full[len(r.brand_slug) + 1:])
+            if r.slug not in ok:
+                bad(rel, f"slug {r.slug!r} is none of {sorted(ok)}")
+            if variant and r.slug not in ok - {slugify(title),
+                                               slugify(title)[len(r.brand_slug)+1:]}:
+                bad(rel, f"slug {r.slug!r} does not carry the variant {variant!r}, so "
+                         "another edition of this title would want the same address")
         if not str(r.meta.get("source", "")).startswith("https://"):
             bad(rel, "source must be an https URL")
         mount = r.meta.get("mount")

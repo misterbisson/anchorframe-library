@@ -1,0 +1,9 @@
+{{- /*
+  What a record is called, including its edition where it has one.
+
+  Two records can share a `title` — `FD 100mm f/2.8` exists as both the original
+  breech-lock lens and the 1979 New FD — so anything that shows a name has to
+  show the variant too, or the list prints the same line twice. Defined once
+  because four templates ask.
+*/ -}}
+{{- .Title }}{{ with .Params.variant }} ({{ . }}){{ end -}}

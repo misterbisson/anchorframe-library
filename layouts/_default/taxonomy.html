@@ -12,7 +12,7 @@
 {{ range $kind := slice "camera" "lens" }}
   {{ $in := where $.Pages "Section" $kind }}
   {{ with $in }}<h2>{{ index $labels $kind }}</h2><ul>
-    {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+    {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ partial "name.html" . }}</a></li>{{ end }}
   </ul>{{ end }}
 {{ end }}
 {{ end }}
