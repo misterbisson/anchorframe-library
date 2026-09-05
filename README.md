@@ -122,6 +122,10 @@ than a redirect, and anything that is not a browser will not follow it. Nothing
 here is one — the app holds no network entitlement and would open a browser — but
 it is true.
 
+A brand has a page of its own too, and it carries the other names that shelf has
+been known by — `Svema` answers at `/film/astrum/` as well, because Astrum is the
+successor company making Svema film. Same `aliases` field, same free redirect.
+
 Rulings that no rule could settle travel with the thing they rule: a `note` on
 the record, so `content/camera/minolta/leitz-minolta-cl/` explains its own joint
 badge and `content/mount/m42/` explains why it has no brand. The rules that

@@ -30,6 +30,11 @@ class Fixture(unittest.TestCase):
         with open(self.hugo_toml, "w", encoding="utf-8") as fh:
             fh.write('baseURL = "https://example.test/library/"\n')
         c = os.path.join(self.root, "content")
+        # A brand is a shelf and needs its own page, which is where its other
+        # names live.
+        page(f"{c}/camera/canon/_index.md", 'title = "Canon"')
+        page(f"{c}/film/kodak/_index.md", 'title = "Kodak"')
+        page(f"{c}/lens/nikon/_index.md", 'title = "Nikon"')
         page(f"{c}/mount/canon-fd/_index.md",
              'title = "Canon FD"\nbrand = "Canon"\nspellings = ["Canon FD"]')
         page(f"{c}/mount/m42/_index.md",
@@ -51,6 +56,7 @@ class Fixture(unittest.TestCase):
         self.film = f"{c}/film/kodak/portra-400/index.md"
         self.lens = f"{c}/lens/nikon/nikkor-45mm-f2-8e-ed/index.md"
         self.content = c
+        self.brand = f"{c}/camera/canon/_index.md"
 
     def rewrite(self, path, front, body=""):
         page(path, front, body)
@@ -183,6 +189,52 @@ class Corpus(Fixture):
     def test_a_bundle_with_no_index_is_caught(self):
         os.makedirs(f"{self.content}/camera/canon/f-1", exist_ok=True)
         self.assertObjects("no index.md")
+
+
+class BrandPages(Fixture):
+    """A brand is a shelf, and a shelf can have had more than one name.
+
+    `Svema (Astrum)` is Svema film made by its successor company; `AgfaPhoto`
+    and `Agfa-Gevaert` are corporate lineage rather than a different shelf.
+    Someone looking for any of those names is looking for one place, so the
+    other names are aliases on the brand's own page.
+    """
+
+    def test_a_brand_with_no_page_is_caught(self):
+        os.remove(self.brand)
+        self.assertObjects("no _index.md")
+
+    def test_a_brand_title_that_does_not_match_its_directory_is_caught(self):
+        page(self.brand, 'title = "Canon Inc."')
+        self.assertObjects("not 'canon'")
+
+    def test_a_brand_alias_that_shadows_a_real_brand_is_caught(self):
+        page(self.brand, 'title = "Canon"\naliases = ["/camera/canon/"]')
+        self.assertObjects("is already a brand")
+
+    def test_two_brands_claiming_one_alias_is_caught(self):
+        page(self.brand, 'title = "Canon"\naliases = ["/camera/canonet/"]')
+        page(f"{self.content}/camera/nikon/_index.md",
+             'title = "Nikon"\naliases = ["/camera/canonet/"]')
+        page(f"{self.content}/camera/nikon/fm2/index.md",
+             'title = "Nikon FM2"\nbrand = "Nikon"\nsource = "https://x.example/a"')
+        self.assertObjects("also claimed by")
+
+    def test_a_brand_alias_of_the_wrong_shape_is_caught(self):
+        page(self.brand, 'title = "Canon"\naliases = ["/camera/canonet/g-iii/"]')
+        self.assertObjects("is not /<kind>/<brand>/")
+
+    def test_a_brand_alias_under_another_kind_is_caught(self):
+        page(self.brand, 'title = "Canon"\naliases = ["/lens/canonet/"]')
+        self.assertObjects("is filed under")
+
+    def test_an_unknown_field_on_a_brand_page_is_caught(self):
+        page(self.brand, 'title = "Canon"\nfounded = 1937')
+        self.assertObjects("unknown field")
+
+    def test_a_well_formed_brand_alias_is_accepted(self):
+        page(self.brand, 'title = "Canon"\naliases = ["/camera/canonet/", "/camera/kwanon/"]')
+        self.assertEqual(validate(self.root), [])
 
 
 class UrlPrefix(Fixture):

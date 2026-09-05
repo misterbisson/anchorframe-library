@@ -19,12 +19,13 @@ from __future__ import annotations
 import os
 import sys
 
-from content import KINDS, load
+from content import KINDS, load, load_brands
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
 OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note")
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
+BRAND_KEYS = ("title", "brand", "aliases", "note")
 
 
 def validate(root: str) -> list[str]:
@@ -53,6 +54,48 @@ def validate(root: str) -> list[str]:
             if sp in spelling_owner:
                 bad(rel, f"spelling {sp!r} is already claimed by {spelling_owner[sp]}")
             spelling_owner[sp] = term
+
+    # --- brands -------------------------------------------------------------
+    brands, brand_broken = load_brands(root)
+    problems.extend(brand_broken)
+    brand_claimed: dict[tuple[str, str], str] = {k: f"content/{k[0]}/{k[1]}/_index.md"
+                                                 for k in brands}
+    for (kind, brand_slug), meta in sorted(brands.items()):
+        rel = f"content/{kind}/{brand_slug}/_index.md"
+        for f in meta:
+            if f not in BRAND_KEYS:
+                bad(rel, f"unknown field {f!r}")
+        title = meta.get("title")
+        if not isinstance(title, str) or not title.strip():
+            bad(rel, "title is required and must be a non-empty string")
+        elif slugify(title) != brand_slug:
+            bad(rel, f"title {title!r} slugs to {slugify(title)!r}, not {brand_slug!r}. "
+                     "A brand whose other names differ from its own carries them in "
+                     "`aliases`, not in its title.")
+        for alias in meta.get("aliases", []):
+            if not isinstance(alias, str):
+                bad(rel, f"alias {alias!r} is not a path")
+                continue
+            parts = alias.strip("/").split("/")
+            if len(parts) != 2 or not alias.startswith("/"):
+                bad(rel, f"alias {alias!r} is not /<kind>/<brand>/")
+                continue
+            akind, abrand = parts
+            if akind != kind:
+                bad(rel, f"alias {alias!r} is filed under {akind!r}, not {kind!r}")
+                continue
+            if not VALID.match(abrand):
+                bad(rel, f"alias {alias!r} has a segment that is not a slug")
+                continue
+            key = (kind, abrand)
+            if key in brands:
+                # An alias redirects; one that shadows a real brand would send a
+                # shelf away from itself.
+                bad(rel, f"alias {alias!r} is already a brand")
+            elif key in brand_claimed and brand_claimed[key] != rel:
+                bad(rel, f"alias {alias!r} is also claimed by {brand_claimed[key]}")
+            else:
+                brand_claimed[key] = rel
 
     # --- records ------------------------------------------------------------
     canonical = {(r.kind, r.brand_slug, r.slug): r for r in records}

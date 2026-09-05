@@ -5,9 +5,13 @@
 {{ with .Params.note }}<p class="note">{{ . }}</p>{{ end }}
 {{ with .Params.spellings }}<p class="spellings">Also written:
   {{ delimit . ", " }}</p>{{ end }}
+{{/* `humanize` pluralises by appending an s, which turns "lens" into "Lenss".
+     A label per kind rather than a rule, because English will keep doing this
+     and the list is four items long. */}}
+{{ $labels := dict "camera" "Cameras" "lens" "Lenses" "film" "Film stocks" }}
 {{ range $kind := slice "camera" "lens" }}
   {{ $in := where $.Pages "Section" $kind }}
-  {{ with $in }}<h2>{{ $kind | humanize }}s</h2><ul>
+  {{ with $in }}<h2>{{ index $labels $kind }}</h2><ul>
     {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
   </ul>{{ end }}
 {{ end }}
