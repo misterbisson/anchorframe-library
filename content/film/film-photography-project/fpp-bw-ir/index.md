@@ -13,4 +13,8 @@ copyright = "Film Photography Project"
 alt = "A black FPP canister labelled BW Infrared in pale green"
 sourcePage = "https://filmphotographystore.com/products/35mm-infrared-film-fpp-black-and-white-ir"
 verified = "2026-09-04"
+iso = 200
+process = "B&W"
+film_type = "Print"
+formats = ["135-24"]
 +++

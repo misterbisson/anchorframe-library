@@ -3,4 +3,8 @@ title = "Polaroid 8x10 film"
 brand = "Polaroid"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Polaroid"
 discontinued = false
+iso = 640
+process = "Instant"
+film_type = "Print"
+formats = ["325x 215mm (8x10\")"]
 +++

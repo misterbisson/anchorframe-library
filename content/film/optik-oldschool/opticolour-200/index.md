@@ -13,4 +13,8 @@ copyright = "Optik Oldschool"
 alt = "Two 35 mm cassettes of Optik Oldschool OptiColour 200 with orange and blue labels"
 sourcePage = "https://www.optik-oldschool.com/products/opticolour-200"
 verified = "2026-09-04"
+iso = 200
+process = "C-41"
+film_type = "Print"
+formats = ["135-36", "120", "4x5\"", "5x7\"", "8x10\""]
 +++

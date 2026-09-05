@@ -13,4 +13,8 @@ copyright = "Optik Oldschool"
 alt = "Two 35 mm cassettes of Optik Oldschool Motion 250D with yellow labels, film leaders out"
 sourcePage = "https://www.optik-oldschool.com/products/optiks-motion-250d-ecn2"
 verified = "2026-09-04"
+iso = 250
+process = "ECN-2 / C-41"
+film_type = "Print"
+formats = ["135-36"]
 +++

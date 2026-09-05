@@ -92,8 +92,11 @@ class Corpus(Fixture):
         self.assertObjects("title is required")
 
     def test_an_unknown_field_is_caught(self):
+        # Deliberately a name no schema will ever want. This test used to probe
+        # with `iso`, which stopped proving anything the day `iso` became a
+        # field: it kept passing, on a different error.
         self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
-                               'source = "https://x.example/a"\niso = 400')
+                               'source = "https://x.example/a"\nsprocket = 400')
         self.assertObjects("unknown field")
 
     def test_a_brand_that_disagrees_with_its_directory_is_caught(self):
@@ -236,6 +239,92 @@ class BrandPages(Fixture):
     def test_a_well_formed_brand_alias_is_accepted(self):
         page(self.brand, 'title = "Canon"\naliases = ["/camera/canonet/", "/camera/kwanon/"]')
         self.assertEqual(validate(self.root), [])
+
+
+class EmulsionFacts(Fixture):
+    """The four columns the source tables carry about a film itself.
+
+    Each guard here is mutation-tested: remove the check in validate.py and the
+    matching test fails. A guard no test can kill is a guard nobody can prove.
+    """
+
+    FILM = ('title = "Kodak Portra 400"\nbrand = "Kodak"\ndiscontinued = false\n'
+            'source = "https://x.example/a"\n')
+
+    def emulsion(self, extra):
+        self.rewrite(self.film, self.FILM + extra)
+
+    def test_the_four_facts_together_are_accepted(self):
+        self.emulsion('iso = 400\nprocess = "C-41"\nfilm_type = "Print"\n'
+                  'formats = ["135", "120"]')
+        self.assertEqual([], validate(self.root))
+
+    def test_a_film_carrying_none_of_them_is_still_accepted(self):
+        self.emulsion("")
+        self.assertEqual([], validate(self.root))
+
+    def test_an_iso_that_is_not_a_number_is_caught(self):
+        self.emulsion('iso = "400"')
+        self.assertObjects("iso is a positive whole number")
+
+    def test_a_zero_or_negative_iso_is_caught(self):
+        self.emulsion("iso = 0")
+        self.assertObjects("iso is a positive whole number")
+
+    def test_a_boolean_iso_is_caught(self):
+        # `True` is an `int` in Python, so `isinstance(iso, int)` alone lets
+        # `iso = true` through and it renders as ISO 1.
+        self.emulsion("iso = true")
+        self.assertObjects("iso is a positive whole number")
+
+    def test_an_empty_process_is_caught(self):
+        self.emulsion('process = "  "')
+        self.assertObjects("process must be a non-empty string")
+
+    def test_a_film_type_outside_the_two_values_is_caught(self):
+        self.emulsion('film_type = "Positive"')
+        self.assertObjects("film_type is one of")
+
+    def test_the_source_columns_own_typos_are_caught(self):
+        # The article carries "Slide (print)", "Print /Slide" and one cell
+        # reading "Remplaced by 4416". None may reach the corpus unnormalised.
+        for junk in ("Slide (print)", "Print /Slide", "Remplaced by 4416"):
+            with self.subTest(junk=junk):
+                self.emulsion(f'film_type = "{junk}"')
+                self.assertObjects("film_type is one of")
+
+    def test_formats_that_is_not_a_list_is_caught(self):
+        self.emulsion('formats = "135"')
+        self.assertObjects("formats is a non-empty list")
+
+    def test_an_empty_formats_list_is_caught(self):
+        self.emulsion("formats = []")
+        self.assertObjects("formats is a non-empty list")
+
+    def test_a_blank_entry_in_formats_is_caught(self):
+        self.emulsion('formats = ["135", " "]')
+        self.assertObjects("formats is a non-empty list")
+
+    def test_a_repeated_format_is_caught(self):
+        self.emulsion('formats = ["135", "135"]')
+        self.assertObjects("formats repeats a format")
+
+    def test_each_fact_is_refused_on_a_camera(self):
+        for f, v in (("iso", "400"), ("process", '"C-41"'),
+                     ("film_type", '"Print"'), ("formats", '["135"]')):
+            with self.subTest(field=f):
+                self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                                       f'source = "https://x.example/a"\n{f} = {v}')
+                self.assertObjects(f"{f} belongs to a film")
+
+    def test_each_fact_is_refused_on_a_lens(self):
+        for f, v in (("iso", "400"), ("process", '"C-41"'),
+                     ("film_type", '"Print"'), ("formats", '["135"]')):
+            with self.subTest(field=f):
+                self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\n'
+                                        'brand = "Nikon"\n'
+                                        f'source = "https://x.example/a"\n{f} = {v}')
+                self.assertObjects(f"{f} belongs to a film")
 
 
 class Variants(Fixture):

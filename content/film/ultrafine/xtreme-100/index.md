@@ -13,4 +13,8 @@ copyright = "Ultrafine Online"
 alt = "A blue and white box of Ultrafine UXF Xtreme 100 black and white film, 135 x 24"
 sourcePage = "https://ultrafineonline.com/products/ultrafine-xtreme-uxf-black-white-film-iso-100-35mm-x-24-exp-copy"
 verified = "2026-09-04"
+iso = 100
+process = "B&W"
+film_type = "Print"
+formats = ["135-12/24/36", "100 ft", "120"]
 +++

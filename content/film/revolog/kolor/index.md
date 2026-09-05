@@ -13,4 +13,8 @@ copyright = "REVOLOG"
 alt = "A 35 mm cassette of REVOLOG KOLOR, its rainbow-gradient label carrying the revolog wordmark"
 sourcePage = "https://www.revolog.net/products/kolor"
 verified = "2026-09-04"
+iso = 200
+process = "C-41"
+film_type = "Print"
+formats = ["135-36"]
 +++
