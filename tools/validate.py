@@ -23,7 +23,7 @@ from content import KINDS, load
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
-OPTIONAL = ("mount", "fixed_lens", "discontinued", "alternates", "note")
+OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note")
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
 
 
@@ -108,22 +108,35 @@ def validate(root: str) -> list[str]:
         if mount and r.meta.get("fixed_lens"):
             bad(rel, "claims both a mount and a fixed lens")
 
-    # --- alternates ---------------------------------------------------------
+    # --- aliases ------------------------------------------------------------
+    # Hugo's own field, so Hugo generates the redirect page and nothing here has
+    # to. The path is root-relative *within* the site: Hugo prepends baseURL's
+    # own prefix, which is why `/library` does not appear in one.
     for r in records:
-        for alt in r.meta.get("alternates", []):
-            if not isinstance(alt, dict) or set(alt) != {"brand", "slug"}:
-                bad(r.path, f"alternate {alt!r} needs exactly a brand and a slug")
+        for alias in r.meta.get("aliases", []):
+            if not isinstance(alias, str):
+                bad(r.path, f"alias {alias!r} is not a path")
                 continue
-            if not (VALID.match(str(alt["brand"])) and VALID.match(str(alt["slug"]))):
-                bad(r.path, f"alternate {alt['brand']}/{alt['slug']} is not a slug pair")
+            parts = alias.strip("/").split("/")
+            if len(parts) != 3 or not alias.startswith("/"):
+                bad(r.path, f"alias {alias!r} is not /<kind>/<brand>/<slug>/")
                 continue
-            key = (r.kind, alt["brand"], alt["slug"])
+            kind, brand, slug = parts
+            if kind != r.kind:
+                # A camera reached at a lens address would be a redirect across
+                # two things that are not the same kind of thing.
+                bad(r.path, f"alias {alias!r} is filed under {kind!r}, not {r.kind!r}")
+                continue
+            if not (VALID.match(brand) and VALID.match(slug)):
+                bad(r.path, f"alias {alias!r} has a segment that is not a slug")
+                continue
+            key = (kind, brand, slug)
             if key in canonical:
-                # An alternate redirects. One that shadows a real record would
+                # An alias redirects. One that shadows a real record would
                 # redirect a page away from itself.
-                bad(r.path, f"alternate {alt['brand']}/{alt['slug']} is already a record")
+                bad(r.path, f"alias {alias!r} is already a record")
             elif key in claimed and claimed[key] != r.path:
-                bad(r.path, f"alternate {alt['brand']}/{alt['slug']} is also claimed by {claimed[key]}")
+                bad(r.path, f"alias {alias!r} is also claimed by {claimed[key]}")
             else:
                 claimed[key] = r.path
     return problems

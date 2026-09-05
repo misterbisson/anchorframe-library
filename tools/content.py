@@ -52,7 +52,9 @@ class Record:
     @property
     def list_url(self) -> str:
         """Its row in the brand list — where it redirects while it has nothing to show."""
-        return f"{self.prefix}/{self.kind}/{self.brand_slug}#{self.slug}"
+        # Trailing slash before the fragment, because that is what Hugo's own
+        # `.Parent.Permalink` produces and Hugo is the authority on URLs here.
+        return f"{self.prefix}/{self.kind}/{self.brand_slug}/#{self.slug}"
 
     @property
     def promoted(self) -> bool:

@@ -3,8 +3,5 @@ title = "Zuiko 24mm F2.8"
 brand = "Olympus"
 source = "https://en.wikipedia.org/wiki/Olympus_OM_system#Lenses"
 mount = ["olympus-om"]
-
-[[alternates]]
-brand = "zuiko"
-slug = "24mm-f2-8"
+aliases = ["/lens/zuiko/24mm-f2-8/"]
 +++

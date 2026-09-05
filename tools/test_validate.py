@@ -46,7 +46,7 @@ class Fixture(unittest.TestCase):
         page(f"{c}/lens/nikon/nikkor-45mm-f2-8e-ed/index.md",
              'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'
              'source = "https://en.wikipedia.org/wiki/Nikon_F-mount"\n'
-             '\n[[alternates]]\nbrand = "nikkor"\nslug = "45mm-f2-8e-ed"')
+             'aliases = ["/lens/nikkor/45mm-f2-8e-ed/"]')
         self.cam = f"{c}/camera/canon/ae-1/index.md"
         self.film = f"{c}/film/kodak/portra-400/index.md"
         self.lens = f"{c}/lens/nikon/nikkor-45mm-f2-8e-ed/index.md"
@@ -129,24 +129,38 @@ class Corpus(Fixture):
                                'fixed_lens = "Canon 40mm"')
         self.assertObjects("both a mount and a fixed lens")
 
-    def test_an_alternate_that_shadows_a_record_is_caught(self):
+    def test_an_alias_that_shadows_a_record_is_caught(self):
         self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'
                                 'source = "https://x.example/a"\n'
-                                '\n[[alternates]]\nbrand = "nikon"\nslug = "nikkor-45mm-f2-8e-ed"')
+                                'aliases = ["/lens/nikon/nikkor-45mm-f2-8e-ed/"]')
         self.assertObjects("is already a record")
 
-    def test_two_records_claiming_one_alternate_is_caught(self):
+    def test_two_records_claiming_one_alias_is_caught(self):
         page(f"{self.content}/lens/nikon/nikkor-50mm-f1-8/index.md",
              'title = "Nikkor 50mm f/1.8"\nbrand = "Nikon"\n'
              'source = "https://x.example/a"\n'
-             '\n[[alternates]]\nbrand = "nikkor"\nslug = "45mm-f2-8e-ed"')
+             'aliases = ["/lens/nikkor/45mm-f2-8e-ed/"]')
         self.assertObjects("also claimed by")
 
-    def test_a_malformed_alternate_is_caught(self):
+    def test_a_malformed_alias_is_caught(self):
         self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'
                                 'source = "https://x.example/a"\n'
-                                '\n[[alternates]]\nbrand = "nikkor"')
-        self.assertObjects("needs exactly a brand and a slug")
+                                'aliases = ["/lens/nikkor"]')
+        self.assertObjects("is not /<kind>/<brand>/<slug>/")
+
+    def test_an_alias_filed_under_the_wrong_kind_is_caught(self):
+        # A camera reached at a lens address is a redirect between two things
+        # that are not the same kind of thing.
+        self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'
+                                'source = "https://x.example/a"\n'
+                                'aliases = ["/camera/nikkor/45mm-f2-8e-ed/"]')
+        self.assertObjects("is filed under")
+
+    def test_an_alias_with_a_bad_segment_is_caught(self):
+        self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'
+                                'source = "https://x.example/a"\n'
+                                'aliases = ["/lens/Nikkor/45mm_F2.8/"]')
+        self.assertObjects("not a slug")
 
     def test_two_mounts_claiming_one_spelling_is_caught(self):
         page(f"{self.content}/mount/canon-fl/_index.md",

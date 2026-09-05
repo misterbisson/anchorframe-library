@@ -40,7 +40,7 @@ def sheets(root: str) -> dict[str, dict]:
                  "url": r.url, "source": r.meta["source"], "promoted": r.promoted}
             if r.meta.get("mount"):
                 e["mount"] = r.meta["mount"][0]
-            for k in ("fixed_lens", "discontinued", "note", "alternates"):
+            for k in ("fixed_lens", "discontinued", "note", "aliases"):
                 if k in r.meta:
                     e[k] = r.meta[k]
             entries.append(e)
@@ -76,9 +76,10 @@ def redirects(root: str) -> dict:
             # The path was always the address, so promoting a record is deleting
             # a redirect: no link breaks, because nothing moves.
             thin.append({"from": r.url, "to": r.list_url})
-        for a in r.meta.get("alternates", []):
-            alt.append({"from": f"{r.prefix}/{r.kind}/{a['brand']}/{a['slug']}",
-                        "to": r.url})
+        for a in r.meta.get("aliases", []):
+            # Hugo prepends baseURL's prefix to an alias; this manifest states
+            # the address as served, so it does the same.
+            alt.append({"from": f"{r.prefix}{a.rstrip('/')}", "to": r.url})
     thin.sort(key=lambda x: x["from"])
     alt.sort(key=lambda x: x["from"])
     return {"generated": _stamp(), "permanent": alt, "provisional": thin}

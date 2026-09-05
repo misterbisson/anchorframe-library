@@ -9,9 +9,8 @@
   {{ range . }}
   {{/* A record with nothing to show has no page of its own, so linking to it
        would only bounce the reader back to this row. The anchor is the address
-       either way, and the link appears on its own the day the record earns
-       one — see `promoted` in tools/content.py. */}}
-  {{ $promoted := or (trim .RawContent " \n") (.Resources.ByType "image") }}
+       either way, and the link appears on its own the day the record earns one. */}}
+  {{ $promoted := partial "promoted.html" . }}
   <li id="{{ path.Base .File.Dir }}">
     {{ if $promoted }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>
     {{ else }}{{ .Title }}{{ end }}

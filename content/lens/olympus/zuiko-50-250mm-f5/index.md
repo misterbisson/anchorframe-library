@@ -3,8 +3,5 @@ title = "Zuiko 50–250mm F5"
 brand = "Olympus"
 source = "https://en.wikipedia.org/wiki/Olympus_OM_system#Lenses"
 mount = ["olympus-om"]
-
-[[alternates]]
-brand = "zuiko"
-slug = "50-250mm-f5"
+aliases = ["/lens/zuiko/50-250mm-f5/"]
 +++

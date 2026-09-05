@@ -58,6 +58,11 @@ jobs:
       # and carry on, which publishes a plausible site rather than an obviously
       # broken one.
       - run: hugo --minify --panicOnWarning --destination public
+      # Nothing ships if the built site and the redirect manifest disagree about
+      # which records have a page. A publish over that mismatch would serve
+      # redirects the manifest does not describe.
+      - run: python3 tools/build.py
+      - run: python3 tools/check_stubs.py
 
       # No `environment:` on this job, deliberately. An environment would change
       # the OIDC subject from `ref:refs/heads/main` to `environment:<name>` and

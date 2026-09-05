@@ -35,6 +35,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - uses: peaceiris/actions-hugo@v3
         with:
           # Pinned rather than `latest`: a generated site is an output, so a
@@ -47,4 +50,10 @@ jobs:
       # reference and carry on, which produces a plausible site rather than an
       # obviously broken one.
       - run: hugo --minify --panicOnWarning --destination public
-      - run: echo "built $(find public -name '*.html' | wc -l) pages"
+      # The promotion rule is implemented twice on purpose — Hugo decides what
+      # to render, Python decides what the redirect manifest says — and neither
+      # can call the other. Two implementations of one rule is the thing this
+      # repository has already had to delete once, so it is reconciled here
+      # rather than trusted.
+      - run: python3 tools/build.py
+      - run: python3 tools/check_stubs.py

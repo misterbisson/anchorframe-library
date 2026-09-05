@@ -1,3 +1,29 @@
+{{- $promoted := partial "promoted.html" . -}}
+{{- if and (eq .Kind "page") (not $promoted) -}}
+{{- /*
+  A record with nothing to show has no page of its own. Its address redirects to
+  its row in the brand list, and it stops doing so by itself the moment someone
+  adds a photograph or a paragraph — no redirect to withdraw, nothing renamed,
+  because the path was always the address.
+
+  Same markup Hugo emits for an `aliases` entry: canonical plus an instant
+  refresh. Deliberately not a 301. A 301 is permanent, and this redirect is
+  designed to be revoked; browsers cache permanent redirects hard, so the truthful
+  verb here is the revocable one. Alternate names, which really are permanent,
+  are the case where a 301 is worth buying later — see dist/redirects.json, which
+  keeps the two apart for exactly that reason.
+*/ -}}
+{{- $target := printf "%s#%s" .Parent.Permalink (path.Base .File.Dir) -}}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ $target }}</title>
+		<link rel="canonical" href="{{ .Parent.Permalink }}">
+		<meta charset="utf-8">
+		<meta http-equiv="refresh" content="0; url={{ $target }}">
+	</head>
+</html>
+{{- else -}}
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,3 +43,4 @@
 </footer>
 </body>
 </html>
+{{- end -}}

@@ -1,7 +1,10 @@
 baseURL = "https://anchorframe.app/library/"
 locale = "en-US"
 title = "Anchorframe equipment library"
-enableRobotsTXT = true
+# A robots.txt at a subpath is not read by anything: crawlers fetch it only from
+# the origin root, which belongs to anchorframe-site. Emitting one here would be
+# a file that looks like it is doing something and is not.
+enableRobotsTXT = false
 
 # A mount is the one thing here that cuts across the other three, so it is a
 # taxonomy rather than a section: its term page *is* its record, and the page
