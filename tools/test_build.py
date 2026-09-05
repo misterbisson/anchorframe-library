@@ -29,6 +29,27 @@ class Build(unittest.TestCase):
             self.assertEqual(sheet["license"], "CC-BY-SA-4.0")
             self.assertIn("Wikipedia", sheet["attribution"])
 
+    def test_no_image_reaches_the_sheets(self):
+        """The sheets are what the app bundles, and images do not go in it.
+
+        A vendor's product photograph is used here under fair use, which is a
+        use and not a licence: it cannot be sublicensed, and every sheet
+        declares itself CC-BY-SA-4.0. Compiling those images into a shipped
+        application is also a materially weaker position than showing them on a
+        reference page, and the app has no need of them — it fills a name field.
+
+        So the sheets carry names and URLs and nothing about a file in a bundle.
+        That is true today by construction rather than by intent, which is
+        exactly the kind of thing that stops being true quietly.
+        """
+        import json
+        for kind, sheet in sheets(ROOT).items():
+            blob = json.dumps(sheet)
+            for token in ("resources", "credit", "sourcePage", "fair-use",
+                          ".png", ".jpg", ".jpeg", ".webp"):
+                self.assertNotIn(token, blob,
+                                 f"{kind}.json carries image data: {token!r}")
+
 
 class Redirects(unittest.TestCase):
     def setUp(self):

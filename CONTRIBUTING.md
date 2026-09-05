@@ -104,6 +104,39 @@ the photograph shows, for a reader who cannot see it.
 **The licence has to be one this repository can redistribute.** Public domain,
 CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
 
+**Except a film box, where no free photograph can exist.** The box is a graphic
+work and it is the whole subject, so a photograph of one has two owners and a
+contributor can only license their half — a CC BY-SA snapshot of a Portra box is
+a licence to half the frame. The manufacturer's own product shot has one owner,
+so that is what to use, marked `fair-use`:
+
+```toml
+[[resources]]
+src = "fujichrome-velvia-50-box.png"
+[resources.params]
+credit = "FUJIFILM Corporation"
+license = "fair-use"
+copyright = "FUJIFILM Corporation"
+alt = "Boxes of FUJICHROME Velvia 50 in 135 and 120"
+sourcePage = "https://www.fujifilm.com/us/en/business/professional-photography/film/velvia-50"
+```
+
+`fair-use` takes a `copyright` and no `licenseUrl`, because there are no terms to
+link to — and it is a *use*, not a licence: it cannot be passed on, the corpus's
+CC BY-SA 4.0 does not cover it, and a reuser of this data does not inherit it.
+Use it only for the maker's own photograph of their own product, never for
+someone else's picture of it.
+
+[`tools/film-boxes`](https://github.com/misterbisson/anchorframe/tree/main/tools/film-boxes) in the app repository finds those, the same way
+`tools/vocabulary-build` built the seed corpus: it runs on a person's machine and
+its output is committed here. It reports what each maker's own catalogue offers
+and which record it matches, and writes nothing on its own — matching a shop's
+product name to a record is a judgement, and it belongs in a diff someone reads.
+
+It lives there rather than here because a public index should not also ship a
+thing that fetches from eleven vendors' sites under this repository's name. The
+goodwill of those vendors is what the `fair-use` position rests on.
+
 **Take files from Wikimedia Commons, not from English Wikipedia.** Wikipedia
 also stores files locally, and local is where non-free *fair-use* uploads live —
 from the article side they look identical. Two of the 201 camera images are
