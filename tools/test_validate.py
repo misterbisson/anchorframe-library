@@ -284,6 +284,65 @@ class Variants(Fixture):
         self.assertEqual(validate(self.root), [])
 
 
+class Photographs(Fixture):
+    """A photograph is the one thing here that can put someone in breach.
+
+    174 of the 201 camera images on Wikipedia require credit by name, and two of
+    them are local en.wiki uploads — which is where non-free fair-use files live,
+    and they look identical to the free ones from the article side. So the credit
+    is required data rather than a convention, and the licence is checked.
+    """
+
+    GOOD = ('title = "Canon AE-1"\nbrand = "Canon"\n'
+            'source = "https://en.wikipedia.org/wiki/Canon_AE-1"\n'
+            '\n[[resources]]\nsrc = "ae-1.jpg"\n[resources.params]\n'
+            'credit = "Groogle"\nlicense = "CC BY-SA 4.0"\n'
+            'licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0/"\n'
+            'alt = "A black Canon AE-1 seen from the front"\n'
+            'sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1.jpg"')
+
+    def with_image(self, front=None):
+        open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
+        self.rewrite(self.cam, front if front is not None else self.GOOD)
+
+    def test_a_fully_credited_photograph_is_accepted(self):
+        self.with_image()
+        self.assertEqual(validate(self.root), [])
+
+    def test_an_image_with_no_resources_entry_is_caught(self):
+        self.with_image('title = "Canon AE-1"\nbrand = "Canon"\n'
+                        'source = "https://x.example/a"')
+        self.assertObjects("ships with no credit and no licence")
+
+    def test_each_required_credit_field_is_caught_when_missing(self):
+        for field in ("credit", "license", "licenseUrl", "alt", "sourcePage"):
+            with self.subTest(field=field):
+                front = "\n".join(l for l in self.GOOD.split("\n")
+                                  if not l.startswith(f"{field} = "))
+                self.with_image(front)
+                self.assertObjects(f"has no {field}")
+
+    def test_a_non_free_licence_is_refused(self):
+        self.with_image(self.GOOD.replace('license = "CC BY-SA 4.0"',
+                                          'license = "Fair use"'))
+        self.assertObjects("not a licence this repository can redistribute")
+
+    def test_a_source_page_that_is_not_a_url_is_caught(self):
+        self.with_image(self.GOOD.replace(
+            'sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1.jpg"',
+            'sourcePage = "Commons"'))
+        self.assertObjects("sourcePage must be an https URL")
+
+    def test_a_resources_entry_for_a_file_that_is_not_there_is_caught(self):
+        # Credit for a photograph nobody can see is credit nobody can check.
+        self.rewrite(self.cam, self.GOOD)
+        self.assertObjects("which is not in the bundle")
+
+    def test_a_resource_without_a_src_is_caught(self):
+        self.with_image(self.GOOD.replace('src = "ae-1.jpg"\n', ""))
+        self.assertObjects("needs a src")
+
+
 class UrlPrefix(Fixture):
     """Hugo is the authority on what a URL is; the Python only asserts it."""
 
@@ -332,8 +391,13 @@ class Promotion(Fixture):
     def test_an_image_in_the_bundle_promotes_a_record(self):
         open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
         self.assertIn("ae-1", self.promoted())
-        # And the corpus still validates: a photograph is not front matter.
-        self.assertEqual(validate(self.root), [])
+
+    def test_an_image_promotes_but_does_not_excuse_itself_from_credit(self):
+        # Promotion and licensing are separate questions, and the second one is
+        # the one that can put someone in breach.
+        open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
+        self.assertIn("ae-1", self.promoted())
+        self.assertObjects("ships with no credit and no licence")
 
     def test_a_note_promotes_a_record(self):
         # A ruling nobody can read is not documentation. Before this, the note
