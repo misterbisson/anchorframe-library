@@ -1,0 +1,6 @@
++++
+title = "Harman Phoenix II 200"
+brand = "Harman"
+source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Harman"
+discontinued = false
++++

@@ -1,0 +1,6 @@
++++
+title = "Canon EF 100–200mm"
+brand = "Canon"
+source = "https://en.wikipedia.org/wiki/Canon_EF_100%E2%80%93200mm_lens"
+mount = ["canon-ef"]
++++

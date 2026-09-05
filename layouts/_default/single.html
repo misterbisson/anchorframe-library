@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  <dl>
+    <dt>Brand</dt><dd><a href="{{ .Parent.RelPermalink }}">{{ .Params.brand }}</a></dd>
+    {{ with .Params.mount }}<dt>Mount</dt><dd>
+      {{ range . }}{{ $m := site.GetPage (printf "/mount/%s" .) }}
+      <a href="{{ $m.RelPermalink }}">{{ $m.Title }}</a>{{ end }}
+    </dd>{{ end }}
+    {{ with .Params.fixed_lens }}<dt>Fixed lens</dt><dd>{{ . }}</dd>{{ end }}
+    {{ if eq .Section "film" }}<dt>Availability</dt>
+      <dd>{{ if .Params.discontinued }}Discontinued{{ else }}In production{{ end }}</dd>{{ end }}
+    <dt>Source</dt><dd><a href="{{ .Params.source }}" rel="nofollow">{{ .Params.source }}</a></dd>
+  </dl>
+  {{ with .Params.note }}<p class="note">{{ . }}</p>{{ end }}
+  {{ .Content }}
+  {{ with .Resources.ByType "image" }}
+  <ul class="images">
+    {{ range . }}{{ $t := .Fit "800x800 webp" }}
+    <li><img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" alt="">
+    <p class="credit">{{ with .Params.credit }}{{ . }}{{ end }}
+      {{ with .Params.license }} · {{ . }}{{ end }}
+      {{ with .Params.sourcePage }} · <a href="{{ . }}">source</a>{{ end }}</p></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+  {{ with .Params.alternates }}<p class="alternates">Also sold or listed as:
+    {{ range . }}{{ .brand }}/{{ .slug }} {{ end }}</p>{{ end }}
+</article>
+{{ end }}

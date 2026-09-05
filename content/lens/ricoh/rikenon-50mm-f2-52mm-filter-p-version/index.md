@@ -1,0 +1,10 @@
++++
+title = "Rikenon 50mm f2 (52mm filter)P Version"
+brand = "Ricoh"
+source = "https://en.wikipedia.org/wiki/Pentax_K-mount#Ricoh_-_Rikenon_-_Riconar"
+mount = ["pentax-k"]
+
+[[alternates]]
+brand = "rikenon"
+slug = "50mm-f2-52mm-filter-p-version"
++++

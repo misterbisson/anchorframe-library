@@ -1,0 +1,6 @@
++++
+title = "Sigma 17–50mm f/2.8 EX DC OS HSM"
+brand = "Sigma"
+source = "https://en.wikipedia.org/wiki/Pentax_K-mount#Sigma"
+mount = ["pentax-k"]
++++

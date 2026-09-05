@@ -1,0 +1,122 @@
+name: deploy
+
+# Publishes https://anchorframe.app/library.
+#
+# **Only on a push to main, and never on a pull request.** This repository is
+# public and takes pull requests from people nobody here reviews in advance, so a
+# job that could assume this role from a pull request would hand a stranger write
+# access to the bucket that serves the App Store listing's privacy policy URL.
+#
+# That is not enforced here. It is enforced by the OIDC *subject*: the role in
+# `misterbisson/anchorframe-site` trusts `...:ref:refs/heads/main` and nothing
+# else, so a pull request presenting `...:pull_request` cannot assume it however
+# this file is edited. This trigger is the polite version of the same rule; the
+# trust policy is the one that holds.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege at the workflow level, widened per job.
+permissions:
+  contents: read
+
+concurrency:
+  # One publish at a time. Two syncs racing with --delete over the same prefix
+  # can leave the loser's files deleted and the winner's half-written.
+  group: deploy-library
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+
+      # The guards before the publish, not after it. A corpus that does not
+      # validate should never reach the bucket, and `hugo` alone has no opinion
+      # about whether a brand agrees with its directory.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m unittest discover -s tools -p 'test_*.py' -t tools
+      - run: python3 tools/validate.py
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          # Pinned, and it must match the version in check.yml: a generated site
+          # is an output, so a version difference between the job that checks it
+          # and the job that ships it is a difference between what was checked
+          # and what shipped.
+          hugo-version: "0.163.3"
+          extended: true
+      # `--panicOnWarning` because Hugo's default is to log a broken reference
+      # and carry on, which publishes a plausible site rather than an obviously
+      # broken one.
+      - run: hugo --minify --panicOnWarning --destination public
+
+      # No `environment:` on this job, deliberately. An environment would change
+      # the OIDC subject from `ref:refs/heads/main` to `environment:<name>` and
+      # the role would stop trusting it -- a failure that shows up as
+      # configure-aws-credentials retrying for a minute without ever naming IAM.
+      # tools/test_deploy_subject.py fails if this file grows one.
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.LIBRARY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          role-session-name: gha-library-${{ github.run_id }}
+
+      # Two passes with complementary filters, matching the site's own deploy.
+      # Assets get a long max-age because a changed asset arrives with a new
+      # deploy and an invalidation; HTML gets a short one so a missed
+      # invalidation leaves a page stale for five minutes rather than a day.
+      #
+      # `--delete` is scoped by the prefix in the destination URL, so a record
+      # deleted here is deleted there -- and it cannot reach outside `library/`.
+      # The IAM policy says the same thing, which is the half that is not a
+      # promise about this file.
+      - name: sync assets
+        run: |
+          aws s3 sync public/ "s3://${{ vars.SITE_BUCKET }}/library/" \
+            --delete \
+            --exclude "*.html" \
+            --cache-control "public, max-age=86400"
+
+      - name: sync html
+        run: |
+          aws s3 sync public/ "s3://${{ vars.SITE_BUCKET }}/library/" \
+            --delete \
+            --exclude "*" --include "*.html" \
+            --cache-control "public, max-age=300, must-revalidate" \
+            --content-type "text/html; charset=utf-8"
+
+      - name: invalidate
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.DISTRIBUTION_ID }}" \
+            --paths '/library/*' >/dev/null
+
+      # This repository shares a distribution with the two URLs the whole AWS
+      # account exists to keep answering. IAM makes it impossible for this job to
+      # have changed them, but an invalidation storm or a distribution-level
+      # mistake is not an IAM question, so assert rather than assume. The site
+      # repository asserts the same pages from its side for the same reason.
+      - name: the pages this must never break are still answering
+        run: |
+          for path in /privacy /support; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 \
+              "https://anchorframe.app$path")
+            echo "$path -> $code"
+            [ "$code" = "200" ] || { echo "::error::$path returned $code"; exit 1; }
+          done
+
+      - name: the library is answering
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' --retry 5 --retry-delay 5 \
+            "https://anchorframe.app/library/")
+          echo "/library/ -> $code"
+          [ "$code" = "200" ] || { echo "::error::/library/ returned $code"; exit 1; }

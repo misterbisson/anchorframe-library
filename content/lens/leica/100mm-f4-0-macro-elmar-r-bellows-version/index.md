@@ -1,0 +1,6 @@
++++
+title = "Leica 100mm f/4.0 Macro-Elmar-R bellows version"
+brand = "Leica"
+source = "https://en.wikipedia.org/wiki/List_of_Leica_lenses#Leica_R_lenses"
+mount = ["leica-r"]
++++

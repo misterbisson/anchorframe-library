@@ -1,0 +1,4 @@
++++
+title = "Fujifilm"
+brand = "Fujifilm"
++++

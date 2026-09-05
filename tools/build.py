@@ -1,8 +1,8 @@
-"""`data/` -> `dist/`: one sheet per kind, for the app and the site to read.
+"""`content/` -> `dist/`: sheets for the app, and the redirect manifest for the site.
 
-`dist/` is not committed. The records are the source of truth, so a built copy
-in the tree would be a second answer to the same question, and a stale one the
-first time someone forgets to rebuild.
+`dist/` is not committed. The bundles are the source of truth, so a built copy in
+the tree would be a second answer to the same question, and a stale one the first
+time someone forgets to rebuild.
 """
 
 from __future__ import annotations
@@ -12,7 +12,8 @@ import json
 import os
 import sys
 
-from validate import KINDS, validate
+from content import KINDS, load, url_prefix
+from validate import validate
 
 LICENSE = "CC-BY-SA-4.0"
 LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -24,33 +25,63 @@ ATTRIBUTION = (
 )
 
 
+def _stamp():
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def sheets(root: str) -> dict[str, dict]:
-    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    out = {}
-    for kind in KINDS + ("mount",):
+    records, mounts, _ = load(root)
+    stamp = _stamp()
+    out: dict[str, dict] = {}
+    for kind in KINDS:
         entries = []
-        base = os.path.join(root, "data", kind)
-        for dirpath, _, filenames in os.walk(base):
-            for fn in filenames:
-                if not fn.endswith(".json"):
-                    continue
-                with open(os.path.join(dirpath, fn), encoding="utf-8") as fh:
-                    rec = json.load(fh)
-                slug = fn[:-5]
-                if kind == "mount":
-                    rec["slug"] = slug
-                    rec["url"] = f"/library/mount/{slug}"
-                else:
-                    brand_slug = os.path.basename(dirpath)
-                    rec["slug"] = slug
-                    rec["url"] = f"/library/{kind}/{brand_slug}/{slug}"
-                entries.append(rec)
-        entries.sort(key=lambda r: (r.get("brand", "").casefold(), r["slug"]))
-        out[kind] = {
-            "license": LICENSE, "licenseUrl": LICENSE_URL,
-            "attribution": ATTRIBUTION, "generated": stamp, "entries": entries,
-        }
+        for r in (x for x in records if x.kind == kind):
+            e = {"name": r.meta["title"], "brand": r.meta["brand"], "slug": r.slug,
+                 "url": r.url, "source": r.meta["source"], "promoted": r.promoted}
+            if r.meta.get("mount"):
+                e["mount"] = r.meta["mount"][0]
+            for k in ("fixed_lens", "discontinued", "note", "alternates"):
+                if k in r.meta:
+                    e[k] = r.meta[k]
+            entries.append(e)
+        entries.sort(key=lambda e: (e["brand"].casefold(), e["slug"]))
+        out[kind] = {"license": LICENSE, "licenseUrl": LICENSE_URL,
+                     "attribution": ATTRIBUTION, "generated": stamp, "entries": entries}
+    out["mount"] = {
+        "license": LICENSE, "licenseUrl": LICENSE_URL, "attribution": ATTRIBUTION,
+        "generated": stamp,
+        "entries": sorted(
+            ({"slug": t, "url": f"{url_prefix(root)}/mount/{t}", **m}
+             for t, m in mounts.items()),
+            key=lambda e: e["slug"]),
+    }
     return out
+
+
+def redirects(root: str) -> dict:
+    """Every address that answers with a 301, and where it points.
+
+    Two kinds, and they have different lifetimes. An **alternate** is permanent:
+    one product with two names, and the name that is not the address will never
+    become one. A **thin** record's redirect is provisional by design — it lasts
+    exactly as long as the record has nothing to show, and disappears on its own
+    the day someone drops a photograph into the bundle. So the second set is
+    computed here on every build rather than maintained by hand, and a consumer
+    should cache it briefly rather than forever.
+    """
+    records, _, _ = load(root)
+    thin, alt = [], []
+    for r in records:
+        if not r.promoted:
+            # The path was always the address, so promoting a record is deleting
+            # a redirect: no link breaks, because nothing moves.
+            thin.append({"from": r.url, "to": r.list_url})
+        for a in r.meta.get("alternates", []):
+            alt.append({"from": f"{r.prefix}/{r.kind}/{a['brand']}/{a['slug']}",
+                        "to": r.url})
+    thin.sort(key=lambda x: x["from"])
+    alt.sort(key=lambda x: x["from"])
+    return {"generated": _stamp(), "permanent": alt, "provisional": thin}
 
 
 def main() -> int:
@@ -58,7 +89,7 @@ def main() -> int:
     problems = validate(root)
     if problems:
         # Building over a corpus that does not validate produces a plausible
-        # sheet rather than an obviously broken one, which is the worse failure.
+        # set of sheets rather than an obviously broken one, which is worse.
         print("\n".join(problems))
         print(f"\n{len(problems)} problem(s); not building")
         return 1
@@ -69,6 +100,12 @@ def main() -> int:
             json.dump(sheet, fh, indent=2, ensure_ascii=False, sort_keys=True)
             fh.write("\n")
         print(f"{len(sheet['entries']):5d} -> dist/{kind}.json")
+    r = redirects(root)
+    with open(os.path.join(dist, "redirects.json"), "w", encoding="utf-8") as fh:
+        json.dump(r, fh, indent=2, ensure_ascii=False, sort_keys=True)
+        fh.write("\n")
+    print(f"{len(r['permanent']):5d} permanent + {len(r['provisional'])} provisional "
+          f"-> dist/redirects.json")
     return 0
 
 

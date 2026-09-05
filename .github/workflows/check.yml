@@ -1,9 +1,9 @@
 name: check
 
-# Runs on every push and every pull request, including from forks. It needs no
-# credentials of any kind — the whole check is Python's standard library over
-# files in the repository — so a contributor who cannot be trusted with a secret
-# still gets the same green tick as anyone else.
+# Runs on every push and every pull request, including from forks. Nothing here
+# needs a credential — the checks are Python's standard library over files in
+# the repository, plus a Hugo build — so a contributor who cannot be trusted
+# with a secret still gets the same green tick as anyone else.
 on:
   push:
     branches: [main]
@@ -23,8 +23,28 @@ jobs:
           python-version: "3.12"
       # The guards, proven breakable, before the guards are trusted.
       - run: python3 -m unittest discover -s tools -p 'test_*.py' -t tools
-      # Then the corpus itself.
+      # Then the corpus itself. Hugo will happily render a page with a missing
+      # brand or a mount nothing defines; this is what has an opinion about it.
       - run: python3 tools/validate.py
-      # And that a valid corpus actually builds. `dist/` is not committed; this
-      # is the only thing that says the sheets can still be produced.
+      # And that a valid corpus still produces sheets. `dist/` is not committed,
+      # so this is the only thing that says they can still be built.
       - run: python3 tools/build.py
+
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          # Pinned rather than `latest`: a generated site is an output, so a
+          # version difference between here and the desk is a difference between
+          # what was checked and what ships. Same discipline as the XcodeGen pin
+          # in the app repo.
+          hugo-version: "0.163.3"
+          extended: true
+      # `--panicOnWarning` is the point: Hugo's default is to log a broken
+      # reference and carry on, which produces a plausible site rather than an
+      # obviously broken one.
+      - run: hugo --minify --panicOnWarning --destination public
+      - run: echo "built $(find public -name '*.html' | wc -l) pages"

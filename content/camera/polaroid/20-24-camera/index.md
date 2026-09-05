@@ -1,0 +1,5 @@
++++
+title = "Polaroid 20×24 camera"
+brand = "Polaroid"
+source = "https://en.wikipedia.org/wiki/Polaroid_20%C3%9724_camera"
++++

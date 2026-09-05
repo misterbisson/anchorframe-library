@@ -12,25 +12,54 @@ python3 tools/validate.py
 ## Where a file goes
 
 ```
-data/<camera|film|lens>/<brand>/<model>.json
-data/mount/<mount>.json
+content/<camera|film|lens>/<brand>/<model>/index.md      ← plus its images
+content/mount/<mount>/_index.md
 ```
 
-The path becomes the URL, so both segments are slugs: lowercase, ASCII,
-hyphen-separated, **no dots** (see the README for why a dot breaks the router).
+A record is always a **directory** holding `index.md`, never a bare `.md` file,
+so there is somewhere obvious to put a photograph. The path becomes the URL, so
+every segment is a slug: lowercase, ASCII, hyphen-separated, **no dots** (see
+the README for why a dot breaks the router).
 
 ## What a file holds
 
+Front matter is TOML, between `+++` fences. Anything after it is the page body,
+and it is optional.
+
+```toml
++++
+title = "Canon AE-1"
+brand = "Canon"
+source = "https://en.wikipedia.org/wiki/Canon_AE-1"
+mount = ["canon-fd"]
++++
+```
+
 | field | | |
 | --- | --- | --- |
-| `name` | required | What is written on the thing, as a person would type it. |
+| `title` | required | What is written on the thing, as a person would type it. |
 | `brand` | required | **Who sold it**, not who built it. See below. |
 | `source` | required | An `https` URL that says this thing exists. |
-| `mount` | | The slug of a record in `data/mount/`. |
-| `lens` | | The fixed lens a body was built around. Never alongside `mount`. |
+| `mount` | | A list, holding the slug of a term in `content/mount/`. |
+| `fixed_lens` | | The lens a body was built around. Never alongside `mount`. |
 | `discontinued` | films | `true` or `false`. Required on a film, refused elsewhere. |
-| `alternates` | | Other addresses that redirect here: `{"brand": …, "slug": …}`. |
+| `alternates` | | Addresses that redirect here, as `[[alternates]]` tables. |
 | `note` | | Why, where a reader would otherwise ask. |
+
+## Prose and pictures are the most useful thing you can add
+
+A record with only front matter has no page of its own — its URL redirects to
+its row in the brand list, because a page carrying a name and a link is a page
+that exists in order not to be a 404.
+
+Write a paragraph in the body, or drop an image into the bundle, and the page
+appears by itself on the next build. Nothing is renamed and no redirect has to
+be removed by hand.
+
+An image needs its own credit, because most of the photographs worth using are
+licensed on that condition — a single site-wide "images from Wikimedia Commons"
+line does not satisfy CC BY. Put the file in the bundle beside `index.md` and
+give it a `credit`, a `license` and a `sourcePage`.
 
 ## The rules that get pull requests turned down
 
@@ -42,7 +71,7 @@ This is the single thing most likely to be wrong in a well-meant pull request.
 **A line is not a company.** Nikkor is Nikon, Zuiko is Olympus, Takumar is
 Pentax, Fujinon is Fujifilm. The line name stays in `name` and becomes an
 alternate; it is not a brand directory. The full list is in
-[`tools/rulings.py`](tools/rulings.py).
+[`docs/rulings.md`](docs/rulings.md).
 
 **Everything cites something.** Wikipedia is where the seed corpus came from,
 but it is not a requirement — a manufacturer's page, a manual, a catalogue scan

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} — {{ site.Title }}{{ end }}</title>
+<link rel="canonical" href="{{ .Permalink }}">
+</head>
+<body>
+<header><a href="{{ site.BaseURL }}">{{ site.Title }}</a></header>
+<main>{{ block "main" . }}{{ end }}</main>
+<footer>
+  <p>Names and descriptions are licensed
+  <a href="{{ site.Params.licenseURL }}" rel="license">{{ site.Params.license }}</a>.
+  Images carry their own credit, beside each one.
+  <a href="{{ site.Params.repo }}">Corrections and additions</a>.</p>
+</footer>
+</body>
+</html>
