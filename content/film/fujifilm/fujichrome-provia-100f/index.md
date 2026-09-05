@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Fujifilm"
 discontinued = false
 
 [[resources]]
-src = "fujichrome-provia-100f-box.png"
+src = "fujichrome-provia-100f.png"
 [resources.params]
 credit = "FUJIFILM Corporation"
 license = "fair-use"
