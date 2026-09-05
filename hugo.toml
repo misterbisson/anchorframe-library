@@ -12,6 +12,16 @@ enableRobotsTXT = false
 [taxonomies]
   mount = "mount"
 
+# Publish a photograph only in the size a page actually asks for.
+#
+# Hugo publishes every page-bundle resource by default, so the 1000px sources
+# shipped alongside the derivatives generated from them: 43.9 MB of originals
+# nothing links, next to 7.6 MB of WebP the pages use. With this, a resource is
+# published only when a template takes its `.RelPermalink` — which the derivative
+# has and the source does not.
+[cascade.build]
+  publishResources = false
+
 [markup.goldmark.renderer]
   unsafe = false
 

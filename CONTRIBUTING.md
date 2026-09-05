@@ -6,7 +6,8 @@ CI will tell you if something is off — though running the validator locally is
 faster than waiting for it.
 
 ```bash
-python3 tools/validate.py
+python3 tools/validate.py       # the corpus alone, and fast
+tools/check.sh                  # everything CI runs, including the site build
 ```
 
 ## Where a file goes
@@ -76,10 +77,42 @@ Write a paragraph in the body, or drop an image into the bundle, and the page
 appears by itself on the next build. Nothing is renamed and no redirect has to
 be removed by hand.
 
-An image needs its own credit, because most of the photographs worth using are
-licensed on that condition — a single site-wide "images from Wikimedia Commons"
-line does not satisfy CC BY. Put the file in the bundle beside `index.md` and
-give it a `credit`, a `license` and a `sourcePage`.
+## Adding a photograph
+
+Put the file in the bundle beside `index.md`, and declare it. **A photograph
+with no credit fails the build** — this is the one thing here that can put
+someone in breach of a licence, so it is checked rather than trusted.
+
+```toml
+[[resources]]
+src = "ae-1.jpg"
+[resources.params]
+credit = "Charles Lanteigne"
+license = "CC BY-SA 3.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/"
+alt = "A silver and black Canon AE-1, front three-quarter view"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1_..."
+```
+
+All five are required. `credit` because most of these licences ask for
+attribution **by name**, and a single site-wide "images from Wikimedia Commons"
+line does not satisfy CC BY — the credit renders beside the photograph.
+`sourcePage` is the *file's* page, not the article: that is where the licence and
+the author are stated and what a reuser has to be able to reach. `alt` is what
+the photograph shows, for a reader who cannot see it.
+
+**The licence has to be one this repository can redistribute.** Public domain,
+CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
+
+**Take files from Wikimedia Commons, not from English Wikipedia.** Wikipedia
+also stores files locally, and local is where non-free *fair-use* uploads live —
+from the article side they look identical. Two of the 201 camera images are
+local, and nothing about the article tells you which. `tools/fetch_images.py`
+enforces this by taking only files whose `imagerepository` is `shared`; if you
+are adding one by hand, check that the file page is on commons.wikimedia.org.
+
+A crop or any other edit makes a derivative, which CC BY-SA carries its
+share-alike into. Say so in the record's `note` if you edit one.
 
 ## The rules that get pull requests turned down
 

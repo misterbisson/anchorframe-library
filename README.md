@@ -159,11 +159,17 @@ applies**: build on this and say so, under the same terms.
 
 Named because a documented gap is a decision and an undocumented one is a trap.
 
-- **No images.** The plan is per-image credit next to each picture — 174 of the
-  201 camera photographs on Wikipedia require attribution by name, so a single
-  "images from Wikimedia Commons" line would not satisfy the licence. Film and
-  lens photographs have no usable source at all: searching Commons by name
-  returns pictures taken *with* a stock, not *of* it.
+- **Photographs, so far, only of cameras.** 190 of 573 have one, which is what
+  Wikipedia has: 341 cameras have an article of their own, 201 of those have a
+  lead image, and 11 of *those* are refused — 8 name no author, so the licence
+  cannot be satisfied, 2 are local en.wiki uploads rather than Commons files,
+  and 1 states no licence.
+
+  Film and lens photographs have no usable source at all. Searching Commons by
+  name returns pictures taken **with** a stock or a lens, not **of** it —
+  measured at 16% and 13% of names returning anything, and most of those wrong.
+  `Holga 400` returns a photograph of a fountain. Those have to be contributed
+  by someone who knows what they are looking at.
 - **No film detail.** Manufacturer, ISO, process, type and colour were all
   extracted and then cut, because nothing read them. A published reference is a
   reader, so they can come back — that is a re-run of the extraction, not a
@@ -194,14 +200,18 @@ Named because a documented gap is a decision and an undocumented one is a trap.
 ## Working on it
 
 ```bash
-python3 -m unittest discover -s tools -p 'test_*.py' -t tools
-python3 tools/validate.py
-python3 tools/build.py          # -> dist/, which is not committed
+tools/check.sh                  # everything CI runs, in the order CI runs it
 hugo server                     # the site, at localhost:1313
 ```
 
-CI runs those, plus `hugo --panicOnWarning`, with no credentials — so it passes
-for a pull request from a fork.
+Run `tools/check.sh` rather than its parts. Twice a check passed locally and
+failed on push because the local command differed by a flag: the stub detector
+was written against unminified markup where the publish builds with `--minify`,
+and a deprecated config key logged an error that a local `--quiet` swallowed. A
+check verified against a different build than the one that ships is not a check.
+
+CI runs exactly that script's contents with no credentials, so it passes for a
+pull request from a fork.
 
 **Hugo builds; Python judges.** Hugo will happily render a page with a missing
 brand, a mount nothing defines, or a slug that has nothing to do with its title;

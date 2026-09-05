@@ -21,13 +21,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      # The guards, proven breakable, before the guards are trusted.
+      # The guards, proven breakable, before the guards are trusted; then the
+      # corpus, because Hugo will happily render a page with a missing brand or
+      # a mount nothing defines and has no opinion about either.
       - run: python3 -m unittest discover -s tools -p 'test_*.py' -t tools
-      # Then the corpus itself. Hugo will happily render a page with a missing
-      # brand or a mount nothing defines; this is what has an opinion about it.
       - run: python3 tools/validate.py
-      # And that a valid corpus still produces sheets. `dist/` is not committed,
-      # so this is the only thing that says they can still be built.
+      # `dist/` is not committed, so this is the only thing that says the sheets
+      # can still be built.
       - run: python3 tools/build.py
 
   site:
@@ -49,6 +49,9 @@ jobs:
       # `--panicOnWarning` is the point: Hugo's default is to log a broken
       # reference and carry on, which produces a plausible site rather than an
       # obviously broken one.
+      # `tools/check.sh` runs exactly this, so a contributor can reproduce the
+      # whole job with one command. Keep the two in step — the failures this
+      # catches are the ones where a local flag differed from a published one.
       - run: hugo --minify --panicOnWarning --destination public
       # The promotion rule is implemented twice on purpose — Hugo decides what
       # to render, Python decides what the redirect manifest says — and neither

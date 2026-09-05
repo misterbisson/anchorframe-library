@@ -81,9 +81,13 @@ dl.facts dd { margin: 0; overflow-wrap: anywhere; }
 .note { border-left: 2px solid var(--rule); padding-left: 0.9rem;
         color: var(--ink-soft); font-size: 0.9375rem; }
 
-ul.images { list-style: none; padding: 0; display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1.25rem; }
-ul.images img { width: 100%; height: auto; border-radius: 3px; }
+/* Most records have one photograph, and it is the only thing on the page worth
+   looking at. A grid tuned for many made the common case tiny. */
+ul.images { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+            gap: 1.5rem; max-width: 52rem; }
+ul.images img { width: 100%; height: auto; border-radius: 4px;
+                background: color-mix(in srgb, var(--ink) 4%, transparent); }
 .credit { font-size: 0.75rem; color: var(--ink-faint); margin: 0.35rem 0 0; }
 
 footer { border-top: 1px solid var(--rule); margin-top: 3rem; padding-block: 1.25rem;

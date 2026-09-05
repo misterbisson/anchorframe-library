@@ -19,6 +19,18 @@ KINDS = ("camera", "film", "lens")
 FRONT = "+++"
 IMAGE_SUFFIXES = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".tif", ".tiff")
 
+# Licences a photograph may carry here, matched case-insensitively as a prefix.
+#
+# The list is short on purpose. 174 of the 201 camera photographs on Wikipedia
+# require attribution by name, and two of them are local en.wiki uploads — which
+# is how non-free fair-use files are stored, and they look exactly like the other
+# 199 from the article side. A file whose licence is not one of these is refused
+# rather than argued about.
+FREE_LICENCES = (
+    "cc0", "public domain", "pd", "cc by", "cc-by", "attribution",
+    "gfdl", "fal", "copyrighted free use",
+)
+
 
 def url_prefix(root: str) -> str:
     """The path Hugo serves under, read from its own config.

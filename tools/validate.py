@@ -19,11 +19,26 @@ from __future__ import annotations
 import os
 import sys
 
-from content import KINDS, load, load_brands
+from content import FREE_LICENCES, KINDS, load, load_brands
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
-OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant")
+OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant",
+            "resources")
+# What every photograph has to carry, and why each one.
+IMAGE_PARAMS = {
+    # Most of these licences require credit by name. A site-wide "images from
+    # Wikimedia Commons" line does not satisfy CC BY, so the credit travels with
+    # the file and is rendered beside it.
+    "credit": "who took it, as the licence requires it be given",
+    "license": "the licence, in the words the source uses",
+    "licenseUrl": "where those words are defined",
+    # A reader who cannot see the photograph still gets to know what it shows.
+    "alt": "what the photograph shows",
+    # The file page, not the article: the licence and the author live there, and
+    # it is what a reuser has to be able to reach.
+    "sourcePage": "the file's own page at the source",
+}
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
 BRAND_KEYS = ("title", "brand", "aliases", "note")
 
@@ -165,6 +180,37 @@ def validate(root: str) -> list[str]:
         # infobox fields these came from answer one question between them.
         if mount and r.meta.get("fixed_lens"):
             bad(rel, "claims both a mount and a fixed lens")
+
+    # --- photographs --------------------------------------------------------
+    # An image is the one thing here that can put someone in breach of a licence
+    # by being committed, so this refuses rather than warns.
+    for r in records:
+        declared = {}
+        for res in r.meta.get("resources", []):
+            if not isinstance(res, dict) or not isinstance(res.get("src"), str):
+                bad(r.path, f"resource {res!r} needs a src")
+                continue
+            declared[res["src"]] = res.get("params") or {}
+        for src in declared:
+            if src not in r.images:
+                bad(r.path, f"resources names {src!r}, which is not in the bundle")
+        for img in r.images:
+            params = declared.get(img)
+            if params is None:
+                bad(r.path, f"{img} has no [[resources]] entry, so it ships with no "
+                            "credit and no licence")
+                continue
+            for field, why in sorted(IMAGE_PARAMS.items()):
+                if not str(params.get(field, "")).strip():
+                    bad(r.path, f"{img} has no {field} — {why}")
+            lic = str(params.get("license", "")).strip().lower()
+            if lic and not lic.startswith(FREE_LICENCES):
+                bad(r.path, f"{img} is licensed {params['license']!r}, which is not a "
+                            "licence this repository can redistribute under. A "
+                            "fair-use file looks exactly like a free one from the "
+                            "article side; check the file page.")
+            if not str(params.get("sourcePage", "")).startswith("https://"):
+                bad(r.path, f"{img} sourcePage must be an https URL to the file's own page")
 
     # --- aliases ------------------------------------------------------------
     # Hugo's own field, so Hugo generates the redirect page and nothing here has
