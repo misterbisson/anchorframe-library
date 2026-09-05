@@ -8,4 +8,14 @@ iso = 400
 process = "ECN-2"
 film_type = "Print"
 formats = ["135-24"]
+
+[[resources]]
+src = "ilfocolor-400-cine-tone.jpg"
+[resources.params]
+credit = "ILFORD ILFOCOLOR"
+license = "fair-use"
+copyright = "ILFORD Imaging Europe GmbH"
+alt = "A 35 mm cassette of ILFORD ILFOCOLOR 400 Cine Tone, leader out, charcoal label marked 35mm / 24EXP and Process ECN-2 ONLY"
+sourcePage = "https://ilfocolor.com/ilfocolor-film/"
+verified = "2026-09-05"
 +++
