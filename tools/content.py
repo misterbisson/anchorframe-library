@@ -12,11 +12,26 @@ from __future__ import annotations
 
 import os
 import tomllib
+import urllib.parse
 from dataclasses import dataclass, field
 
 KINDS = ("camera", "film", "lens")
 FRONT = "+++"
 IMAGE_SUFFIXES = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".tif", ".tiff")
+
+
+def url_prefix(root: str) -> str:
+    """The path Hugo serves under, read from its own config.
+
+    Hugo is the authority on what a URL is; everything here only asserts what it
+    will produce. Hardcoding `/library` in the Python instead would be a second
+    copy of a fact — and the kind that goes wrong quietly, since Hugo would
+    follow a changed `baseURL` while the sheets and the redirect manifest kept
+    emitting the old prefix.
+    """
+    with open(os.path.join(root, "hugo.toml"), "rb") as fh:
+        base = tomllib.load(fh).get("baseURL", "")
+    return urllib.parse.urlparse(base).path.rstrip("/")
 
 
 @dataclass
@@ -28,10 +43,16 @@ class Record:
     meta: dict
     body: str
     images: list[str] = field(default_factory=list)
+    prefix: str = ""                # from hugo.toml's baseURL, never a literal
 
     @property
     def url(self) -> str:
-        return f"/library/{self.kind}/{self.brand_slug}/{self.slug}"
+        return f"{self.prefix}/{self.kind}/{self.brand_slug}/{self.slug}"
+
+    @property
+    def list_url(self) -> str:
+        """Its row in the brand list — where it redirects while it has nothing to show."""
+        return f"{self.prefix}/{self.kind}/{self.brand_slug}#{self.slug}"
 
     @property
     def promoted(self) -> bool:
@@ -67,6 +88,7 @@ def load(root: str) -> tuple[list[Record], dict[str, dict], list[str]]:
     records: list[Record] = []
     mounts: dict[str, dict] = {}
     broken: list[str] = []
+    prefix = url_prefix(root)
 
     def read(path, rel):
         with open(path, encoding="utf-8") as fh:
@@ -104,7 +126,7 @@ def load(root: str) -> tuple[list[Record], dict[str, dict], list[str]]:
                 images = sorted(f for f in os.listdir(sdir)
                                 if f.lower().endswith(IMAGE_SUFFIXES))
                 records.append(Record(kind, brand_slug, slug, f"{rel}/index.md",
-                                      meta, body, images))
+                                      meta, body, images, prefix))
 
     mdir = os.path.join(root, "content", "mount")
     for term in sorted(os.listdir(mdir)) if os.path.isdir(mdir) else []:

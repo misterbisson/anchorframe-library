@@ -12,7 +12,7 @@ import json
 import os
 import sys
 
-from content import KINDS, load
+from content import KINDS, load, url_prefix
 from validate import validate
 
 LICENSE = "CC-BY-SA-4.0"
@@ -51,7 +51,8 @@ def sheets(root: str) -> dict[str, dict]:
         "license": LICENSE, "licenseUrl": LICENSE_URL, "attribution": ATTRIBUTION,
         "generated": stamp,
         "entries": sorted(
-            ({"slug": t, "url": f"/library/mount/{t}", **m} for t, m in mounts.items()),
+            ({"slug": t, "url": f"{url_prefix(root)}/mount/{t}", **m}
+             for t, m in mounts.items()),
             key=lambda e: e["slug"]),
     }
     return out
@@ -74,10 +75,9 @@ def redirects(root: str) -> dict:
         if not r.promoted:
             # The path was always the address, so promoting a record is deleting
             # a redirect: no link breaks, because nothing moves.
-            thin.append({"from": r.url,
-                         "to": f"/library/{r.kind}/{r.brand_slug}#{r.slug}"})
+            thin.append({"from": r.url, "to": r.list_url})
         for a in r.meta.get("alternates", []):
-            alt.append({"from": f"/library/{r.kind}/{a['brand']}/{a['slug']}",
+            alt.append({"from": f"{r.prefix}/{r.kind}/{a['brand']}/{a['slug']}",
                         "to": r.url})
     thin.sort(key=lambda x: x["from"])
     alt.sort(key=lambda x: x["from"])
