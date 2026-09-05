@@ -85,6 +85,40 @@ def parse_front_matter(text: str, path: str) -> tuple[dict, str]:
     return meta, body
 
 
+def load_brands(root: str) -> tuple[dict[tuple[str, str], dict], list[str]]:
+    """Every brand's own page: `content/<kind>/<brand>/_index.md`.
+
+    A brand is a *shelf*, and a shelf can have had more than one name over the
+    years — `Svema (Astrum)` is Svema film made by its successor company, and
+    someone looking for either should land in the same place. Those other names
+    live in the brand page's `aliases`, which is the same Hugo field a record
+    uses, so Hugo builds the redirect and nothing here has to.
+    """
+    brands: dict[tuple[str, str], dict] = {}
+    broken: list[str] = []
+    for kind in KINDS:
+        base = os.path.join(root, "content", kind)
+        if not os.path.isdir(base):
+            continue
+        for brand_slug in sorted(os.listdir(base)):
+            bdir = os.path.join(base, brand_slug)
+            if not os.path.isdir(bdir):
+                continue
+            page = os.path.join(bdir, "_index.md")
+            rel = f"content/{kind}/{brand_slug}/_index.md"
+            if not os.path.isfile(page):
+                broken.append(f"content/{kind}/{brand_slug}: no _index.md, so the "
+                              f"brand has no page and no place to carry its other names")
+                continue
+            try:
+                meta, _ = parse_front_matter(open(page, encoding="utf-8").read(), rel)
+            except ValueError as e:
+                broken.append(str(e))
+                continue
+            brands[(kind, brand_slug)] = meta
+    return brands, broken
+
+
 def load(root: str) -> tuple[list[Record], dict[str, dict], list[str]]:
     """Records, mount terms, and any file that could not be read at all."""
     records: list[Record] = []

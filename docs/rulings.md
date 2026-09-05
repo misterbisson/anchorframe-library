@@ -69,3 +69,55 @@ because there the name and the seller agree.
 - The Hasselblad V lenses are incomplete: the source lists four 50 mm f/4
   Distagons and five 80 mm f/2.8 Planars where this carries two of each. That
   is a re-extraction, not a ruling.
+
+## A brand is a shelf, and a shelf can have more than one name
+
+Two different problems arrived looking like one.
+
+**Corporate lineage is not a shelf.** `List of photographic films` heads its
+sections with whichever legal entity made a stock, so one badge arrived as
+several brands: `Agfa`, `AGFA PHOTO`, `AgfaPhoto` and `Agfa-Gevaert`; `ADOX` and
+`ADOX (Fotoimpex)`; `Ilford` and `Ilford Imaging (Europe)`; `Polaroid` and
+`Polaroid B.V.`; `Ferrania` and `FILM Ferrania`.
+
+The records themselves settle it. Every one of those titles already reads
+`Ilford Ilfochrome 100`, `Polaroid Originals Spectra film`, `Agfa Photo APX
+400`. Nobody's box says *Ilford Imaging (Europe)* — that name existed only in a
+section heading. So the name on the box stays in `title`, and `brand` is the
+shelf you look on.
+
+**Every collapsed name still answers.** The old brand address is an alias on the
+surviving brand's page, and each moved record keeps its old address too. A brand
+alias is not only for old URLs, though: `Svema (Astrum)` became `Svema` with
+both `/film/svema-astrum/` and `/film/astrum/` pointing at it, because Astrum is
+the successor company making Svema-branded film and someone looking for either
+name wants the same shelf.
+
+**What was deliberately not collapsed.** `Harman`, `Ilford` and `Kentmere` are
+one company and three shelves — Harman Phoenix, HP5 and Kentmere 100 are
+different things a person buys by name. `Gevaert` predates the Agfa merger and
+sold its own film. `Original Wolfen` and `ORWO` share a lineage and are both
+sold today under their own names.
+
+## The section heading was the factory, not the badge
+
+`3M` was missing entirely, and the reason is the sharpest example of the
+sold-under rule failing at its source: 3M owned Ferrania's plant, so
+Wikipedia filed 43 films under **Ferrania** whose boxes said 3M, Scotch or
+Imation.
+
+Sorted by what is on the box: **28 to `3M`** (with `/film/scotch/` as a brand
+alias, since Scotch is a 3M line and a line is not a company), **6 to
+`Imation`**, and **7 left under Ferrania** because they are genuinely co-badged
+— `3M Ferrania CR50`, `Ferrania / 3M P30`. Three sold first as 3M and later as
+Imation are addressed under 3M with an Imation alias.
+
+Each moved record keeps its `/film/ferrania/…` address.
+
+## What looked wrong and was not
+
+**`New FD` is Canon's own designation**, not a stray word. It names the
+second-generation FD mount of 1979, which locks by bayonet where the original
+locks by breech. 61 lenses carry it, and **14 of them have a matching non-`New`
+record with the same optical spec** — strip the word and those 14 collide, which
+is exactly the evidence that it carries product identity.

@@ -1,4 +1,0 @@
-+++
-title = "AgfaPhoto"
-brand = "AgfaPhoto"
-+++

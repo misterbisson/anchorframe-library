@@ -90,6 +90,25 @@ things a person types. An *alternate* is for one product with two names under
 **The camera list is film only.** Digital bodies are covered elsewhere and are
 removed on sight.
 
+## A brand can have other names
+
+A brand is a shelf, and `content/<kind>/<brand>/_index.md` is its page. It
+carries a `title` that must slug to its own directory, and `aliases` for every
+other name the shelf has been known by:
+
+```toml
++++
+title = "Svema"
+aliases = ["/film/svema-astrum/", "/film/astrum/"]
++++
+```
+
+Use one when a name is **the same shelf**: a corporate rename, a successor
+company, a spelling nobody agrees on. Do not use one to merge two shelves —
+Harman, Ilford and Kentmere are one company and three things people buy by name,
+so they stay three brands. Collapsing a brand is safe after publishing precisely
+because the old address becomes an alias and keeps answering.
+
 ## Adding a mount
 
 A mount record carries a `name`, every `spelling` seen in the wild, and a
