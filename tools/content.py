@@ -34,12 +34,30 @@ FREE_LICENCES = (
 
 # The allowlist matches by prefix, which is what makes "CC BY-SA 3.0 de" work
 # without enumerating every jurisdiction port. The same property makes "CC BY-NC
-# 2.0" start with "cc by" and pass, and neither of these is redistributable
-# here: NC forbids the commercial reuse this corpus's CC BY-SA 4.0 grants, and
-# ND forbids derivatives — which includes the resize Hugo performs to serve the
-# photograph at all. Nothing in the corpus is NC or ND today, because every
-# image so far came from Commons and Commons does not host them; the hole only
-# becomes reachable now that a person can write a record by hand.
+# 2.0" start with "cc by" and pass. Nothing in the corpus is NC or ND today,
+# because every image so far came from Commons and Commons hosts neither; the
+# hole only becomes reachable now that a person can write a record by hand.
+#
+# **NC is refused because it would be false advertising by this site.** These
+# pages exist to support a paid application, so serving a picture licensed for
+# non-commercial use only is at best contested. A reuser of the data is also
+# entitled to a grant they can act on without auditing it image by image.
+#
+# **ND is refused as policy, not because the law compels it.** An earlier
+# version of this comment claimed that Hugo's resize made a derivative, and that
+# was wrong: CC 4.0 section 2(a)(4) authorises the technical modifications
+# needed to serve a work in any medium or format, and says in terms that they
+# never produce Adapted Material. By the byte-difference reasoning that claim
+# rested on, TLS and gzip would make derivatives too — which is how you can tell
+# it proved too much. There is no case holding a mere resize to be a derivative
+# work; the thumbnail cases people reach for, Kelly v. Arriba Soft and Perfect
+# 10 v. Amazon.com, turn on fair use of the reproduction right instead.
+#
+# The real reason is the workflow: this repository invites people to improve
+# what is here, CONTRIBUTING tells them a crop makes a derivative, and an ND
+# file is the one where that ordinary act is a breach. Refusing it keeps a trap
+# out of a corpus edited by strangers. That is a choice and it can be revisited;
+# it is not a legal necessity, and it should not be written down as one.
 NON_REDISTRIBUTABLE = ("nc", "nd")
 
 
