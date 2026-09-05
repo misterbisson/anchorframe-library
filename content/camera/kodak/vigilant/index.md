@@ -1,10 +1,11 @@
 +++
-title = "Kodak Vigilant camera"
+title = "Kodak Vigilant"
+aliases = ["/camera/kodak/vigilant-camera/"]
 brand = "Kodak"
 source = "https://en.wikipedia.org/wiki/Kodak_Vigilant_camera"
 
 [[resources]]
-src = "vigilant-camera.jpg"
+src = "vigilant.jpg"
 [resources.params]
 credit = "PABresler"
 license = "CC BY-SA 3.0"
