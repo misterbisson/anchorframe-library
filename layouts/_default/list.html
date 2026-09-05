@@ -23,6 +23,23 @@
 </p>
 {{ end }}
 
+{{/* Ways into this kind other than by brand. Which taxonomies apply is
+     computed from what the records here actually carry rather than listed:
+     film has a speed and cameras do not, and a hand-kept list would be wrong
+     the next time a field is added. The masthead stays four items. */}}
+{{ if .IsSection }}
+  {{ $here := .RegularPagesRecursive }}
+  {{ $links := slice }}
+  {{ range $plural, $terms := site.Taxonomies }}
+    {{ $used := false }}
+    {{ range $here }}{{ if index .Params $plural }}{{ $used = true }}{{ end }}{{ end }}
+    {{ if $used }}{{ with site.GetPage (printf "/%s" $plural) }}
+      {{ $links = $links | append (printf `<a href="%s">%s</a>` .RelPermalink .Title) }}
+    {{ end }}{{ end }}
+  {{ end }}
+  {{ with $links }}<p class="browse">Browse by {{ delimit . ", " " or " | safeHTML }}.</p>{{ end }}
+{{ end }}
+
 {{ with .Sections }}<ul class="brands">
   {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
     <span class="count">{{ len .RegularPagesRecursive }}</span></li>{{ end }}

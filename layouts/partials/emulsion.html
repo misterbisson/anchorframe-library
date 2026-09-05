@@ -13,5 +13,5 @@
 {{- $bits := slice -}}
 {{- with .Params.iso }}{{ $bits = $bits | append (printf "ISO %d" .) }}{{ end -}}
 {{- with .Params.process }}{{ $bits = $bits | append . }}{{ end -}}
-{{- with .Params.film_type }}{{ $bits = $bits | append . }}{{ end -}}
+{{- with .Params.types }}{{ $bits = $bits | append . }}{{ end -}}
 {{- with $bits }}<span class="spec">{{ delimit . " · " }}</span>{{ end -}}

@@ -4,7 +4,7 @@ brand = "Lomography"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Lomography"
 discontinued = false
 iso = 400
-process = "C-41"
-film_type = "Print"
-formats = ["110-24", "135-36", "120"]
+process = ["C-41"]
+types = "Print"
+formats = ["110", "135", "120"]
 +++

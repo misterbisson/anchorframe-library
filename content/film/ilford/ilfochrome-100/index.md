@@ -5,7 +5,8 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Ilford_Imagin
 discontinued = false
 aliases = ["/film/ilford-imaging-europe/ilford-ilfochrome-100/"]
 iso = 100
-film_type = "Slide"
+types = "Slide"
+formats = ["135"]
 
 [[resources]]
 src = "ilfochrome-100.jpg"

@@ -1,20 +1,61 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
-{{/* A combined count hides the one thing a mount is for. `Canon FD 136` says
-     nothing about whether that is bodies or glass, and it conceals that Contax G
-     and M42 have bodies here and no lenses at all — a gap the README documents
-     and the page did not. Counting each kind separately puts it on the page. */}}
+
+{{/* Every metadata term is browsable, so this page serves six taxonomies with
+     different shapes. Two things vary and both are computed rather than
+     configured, because a list of special cases here is a list that goes stale
+     the next time a taxonomy is added.
+
+     **Order.** Terms sort alphabetically, which puts ISO 1000 between 100 and
+     125. Where every term is a number they sort as numbers instead.
+
+     **The count.** A combined count hides the one thing a mount is for: `Canon
+     FD 136` says nothing about whether that is bodies or glass, and it conceals
+     that Contax G and M42 have bodies here and no lenses at all. So a term that
+     spans more than one kind is counted per kind. A term that does not — every
+     film term — gets a plain number, because "92 film stocks · no cameras" is
+     noise on a page where nothing could have been a camera. */}}
+
+{{ $numeric := true }}
+{{ range .Data.Terms.Alphabetical }}
+  {{ if not (findRE `^[0-9]+$` .Page.Title) }}{{ $numeric = false }}{{ end }}
+{{ end }}
+
+{{ $rows := slice }}
+{{ range .Data.Terms.Alphabetical }}
+  {{/* Not `cond`: it evaluates both branches, so `int` ran on "sheet film" and
+       took the page down with it. Every terms list but ISO failed to build, and
+       `--quiet` reported nothing. */}}
+  {{ $n := 0 }}
+  {{ if $numeric }}{{ $n = int .Page.Title }}{{ end }}
+  {{ $rows = $rows | append (dict
+      "page" .Page "count" .Count
+      "n" $n
+      "kinds" (dict
+        "camera" (len (where .Pages "Section" "camera"))
+        "lens"   (len (where .Pages "Section" "lens"))
+        "film"   (len (where .Pages "Section" "film")))) }}
+{{ end }}
+{{ if $numeric }}{{ $rows = sort $rows "n" }}{{ end }}
+
 <ul class="brands">
-  {{ range .Pages.ByTitle }}
-  {{ $bodies := len (where .Pages "Section" "camera") }}
-  {{ $lenses := len (where .Pages "Section" "lens") }}
-  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{ range $rows }}
+  {{ $spans := 0 }}
+  {{ range $k, $v := .kinds }}{{ if $v }}{{ $spans = add $spans 1 }}{{ end }}{{ end }}
+  <li><a href="{{ .page.RelPermalink }}">{{ .page.Title }}</a>
     <span class="count">
-      {{- if $bodies }}{{ $bodies }} {{ if eq $bodies 1 }}body{{ else }}bodies{{ end }}{{ end }}
-      {{- if and $bodies $lenses }} · {{ end }}
-      {{- if $lenses }}{{ $lenses }} {{ if eq $lenses 1 }}lens{{ else }}lenses{{ end }}
-      {{- else if $bodies }} · no lenses listed{{ end }}
+      {{- if gt $spans 1 -}}
+        {{- $parts := slice -}}
+        {{- with .kinds.camera }}{{ $parts = $parts | append (printf "%d %s" . (cond (eq . 1) "body" "bodies")) }}{{ end -}}
+        {{- with .kinds.lens }}{{ $parts = $parts | append (printf "%d %s" . (cond (eq . 1) "lens" "lenses")) }}{{ end -}}
+        {{- with .kinds.film }}{{ $parts = $parts | append (printf "%d %s" . (cond (eq . 1) "film" "films")) }}{{ end -}}
+        {{ delimit $parts " · " }}
+      {{- else if and .kinds.camera (not .kinds.lens) -}}
+        {{ .count }} · no lenses listed
+      {{- else -}}
+        {{ .count }}
+      {{- end -}}
     </span></li>{{ end }}
 </ul>
 {{ end }}

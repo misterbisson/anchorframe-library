@@ -6,11 +6,24 @@ title = "Anchorframe equipment library"
 # a file that looks like it is doing something and is not.
 enableRobotsTXT = false
 
-# A mount is the one thing here that cuts across the other three, so it is a
-# taxonomy rather than a section: its term page *is* its record, and the page
-# that says what a mount is is the same page that lists what fits it.
+# Every metadata term is a taxonomy term. A field that describes a thing is
+# also a way to find it, and a value nobody can browse to is a value that only
+# pays off if you already knew what you were looking for.
+#
+# `mount` came first, and its reasoning was narrower than the rule: a mount cuts
+# across cameras and lenses, and its term page *is* its record. That is true and
+# it is not the test. Being able to ask for every C-41 film, or everything ever
+# sold in 120, is worth a page whether or not the term has anything else to say.
+#
+# The left-hand name is Hugo's singular and the right-hand one is both the
+# front-matter key and the URL segment, which is why these read oddly: the key
+# was named for the record and the taxonomy is named for the question.
 [taxonomies]
   mount = "mount"
+  format = "formats"
+  process = "process"
+  speed = "iso"
+  type = "types"
 
 # Publish a photograph only in the size a page actually asks for.
 #

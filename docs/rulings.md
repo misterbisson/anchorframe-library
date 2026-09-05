@@ -270,7 +270,7 @@ string that will not order. One cell reads `0`, whose own Details column says
 "ASA 0, expired 9/1960" — an editor writing *nobody knows*. The validator
 refused it before anything rendered it as the fastest film in the library.
 
-**`film_type` rather than `type`, because Hugo owns `type`.** Setting it in
+**`types` rather than `type`, because Hugo owns the singular.** Setting it in
 front matter picks a layout, so `type = "Print"` sends every print film looking
 for `layouts/Print/`, and the failure would be a missing template rather than
 anything mentioning film.
@@ -279,3 +279,55 @@ The facts render on the brand list rows, where speed and process are what tell
 two films on a shelf apart. `formats` renders only on a record's own page: a
 film was sold in up to eight, and eight more tokens on every line of a 102-film
 list buries the names the list exists to show.
+
+## Every metadata term is a taxonomy term
+
+`mount` was a taxonomy and nothing else was, and the reason recorded in
+`hugo.toml` was that a mount *"cuts across the other three"* and that its term
+page **is** its record. Both are true of a mount and neither is the test. Being
+able to ask for every C-41 film, or everything ever sold in 120, is worth a page
+whether or not the term has anything else to say about itself. So `formats`,
+`process`, `iso` and `types` are taxonomies too.
+
+Making a field browsable is not free, and three things had to change first.
+
+**A slash in a term is a path separator.** `CN-16 / C-41` slugs to
+`cn-16-/-c-41`, which Hugo builds two directories deep. `process` is now a list,
+which is also the truer reading: CN-16 *is* C-41 under Fujifilm's name, and
+someone browsing either should find the film. Splitting the fourteen values that
+carried a slash moved C-41 from 200 records to 315. The validator refuses a
+slash in a `process` or a `formats` entry for this reason.
+
+**An exposure count is not a format.** 453 records said `135` and 207 said
+`135-36`, so asking for 35 mm film found two thirds of it. A 36-exposure roll
+and a 24-exposure roll are the same film in the same cartridge; `135-*`
+collapses to `135`, which now gathers 785. The five cells that mechanical rules
+mangled — `17/30.5m` became `17` — are ruled by hand in the tool rather than by
+a regex general enough to break something else.
+
+**`types`, plural, not `film_type`.** Hugo owns the singular `type` in front
+matter and uses it to choose a layout. The plural is not reserved, is what Hugo
+wants as a taxonomy key anyway, and keeps the workaround out of a public URL:
+`/types/slide/` rather than `/film_type/slide/`. `[permalinks.term]` can move a
+term page but leaves its list page behind, and a `url` in the list page's front
+matter detaches it from its own taxonomy — both were tried before the rename.
+
+**`variant` is not one, and the values say why.** An edition name means
+something only against its own product line. Every one of the thirteen belongs
+to exactly one brand — `New FD` is Canon's and all eleven barrel codes are
+Hasselblad's — so there is no shared vocabulary for a term page to gather. It
+would be thirteen pages each duplicating a slice of one brand's list, under
+labels like `C` and `F` that mean nothing away from the lens they qualify. A
+taxonomy is for a word two makers both use.
+
+Three more fields are deliberately not taxonomies, and each would be a decision
+rather than a config line. **`brand`** is a section: it already has pages, and as
+a taxonomy it would cut across kinds — one page for everything Kodak sold, which
+is genuinely worth having and is not a rename. **`fixed_lens`** has 20 distinct
+values across 26 records, so nearly every term would be a page linking to one
+camera. **`discontinued`** is a boolean, and `/discontinued/true/` is not a page
+anyone wants; the useful version of it is a word, not a flag.
+
+The link into each taxonomy is computed from what a kind's records actually
+carry, so film offers speeds and cameras do not, and adding a field does not
+mean remembering to add a link.

@@ -3,7 +3,7 @@ title = "Gevaert Gevacolor N3"
 brand = "Gevaert"
 source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#Gevaert"
 discontinued = true
-process = "Agfacolor"
-film_type = "Print"
+process = ["Agfacolor"]
+types = "Print"
 formats = ["sheet film"]
 +++

@@ -4,7 +4,7 @@ brand = "Film Photography Project"
 source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#Film_Photography_Project"
 discontinued = true
 iso = 6
-process = "C-41"
-film_type = "Print"
-formats = ["135-20"]
+process = ["C-41"]
+types = "Print"
+formats = ["135"]
 +++

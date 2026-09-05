@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/polaroid-b-v/polaroid-originals-spectra-film/"]
 iso = 640
-process = "Instant"
-film_type = "Print"
+process = ["Instant"]
+types = "Print"
 formats = ["103x 101mm"]
 +++

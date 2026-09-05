@@ -4,7 +4,7 @@ brand = "Polaroid"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Polaroid"
 discontinued = false
 iso = 640
-process = "Instant"
-film_type = "Print"
+process = ["Instant"]
+types = "Print"
 formats = ["107x 88mm"]
 +++

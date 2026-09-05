@@ -4,9 +4,9 @@ brand = "Ilford"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Ilford"
 discontinued = false
 iso = 1000
-process = "B&W"
-film_type = "Print"
-formats = ["135-36", "120"]
+process = ["B&W"]
+types = "Print"
+formats = ["135", "120"]
 
 [[resources]]
 src = "delta-3200.jpg"

@@ -5,5 +5,5 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/agfa-photo/vista-200/"]
 iso = 200
-film_type = "Print"
+types = "Print"
 +++

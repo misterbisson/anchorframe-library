@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/ferrania/imation-chrome-400/"]
 iso = 400
-process = "E-6"
-film_type = "Slide"
+process = ["E-6"]
+types = "Slide"
 formats = ["135"]
 +++
