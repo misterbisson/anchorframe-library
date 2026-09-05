@@ -26,6 +26,9 @@ class Fixture(unittest.TestCase):
     def setUp(self):
         self.root = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, self.root)
+        self.hugo_toml = os.path.join(self.root, "hugo.toml")
+        with open(self.hugo_toml, "w", encoding="utf-8") as fh:
+            fh.write('baseURL = "https://example.test/library/"\n')
         c = os.path.join(self.root, "content")
         page(f"{c}/mount/canon-fd/_index.md",
              'title = "Canon FD"\nbrand = "Canon"\nspellings = ["Canon FD"]')
@@ -166,6 +169,30 @@ class Corpus(Fixture):
     def test_a_bundle_with_no_index_is_caught(self):
         os.makedirs(f"{self.content}/camera/canon/f-1", exist_ok=True)
         self.assertObjects("no index.md")
+
+
+class UrlPrefix(Fixture):
+    """Hugo is the authority on what a URL is; the Python only asserts it."""
+
+    def urls(self):
+        return {r.url for r in load(self.root)[0]}
+
+    def test_urls_carry_the_prefix_hugo_serves_under(self):
+        self.assertIn("/library/camera/canon/ae-1", self.urls())
+
+    def test_moving_the_baseurl_moves_every_url(self):
+        # The regression this exists for: a hardcoded "/library" in the Python
+        # would keep emitting the old prefix while Hugo followed the new one, and
+        # nothing would say so.
+        with open(self.hugo_toml, "w", encoding="utf-8") as fh:
+            fh.write('baseURL = "https://example.test/gear/"\n')
+        self.assertIn("/gear/camera/canon/ae-1", self.urls())
+        self.assertNotIn("/library/camera/canon/ae-1", self.urls())
+
+    def test_a_baseurl_with_no_path_yields_root_relative_urls(self):
+        with open(self.hugo_toml, "w", encoding="utf-8") as fh:
+            fh.write('baseURL = "https://example.test/"\n')
+        self.assertIn("/camera/canon/ae-1", self.urls())
 
 
 class Promotion(Fixture):

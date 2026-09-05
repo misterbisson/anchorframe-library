@@ -4,7 +4,7 @@ import os
 import unittest
 
 from build import redirects, sheets
-from content import load
+from content import load, url_prefix
 from validate import validate
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,8 +17,9 @@ class Build(unittest.TestCase):
     def test_every_entry_carries_the_url_it_will_be_served_at(self):
         for kind, sheet in sheets(ROOT).items():
             self.assertTrue(sheet["entries"], f"{kind} is empty")
+            prefix = url_prefix(ROOT)
             for e in sheet["entries"]:
-                self.assertTrue(e["url"].startswith(f"/library/{kind}/"), e["url"])
+                self.assertTrue(e["url"].startswith(f"{prefix}/{kind}/"), e["url"])
                 # No dots: the site's router reads one as a file extension and
                 # never appends /index.html. See tools/slug.py.
                 self.assertNotIn(".", e["url"])
@@ -36,9 +37,7 @@ class Redirects(unittest.TestCase):
 
     def test_a_provisional_redirect_points_at_its_own_row_in_its_brand_list(self):
         for row in self.r["provisional"]:
-            rec = self.records[row["from"]]
-            self.assertEqual(row["to"],
-                             f"/library/{rec.kind}/{rec.brand_slug}#{rec.slug}")
+            self.assertEqual(row["to"], self.records[row["from"]].list_url)
 
     def test_only_records_with_nothing_to_show_redirect(self):
         # The whole point of computing this rather than maintaining it: a record
