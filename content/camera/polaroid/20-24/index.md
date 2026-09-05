@@ -1,10 +1,11 @@
 +++
-title = "Polaroid 20×24 camera"
+title = "Polaroid 20×24"
+aliases = ["/camera/polaroid/20-24-camera/"]
 brand = "Polaroid"
 source = "https://en.wikipedia.org/wiki/Polaroid_20%C3%9724_camera"
 
 [[resources]]
-src = "20-24-camera.jpg"
+src = "20-24.jpg"
 [resources.params]
 credit = "Elsa Dorfman"
 license = "CC BY-SA 3.0"

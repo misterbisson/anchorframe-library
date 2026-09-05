@@ -1,11 +1,12 @@
 +++
-title = "Canon EF-M camera"
+title = "Canon EF-M"
+aliases = ["/camera/canon/ef-m-camera/"]
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_EF-M_camera"
 mount = ["canon-ef"]
 
 [[resources]]
-src = "ef-m-camera.jpg"
+src = "ef-m.jpg"
 [resources.params]
 credit = "Ashley Pomeroy"
 license = "CC BY 4.0"

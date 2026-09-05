@@ -151,3 +151,38 @@ needed a special case for the word "New".
 ambiguity nor mis-sorting. The line is pragmatic rather than principled, and it
 can move: a marker becomes a `variant` when it distinguishes editions of one
 name, and stays in the title when it is simply how the thing was sold.
+
+## A disambiguator is the encyclopaedia's problem, not the product's
+
+Four records carried a word no product ever wore:
+
+| was | is |
+| --- | --- |
+| `Canon EF camera` | `Canon EF` |
+| `Canon EF-M camera` | `Canon EF-M` |
+| `Kodak Vigilant camera` | `Kodak Vigilant` |
+| `Polaroid 20×24 camera` | `Polaroid 20×24` |
+
+Wikipedia cannot title two articles `Canon EF`, because the EF **lens mount**
+has the same name as the 1973 body, so it appends a descriptor. That is a
+property of an encyclopaedia with one flat namespace. This corpus has four —
+`/library/camera/canon/ef` and `/library/mount/canon-ef` cannot collide — so it
+inherits the collision's solution while having no collision, which is how the
+word ended up on a badge that does not carry it.
+
+**The tell is the capital letter, and it is Wikipedia's own convention rather
+than our taste.** An appended disambiguator is lowercase; a word belonging to
+the name is capitalised. `Polaroid Land Camera` and `Kodak Stereo Camera` keep
+theirs on exactly that evidence — those cameras are badged that way.
+
+This is the same rule as [the section heading was the factory](#the-section-heading-was-the-factory-not-the-badge):
+the source is organised for the source's purposes, and what it needs for its own
+structure is not a fact about the thing.
+
+**`Canon New F-1` is not an instance of this and did not change.** It reads like
+the `New FD` case above, but the article is explicit that the New F-1 *replaced*
+the F-1n rather than re-barrelling it. A successor model keeps its own title; an
+edition of one product gets a `variant`. The word "New" does not decide it — what
+the word is doing decides it.
+
+All four old addresses are public, so each is an alias and answers with a 301.
