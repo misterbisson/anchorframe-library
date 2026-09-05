@@ -1,6 +1,13 @@
 {{ define "main" }}
 <h1>{{ site.Title }}</h1>
+<p class="lede">An open index of film photography equipment — what things are
+called, who sold them, and what fits what. Every entry links the source it was
+read from, and corrections are a pull request.</p>
 {{ .Content }}
-<ul>{{ range site.Sections.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-  <span>{{ len .RegularPagesRecursive }}</span></li>{{ end }}</ul>
+<ul class="brands">
+  {{ range site.Sections.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span class="count">{{ len .RegularPagesRecursive }}</span></li>{{ end }}
+  <li><a href="{{ "/mount/" | relURL }}">Mounts</a>
+    <span class="count">{{ len site.Taxonomies.mount }}</span></li>
+</ul>
 {{ end }}

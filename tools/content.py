@@ -62,12 +62,17 @@ class Record:
 
         Most records are a name, a brand and a link, and a page of that is a
         page that exists in order not to be a 404. A record crosses the line by
-        having something to show — prose, or a photograph — and the moment it
-        does, its page appears at the address it always had. Nothing is renamed
-        and no redirect has to be withdrawn by hand, because the threshold is
-        computed from the content rather than recorded next to it.
+        having something to show — prose, a photograph, or a `note` — and the
+        moment it does, its page appears at the address it always had. Nothing is
+        renamed and no redirect has to be withdrawn by hand, because the
+        threshold is computed from the content rather than recorded next to it.
+
+        `note` counts because it is the only place a ruling is written down, and
+        a ruling nobody can read is not documentation. The Agfa K-mount lens
+        explains that it is a rebadged Chinon; without this that sentence existed
+        and was unreachable.
         """
-        return bool(self.body.strip()) or bool(self.images)
+        return bool(self.body.strip()) or bool(self.images) or bool(self.meta.get("note"))
 
 
 def parse_front_matter(text: str, path: str) -> tuple[dict, str]:

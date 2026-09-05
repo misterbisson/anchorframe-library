@@ -335,6 +335,15 @@ class Promotion(Fixture):
         # And the corpus still validates: a photograph is not front matter.
         self.assertEqual(validate(self.root), [])
 
+    def test_a_note_promotes_a_record(self):
+        # A ruling nobody can read is not documentation. Before this, the note
+        # explaining that the Agfa K-mount lens is a rebadged Chinon existed and
+        # was unreachable, because its record had no page.
+        self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                               'source = "https://x.example/a"\n'
+                               'note = "Sold as the AE-1 Program in some markets."')
+        self.assertIn("ae-1", self.promoted())
+
     def test_a_non_image_file_does_not_promote_a_record(self):
         open(os.path.join(os.path.dirname(self.cam), "notes.txt"), "wb").close()
         self.assertEqual(self.promoted(), set())

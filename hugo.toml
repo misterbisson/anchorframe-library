@@ -15,6 +15,25 @@ enableRobotsTXT = false
 [markup.goldmark.renderer]
   unsafe = false
 
+# What each kind is called, in one place. `humanize` pluralises by appending an
+# s, which turns "lens" into "Lenss" — it did, twice, in two templates, which is
+# what a rule written more than once earns you. English will keep doing this and
+# the list is three items long.
+[params.kinds]
+  camera = "Cameras"
+  lens = "Lenses"
+  film = "Film stocks"
+
+[params.kindsOne]
+  camera = "camera"
+  lens = "lens"
+  film = "film stock"
+
+[params.kindsMany]
+  camera = "cameras"
+  lens = "lenses"
+  film = "film stocks"
+
 [params]
   license = "CC BY-SA 4.0"
   licenseURL = "https://creativecommons.org/licenses/by-sa/4.0/"

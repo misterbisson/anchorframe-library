@@ -1,0 +1,91 @@
+/* One stylesheet, no framework, no JavaScript.
+   This is an index: the job is scanning, not reading. Density matters more than
+   whitespace, and every page has to stay fast at 3,500 of them. */
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #5c5c5c;
+  --ink-faint: #8a8a8a;
+  --paper: #fbfaf8;
+  --rule: #e2ded8;
+  --link: #1c4f8c;
+  --accent: #7a3e1d;
+  --measure: 42rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e6e3; --ink-soft: #a8a49f; --ink-faint: #7b7772;
+    --paper: #16181a; --rule: #2e3236; --link: #8ab4e8; --accent: #d8a07a;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+  font-synthesis-weight: none;
+}
+
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header.masthead { border-bottom: 1px solid var(--rule); }
+header.masthead .wrap { display: flex; align-items: baseline; gap: 1rem;
+                        padding-block: 0.9rem; flex-wrap: wrap; }
+header.masthead a.wordmark { font-weight: 600; color: var(--ink); text-decoration: none; }
+header.masthead nav { display: flex; gap: 1rem; font-size: 0.875rem; }
+
+/* Breadcrumbs: four levels deep is easy to get lost in. */
+nav.crumbs { font-size: 0.8125rem; color: var(--ink-faint); padding-top: 1.25rem; }
+nav.crumbs a { color: var(--ink-soft); }
+nav.crumbs span::after { content: "›"; padding: 0 0.4rem; color: var(--rule); }
+
+main { padding-bottom: 4rem; }
+h1 { font-size: 1.6rem; line-height: 1.2; margin: 0.6rem 0 0.25rem; }
+h2 { font-size: 1.05rem; margin: 2rem 0 0.5rem; padding-bottom: 0.3rem;
+     border-bottom: 1px solid var(--rule); }
+p { max-width: var(--measure); }
+.lede { color: var(--ink-soft); max-width: var(--measure); margin-top: 0; }
+.count { color: var(--ink-faint); font-variant-numeric: tabular-nums;
+         font-size: 0.8125rem; }
+
+/* An index of names wants columns, not one long ribbon. */
+ul.items, ul.brands {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  columns: 17rem; column-gap: 2rem;
+}
+ul.items li, ul.brands li {
+  break-inside: avoid; padding: 0.2rem 0; font-size: 0.9375rem;
+  border-bottom: 1px solid transparent;
+}
+ul.items li:target { background: color-mix(in srgb, var(--accent) 14%, transparent);
+                     border-radius: 3px; padding-inline: 0.35rem;
+                     margin-inline: -0.35rem; }
+ul.items li .variant, ul.items li .mount { color: var(--ink-faint); font-size: 0.8125rem; }
+ul.brands li a { font-weight: 500; }
+
+/* A record: label/value pairs, scannable down the left edge. */
+dl.facts { display: grid; grid-template-columns: max-content 1fr;
+           gap: 0.35rem 1.25rem; margin: 1.25rem 0; font-size: 0.9375rem;
+           max-width: var(--measure); }
+dl.facts dt { color: var(--ink-faint); }
+dl.facts dd { margin: 0; overflow-wrap: anywhere; }
+
+.note { border-left: 2px solid var(--rule); padding-left: 0.9rem;
+        color: var(--ink-soft); font-size: 0.9375rem; }
+
+ul.images { list-style: none; padding: 0; display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1.25rem; }
+ul.images img { width: 100%; height: auto; border-radius: 3px; }
+.credit { font-size: 0.75rem; color: var(--ink-faint); margin: 0.35rem 0 0; }
+
+footer { border-top: 1px solid var(--rule); margin-top: 3rem; padding-block: 1.25rem;
+         font-size: 0.8125rem; color: var(--ink-soft); }
+footer p { max-width: var(--measure); margin: 0; }

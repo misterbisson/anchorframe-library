@@ -2,16 +2,13 @@
 {{- if and (eq .Kind "page") (not $promoted) -}}
 {{- /*
   A record with nothing to show has no page of its own. Its address redirects to
-  its row in the brand list, and it stops doing so by itself the moment someone
-  adds a photograph or a paragraph — no redirect to withdraw, nothing renamed,
-  because the path was always the address.
+  its row in the brand list, and stops doing so by itself the moment someone adds
+  a photograph or a paragraph — no redirect to withdraw, nothing renamed, because
+  the path was always the address.
 
   Same markup Hugo emits for an `aliases` entry: canonical plus an instant
-  refresh. Deliberately not a 301. A 301 is permanent, and this redirect is
-  designed to be revoked; browsers cache permanent redirects hard, so the truthful
-  verb here is the revocable one. Alternate names, which really are permanent,
-  are the case where a 301 is worth buying later — see dist/redirects.json, which
-  keeps the two apart for exactly that reason.
+  refresh. Deliberately not a 301 — a 301 is permanent and this redirect is
+  designed to be revoked.
 */ -}}
 {{- $target := printf "%s#%s" .Parent.Permalink (path.Base .File.Dir) -}}
 <!DOCTYPE html>
@@ -24,23 +21,45 @@
 	</head>
 </html>
 {{- else -}}
+{{- $css := resources.Get "library.css" | minify | fingerprint -}}
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ partial "name.html" . }} — {{ site.Title }}{{ end }}</title>
+{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 </head>
 <body>
-<header><a href="{{ site.BaseURL }}">{{ site.Title }}</a></header>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="{{ site.BaseURL }}">{{ site.Title }}</a>
+  <nav>
+    <a href="{{ (site.GetPage "/camera").RelPermalink }}">Cameras</a>
+    <a href="{{ (site.GetPage "/lens").RelPermalink }}">Lenses</a>
+    <a href="{{ (site.GetPage "/film").RelPermalink }}">Film</a>
+    <a href="{{ "/mount/" | relURL }}">Mounts</a>
+  </nav>
+</div></header>
+<div class="wrap">
+{{ if not .IsHome }}
+{{/* Four levels is easy to get lost in: library › lens › hasselblad › a lens. */}}
+<nav class="crumbs">
+  <span><a href="{{ site.BaseURL }}">Library</a></span>
+  {{ range .Ancestors.Reverse }}{{ if not .IsHome }}<span><a href="{{ .RelPermalink }}">{{ .Title }}</a></span>{{ end }}{{ end }}
+  {{ .Title }}
+</nav>
+{{ end }}
 <main>{{ block "main" . }}{{ end }}</main>
 <footer>
   <p>Names and descriptions are licensed
-  <a href="{{ site.Params.licenseURL }}" rel="license">{{ site.Params.license }}</a>.
-  Images carry their own credit, beside each one.
-  <a href="{{ site.Params.repo }}">Corrections and additions</a>.</p>
+  <a href="{{ site.Params.licenseURL }}" rel="license">{{ site.Params.license }}</a>,
+  and were extracted from English&nbsp;Wikipedia. Each entry links the source it
+  was read from; images carry their own credit beside them.
+  <a href="{{ site.Params.repo }}">Corrections and additions</a> are a pull request.</p>
 </footer>
+</div>
 </body>
 </html>
 {{- end -}}

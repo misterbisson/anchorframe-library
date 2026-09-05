@@ -173,8 +173,20 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   Four names collided and were resolved from the source; several products the
   table lists are still missing entirely. The H-system lenses are absent for a
   different reason: the article does not enumerate them.
-- **Two mounts enumerate no lenses.** Contax G and M42 have no list article to
-  read. That is a fact about Wikipedia, not a bug here.
+- **Only 9 of the 28 mounts actually join a body to its glass.** Sixteen have
+  bodies and no lenses — Canon FL, Contax G, Konica AR and KM, M42, both Mamiya
+  mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM, Ricoh RK
+  and Tenax — because the camera side names 28 mounts while the lens sources
+  enumerate about a dozen. An earlier version of this file said "two mounts
+  enumerate no lenses"; that was the count of lens sources that came back empty,
+  not the count of mounts with nothing on the other side, and it understated the
+  gap by eight times. The mount index says so on every row now rather than
+  leaving it here.
+
+  Three go the other way. `Leica S` is not a gap: its bodies are digital and
+  correctly absent. `Hasselblad V` and `Fuji GX680` have lenses and bodies, but
+  those bodies were read from articles that list them rather than from articles
+  of their own, so there was no infobox to name a mount.
 - **The camera list is film-only by construction.** The app fills its Camera
   field from any digital body that has written EXIF into the user's own library,
   so what a shipped list is *for* is the bodies no EXIF can supply.

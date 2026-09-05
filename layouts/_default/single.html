@@ -1,8 +1,9 @@
 {{ define "main" }}
 <article>
   <h1>{{ partial "name.html" . }}</h1>
-  <dl>
+  <dl class="facts">
     <dt>Brand</dt><dd><a href="{{ .Parent.RelPermalink }}">{{ .Params.brand }}</a></dd>
+    {{ with .Params.variant }}<dt>Edition</dt><dd>{{ . }}</dd>{{ end }}
     {{ with .Params.mount }}<dt>Mount</dt><dd>
       {{ range . }}{{ $m := site.GetPage (printf "/mount/%s" .) }}
       <a href="{{ $m.RelPermalink }}">{{ $m.Title }}</a>{{ end }}
@@ -17,14 +18,15 @@
   {{ with .Resources.ByType "image" }}
   <ul class="images">
     {{ range . }}{{ $t := .Fit "800x800 webp" }}
-    <li><img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" alt="">
+    <li><img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}"
+             alt="{{ with .Params.alt }}{{ . }}{{ end }}" loading="lazy">
+    {{/* Most of the photographs worth using require credit by name, so a single
+         site-wide line would not satisfy the licence. It goes beside the image. */}}
     <p class="credit">{{ with .Params.credit }}{{ . }}{{ end }}
-      {{ with .Params.license }} · {{ . }}{{ end }}
-      {{ with .Params.sourcePage }} · <a href="{{ . }}">source</a>{{ end }}</p></li>
+      {{- with .Params.license }} · {{ . }}{{ end }}
+      {{- with .Params.sourcePage }} · <a href="{{ . }}" rel="nofollow">source</a>{{ end }}</p></li>
     {{ end }}
   </ul>
   {{ end }}
-  {{ with .Params.alternates }}<p class="alternates">Also sold or listed as:
-    {{ range . }}{{ .brand }}/{{ .slug }} {{ end }}</p>{{ end }}
 </article>
 {{ end }}

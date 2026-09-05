@@ -3,15 +3,14 @@
 {{ with .Params.brand }}<p>Sold by {{ . }}.</p>{{ end }}
 {{ .Content }}
 {{ with .Params.note }}<p class="note">{{ . }}</p>{{ end }}
-{{ with .Params.spellings }}<p class="spellings">Also written:
-  {{ delimit . ", " }}</p>{{ end }}
-{{/* `humanize` pluralises by appending an s, which turns "lens" into "Lenss".
-     A label per kind rather than a rule, because English will keep doing this
-     and the list is four items long. */}}
-{{ $labels := dict "camera" "Cameras" "lens" "Lenses" "film" "Film stocks" }}
+{{/* The canonical name is already the heading; listing it again as an "also"
+     is noise. What earns the line is the spellings that differ. */}}
+{{ $others := slice }}
+{{ range .Params.spellings }}{{ if ne . $.Title }}{{ $others = $others | append . }}{{ end }}{{ end }}
+{{ with $others }}<p class="lede">Also written {{ delimit . ", " " and " }}.</p>{{ end }}
 {{ range $kind := slice "camera" "lens" }}
   {{ $in := where $.Pages "Section" $kind }}
-  {{ with $in }}<h2>{{ index $labels $kind }}</h2><ul>
+  {{ with $in }}<h2>{{ index site.Params.kinds $kind }}</h2><ul class="items">
     {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ partial "name.html" . }}</a></li>{{ end }}
   </ul>{{ end }}
 {{ end }}
