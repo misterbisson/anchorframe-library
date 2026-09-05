@@ -329,33 +329,28 @@ class Photographs(Fixture):
                                           'license = "Fair use"'))
         self.assertObjects("not a licence this repository can redistribute")
 
-    def test_a_non_commercial_or_no_derivatives_licence_is_refused(self):
+    def test_a_non_commercial_licence_is_refused(self):
         # The allowlist matches by prefix so "CC BY-SA 3.0 de" works without
         # enumerating every port, and that same prefix makes "CC BY-NC 2.0"
-        # start with "cc by". Why each is refused is in content.py — NC because
-        # this site supports a paid application, ND as a policy about what is
-        # safe to hand to strangers who will crop it, rather than the legal
-        # necessity an earlier version of that comment wrongly claimed.
-        for lic in ("CC BY-NC 2.0", "CC BY-ND 4.0", "CC BY-NC-SA 3.0",
-                    "CC BY-NC-ND 4.0"):
+        # start with "cc by". These pages support a paid application, so the
+        # breach would be the publisher's rather than a later contributor's.
+        for lic in ("CC BY-NC 2.0", "CC BY-NC-SA 3.0", "CC BY-NC-ND 4.0"):
             with self.subTest(licence=lic):
                 self.with_image(self.GOOD.replace('license = "CC BY-SA 4.0"',
                                                   f'license = "{lic}"'))
                 self.assertObjects("not a licence this repository can redistribute")
 
-    def test_every_licence_the_corpus_actually_carries_is_still_accepted(self):
-        # The guard above is a prefix rule with an exception, which is exactly
-        # the shape that over-refuses. These are the 18 distinct strings in the
-        # corpus today; if tightening the rule breaks one, it breaks here.
-        for lic in ("CC BY-SA 4.0", "CC BY-SA 3.0", "CC BY-SA 2.0",
-                    "CC BY-SA 2.0 fr", "CC BY-SA 2.0 de", "CC BY-SA 2.5",
-                    "CC BY-SA 3.0 at", "CC BY-SA 3.0 de", "CC BY-SA 3.0 fr",
-                    "CC BY 2.0", "CC BY 2.5", "CC BY 3.0", "CC BY 4.0",
-                    "CC0", "Public domain", "Attribution", "GFDL 1.2", "FAL"):
-            with self.subTest(licence=lic):
-                self.with_image(self.GOOD.replace('license = "CC BY-SA 4.0"',
-                                                  f'license = "{lic}"'))
-                self.assertEqual(validate(self.root), [])
+    def test_no_derivatives_is_accepted(self):
+        # ND was refused here once, for two reasons that were both wrong: that
+        # Hugo's resize makes a derivative (CC 4.0 2(a)(4) says the technical
+        # modifications needed to serve a work never produce Adapted Material,
+        # and `.Fit` does not crop), and that a contributor might crop one (so
+        # might they crop a CC BY-SA file, and nothing here detects either).
+        # The corpus already carries fair-use vendor photographs, which grant a
+        # reuser nothing; ND grants commercial use and verbatim redistribution.
+        self.with_image(self.GOOD.replace('license = "CC BY-SA 4.0"',
+                                          'license = "CC BY-ND 4.0"'))
+        self.assertEqual(validate(self.root), [])
 
     def test_a_source_page_that_is_not_a_url_is_caught(self):
         self.with_image(self.GOOD.replace(
