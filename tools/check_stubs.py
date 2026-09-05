@@ -9,7 +9,12 @@ Two implementations of one rule is the thing this repository has already had to
 delete once, so it is not left on trust: this runs after a build and fails if
 they disagree by a single page. Run it against a built `public/`.
 
-    python3 tools/build.py && hugo --destination public && python3 tools/check_stubs.py
+    python3 tools/build.py
+    hugo --minify --panicOnWarning --destination public
+    python3 tools/check_stubs.py
+
+Build it the way the publish builds it. `--minify` changes the markup this
+reads.
 """
 
 from __future__ import annotations
@@ -22,7 +27,15 @@ import sys
 from content import load, url_prefix
 
 # A stub is the whole document: no <body>, and an instant refresh in the head.
-STUB = re.compile(r'<meta http-equiv="refresh" content="0; url=([^"]+)"')
+#
+# Attribute quotes are optional because the publish builds with `--minify`, which
+# strips the ones it can. The first version of this matched only the unminified
+# form, passed locally, and failed in CI on all 3,260 redirects — a check
+# verified against a different build than the one that ships is not a check.
+STUB = re.compile(
+    r"""<meta\s+http-equiv=["']?refresh["']?\s+content=["']?0;\s*url=([^"'>]+)["']?""",
+    re.IGNORECASE,
+)
 
 
 def built_pages(public: str, prefix: str) -> dict[str, str | None]:
