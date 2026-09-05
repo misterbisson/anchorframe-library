@@ -11,6 +11,7 @@ markdown was, everything starts as a bundle.
 from __future__ import annotations
 
 import os
+import re
 import tomllib
 import urllib.parse
 from dataclasses import dataclass, field
@@ -30,6 +31,28 @@ FREE_LICENCES = (
     "cc0", "public domain", "pd", "cc by", "cc-by", "attribution",
     "gfdl", "fal", "copyrighted free use",
 )
+
+# The allowlist matches by prefix, which is what makes "CC BY-SA 3.0 de" work
+# without enumerating every jurisdiction port. The same property makes "CC BY-NC
+# 2.0" start with "cc by" and pass, and neither of these is redistributable
+# here: NC forbids the commercial reuse this corpus's CC BY-SA 4.0 grants, and
+# ND forbids derivatives — which includes the resize Hugo performs to serve the
+# photograph at all. Nothing in the corpus is NC or ND today, because every
+# image so far came from Commons and Commons does not host them; the hole only
+# becomes reachable now that a person can write a record by hand.
+NON_REDISTRIBUTABLE = ("nc", "nd")
+
+
+def is_free(licence: str) -> bool:
+    """Whether a licence string is one this repository can redistribute under."""
+    lic = licence.strip().lower()
+    if not lic.startswith(FREE_LICENCES):
+        return False
+    # Compare on token boundaries: "CC BY-ND" is refused, "CC BY-SA 2.0 nd" is
+    # not a thing, and a hypothetical author named "Nd" in a credit is not read
+    # from here at all.
+    return not any(tok in NON_REDISTRIBUTABLE
+                   for tok in re.split(r"[\s\-]+", lic))
 
 
 def url_prefix(root: str) -> str:

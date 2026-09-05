@@ -104,6 +104,11 @@ the photograph shows, for a reader who cannot see it.
 **The licence has to be one this repository can redistribute.** Public domain,
 CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
 
+**`CC BY-NC` and `CC BY-ND` are not `CC BY`**, however much they read like it.
+NC forbids the commercial reuse this corpus's own CC BY-SA 4.0 grants to anyone
+who takes the data, and ND forbids derivatives — which includes the resize Hugo
+performs in order to serve the photograph at all. Both are refused.
+
 **Except a film box, where no free photograph can exist.** The box is a graphic
 work and it is the whole subject, so a photograph of one has two owners and a
 contributor can only license their half — a CC BY-SA snapshot of a Portra box is
