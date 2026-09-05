@@ -186,3 +186,40 @@ edition of one product gets a `variant`. The word "New" does not decide it — w
 the word is doing decides it.
 
 All four old addresses are public, so each is an alias and answers with a 301.
+
+## The barrel version was a column nobody read
+
+Zeiss made most Hasselblad V-system lenses in more than one barrel — C (1957),
+F (1978), CF (1982), then CB, CFi, CFE, FE and the ZV reissue — and the source
+puts that in a **Series** column of its own. The original extraction read the
+name and the specification and never read that column, so it kept one row per
+distinct name and silently discarded the rest.
+
+Measured against the wikitext: the article carries **65 rows across 37
+products**; this repository carried **42 records**. No product was missing
+altogether, which is why it had gone unnoticed — every lens was here, most of
+them once, and the 23 absent records were editions rather than lenses.
+
+Those 23 now exist, and the 13 records that had arrived without a barrel carry
+the one the source gives them. Each row is a record; `variant` holds the Series
+cell verbatim, including the rows the source itself groups (`CF, CFE` is one row
+because it was one optical design in two barrels, and splitting it would invent
+a distinction the source does not make).
+
+**`T*` is a coating, not an identity.** The article is inconsistent about it —
+the 30 mm F-Distagon carries `T*` on its C row and omits it on CF and CFi, and
+elsewhere the marker is parenthesised. So it cannot distinguish products, and
+one title covers every barrel of a lens: where a product's rows disagree, the
+`T*` spelling wins, because the later barrels all had it. That inconsistency was
+also the only signal telling which barrel an undifferentiated record came from,
+and exactly one product needed it — the 30 mm F-Distagon had two records whose
+titles differed by nothing else, and pairing them by table order would have put
+each under the other's barrel.
+
+**Teleconverters are not in this list.** The article's V-system table also
+carries the Mutar 1.4×, 1.7× and 2×. They have no focal length or aperture of
+their own, and a photograph taken through one was taken with the lens in front
+of it. Recording the converter instead would name the wrong thing.
+
+Every renamed record keeps its old address as an alias, so nothing that was
+linkable stops answering.
