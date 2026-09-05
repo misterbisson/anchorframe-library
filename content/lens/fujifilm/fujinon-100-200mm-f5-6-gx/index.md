@@ -3,8 +3,5 @@ title = "Fujinon 100–200mm f/5.6 GX"
 brand = "Fujifilm"
 source = "https://en.wikipedia.org/wiki/Fuji_GX680#Lenses"
 mount = ["fuji-gx680"]
-
-[[alternates]]
-brand = "fujinon"
-slug = "100-200mm-f5-6-gx"
+aliases = ["/lens/fujinon/100-200mm-f5-6-gx/"]
 +++

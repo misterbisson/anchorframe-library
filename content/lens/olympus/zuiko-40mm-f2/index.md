@@ -3,8 +3,5 @@ title = "Zuiko 40mm F2"
 brand = "Olympus"
 source = "https://en.wikipedia.org/wiki/Olympus_OM_system#Lenses"
 mount = ["olympus-om"]
-
-[[alternates]]
-brand = "zuiko"
-slug = "40mm-f2"
+aliases = ["/lens/zuiko/40mm-f2/"]
 +++

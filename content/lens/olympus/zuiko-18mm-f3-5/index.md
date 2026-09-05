@@ -3,8 +3,5 @@ title = "Zuiko 18mm F3.5"
 brand = "Olympus"
 source = "https://en.wikipedia.org/wiki/Olympus_OM_system#Lenses"
 mount = ["olympus-om"]
-
-[[alternates]]
-brand = "zuiko"
-slug = "18mm-f3-5"
+aliases = ["/lens/zuiko/18mm-f3-5/"]
 +++

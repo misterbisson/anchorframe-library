@@ -94,7 +94,9 @@ version-shaped.
 
 `title`, `brand` and `source` are required. A film says whether it is
 `discontinued`; a fixed-lens body names its `fixed_lens` instead of a `mount`,
-and never both. See [CONTRIBUTING.md](CONTRIBUTING.md) for the whole shape.
+and never both. Other names a thing was sold under go in `aliases`, which is
+Hugo's own field — so Hugo generates the redirect page and nothing here has to.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the whole shape.
 
 ## How a record earns a page
 
@@ -108,9 +110,17 @@ promotion happens the moment a contribution lands and nothing has to be
 withdrawn by hand. Nothing moves either way: the path was always the address, so
 promoting a record is *deleting* a redirect.
 
-`dist/redirects.json` carries both kinds, and they have different lifetimes — an
-alternate name is permanent, and a thin record's redirect lasts exactly as long
-as it has nothing to show.
+Both redirects are **instant meta refreshes, not 301s**, and for the provisional
+one that is the honest verb rather than a compromise: a 301 is permanent, this
+redirect is designed to be revoked, and browsers cache permanent redirects hard.
+An alternate name genuinely is permanent and would justify a 301 eventually;
+`dist/redirects.json` keeps the two apart so that can be bought later without
+rework, sized at ~3,260 keys against CloudFront KeyValueStore's 5 MB.
+
+The cost, named: a stub answers **200**, so a link checker records a page rather
+than a redirect, and anything that is not a browser will not follow it. Nothing
+here is one — the app holds no network entitlement and would open a browser — but
+it is true.
 
 Rulings that no rule could settle travel with the thing they rule: a `note` on
 the record, so `content/camera/minolta/leitz-minolta-cl/` explains its own joint

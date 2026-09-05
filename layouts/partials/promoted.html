@@ -1,0 +1,11 @@
+{{- /*
+  Whether a record has earned a page of its own: prose in the body, or an image
+  in its bundle. Defined once here because two templates ask, and a rule written
+  twice is a rule that drifts.
+
+  Python asks the same question in tools/content.py, for the redirect manifest.
+  Two implementations is a real cost and it is paid deliberately — Hugo decides
+  what to render, Python decides what the manifest says — so tools/check_stubs.py
+  reconciles them in CI and fails if they ever disagree.
+*/ -}}
+{{- if or (trim .RawContent " \n\t\r") (.Resources.ByType "image") -}}1{{- end -}}

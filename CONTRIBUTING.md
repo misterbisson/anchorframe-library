@@ -43,7 +43,7 @@ mount = ["canon-fd"]
 | `mount` | | A list, holding the slug of a term in `content/mount/`. |
 | `fixed_lens` | | The lens a body was built around. Never alongside `mount`. |
 | `discontinued` | films | `true` or `false`. Required on a film, refused elsewhere. |
-| `alternates` | | Addresses that redirect here, as `[[alternates]]` tables. |
+| `aliases` | | Other addresses that redirect here, as `["/lens/zeiss/planar-t-80mm-f2-8-c/"]`. Hugo's own field, so it builds the redirect. No `/library` prefix: Hugo adds it. |
 | `note` | | Why, where a reader would otherwise ask. |
 
 ## Prose and pictures are the most useful thing you can add

@@ -3,8 +3,5 @@ title = "Nikkor 18mm f/2.8D AF"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Wide-angle"
 mount = ["nikon-f"]
-
-[[alternates]]
-brand = "nikkor"
-slug = "18mm-f2-8d-af"
+aliases = ["/lens/nikkor/18mm-f2-8d-af/"]
 +++

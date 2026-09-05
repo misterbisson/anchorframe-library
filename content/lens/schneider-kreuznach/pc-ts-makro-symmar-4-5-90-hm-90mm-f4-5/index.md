@@ -3,8 +3,5 @@ title = "Schneider-Kreuznach PC-TS Makro-Symmar 4.5/90 HM 90mm f4.5"
 brand = "Schneider Kreuznach"
 source = "https://en.wikipedia.org/wiki/Pentax_K-mount#Schneider-Kreuznach"
 mount = ["pentax-k"]
-
-[[alternates]]
-brand = "schneider"
-slug = "kreuznach-pc-ts-makro-symmar-4-5-90-hm-90mm-f4-5"
+aliases = ["/lens/schneider/kreuznach-pc-ts-makro-symmar-4-5-90-hm-90mm-f4-5/"]
 +++
