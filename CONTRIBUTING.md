@@ -114,10 +114,19 @@ answer is to re-check them and move the dates, not to raise the number.
 **The licence has to be one this repository can redistribute.** Public domain,
 CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
 
-**`CC BY-NC` and `CC BY-ND` are not `CC BY`**, however much they read like it.
-NC forbids the commercial reuse this corpus's own CC BY-SA 4.0 grants to anyone
-who takes the data, and ND forbids derivatives — which includes the resize Hugo
-performs in order to serve the photograph at all. Both are refused.
+**`CC BY-NC` and `CC BY-ND` are not `CC BY`**, however much they read like it,
+and both are refused.
+
+NC because these pages support a paid application, so a picture licensed for
+non-commercial use only does not belong on them — and because someone taking
+this data deserves a grant they can rely on without checking it image by image.
+
+ND because *you* will want to crop one. Serving an ND file is fine — CC 4.0
+explicitly allows the technical modifications needed to deliver a work, and
+resizing for display is not an adaptation — but the edits this repository exists
+to collect are, and an ND file turns an ordinary contribution into a breach.
+That is a policy choice about what is safe to accept here, not a claim about
+what the law forbids.
 
 **Except a film box, where no free photograph can exist.** The box is a graphic
 work and it is the whole subject, so a photograph of one has two owners and a

@@ -332,9 +332,10 @@ class Photographs(Fixture):
     def test_a_non_commercial_or_no_derivatives_licence_is_refused(self):
         # The allowlist matches by prefix so "CC BY-SA 3.0 de" works without
         # enumerating every port, and that same prefix makes "CC BY-NC 2.0"
-        # start with "cc by". NC forbids the commercial reuse this corpus's own
-        # CC BY-SA 4.0 grants; ND forbids derivatives, which includes the resize
-        # Hugo performs in order to serve the photograph at all.
+        # start with "cc by". Why each is refused is in content.py — NC because
+        # this site supports a paid application, ND as a policy about what is
+        # safe to hand to strangers who will crop it, rather than the legal
+        # necessity an earlier version of that comment wrongly claimed.
         for lic in ("CC BY-NC 2.0", "CC BY-ND 4.0", "CC BY-NC-SA 3.0",
                     "CC BY-NC-ND 4.0"):
             with self.subTest(licence=lic):
