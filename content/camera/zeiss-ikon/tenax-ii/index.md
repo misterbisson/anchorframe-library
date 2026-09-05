@@ -13,4 +13,5 @@ license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "ZI Tenax II"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Tenax_II.JPG"
+verified = "2026-09-04"
 +++

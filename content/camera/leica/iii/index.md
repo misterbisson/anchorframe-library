@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "A Leica IIIf rangefinder camera with a Summarit 50mm f/1.5 lens on it, and the external viewfinder"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Leica_IIIf_50mm_f1.5.jpg"
+verified = "2026-09-04"
 +++

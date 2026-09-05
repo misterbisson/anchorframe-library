@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Agfa Optima Ia with AGFA COLOR-AGNAR 1:2.8 /4 5 lens. It's the world's first 35mm camera with automatic exposure control."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfa-Optima-1A-01.jpg"
+verified = "2026-09-04"
 +++

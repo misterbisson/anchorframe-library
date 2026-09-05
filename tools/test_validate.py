@@ -5,13 +5,14 @@ fixture that validates cleanly, makes one change, and asserts that the named
 rule — not merely *some* rule — objects.
 """
 
+import datetime
 import os
 import shutil
 import tempfile
 import unittest
 
 from content import load
-from validate import validate
+from validate import STALE_AFTER_DAYS, validate
 
 
 def page(path, front, body=""):
@@ -293,13 +294,14 @@ class Photographs(Fixture):
     is required data rather than a convention, and the licence is checked.
     """
 
-    GOOD = ('title = "Canon AE-1"\nbrand = "Canon"\n'
+    GOOD = (f'title = "Canon AE-1"\nbrand = "Canon"\n'
             'source = "https://en.wikipedia.org/wiki/Canon_AE-1"\n'
             '\n[[resources]]\nsrc = "ae-1.jpg"\n[resources.params]\n'
             'credit = "Groogle"\nlicense = "CC BY-SA 4.0"\n'
             'licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0/"\n'
             'alt = "A black Canon AE-1 seen from the front"\n'
-            'sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1.jpg"')
+            'sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1.jpg"\n'
+            f'verified = "{datetime.date.today().isoformat()}"')
 
     def with_image(self, front=None):
         open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
@@ -434,7 +436,8 @@ class FairUse(Fixture):
     def declare(self, **over):
         params = {"credit": "Canon Inc.", "license": "fair-use",
                   "copyright": "Canon Inc.", "alt": "A boxed Canon AE-1",
-                  "sourcePage": "https://canon.example/ae-1", **over}
+                  "sourcePage": "https://canon.example/ae-1",
+                  "verified": datetime.date.today().isoformat(), **over}
         body = "".join(f'    {k} = "{v}"\n' for k, v in params.items() if v is not None)
         page(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
                        'source = "https://x.example/a"\n\n[[resources]]\n'
@@ -461,3 +464,53 @@ class FairUse(Fixture):
         self.assertIn("not a licence this repository can redistribute",
                       self.declare(license="all rights reserved",
                                    licenseUrl="https://x.example/", copyright=None))
+
+
+class Freshness(Fixture):
+    """When someone last confirmed the credit is still true.
+
+    Every other field on an image describes the day it arrived. This is the only
+    one that can stop being true without a commit — a `sourcePage` is a URL and
+    URLs die, and Commons deletes files for exactly the licensing reasons this
+    scheme is about. A photograph whose credit has been withdrawn at the source
+    looks identical to one that has not.
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.cam = os.path.join(self.root, "content/camera/canon/ae-1/index.md")
+        open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
+
+    def on(self, when):
+        params = {"credit": "Rpvdk", "license": "Public domain",
+                  "licenseUrl": "https://commons.example/l", "alt": "A Canon AE-1",
+                  "sourcePage": "https://commons.example/File:x.jpg", "verified": when}
+        body = "".join(f'{k} = "{v}"\n' for k, v in params.items() if v is not None)
+        page(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                       'source = "https://x.example/a"\n\n[[resources]]\n'
+                       f'src = "ae-1.jpg"\n[resources.params]\n{body}'.rstrip("\n"))
+        return " ".join(validate(self.root))
+
+    def days_ago(self, n):
+        return (datetime.date.today() - datetime.timedelta(days=n)).isoformat()
+
+    def test_a_claim_checked_today_passes(self):
+        self.assertEqual(self.on(datetime.date.today().isoformat()), "")
+
+    def test_a_claim_nobody_has_confirmed_is_refused(self):
+        self.assertIn("has no verified", self.on(None))
+
+    def test_a_date_that_is_not_a_date_is_refused(self):
+        self.assertIn("is not a date", self.on("last tuesday"))
+
+    def test_a_claim_verified_in_the_future_did_not_happen(self):
+        self.assertIn("has not happened", self.on(self.days_ago(-2)))
+
+    def test_a_claim_goes_stale_and_says_what_to_do_about_it(self):
+        problem = self.on(self.days_ago(STALE_AFTER_DAYS + 40))
+        self.assertIn("have not been re-verified", problem)
+        self.assertIn("move the `verified` dates", problem)
+
+    def test_it_is_still_fresh_the_day_before(self):
+        # The boundary, so the threshold is the number it says it is.
+        self.assertEqual(self.on(self.days_ago(STALE_AFTER_DAYS)), "")

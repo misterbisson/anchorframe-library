@@ -11,4 +11,5 @@ license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Front image of Kodak 35 RF camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_35RF.JPG"
+verified = "2026-09-04"
 +++

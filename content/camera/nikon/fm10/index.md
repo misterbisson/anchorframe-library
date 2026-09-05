@@ -11,4 +11,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Nikon FM10 with a Zoom Nikkor 35-70mm f/3.5-4.8 lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_FM10.jpg"
+verified = "2026-09-04"
 +++

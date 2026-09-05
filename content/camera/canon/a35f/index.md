@@ -11,4 +11,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Has a small spot on the front coating."
 sourcePage = "https://commons.wikimedia.org/wiki/File:My_Canon_A35F_(4475546521).jpg"
+verified = "2026-09-04"
 +++

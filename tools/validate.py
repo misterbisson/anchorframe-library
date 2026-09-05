@@ -16,6 +16,7 @@ is a guard nobody can prove.
 
 from __future__ import annotations
 
+import datetime
 import os
 import sys
 
@@ -38,6 +39,11 @@ IMAGE_PARAMS = {
     # The file page, not the article: the licence and the author live there, and
     # it is what a reuser has to be able to reach.
     "sourcePage": "the file's own page at the source",
+    # When someone last confirmed the sentence above is still true. Every other
+    # field describes the day the image arrived; this one is the only thing that
+    # can go out of date on its own, without a commit, while the file sits here
+    # looking checked.
+    "verified": "the date someone last confirmed the source still says this",
 }
 
 # A photograph of a film box is the one thing here that no free licence can
@@ -55,6 +61,21 @@ IMAGE_PARAMS = {
 # it, and a reuser of this data does not inherit it. `licenseUrl` is meaningless
 # for one — there are no terms to link — so it is replaced by the name of the
 # holder, which is what makes the claim checkable rather than decorative.
+# How long a claim may go unconfirmed before this refuses to pass it.
+#
+# It is a gate rather than a warning because the failure mode it exists for is
+# nobody looking. A `sourcePage` is a URL and it will die: Silberra's domain
+# already redirects somewhere unrelated, and Commons deletes files — routinely,
+# and for the licensing reasons this whole scheme is about. A deleted Commons
+# file leaves a photograph here whose credit Commons itself has withdrawn, and
+# nothing in the repository would say so.
+#
+# So this will one day turn a pull request red for a reason that has nothing to
+# do with it. That is the intended cost: the alternative is a repository full of
+# claims nobody has checked since the day they were made, which is the state
+# every one-shot importer leaves behind. The remedy is to re-check the sources
+# and move the dates — not to raise the number because it went off.
+STALE_AFTER_DAYS = 550          # about eighteen months
 NON_FREE = "fair-use"
 NON_FREE_PARAMS = {
     "copyright": "who owns the photograph and the packaging in it",
@@ -204,6 +225,8 @@ def validate(root: str) -> list[str]:
     # --- photographs --------------------------------------------------------
     # An image is the one thing here that can put someone in breach of a licence
     # by being committed, so this refuses rather than warns.
+    today = datetime.date.today()
+    stale: list[tuple[str, str, str, int]] = []
     for r in records:
         declared = {}
         for res in r.meta.get("resources", []):
@@ -242,6 +265,29 @@ def validate(root: str) -> list[str]:
                             "article side; check the file page.")
             if not str(params.get("sourcePage", "")).startswith("https://"):
                 bad(r.path, f"{img} sourcePage must be an https URL to the file's own page")
+            checked = str(params.get("verified", "")).strip()
+            if checked:
+                try:
+                    when = datetime.date.fromisoformat(checked)
+                except ValueError:
+                    bad(r.path, f"{img} verified {checked!r} is not a date (YYYY-MM-DD)")
+                else:
+                    if when > today:
+                        bad(r.path, f"{img} was verified on {checked}, which has not happened")
+                    elif (today - when).days > STALE_AFTER_DAYS:
+                        stale.append((r.path, img, checked, (today - when).days))
+
+    # Reported as one group rather than one problem per file: the answer is to
+    # go re-check a batch of sources, and a hundred separate lines would bury
+    # every other thing this found.
+    if stale:
+        oldest = max(days for _, _, _, days in stale)
+        problems.append(
+            f"{len(stale)} image claim(s) have not been re-verified in over "
+            f"{STALE_AFTER_DAYS} days, the oldest by {oldest - STALE_AFTER_DAYS}. "
+            f"Re-check the sources still say what the credit says, then move the "
+            f"`verified` dates. First few: "
+            + "; ".join(f"{path} {img} ({when})" for path, img, when, _ in stale[:3]))
 
     # --- aliases ------------------------------------------------------------
     # Hugo's own field, so Hugo generates the redirect page and nothing here has
@@ -291,6 +337,20 @@ def main() -> int:
     print(f"{len(records)} records {by_kind}, {len(mounts)} mounts, no problems")
     print(f"{promoted} have earned a page of their own; "
           f"{len(records) - promoted} redirect to their brand list")
+    # Printed on every green run, because the number quietly growing is the
+    # thing this is about and a gate that only speaks when it fires teaches
+    # nobody anything before it does.
+    ages = []
+    for r in records:
+        for res in r.meta.get("resources", []):
+            when = str((res.get("params") or {}).get("verified", "")).strip()
+            try:
+                ages.append((datetime.date.today() - datetime.date.fromisoformat(when)).days)
+            except ValueError:
+                pass
+    if ages:
+        print(f"{len(ages)} image claim(s), oldest verified {max(ages)} days ago, "
+              f"stale at {STALE_AFTER_DAYS}")
     return 0
 
 

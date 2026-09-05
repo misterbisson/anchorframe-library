@@ -11,4 +11,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Pentax MZ-50 camera."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Pentax_mz-50.jpg"
+verified = "2026-09-04"
 +++

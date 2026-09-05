@@ -12,4 +12,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "-- Minolta SR-7(a) Camera, second type -- all-black SR-7 lettering, \"Minolta Camera Co. Ltd\", serial number on top of camera, primitive/small (leverless) mirror"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_SR-7(a)_(13705953664).jpg"
+verified = "2026-09-04"
 +++

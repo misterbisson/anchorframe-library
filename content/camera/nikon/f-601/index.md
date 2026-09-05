@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "A North American release Nikon n6006 (F601)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_F601(n6006)_(cropped).JPG"
+verified = "2026-09-04"
 +++

@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Yashica, electro, 35, rangefinder, 1964, yashinon, dx"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Yashica_Electro_35.JPG"
+verified = "2026-09-04"
 +++

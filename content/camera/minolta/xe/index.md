@@ -12,4 +12,5 @@ license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "Minolta XE w/50mmF1.4"
 sourcePage = "https://commons.wikimedia.org/wiki/File:MINOLTA_XE_BLK.jpg"
+verified = "2026-09-04"
 +++

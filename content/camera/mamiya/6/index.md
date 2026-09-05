@@ -11,4 +11,5 @@ license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Sold"
 sourcePage = "https://commons.wikimedia.org/wiki/File:0217_Mamiya_6_75mm_f3.5_lens_(5255033524).jpg"
+verified = "2026-09-04"
 +++

@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Olympus OM-3 manual focus 35 mm film SLR camera, 1983–1986."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Olympusom3.jpg"
+verified = "2026-09-04"
 +++

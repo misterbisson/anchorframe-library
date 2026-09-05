@@ -12,4 +12,5 @@ license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Minolta XG-1"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_XG-1.JPG"
+verified = "2026-09-04"
 +++

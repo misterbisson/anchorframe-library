@@ -12,4 +12,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Mamiya RB67 ProSD"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Mamiya_RB_67_ProSD.jpg"
+verified = "2026-09-04"
 +++

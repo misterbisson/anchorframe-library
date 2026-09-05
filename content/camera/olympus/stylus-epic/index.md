@@ -12,4 +12,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "An Olympus μ[mju:]-II, also known as a Stylus Epic."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Olympus_Stylus_Epic_1118.jpg"
+verified = "2026-09-04"
 +++

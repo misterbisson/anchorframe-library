@@ -11,4 +11,5 @@ license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Thought to be one of the first autofocus cameras to go into production."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Konica_C35_AF_(3852684227).jpg"
+verified = "2026-09-04"
 +++

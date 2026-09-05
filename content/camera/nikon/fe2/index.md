@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Nikon FE2 SLR camera (black), from front with Nikkor AI-S 50 mm f/1.4 lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:NikonFE2blkfrt50f14.jpg"
+verified = "2026-09-04"
 +++

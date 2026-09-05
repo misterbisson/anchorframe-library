@@ -11,4 +11,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "An Olympus XA"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Olympus_XA_7889.jpg"
+verified = "2026-09-04"
 +++

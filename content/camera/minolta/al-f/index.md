@@ -11,4 +11,5 @@ license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Die Minolta AL-F erschien 1967 und ist ein robustes, zuverlässiges Gerät mit gekuppeltem Entfernungsmesser. Sie besitzt eine Blendenautomatik mit Zeitvorwahl, w"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_AL-F.jpg"
+verified = "2026-09-04"
 +++

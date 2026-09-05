@@ -11,4 +11,5 @@ license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Please see filename above"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Retinette_and_case.JPG"
+verified = "2026-09-04"
 +++

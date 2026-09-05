@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Nikon F80"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_F80_T.jpg"
+verified = "2026-09-04"
 +++

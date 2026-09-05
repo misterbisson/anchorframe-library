@@ -11,4 +11,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Agfa Optima Flash"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfa_Optima_Flash.JPG"
+verified = "2026-09-04"
 +++

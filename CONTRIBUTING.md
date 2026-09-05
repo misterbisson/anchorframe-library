@@ -92,6 +92,7 @@ license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/"
 alt = "A silver and black Canon AE-1, front three-quarter view"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AE-1_..."
+verified = "2026-09-04"
 ```
 
 All five are required. `credit` because most of these licences ask for
@@ -100,6 +101,15 @@ line does not satisfy CC BY — the credit renders beside the photograph.
 `sourcePage` is the *file's* page, not the article: that is where the licence and
 the author are stated and what a reuser has to be able to reach. `alt` is what
 the photograph shows, for a reader who cannot see it.
+
+`verified` is the day someone last opened that `sourcePage` and confirmed it
+still says what the credit says. Every other field describes the day the file
+arrived; this is the only one that can stop being true without a commit. A
+Commons file can be deleted — routinely, and for the licensing reasons this
+whole scheme is about — and a vendor's product page can move, leaving a
+photograph here whose credit has been withdrawn at the source and nothing
+saying so. Claims left unconfirmed for more than 550 days fail the build. The
+answer is to re-check them and move the dates, not to raise the number.
 
 **The licence has to be one this repository can redistribute.** Public domain,
 CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
@@ -119,6 +129,7 @@ license = "fair-use"
 copyright = "FUJIFILM Corporation"
 alt = "Boxes of FUJICHROME Velvia 50 in 135 and 120"
 sourcePage = "https://www.fujifilm.com/us/en/business/professional-photography/film/velvia-50"
+verified = "2026-09-04"
 ```
 
 `fair-use` takes a `copyright` and no `licenseUrl`, because there are no terms to

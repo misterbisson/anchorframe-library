@@ -11,4 +11,5 @@ license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "A Nikon N8008 (called the F801 outside of the US)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:N8008_front.jpg"
+verified = "2026-09-04"
 +++

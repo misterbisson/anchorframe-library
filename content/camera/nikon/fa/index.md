@@ -12,4 +12,5 @@ license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Nikon FA SLR camera (black) from front with Nikkor AI-S 35 mm f/2 lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:NikonFAblkfrt35f2.jpg"
+verified = "2026-09-04"
 +++

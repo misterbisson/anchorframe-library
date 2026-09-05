@@ -12,4 +12,5 @@ license = "CC BY 2.5"
 licenseUrl = "https://creativecommons.org/licenses/by/2.5"
 alt = "Olympus Trip 35 compact film camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Olympus_Trip_35_2.jpg"
+verified = "2026-09-04"
 +++

@@ -12,4 +12,5 @@ license = "Attribution"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Nikon S3 camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:S3-400.jpg"
+verified = "2026-09-04"
 +++
