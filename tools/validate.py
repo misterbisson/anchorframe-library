@@ -20,7 +20,7 @@ import datetime
 import os
 import sys
 
-from content import FREE_LICENCES, KINDS, load, load_brands
+from content import KINDS, is_free, load, load_brands
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
@@ -258,7 +258,7 @@ def validate(root: str) -> list[str]:
                 if field not in wanted and str(params.get(field, "")).strip():
                     bad(r.path, f"{img} is {lic} and carries a {field}, which says "
                                 f"nothing true about it")
-            if lic and lic != NON_FREE and not lic.startswith(FREE_LICENCES):
+            if lic and lic != NON_FREE and not is_free(lic):
                 bad(r.path, f"{img} is licensed {params['license']!r}, which is not a "
                             "licence this repository can redistribute under. A "
                             "fair-use file looks exactly like a free one from the "
