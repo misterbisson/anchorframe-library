@@ -241,6 +241,52 @@ class BrandPages(Fixture):
         self.assertEqual(validate(self.root), [])
 
 
+class ImageParams(Fixture):
+    """An image may only say the things an image can say."""
+
+    IMG = ('title = "Kodak Portra 400"\nbrand = "Kodak"\ndiscontinued = false\n'
+           'source = "https://x.example/a"\n\n[[resources]]\nsrc = "a.jpg"\n'
+           '[resources.params]\ncredit = "Someone"\nlicense = "CC BY-SA 4.0"\n'
+           'licenseUrl = "https://x.example/l"\nalt = "A film box"\n'
+           'sourcePage = "https://x.example/p"\nverified = "2026-01-01"\n')
+
+    def image(self, extra=""):
+        d = os.path.dirname(self.film)
+        open(os.path.join(d, "a.jpg"), "wb").close()
+        self.rewrite(self.film, self.IMG + extra)
+
+    def test_a_well_formed_image_is_accepted(self):
+        self.image()
+        self.assertEqual([], validate(self.root))
+
+    def test_a_record_field_landing_in_the_image_params_is_caught(self):
+        # This is the real bug: front matter is TOML, so a fact appended below a
+        # [[resources]] header becomes a property of the photograph. It parses,
+        # and the page renders nothing because the template asks the record.
+        self.image("iso = 400\n")
+        self.assertObjects("which is not something an image can say")
+
+    def test_each_of_the_film_facts_is_caught_there(self):
+        for line in ('iso = 400', 'process = "C-41"', 'film_type = "Print"',
+                     'formats = ["135"]'):
+            with self.subTest(line=line):
+                self.image(line + "\n")
+                self.assertObjects("not something an image can say")
+
+    def test_an_unknown_key_on_the_resource_itself_is_caught(self):
+        d = os.path.dirname(self.film)
+        open(os.path.join(d, "a.jpg"), "wb").close()
+        self.rewrite(self.film,
+                     'title = "Kodak Portra 400"\nbrand = "Kodak"\n'
+                     'discontinued = false\nsource = "https://x.example/a"\n\n'
+                     '[[resources]]\nsrc = "a.jpg"\ntitle = "nope"\n'
+                     '[resources.params]\ncredit = "Someone"\n'
+                     'license = "CC BY-SA 4.0"\nlicenseUrl = "https://x.example/l"\n'
+                     'alt = "A film box"\nsourcePage = "https://x.example/p"\n'
+                     'verified = "2026-01-01"\n')
+        self.assertObjects("unknown key")
+
+
 class EmulsionFacts(Fixture):
     """The four columns the source tables carry about a film itself.
 

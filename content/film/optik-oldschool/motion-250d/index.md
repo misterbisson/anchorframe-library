@@ -3,6 +3,10 @@ title = "Optik Oldschool Motion 250D"
 brand = "Optik Oldschool"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Optik_Oldschool"
 discontinued = false
+iso = 250
+process = "ECN-2 / C-41"
+film_type = "Print"
+formats = ["135-36"]
 
 [[resources]]
 src = "motion-250d.jpg"
@@ -13,8 +17,4 @@ copyright = "Optik Oldschool"
 alt = "Two 35 mm cassettes of Optik Oldschool Motion 250D with yellow labels, film leaders out"
 sourcePage = "https://www.optik-oldschool.com/products/optiks-motion-250d-ecn2"
 verified = "2026-09-04"
-iso = 250
-process = "ECN-2 / C-41"
-film_type = "Print"
-formats = ["135-36"]
 +++

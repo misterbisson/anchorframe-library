@@ -272,6 +272,20 @@ def validate(root: str) -> list[str]:
             if not isinstance(res, dict) or not isinstance(res.get("src"), str):
                 bad(r.path, f"resource {res!r} needs a src")
                 continue
+            # A record's own fields are checked against a closed list; its
+            # images' were not, and the asymmetry hid a real bug. Front matter
+            # is TOML, so every key written after a `[[resources]]` header
+            # belongs to that table: four film facts appended to the end of a
+            # record that had a photograph became properties of the photograph.
+            # It parsed, it validated, and 45 pages rendered none of it.
+            for key in res:
+                if key not in ("src", "params"):
+                    bad(r.path, f"resource {res['src']} has an unknown key {key!r}")
+            for key in res.get("params") or {}:
+                if key not in set(IMAGE_PARAMS) | set(NON_FREE_PARAMS):
+                    bad(r.path, f"{res['src']} carries {key!r}, which is not something "
+                                "an image can say. A record's own field written below "
+                                "a [[resources]] header lands here.")
             declared[res["src"]] = res.get("params") or {}
         for src in declared:
             if src not in r.images:
