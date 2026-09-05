@@ -140,9 +140,15 @@ goodwill of those vendors is what the `fair-use` position rests on.
 **Take files from Wikimedia Commons, not from English Wikipedia.** Wikipedia
 also stores files locally, and local is where non-free *fair-use* uploads live —
 from the article side they look identical. Two of the 201 camera images are
-local, and nothing about the article tells you which. `tools/fetch_images.py`
-enforces this by taking only files whose `imagerepository` is `shared`; if you
-are adding one by hand, check that the file page is on commons.wikimedia.org.
+local, and nothing about the article tells you which. **Check that the file page
+you are citing is on `commons.wikimedia.org`** — that is the whole test, and the
+one thing about an image a reviewer cannot verify for you from the article alone.
+
+[`tools/vocabulary-build`](https://github.com/misterbisson/anchorframe/tree/main/tools/vocabulary-build)
+in the app repository holds the fetcher that took the first 190 of these, beside
+the extractor that produced the names, and it is there for the same reason
+`tools/film-boxes` is: it runs on a person's machine and its output is committed
+here.
 
 A crop or any other edit makes a derivative, which CC BY-SA carries its
 share-alike into. Say so in the record's `note` if you edit one.
