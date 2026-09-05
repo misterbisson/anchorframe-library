@@ -1,0 +1,17 @@
+The contents of `data/` and `dist/` are licensed under the
+
+    Creative Commons Attribution-ShareAlike 4.0 International
+    (CC BY-SA 4.0)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+Full text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+The seed corpus was extracted from English Wikipedia, which publishes under the
+same licence, and each record names the article and revision it was read from.
+Contributions made here are licensed the same way.
+
+Share-alike applies: you may copy, redistribute, adapt and build upon this
+material, including commercially, provided you give appropriate credit and
+license your adaptations under CC BY-SA 4.0.
+
+The tooling in `tools/` is MIT — see LICENSE-TOOLS.

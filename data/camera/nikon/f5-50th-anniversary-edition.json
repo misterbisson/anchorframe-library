@@ -1,0 +1,16 @@
+{
+  "alternates": [
+    {
+      "brand": "nikon",
+      "slug": "nippon-kogaku-f5"
+    },
+    {
+      "brand": "nippon-kogaku",
+      "slug": "f5"
+    }
+  ],
+  "brand": "Nikon",
+  "mount": "nikon-f",
+  "name": "Nikon F5 50th anniversary edition",
+  "source": "https://en.wikipedia.org/wiki/Nikon_F5_50th_anniversary_edition"
+}

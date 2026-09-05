@@ -1,0 +1,43 @@
+name: Add or correct a camera, lens or film
+description: Something is missing, or something here is wrong.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A pull request is faster than an issue if you are comfortable with one —
+        it is a single JSON file. See CONTRIBUTING.md. Otherwise this is fine.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of thing
+      options: [camera, lens, film, mount]
+    validations: {required: true}
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: As it is written on the thing.
+      placeholder: Konica Hexar RF
+    validations: {required: true}
+  - type: input
+    id: brand
+    attributes:
+      label: Brand it was sold under
+      description: >
+        Who sold it, not who built it. Vivitar lenses were made by other firms
+        and are still Vivitars; Hasselblad's Zeiss glass is a Hasselblad.
+      placeholder: Konica
+    validations: {required: true}
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: >
+        A link that says this exists — Wikipedia, a maker's page, a manual, a
+        catalogue scan. If it is not online, describe it here.
+    validations: {required: true}
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Mount, fixed lens, whether a film is discontinued, other names it was sold under.
