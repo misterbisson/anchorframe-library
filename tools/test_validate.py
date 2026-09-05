@@ -415,3 +415,49 @@ class Promotion(Fixture):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FairUse(Fixture):
+    """A vendor's own photograph of a box, which no free licence can reach.
+
+    The box is a graphic work and the whole subject, so a photograph of one has
+    two owners and a contributor can license only their half. The maker's own
+    shot has one owner — so it is admitted, and admitted as a *use* rather than
+    a licence, with the holder named where a licenceUrl would be meaningless.
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.cam = os.path.join(self.root, "content/camera/canon/ae-1/index.md")
+        open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
+
+    def declare(self, **over):
+        params = {"credit": "Canon Inc.", "license": "fair-use",
+                  "copyright": "Canon Inc.", "alt": "A boxed Canon AE-1",
+                  "sourcePage": "https://canon.example/ae-1", **over}
+        body = "".join(f'    {k} = "{v}"\n' for k, v in params.items() if v is not None)
+        page(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                       'source = "https://x.example/a"\n\n[[resources]]\n'
+                       f'  src = "ae-1.jpg"\n  [resources.params]\n{body}'.rstrip("\n"))
+        return " ".join(validate(self.root))
+
+    def test_a_vendor_image_validates(self):
+        self.assertEqual(self.declare(), "")
+
+    def test_it_must_name_the_holder(self):
+        self.assertIn("has no copyright", self.declare(copyright=None))
+
+    def test_a_licenceUrl_says_nothing_true_about_a_fair_use_file(self):
+        # There are no terms to link to, so carrying a link to some is a claim
+        # that is not merely redundant but false.
+        self.assertIn("carries a licenseUrl", self.declare(licenseUrl="https://x.example/"))
+
+    def test_a_free_licence_still_may_not_name_a_holder_instead_of_terms(self):
+        self.assertIn("carries a copyright",
+                      self.declare(license="CC BY-SA 4.0",
+                                   licenseUrl="https://creativecommons.org/licenses/by-sa/4.0/"))
+
+    def test_anything_else_non_free_is_still_refused(self):
+        self.assertIn("not a licence this repository can redistribute",
+                      self.declare(license="all rights reserved",
+                                   licenseUrl="https://x.example/", copyright=None))

@@ -165,11 +165,24 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   cannot be satisfied, 2 are local en.wiki uploads rather than Commons files,
   and 1 states no licence.
 
-  Film and lens photographs have no usable source at all. Searching Commons by
+  Film and lens photographs have no usable source **on Commons**. Searching by
   name returns pictures taken **with** a stock or a lens, not **of** it —
   measured at 16% and 13% of names returning anything, and most of those wrong.
-  `Holga 400` returns a photograph of a fountain. Those have to be contributed
-  by someone who knows what they are looking at.
+  `Holga 400` returns a photograph of a fountain.
+
+  For film the shortage is structural rather than a gap someone could fill. A
+  box is a graphic work and it is the whole subject of a picture of one, so a
+  photograph of a box has two copyright holders — whoever pressed the shutter
+  and whoever drew the box — and a contributor can only license their half. The
+  free-licensed snapshot is the *unsafe* one; the manufacturer's own product
+  shot, where one owner holds both halves, is not. Five films carry one, marked
+  `fair-use`, which is a use and not a licence and so does not travel to anyone
+  reusing this data. [`tools/film-boxes`](https://github.com/misterbisson/anchorframe/tree/main/tools/film-boxes) in the app repository says
+  where each brand's own catalogue is and which brands have none — it is not
+  here for the same reason `tools/vocabulary-build` is not: a public index
+  should not also ship the thing that fetches from vendors under its name.
+  292 films are in production and 688 are not, and a discontinued stock has
+  nobody left to ask.
 - **No film detail.** Manufacturer, ISO, process, type and colour were all
   extracted and then cut, because nothing read them. A published reference is a
   reader, so they can come back — that is a re-run of the extraction, not a

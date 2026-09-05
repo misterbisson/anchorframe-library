@@ -39,6 +39,26 @@ IMAGE_PARAMS = {
     # it is what a reuser has to be able to reach.
     "sourcePage": "the file's own page at the source",
 }
+
+# A photograph of a film box is the one thing here that no free licence can
+# reach, and the reason is structural rather than a gap in Commons. A box is a
+# graphic work and it is the whole subject of the picture, so a photograph of
+# one has two copyright holders: whoever pressed the shutter and whoever drew
+# the box. A contributor who shoots their own and offers it CC BY-SA is offering
+# a licence to half of what is in the frame — which is why the free-licensed
+# snapshot is the *unsafe* one here and the manufacturer's own product shot,
+# where one owner holds both halves, is not. A sample of 120 of the 980 films
+# found one with a box photograph on Commons at all.
+#
+# So `fair-use` is admitted, and it is admitted as what it is: a use, not a
+# licence. It cannot be sublicensed, the corpus's CC BY-SA 4.0 does not reach
+# it, and a reuser of this data does not inherit it. `licenseUrl` is meaningless
+# for one — there are no terms to link — so it is replaced by the name of the
+# holder, which is what makes the claim checkable rather than decorative.
+NON_FREE = "fair-use"
+NON_FREE_PARAMS = {
+    "copyright": "who owns the photograph and the packaging in it",
+}
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
 BRAND_KEYS = ("title", "brand", "aliases", "note")
 
@@ -200,11 +220,22 @@ def validate(root: str) -> list[str]:
                 bad(r.path, f"{img} has no [[resources]] entry, so it ships with no "
                             "credit and no licence")
                 continue
-            for field, why in sorted(IMAGE_PARAMS.items()):
+            lic = str(params.get("license", "")).strip().lower()
+            # A fair-use file has no terms to link, so it answers for itself with
+            # the holder's name instead of a licenceUrl. Everything else still
+            # has to be a licence this repository can actually redistribute.
+            wanted = dict(IMAGE_PARAMS)
+            if lic == NON_FREE:
+                del wanted["licenseUrl"]
+                wanted.update(NON_FREE_PARAMS)
+            for field, why in sorted(wanted.items()):
                 if not str(params.get(field, "")).strip():
                     bad(r.path, f"{img} has no {field} — {why}")
-            lic = str(params.get("license", "")).strip().lower()
-            if lic and not lic.startswith(FREE_LICENCES):
+            for field in set(IMAGE_PARAMS) | set(NON_FREE_PARAMS):
+                if field not in wanted and str(params.get(field, "")).strip():
+                    bad(r.path, f"{img} is {lic} and carries a {field}, which says "
+                                f"nothing true about it")
+            if lic and lic != NON_FREE and not lic.startswith(FREE_LICENCES):
                 bad(r.path, f"{img} is licensed {params['license']!r}, which is not a "
                             "licence this repository can redistribute under. A "
                             "fair-use file looks exactly like a free one from the "
