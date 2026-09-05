@@ -223,3 +223,59 @@ of it. Recording the converter instead would name the wrong thing.
 
 Every renamed record keeps its old address as an alias, so nothing that was
 linkable stops answering.
+
+## The film tables had eleven columns and the corpus kept two
+
+The 980 film records came from two Wikipedia list articles, and those articles
+are tables of eleven columns. The extraction that seeded this repository read
+Make and Name. ISO, Process, Type and Formats were in the source the whole time
+— the same debt as the barrel version above, an order of magnitude wider.
+
+Four of the eleven are now recorded. The other seven are refused for reasons
+worth keeping, because each will be proposed again:
+
+- **`Base`** is a column of `T` and `P`, and **the article never defines the
+  letters.** Triacetate and polyester is the obvious reading and it is still a
+  guess, which is not a thing to publish under a source link that does not
+  support it.
+- **`Dates`** has 688 of 1058 cells reading a question mark, a decade, or prose.
+  `discontinued` already carries the part that is reliable.
+- **`Origin`** describes the factory rather than the emulsion, and needs a
+  hand-made mapping of 71 spellings. `GDR`, `USSR` and `Czechoslovakia` are
+  correct for their films and must not be modernised, which makes it a curation
+  job rather than a normalisation one.
+- **`Details`** is prose, and prose is a body. Writing it would promote several
+  hundred records to pages of their own, which is a decision about the shape of
+  the site rather than about data.
+- **`Replaced by`** is a relation between two records, and nothing in the schema
+  expresses one.
+
+**`Nothing` is a placeholder, not a value.** These tables use the word
+deliberately and often where a cell is empty. It is the reason `Replaced by`
+measures 94% full and is really 36% full — and any future measurement of this
+source that does not know this will be wrong in the same direction.
+
+**A name in two rows usually means two products.** `Agfa` Vista 400 is
+`AP 70 / C-41`; `AGFA PHOTO` Vista 400 is `C-41`. Same name, different company,
+either side of a bankruptcy. Fifty-nine records have a source that disagrees
+with itself like this, and in each the disputed field is **left absent** rather
+than set from whichever row was reached first. A record that says nothing is
+honest; a record that says one era's answer is indistinguishable from one that
+knows.
+
+**ISO is a number, so it can be sorted, which costs about one film in fifty.**
+Roughly 2% of cells carry two ratings — `40/50`, different markets or a change
+mid-life. Those are absent rather than flattened to one number or stored as a
+string that will not order. One cell reads `0`, whose own Details column says
+"ASA 0, expired 9/1960" — an editor writing *nobody knows*. The validator
+refused it before anything rendered it as the fastest film in the library.
+
+**`film_type` rather than `type`, because Hugo owns `type`.** Setting it in
+front matter picks a layout, so `type = "Print"` sends every print film looking
+for `layouts/Print/`, and the failure would be a missing template rather than
+anything mentioning film.
+
+The facts render on the brand list rows, where speed and process are what tell
+two films on a shelf apart. `formats` renders only on a record's own page: a
+film was sold in up to eight, and eight more tokens on every line of a 102-film
+list buries the names the list exists to show.

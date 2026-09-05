@@ -1,0 +1,17 @@
+{{- /*
+  A film's emulsion facts, compactly, for a row in a brand list.
+
+  Speed, process and whether it prints or projects are what tell two films on
+  one shelf apart, so they belong on the row. `formats` does not: a film is sold
+  in up to eight of them, and eight more tokens on every line of a 102-film page
+  buries the names the list exists to show. It renders on the record's own page,
+  where there is room.
+
+  Every field is optional and independently so — the source leaves gaps, and a
+  film with a process but no speed still says what it can.
+*/ -}}
+{{- $bits := slice -}}
+{{- with .Params.iso }}{{ $bits = $bits | append (printf "ISO %d" .) }}{{ end -}}
+{{- with .Params.process }}{{ $bits = $bits | append . }}{{ end -}}
+{{- with .Params.film_type }}{{ $bits = $bits | append . }}{{ end -}}
+{{- with $bits }}<span class="spec">{{ delimit . " · " }}</span>{{ end -}}

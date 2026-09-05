@@ -3,4 +3,8 @@ title = "Ferrania Solaris FG 100 Plus"
 brand = "Ferrania"
 source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#Ferrania"
 discontinued = true
+iso = 100
+process = "C-41"
+film_type = "Print"
+formats = ["135"]
 +++

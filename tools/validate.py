@@ -25,7 +25,22 @@ from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
 OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant",
-            "resources")
+            "resources", "iso", "process", "film_type", "formats")
+
+# Facts about an emulsion, and only about an emulsion: a camera has no ISO of
+# its own and a lens has no development process, so these are refused elsewhere
+# the same way `discontinued` is.
+FILM_FIELDS = ("iso", "process", "film_type", "formats")
+
+# `film_type` rather than `type` because Hugo owns `type` in front matter and
+# uses it to pick a layout: `type = "Print"` would send every print film looking
+# for `layouts/Print/`, and the failure would be a missing template rather than
+# anything mentioning this field.
+#
+# Two values, because the source column has two. It distinguishes a negative
+# that gets printed from a reversal that gets projected, which is the one thing
+# about a film that changes what you can do with the result.
+FILM_TYPES = ("Print", "Slide")
 # What every photograph has to carry, and why each one.
 IMAGE_PARAMS = {
     # Most of these licences require credit by name. A site-wide "images from
@@ -217,6 +232,30 @@ def validate(root: str) -> list[str]:
             bad(rel, "a film says whether it is discontinued")
         if r.kind != "film" and "discontinued" in r.meta:
             bad(rel, "discontinued belongs to a film")
+        for f in FILM_FIELDS:
+            if r.kind != "film" and f in r.meta:
+                bad(rel, f"{f} belongs to a film")
+        # ISO is an integer so it can be compared and sorted. Roughly one film
+        # in fifty carries two ratings in one cell ("40/50" — different markets,
+        # or a change mid-life); those are left absent rather than flattened to
+        # one number or stored as a string nothing can order.
+        iso = r.meta.get("iso")
+        if iso is not None and (not isinstance(iso, int) or isinstance(iso, bool)
+                                or iso <= 0):
+            bad(rel, "iso is a positive whole number, or absent")
+        proc = r.meta.get("process")
+        if proc is not None and (not isinstance(proc, str) or not proc.strip()):
+            bad(rel, "process must be a non-empty string")
+        ft = r.meta.get("film_type")
+        if ft is not None and ft not in FILM_TYPES:
+            bad(rel, f"film_type is one of {FILM_TYPES}, not {ft!r}")
+        fmts = r.meta.get("formats")
+        if fmts is not None:
+            if (not isinstance(fmts, list) or not fmts
+                    or not all(isinstance(x, str) and x.strip() for x in fmts)):
+                bad(rel, "formats is a non-empty list of non-empty strings")
+            elif len(set(fmts)) != len(fmts):
+                bad(rel, "formats repeats a format")
         # A body takes a mount or has a lens built into it, never both: the two
         # infobox fields these came from answer one question between them.
         if mount and r.meta.get("fixed_lens"):

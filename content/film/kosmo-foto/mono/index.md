@@ -13,4 +13,8 @@ copyright = "Kosmo Foto"
 alt = "A cream, blue and red Kosmo Foto Mono box, printed with a cosmonaut holding a camera"
 sourcePage = "https://kosmofoto.com/product/kosmo-foto-mono-film/"
 verified = "2026-09-04"
+iso = 100
+process = "B&W"
+film_type = "Print"
+formats = ["135-36", "120"]
 +++

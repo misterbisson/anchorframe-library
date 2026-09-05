@@ -13,4 +13,8 @@ copyright = "CatLABS"
 alt = "A heap of 35 mm cassettes of CatLABS X Film 320 Pro, black and white labels"
 sourcePage = "https://www.catlabs.info/product/catlabs-x-film-320"
 verified = "2026-09-04"
+iso = 320
+process = "B&W"
+film_type = "Print"
+formats = ["135", "120"]
 +++

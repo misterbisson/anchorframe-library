@@ -13,4 +13,8 @@ copyright = "REVOLOG"
 alt = "A 35 mm cassette of REVOLOG TESLA-I, its teal-blue label carrying the revolog wordmark"
 sourcePage = "https://www.revolog.net/products/tesla-i"
 verified = "2026-09-04"
+iso = 200
+process = "C-41"
+film_type = "Print"
+formats = ["135-36"]
 +++

@@ -68,7 +68,8 @@ ul.items li, ul.brands li {
 ul.items li:target { background: color-mix(in srgb, var(--accent) 14%, transparent);
                      border-radius: 3px; padding-inline: 0.35rem;
                      margin-inline: -0.35rem; }
-ul.items li .variant, ul.items li .mount { color: var(--ink-faint); font-size: 0.8125rem; }
+ul.items li .variant, ul.items li .mount, ul.items li .spec {
+  color: var(--ink-faint); font-size: 0.8125rem; }
 ul.brands li a { font-weight: 500; }
 
 /* A record: label/value pairs, scannable down the left edge. */

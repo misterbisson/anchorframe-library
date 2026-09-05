@@ -13,4 +13,8 @@ copyright = "FUJIFILM Corporation"
 alt = "Boxes of FUJICHROME Velvia 100 in 135 and 120, with a sheet-film carton"
 sourcePage = "https://www.fujifilm.com/us/en/business/professional-photography/film/velvia-100"
 verified = "2026-09-04"
+iso = 100
+process = "E-6"
+film_type = "Slide"
+formats = ["135-36", "120", "4x5\" (8x10\" JP only) Not US"]
 +++

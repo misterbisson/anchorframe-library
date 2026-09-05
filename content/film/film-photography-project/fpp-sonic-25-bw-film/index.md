@@ -13,4 +13,8 @@ copyright = "Film Photography Project"
 alt = "A black FPP Sonic 25 canister with an audio waveform printed across it"
 sourcePage = "https://filmphotographystore.com/products/35mm-bw-film-fpp-sonic25-high-contrast-fine-grain-bw-film-1-roll"
 verified = "2026-09-04"
+iso = 25
+process = "B&W"
+film_type = "Print"
+formats = ["135-24"]
 +++

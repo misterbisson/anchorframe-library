@@ -13,4 +13,8 @@ copyright = "Kosmo Foto"
 alt = "A kraft, black and red Kosmo Foto Agent Shadow 400 box, printed with a trench-coated figure"
 sourcePage = "https://kosmofoto.com/product/kosmo-foto-agent-shadow-film/"
 verified = "2026-09-04"
+iso = 400
+process = "B&W"
+film_type = "Print"
+formats = ["135-36"]
 +++

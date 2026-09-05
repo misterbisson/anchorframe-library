@@ -13,4 +13,8 @@ copyright = "Film Photography Project"
 alt = "A black FPP InfraChrome colour infrared canister, 24 exposures"
 sourcePage = "https://filmphotographystore.com/products/35mm-infrared-film-fpp-color-ir"
 verified = "2026-09-04"
+iso = 400
+process = "E-6"
+film_type = "Slide"
+formats = ["135"]
 +++

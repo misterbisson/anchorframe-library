@@ -13,4 +13,8 @@ copyright = "Optik Oldschool"
 alt = "A green Optik Oldschool Motion 200T box beside a 35 mm cassette and a green canister"
 sourcePage = "https://www.optik-oldschool.com/products/optiks-motion-200t-ecn-2"
 verified = "2026-09-04"
+iso = 200
+process = "ECN-2 / C-41"
+film_type = "Print"
+formats = ["135-36"]
 +++

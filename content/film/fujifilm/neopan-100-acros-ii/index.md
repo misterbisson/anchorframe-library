@@ -13,4 +13,8 @@ copyright = "FUJIFILM Corporation"
 alt = "A box of Neopan 100 Acros II beside a 135 cassette of the film"
 sourcePage = "https://www.fujifilm.com/us/en/business/professional-photography/film/neopan-100-acros-ii"
 verified = "2026-09-04"
+iso = 100
+process = "B&W"
+film_type = "Print"
+formats = ["135-36", "120"]
 +++
