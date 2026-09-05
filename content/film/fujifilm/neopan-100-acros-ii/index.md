@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Fujifilm"
 discontinued = false
 
 [[resources]]
-src = "neopan-100-acros-ii-box.jpg"
+src = "neopan-100-acros-ii.jpg"
 [resources.params]
 credit = "FUJIFILM Corporation"
 license = "fair-use"

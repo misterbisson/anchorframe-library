@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 
 [[resources]]
-src = "fujicolor-pro-400h-box.png"
+src = "fujicolor-pro-400h.png"
 [resources.params]
 credit = "FUJIFILM Corporation"
 license = "fair-use"

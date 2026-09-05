@@ -3,4 +3,14 @@ title = "Revolog Rasp"
 brand = "Revolog"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Revolog"
 discontinued = false
+
+[[resources]]
+src = "rasp.png"
+[resources.params]
+credit = "REVOLOG"
+license = "fair-use"
+copyright = "REVOLOG"
+alt = "A 35 mm cassette of REVOLOG RASP, its pale yellow label carrying the revolog wordmark"
+sourcePage = "https://www.revolog.net/products/rasp"
+verified = "2026-09-04"
 +++
