@@ -8,4 +8,4 @@
   what to render, Python decides what the manifest says — so tools/check_stubs.py
   reconciles them in CI and fails if they ever disagree.
 */ -}}
-{{- if or (trim .RawContent " \n\t\r") (.Resources.ByType "image") -}}1{{- end -}}
+{{- if or (trim .RawContent " \n\t\r") (.Resources.ByType "image") .Params.note -}}1{{- end -}}

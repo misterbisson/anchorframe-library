@@ -1,19 +1,45 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
+
+{{/* A brand list said nothing about what the lenses fit. Most brands are
+     single-mount — 29 of 33 — so the fact belongs once under the heading where
+     it is constant, and on each row only where it varies. Repeating "Pentax K"
+     twelve times down the Sears page would be noise, and saying it nowhere is
+     what the page did before. */}}
+{{ $mounts := slice }}
+{{ range .RegularPagesRecursive }}{{ range .Params.mount }}{{ $mounts = $mounts | append . }}{{ end }}{{ end }}
+{{ $mounts = $mounts | uniq }}
+{{ $one := eq (len $mounts) 1 }}
+
+{{ with .RegularPagesRecursive }}
+<p class="lede">
+  {{ len . }} {{ if eq (len .) 1 }}{{ index site.Params.kindsOne $.Section }}
+  {{- else }}{{ index site.Params.kindsMany $.Section }}{{ end }}
+  {{- with $mounts }}{{ if $one }}, {{ if eq (len $.RegularPagesRecursive) 1 }}fitting{{ else }}all fitting{{ end }}
+    {{- $m := index $mounts 0 }}{{ $p := site.GetPage (printf "/mount/%s" $m) }}
+    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+  {{- else }} across {{ len $mounts }} mounts{{ end }}{{ end }}.
+</p>
+{{ end }}
+
 {{ with .Sections }}<ul class="brands">
   {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    <span>{{ len .RegularPagesRecursive }}</span></li>{{ end }}
+    <span class="count">{{ len .RegularPagesRecursive }}</span></li>{{ end }}
 </ul>{{ end }}
+
 {{ with .RegularPages.ByTitle }}<ul class="items">
   {{ range . }}
   {{/* A record with nothing to show has no page of its own, so linking to it
        would only bounce the reader back to this row. The anchor is the address
-       either way, and the link appears on its own the day the record earns one. */}}
+       either way, and the link appears the day the record earns one. */}}
   {{ $promoted := partial "promoted.html" . }}
   <li id="{{ path.Base .File.Dir }}">
     {{ if $promoted }}<a href="{{ .RelPermalink }}">{{ partial "name.html" . }}</a>
     {{ else }}{{ partial "name.html" . }}{{ end }}
+    {{- if not $one }}{{ range .Params.mount }}
+      {{- $p := site.GetPage (printf "/mount/%s" .) }}
+      <span class="mount">{{ $p.Title }}</span>{{ end }}{{ end }}
   </li>{{ end }}
 </ul>{{ end }}
 {{ end }}

@@ -1,6 +1,20 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ .Content }}
-<ul>{{ range .Pages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-  <span>{{ len .Pages }}</span></li>{{ end }}</ul>
+{{/* A combined count hides the one thing a mount is for. `Canon FD 136` says
+     nothing about whether that is bodies or glass, and it conceals that Contax G
+     and M42 have bodies here and no lenses at all — a gap the README documents
+     and the page did not. Counting each kind separately puts it on the page. */}}
+<ul class="brands">
+  {{ range .Pages.ByTitle }}
+  {{ $bodies := len (where .Pages "Section" "camera") }}
+  {{ $lenses := len (where .Pages "Section" "lens") }}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span class="count">
+      {{- if $bodies }}{{ $bodies }} {{ if eq $bodies 1 }}body{{ else }}bodies{{ end }}{{ end }}
+      {{- if and $bodies $lenses }} · {{ end }}
+      {{- if $lenses }}{{ $lenses }} {{ if eq $lenses 1 }}lens{{ else }}lenses{{ end }}
+      {{- else if $bodies }} · no lenses listed{{ end }}
+    </span></li>{{ end }}
+</ul>
 {{ end }}
