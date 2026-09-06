@@ -13,7 +13,7 @@
       <dd>{{ if .Params.discontinued }}Discontinued{{ else }}In production{{ end }}</dd>{{ end }}
     {{ with .Params.iso }}<dt>Speed</dt><dd>ISO {{ . }}</dd>{{ end }}
     {{ with .Params.process }}<dt>Process</dt><dd>{{ . }}</dd>{{ end }}
-    {{ with .Params.film_type }}<dt>Type</dt><dd>{{ . }}</dd>{{ end }}
+    {{ with .Params.types }}<dt>Type</dt><dd>{{ . }}</dd>{{ end }}
     {{ with .Params.formats }}<dt>Formats</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
     <dt>Source</dt><dd><a href="{{ .Params.source }}" rel="nofollow">{{ .Params.source }}</a></dd>
   </dl>

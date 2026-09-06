@@ -4,9 +4,9 @@ brand = "Ilford"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Ilford"
 discontinued = false
 iso = 200
-process = "B&W"
-film_type = "Print"
-formats = ["135-36", "120"]
+process = ["B&W"]
+types = "Print"
+formats = ["135", "120"]
 
 [[resources]]
 src = "sfx-200.jpg"

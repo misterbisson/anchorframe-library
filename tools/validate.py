@@ -25,17 +25,19 @@ from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
 OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant",
-            "resources", "iso", "process", "film_type", "formats")
+            "resources", "iso", "process", "types", "formats")
 
 # Facts about an emulsion, and only about an emulsion: a camera has no ISO of
 # its own and a lens has no development process, so these are refused elsewhere
 # the same way `discontinued` is.
-FILM_FIELDS = ("iso", "process", "film_type", "formats")
+FILM_FIELDS = ("iso", "process", "types", "formats")
 
-# `film_type` rather than `type` because Hugo owns `type` in front matter and
+# `types`, plural, because Hugo owns the singular `type` in front matter and
 # uses it to pick a layout: `type = "Print"` would send every print film looking
 # for `layouts/Print/`, and the failure would be a missing template rather than
-# anything mentioning this field.
+# anything mentioning this field. The plural is not reserved, and it is also
+# what Hugo wants as a taxonomy key — so the public URL is `/types/slide/`
+# rather than leaking the workaround as `/film_type/slide/`.
 #
 # Two values, because the source column has two. It distinguishes a negative
 # that gets printed from a reversal that gets projected, which is the one thing
@@ -243,12 +245,24 @@ def validate(root: str) -> list[str]:
         if iso is not None and (not isinstance(iso, int) or isinstance(iso, bool)
                                 or iso <= 0):
             bad(rel, "iso is a positive whole number, or absent")
+        # A list, because the source often names one process twice: "CN-16 /
+        # C-41" is Fujifilm's name and the standard it is compatible with, and
+        # someone browsing either should find the film. As a taxonomy term the
+        # slash was also a path separator, so the single string filed that
+        # process two directories deep.
         proc = r.meta.get("process")
-        if proc is not None and (not isinstance(proc, str) or not proc.strip()):
-            bad(rel, "process must be a non-empty string")
-        ft = r.meta.get("film_type")
+        if proc is not None:
+            if (not isinstance(proc, list) or not proc
+                    or not all(isinstance(x, str) and x.strip() for x in proc)):
+                bad(rel, "process is a non-empty list of non-empty strings")
+            elif len(set(proc)) != len(proc):
+                bad(rel, "process repeats a process")
+            elif any("/" in x for x in proc):
+                bad(rel, "a process with a slash in it becomes two path segments "
+                         "as a taxonomy term; name each process separately")
+        ft = r.meta.get("types")
         if ft is not None and ft not in FILM_TYPES:
-            bad(rel, f"film_type is one of {FILM_TYPES}, not {ft!r}")
+            bad(rel, f"types is one of {FILM_TYPES}, not {ft!r}")
         fmts = r.meta.get("formats")
         if fmts is not None:
             if (not isinstance(fmts, list) or not fmts
@@ -256,6 +270,9 @@ def validate(root: str) -> list[str]:
                 bad(rel, "formats is a non-empty list of non-empty strings")
             elif len(set(fmts)) != len(fmts):
                 bad(rel, "formats repeats a format")
+            elif any("/" in x for x in fmts):
+                bad(rel, "a format with a slash in it becomes two path segments "
+                         "as a taxonomy term; name each format separately")
         # A body takes a mount or has a lens built into it, never both: the two
         # infobox fields these came from answer one question between them.
         if mount and r.meta.get("fixed_lens"):

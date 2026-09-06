@@ -4,9 +4,9 @@ brand = "CatLABS"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#CatLABS"
 discontinued = false
 iso = 100
-process = "Color"
-film_type = "Print"
-formats = ["35mm*", "120", "4x5\""]
+process = ["Color"]
+types = "Print"
+formats = ["35mm", "120", "4x5"]
 
 [[resources]]
 src = "x-film-100-color.jpg"

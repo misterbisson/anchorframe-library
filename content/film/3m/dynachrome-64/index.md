@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/ferrania/3m-dynachrome-64/"]
 iso = 64
-process = "K-11"
-film_type = "Slide"
+process = ["K-11"]
+types = "Slide"
 formats = ["126", "135", "127"]
 +++

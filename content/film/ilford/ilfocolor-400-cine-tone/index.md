@@ -5,9 +5,9 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Ilford_Imagin
 discontinued = false
 aliases = ["/film/ilford-imaging-europe/ilford-ilfocolor-400-cine-tone/"]
 iso = 400
-process = "ECN-2"
-film_type = "Print"
-formats = ["135-24"]
+process = ["ECN-2"]
+types = "Print"
+formats = ["135"]
 
 [[resources]]
 src = "ilfocolor-400-cine-tone.jpg"

@@ -53,6 +53,7 @@ h2 { font-size: 1.05rem; margin: 2rem 0 0.5rem; padding-bottom: 0.3rem;
      border-bottom: 1px solid var(--rule); }
 p { max-width: var(--measure); }
 .lede { color: var(--ink-soft); max-width: var(--measure); margin-top: 0; }
+.browse { color: var(--ink-soft); max-width: var(--measure); }
 .count { color: var(--ink-faint); font-variant-numeric: tabular-nums;
          font-size: 0.8125rem; }
 

@@ -8,10 +8,19 @@
 {{ $others := slice }}
 {{ range .Params.spellings }}{{ if ne . $.Title }}{{ $others = $others | append . }}{{ end }}{{ end }}
 {{ with $others }}<p class="lede">Also written {{ delimit . ", " " and " }}.</p>{{ end }}
-{{ range $kind := slice "camera" "lens" }}
+
+{{/* All three kinds, not the two a mount can have. A film term listed nothing
+     at all while this ranged over cameras and lenses only. */}}
+{{ range $kind := slice "camera" "lens" "film" }}
   {{ $in := where $.Pages "Section" $kind }}
   {{ with $in }}<h2>{{ index site.Params.kinds $kind }}</h2><ul class="items">
-    {{ range .ByTitle }}<li><a href="{{ .RelPermalink }}">{{ partial "name.html" . }}</a></li>{{ end }}
+    {{ range .ByTitle }}
+    {{/* A record with nothing to show has no page of its own. Linking to it
+         would send the reader through a redirect to reach the brand row this
+         can address directly. */}}
+    <li>{{ if partial "promoted.html" . }}<a href="{{ .RelPermalink }}">{{ partial "name.html" . }}</a>
+        {{- else }}<a href="{{ .Parent.RelPermalink }}#{{ path.Base .File.Dir }}">{{ partial "name.html" . }}</a>{{ end }}
+      {{- if eq $kind "film" }}{{ partial "emulsion.html" . }}{{ end }}</li>{{ end }}
   </ul>{{ end }}
 {{ end }}
 {{ end }}

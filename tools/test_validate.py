@@ -267,7 +267,7 @@ class ImageParams(Fixture):
         self.assertObjects("which is not something an image can say")
 
     def test_each_of_the_film_facts_is_caught_there(self):
-        for line in ('iso = 400', 'process = "C-41"', 'film_type = "Print"',
+        for line in ('iso = 400', 'process = "C-41"', 'types = "Print"',
                      'formats = ["135"]'):
             with self.subTest(line=line):
                 self.image(line + "\n")
@@ -301,7 +301,7 @@ class EmulsionFacts(Fixture):
         self.rewrite(self.film, self.FILM + extra)
 
     def test_the_four_facts_together_are_accepted(self):
-        self.emulsion('iso = 400\nprocess = "C-41"\nfilm_type = "Print"\n'
+        self.emulsion('iso = 400\nprocess = ["C-41"]\ntypes = "Print"\n'
                   'formats = ["135", "120"]')
         self.assertEqual([], validate(self.root))
 
@@ -323,21 +323,40 @@ class EmulsionFacts(Fixture):
         self.emulsion("iso = true")
         self.assertObjects("iso is a positive whole number")
 
-    def test_an_empty_process_is_caught(self):
-        self.emulsion('process = "  "')
-        self.assertObjects("process must be a non-empty string")
+    def test_a_process_that_is_not_a_list_is_caught(self):
+        self.emulsion('process = "C-41"')
+        self.assertObjects("process is a non-empty list")
 
-    def test_a_film_type_outside_the_two_values_is_caught(self):
-        self.emulsion('film_type = "Positive"')
-        self.assertObjects("film_type is one of")
+    def test_an_empty_process_entry_is_caught(self):
+        self.emulsion('process = ["C-41", "  "]')
+        self.assertObjects("process is a non-empty list")
+
+    def test_a_repeated_process_is_caught(self):
+        self.emulsion('process = ["C-41", "C-41"]')
+        self.assertObjects("process repeats a process")
+
+    def test_a_slash_in_a_process_is_caught(self):
+        # "CN-16 / C-41" as one term slugs to `cn-16-/-c-41`, which Hugo builds
+        # two directories deep. Two terms is also the truer reading: one is
+        # Fujifilm's name and the other the standard it is compatible with.
+        self.emulsion('process = ["CN-16 / C-41"]')
+        self.assertObjects("becomes two path segments")
+
+    def test_a_slash_in_a_format_is_caught(self):
+        self.emulsion('formats = ["135-24/36"]')
+        self.assertObjects("becomes two path segments")
+
+    def test_a_types_outside_the_two_values_is_caught(self):
+        self.emulsion('types = "Positive"')
+        self.assertObjects("types is one of")
 
     def test_the_source_columns_own_typos_are_caught(self):
         # The article carries "Slide (print)", "Print /Slide" and one cell
         # reading "Remplaced by 4416". None may reach the corpus unnormalised.
         for junk in ("Slide (print)", "Print /Slide", "Remplaced by 4416"):
             with self.subTest(junk=junk):
-                self.emulsion(f'film_type = "{junk}"')
-                self.assertObjects("film_type is one of")
+                self.emulsion(f'types = "{junk}"')
+                self.assertObjects("types is one of")
 
     def test_formats_that_is_not_a_list_is_caught(self):
         self.emulsion('formats = "135"')
@@ -356,16 +375,16 @@ class EmulsionFacts(Fixture):
         self.assertObjects("formats repeats a format")
 
     def test_each_fact_is_refused_on_a_camera(self):
-        for f, v in (("iso", "400"), ("process", '"C-41"'),
-                     ("film_type", '"Print"'), ("formats", '["135"]')):
+        for f, v in (("iso", "400"), ("process", '["C-41"]'),
+                     ("types", '"Print"'), ("formats", '["135"]')):
             with self.subTest(field=f):
                 self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
                                        f'source = "https://x.example/a"\n{f} = {v}')
                 self.assertObjects(f"{f} belongs to a film")
 
     def test_each_fact_is_refused_on_a_lens(self):
-        for f, v in (("iso", "400"), ("process", '"C-41"'),
-                     ("film_type", '"Print"'), ("formats", '["135"]')):
+        for f, v in (("iso", "400"), ("process", '["C-41"]'),
+                     ("types", '"Print"'), ("formats", '["135"]')):
             with self.subTest(field=f):
                 self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\n'
                                         'brand = "Nikon"\n'

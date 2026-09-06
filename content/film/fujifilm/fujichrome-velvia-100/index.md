@@ -4,9 +4,9 @@ brand = "Fujifilm"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Fujifilm"
 discontinued = false
 iso = 100
-process = "E-6"
-film_type = "Slide"
-formats = ["135-36", "120", "4x5\" (8x10\" JP only) Not US"]
+process = ["E-6"]
+types = "Slide"
+formats = ["135", "120", "4x5"]
 
 [[resources]]
 src = "fujichrome-velvia-100.png"

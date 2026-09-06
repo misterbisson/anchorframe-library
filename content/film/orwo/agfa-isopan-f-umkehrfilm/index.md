@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/agfa/isopan-f-umkehrfilm/"]
 iso = 25
-process = "ORWO 4100"
-film_type = "Slide"
-formats = ["135-36"]
+process = ["ORWO 4100"]
+types = "Slide"
+formats = ["135"]
 +++

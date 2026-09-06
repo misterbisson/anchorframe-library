@@ -5,6 +5,6 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/ferrania/3m-color-slide/"]
 iso = 80
-process = "E-4"
-film_type = "Slide"
+process = ["E-4"]
+types = "Slide"
 +++

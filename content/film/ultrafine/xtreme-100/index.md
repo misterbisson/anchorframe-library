@@ -4,9 +4,9 @@ brand = "UltraFine"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#UltraFine"
 discontinued = false
 iso = 100
-process = "B&W"
-film_type = "Print"
-formats = ["135-12/24/36", "100 ft", "120"]
+process = ["B&W"]
+types = "Print"
+formats = ["135", "100 ft", "120"]
 
 [[resources]]
 src = "xtreme-100.png"

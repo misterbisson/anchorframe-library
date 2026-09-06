@@ -4,9 +4,9 @@ brand = "Optik Oldschool"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Optik_Oldschool"
 discontinued = false
 iso = 800
-process = "C-41"
-film_type = "Print"
-formats = ["135-36"]
+process = ["C-41"]
+types = "Print"
+formats = ["135"]
 
 [[resources]]
 src = "santacolor-800.jpg"

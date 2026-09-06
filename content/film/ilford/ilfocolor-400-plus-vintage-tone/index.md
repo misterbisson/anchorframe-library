@@ -6,9 +6,9 @@ discontinued = false
 note = "The shop lists this film as six SKUs and three stocks: 24 exposures, 36, and a three-roll pack. Ilfocolor 400 Vintage tone, without PLUS, is an earlier and different film in different formats rather than another name for this one."
 aliases = ["/film/ilford-imaging-europe/ilford-ilfocolor-400-plus-vintage-tone/"]
 iso = 400
-process = "C-41"
-film_type = "Print"
-formats = ["135-24/36"]
+process = ["C-41"]
+types = "Print"
+formats = ["135"]
 
 [[resources]]
 src = "ilfocolor-400-plus-vintage-tone.jpg"

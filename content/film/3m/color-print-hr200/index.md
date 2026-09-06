@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/ferrania/3m-color-print-hr200/"]
 iso = 200
-process = "CNP-4 / C-41"
-film_type = "Print"
+process = ["CNP-4", "C-41"]
+types = "Print"
 formats = ["135"]
 +++

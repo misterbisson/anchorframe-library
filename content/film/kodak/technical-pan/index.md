@@ -4,7 +4,7 @@ brand = "Kodak"
 source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#Kodak"
 discontinued = true
 iso = 25
-process = "B&W"
-film_type = "Print"
-formats = ["135", "120", "4\"x5\""]
+process = ["B&W"]
+types = "Print"
+formats = ["135", "120", "4x5"]
 +++

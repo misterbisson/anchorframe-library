@@ -5,6 +5,6 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 aliases = ["/film/agfa-photo/vista-800/"]
 iso = 800
-film_type = "Print"
+types = "Print"
 formats = ["135"]
 +++

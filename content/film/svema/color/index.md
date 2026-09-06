@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Svema_%28Astr
 discontinued = false
 aliases = ["/film/svema-astrum/svema-color/"]
 iso = 125
-process = "C-41"
-film_type = "Print"
+process = ["C-41"]
+types = "Print"
 formats = ["135"]
 +++

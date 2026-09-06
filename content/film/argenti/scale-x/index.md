@@ -4,6 +4,6 @@ brand = "Argenti"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Argenti"
 discontinued = false
 iso = 100
-process = "B&W"
-formats = ["135-36"]
+process = ["B&W"]
+formats = ["135"]
 +++

@@ -4,9 +4,9 @@ brand = "Kentmere"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Kentmere"
 discontinued = false
 iso = 200
-process = "B&W"
-film_type = "Print"
-formats = ["135-24/36", "30.5m", "120"]
+process = ["B&W"]
+types = "Print"
+formats = ["135", "30.5m", "120"]
 
 [[resources]]
 src = "pan-200.jpg"
