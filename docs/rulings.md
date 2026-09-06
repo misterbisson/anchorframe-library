@@ -291,12 +291,24 @@ whether or not the term has anything else to say about itself. So `formats`,
 
 Making a field browsable is not free, and three things had to change first.
 
-**A slash in a term is a path separator.** `CN-16 / C-41` slugs to
-`cn-16-/-c-41`, which Hugo builds two directories deep. `process` is now a list,
-which is also the truer reading: CN-16 *is* C-41 under Fujifilm's name, and
-someone browsing either should find the film. Splitting the fourteen values that
-carried a slash moved C-41 from 200 records to 315. The validator refuses a
-slash in a `process` or a `formats` entry for this reason.
+**Two names in one cell are two terms, never a combined one.** The sources
+use three separators to write one process under several names — `CN-16 / C-41`
+is Fujifilm's and the standard it matches, `Agfacolor, C-22` uses a comma, and
+`E-6 (C-41)` uses brackets. Each is two processes, each gets its own term in the
+same taxonomy, and no term ever stands for both. Doing this moved C-41 from 200
+records to 317 and B&W to 380, which is the whole point: a combined term is a
+page nobody browses to, holding films that are missing from the pages they
+belong on.
+
+The slash is the one that breaks the site rather than only the data, because a
+term slugs into a URL: `cn-16-/-c-41` is a page Hugo builds two directories
+deep. The other two just fragment the taxonomy quietly. The validator refuses
+all of them in a `process` or a `formats` entry.
+
+**A fragment can lose its family in the split.** `ORWO 5160 / 5165` is two ORWO
+processes, and taking the parts literally leaves a term called `5165` sitting on
+its own among the ORWO ones. A bare number inherits the prefix of the part
+before it; a named one — `AP 41 / ORWO 9165` — does not.
 
 **An exposure count is not a format.** 453 records said `135` and 207 said
 `135-36`, so asking for 35 mm film found two thirds of it. A 36-exposure roll

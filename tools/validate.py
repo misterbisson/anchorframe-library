@@ -43,6 +43,16 @@ FILM_FIELDS = ("iso", "process", "types", "formats")
 # that gets printed from a reversal that gets projected, which is the one thing
 # about a film that changes what you can do with the result.
 FILM_TYPES = ("Print", "Slide")
+
+# Characters the sources use to put two things in one cell: `CN-16 / C-41` is
+# Fujifilm's name and the standard it matches, `Agfacolor, C-22` uses a comma,
+# `E-6 (C-41)` uses brackets. Every one of those is two processes, and each gets
+# its own term in the same taxonomy — never a combined term standing for both.
+#
+# The slash is the one that also breaks the site rather than only the data: a
+# term slugs into the URL, so `cn-16-/-c-41` is a page Hugo builds two
+# directories deep.
+COMBINING = ("/", ",", "(", ")")
 # What every photograph has to carry, and why each one.
 IMAGE_PARAMS = {
     # Most of these licences require credit by name. A site-wide "images from
@@ -257,9 +267,10 @@ def validate(root: str) -> list[str]:
                 bad(rel, "process is a non-empty list of non-empty strings")
             elif len(set(proc)) != len(proc):
                 bad(rel, "process repeats a process")
-            elif any("/" in x for x in proc):
-                bad(rel, "a process with a slash in it becomes two path segments "
-                         "as a taxonomy term; name each process separately")
+            elif any(c in x for x in proc for c in COMBINING):
+                bad(rel, f"a process containing any of {COMBINING} names more than "
+                         "one process; each is its own term in the same taxonomy, "
+                         "never a combined one")
         ft = r.meta.get("types")
         if ft is not None and ft not in FILM_TYPES:
             bad(rel, f"types is one of {FILM_TYPES}, not {ft!r}")
@@ -270,9 +281,10 @@ def validate(root: str) -> list[str]:
                 bad(rel, "formats is a non-empty list of non-empty strings")
             elif len(set(fmts)) != len(fmts):
                 bad(rel, "formats repeats a format")
-            elif any("/" in x for x in fmts):
-                bad(rel, "a format with a slash in it becomes two path segments "
-                         "as a taxonomy term; name each format separately")
+            elif any(c in x for x in fmts for c in COMBINING):
+                bad(rel, f"a format containing any of {COMBINING} names more than "
+                         "one format; each is its own term in the same taxonomy, "
+                         "never a combined one")
         # A body takes a mount or has a lens built into it, never both: the two
         # infobox fields these came from answer one question between them.
         if mount and r.meta.get("fixed_lens"):
