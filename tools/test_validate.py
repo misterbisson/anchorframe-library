@@ -335,16 +335,21 @@ class EmulsionFacts(Fixture):
         self.emulsion('process = ["C-41", "C-41"]')
         self.assertObjects("process repeats a process")
 
-    def test_a_slash_in_a_process_is_caught(self):
-        # "CN-16 / C-41" as one term slugs to `cn-16-/-c-41`, which Hugo builds
-        # two directories deep. Two terms is also the truer reading: one is
-        # Fujifilm's name and the other the standard it is compatible with.
-        self.emulsion('process = ["CN-16 / C-41"]')
-        self.assertObjects("becomes two path segments")
+    def test_a_combined_process_term_is_caught(self):
+        # Each of these names two processes. They belong in the taxonomy as two
+        # terms, never as one term standing for both. The slash also breaks the
+        # site rather than only the data: `cn-16-/-c-41` is a page Hugo builds
+        # two directories deep.
+        for junk in ("CN-16 / C-41", "Agfacolor, C-22", "E-6 (C-41)"):
+            with self.subTest(junk=junk):
+                self.emulsion(f'process = ["{junk}"]')
+                self.assertObjects("never a combined one")
 
-    def test_a_slash_in_a_format_is_caught(self):
-        self.emulsion('formats = ["135-24/36"]')
-        self.assertObjects("becomes two path segments")
+    def test_a_combined_format_term_is_caught(self):
+        for junk in ("135-24/36", "135, 120", "120 (UK only)"):
+            with self.subTest(junk=junk):
+                self.emulsion(f'formats = ["{junk}"]')
+                self.assertObjects("never a combined one")
 
     def test_a_types_outside_the_two_values_is_caught(self):
         self.emulsion('types = "Positive"')
