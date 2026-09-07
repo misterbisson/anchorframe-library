@@ -118,6 +118,15 @@ describing it, so the number may only go down, and only deliberately.
   and 36 of them are 120. A ruling could name them; what stopped it is that the
   37th is the XPan, which is 35 mm, and a rule that has to list its own
   exception is a list rather than a rule.
+- **196 Olympus cameras cite one list article that names no format they could
+  take.** Six of its 211 description cells state one. Its 19 series headings do
+  — the OM, PEN, Trip and XA series are all 135, the Six and Flex series are
+  120, the Newpic series is APS — but that is nineteen assertions of outside
+  knowledge, not a fact read from the source, and it should be labelled as one
+  if it is ever made.
+- `List of Olympus products` names exactly one format, `135`, so nothing stops
+  a future format category on it from reaching all 196 records including the
+  120 and APS ones. Nothing in the tooling would notice.
 - **1,229 lens titles and 40% begin with their brand**, against 99% of cameras.
   That number is three different things and only one is a defect. 387 begin with
   that maker's own lens marque — `Fujifilm / Fujinon 100mm f/4.0`, `Nikon /
@@ -491,12 +500,12 @@ anywhere in that field also matches the Polaroid Impulse, whose `type` reads
 `3-element 116mm f/9.4 plastic lens`. **116 is a real film format**, so the wrong
 answer would look exactly like a right one and nothing downstream could tell.
 
-**A source naming a section of a shared article is refused**, because a category
-describes an article. 37 Hasselblad bodies cite `Hasselblad#V_System` and its
-neighbours, and that article's `120 film cameras` reached the XPan, which is a
-35 mm camera. Refusing them costs 36 records that really are 120 and takes
-coverage from 44% to 37% — measured both ways before choosing. Being 37% right
-beats being 44% right with a known-false entry nobody would catch.
+**A source naming a section of a shared article is read only where the article
+names one format**, because a category describes an article. 37 Hasselblad
+bodies cite `Hasselblad#V_System` and its neighbours, and that article's
+`120 film cameras` reached the XPan, which is a 35 mm camera. That article names
+120, 220 and 35 mm, so none of the 37 is read. The rule that first shipped here
+refused every fragment outright; what replaced it is below.
 
 **Instant cameras get nothing.** The films record their format as physical
 dimensions — Polaroid 600 film is `107x 88mm` — so an `instant` term would join
@@ -511,3 +520,48 @@ Terms are links now, on every record that has one. Printing `135` as text on the
 page that has it is a dead end when a page gathering every 135 camera and every
 135 film is one click away, and the taxonomies existed for two releases without
 anything linking into them from a record.
+
+## The guard was on the front door and the fact came in the back
+
+Refusing a source with a `#` in it was the right idea checked in the wrong
+place. **A Wikipedia redirect can carry a fragment the source URL does not
+show.** `Kodak_Instamatic_Reflex` has no `#` in it; it resolves to
+`Kodak Retina Reflex#Instamatic Reflex`, whose infobox says `35mm SLR camera`.
+So `Kodak Instamatic Reflex` shipped as `135`, and the Instamatic Reflex takes
+126 — which that same article says in as many words, four paragraphs down.
+
+**56 cameras got their format through that door**, while 37 Hasselblads were
+turned away at the front for exactly the risk it let through.
+
+What replaced the URL test is a test on the article: **a record that reaches an
+article through a fragment is read only when the article names a single film
+format.** Two formats in one article and nothing says which one is this
+record's; one format and there is nothing to be wrong about.
+
+Three alternatives were measured and rejected.
+
+*Refusing every fragment, now including redirects.* It removes the one false
+record by removing 55 others, 46 of which reach an article that names exactly
+one format.
+
+*Reading the section the fragment points at, rather than the article.* This is
+the obvious answer and it does not work: **3 of 87 sections state a format at
+all.** A section says what is different about a variant, and the format is what
+is the same.
+
+*Testing only the article's lead.* `Kodak Retina Reflex` leads with `35mm SLR
+camera` and names 126 further down. A lead-only test misses the single case this
+exists for.
+
+The cost is **10 records, 9 of them correct** — the Retina Reflex family, three
+Fuji GX680 bodies and two Pentax 645 bodies, whose articles mention a second
+format in passing. That is a 9-to-1 trade, and worth stating plainly rather than
+rounding off: what is bought is not one deletion but 46 claims that were right
+by luck becoming 46 claims that are right by rule.
+
+The test is necessary and not sufficient, and one case shows the gap.
+`List of Olympus products` is the source for 196 cameras and names only `135`,
+so it passes — while its table lists the Newpic series, which is APS, and the
+Six and Flex series, which are 120, describing both without ever naming a
+format. It is harmless only because that article has no format category and no
+infobox, so there is nothing to read from it either way.
