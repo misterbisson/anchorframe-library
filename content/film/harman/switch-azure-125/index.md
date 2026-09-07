@@ -3,6 +3,7 @@ title = "Harman Switch Azure 125"
 brand = "Harman"
 source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Harman"
 discontinued = false
+note = "Part of the Phoenix line, which is why its source page is the Phoenix one. Neither the name nor the carton says so, so anyone checking the claim would reasonably wonder whether that page carries this film."
 iso = 125
 process = ["C-41"]
 types = "Print"
