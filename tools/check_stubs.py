@@ -52,6 +52,33 @@ def built_pages(public: str, prefix: str) -> dict[str, str | None]:
     return out
 
 
+# Every href in the built markup, so a link into this site can be checked
+# against what was actually built.
+HREF = re.compile(r"""href=(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))""", re.IGNORECASE)
+
+
+def internal_links(public: str, prefix: str) -> dict[str, set[str]]:
+    """Links to a page of this site, mapped to the files that make them.
+
+    Only paths ending in `/` are collected. A stylesheet or an image is a file
+    rather than a page and is not in the page map, and the distinction is the
+    same one the router at the edge makes.
+    """
+    out: dict[str, set[str]] = {}
+    for dirpath, _, filenames in os.walk(public):
+        for name in filenames:
+            if not name.endswith(".html"):
+                continue
+            full = os.path.join(dirpath, name)
+            rel = os.path.relpath(full, public).replace(os.sep, "/")
+            for m in HREF.finditer(open(full, encoding="utf-8").read()):
+                href = (m.group(1) or m.group(2) or m.group(3) or "").split("#")[0]
+                if not href.startswith("/") or not href.endswith("/"):
+                    continue
+                out.setdefault(href.rstrip("/") or prefix, set()).add(rel)
+    return out
+
+
 def main() -> int:
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     public = sys.argv[1] if len(sys.argv) > 1 else os.path.join(root, "public")
@@ -99,6 +126,22 @@ def main() -> int:
         elif row["to"] not in target:
             problems.append(f"{row['from']}: redirects to {target}, manifest says {row['to']}")
 
+    # 4. Every link this site makes to a page of this site was built.
+    #
+    #    The masthead pointed at /mount/ for two days while the pages lived at
+    #    /library/mount/, on every page of the site, and nothing noticed —
+    #    `relURL` does not prepend the baseURL path, and the three links beside
+    #    it were built a different way and were right. A 404 in the navigation
+    #    is not something to find by clicking.
+    known = set(pages)
+    for href, sources in sorted(internal_links(public, prefix).items()):
+        if href in known:
+            continue
+        where = ", ".join(sorted(sources)[:3])
+        problems.append(f"{href}: linked from {where}"
+                        + (" and others" if len(sources) > 3 else "")
+                        + ", but no page was built there")
+
     for p in problems:
         print(p)
     if problems:
@@ -106,6 +149,7 @@ def main() -> int:
         return 1
     print(f"{len(pages)} pages built; {len(hugo_stubs)} redirect, "
           f"{len(records) - len(python_thin)} records have earned a page. "
+          f"{len(internal_links(public, prefix))} internal links all resolve. "
           "Hugo and the manifest agree.")
     return 0
 

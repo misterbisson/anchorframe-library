@@ -7,7 +7,7 @@ read from, and corrections are a pull request.</p>
 <ul class="brands">
   {{ range site.Sections.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
     <span class="count">{{ len .RegularPagesRecursive }}</span></li>{{ end }}
-  <li><a href="{{ "/mount/" | relURL }}">Mounts</a>
+  <li><a href="{{ (site.GetPage "/mount").RelPermalink }}">Mounts</a>
     <span class="count">{{ len site.Taxonomies.mount }}</span></li>
 </ul>
 {{ end }}

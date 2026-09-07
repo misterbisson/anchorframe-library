@@ -21,6 +21,18 @@ echo "── sheets"
 python3 tools/build.py
 
 echo "── site"
+# Remove the output first, because check_stubs.py reads this directory as
+# though it were the build and Hugo leaves behind files it no longer generates.
+# Renaming taxonomy terms left the old terms' pages in public/, so the page
+# count was 19 too high and the link check reported links from pages that no
+# longer exist.
+#
+# `--cleanDestinationDir` is the flag that sounds like it does this and does
+# not: a page planted in public/ survives a build carrying it. CI never sees
+# any of this because it checks out fresh, which is exactly why it only ever
+# goes wrong on the machine where someone is deciding whether their change is
+# finished.
+rm -rf public
 hugo --minify --panicOnWarning --destination public
 
 echo "── build against manifest"
