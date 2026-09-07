@@ -1,0 +1,18 @@
+{{- /*
+  A record's values for one taxonomy, linked to the pages that gather them.
+
+  Printing `135` as text on the page that has it is a dead end when a page
+  listing every 135 camera and every 135 film exists one click away. Hugo
+  resolves a term page from the term itself, so nothing here slugs a URL by
+  hand — which is how the Mounts link came to 404.
+*/ -}}
+{{- $plural := .plural -}}
+{{- $out := slice -}}
+{{- range $v := .values -}}
+  {{- with site.GetPage (printf "/%s/%s" $plural $v) -}}
+    {{- $out = $out | append (printf `<a href="%s">%s</a>` .RelPermalink $v) -}}
+  {{- else -}}
+    {{- $out = $out | append $v -}}
+  {{- end -}}
+{{- end -}}
+{{ delimit $out ", " | safeHTML }}

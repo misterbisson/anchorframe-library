@@ -2,6 +2,7 @@
 title = "Kodak 35 Rangefinder"
 brand = "Kodak"
 source = "https://en.wikipedia.org/wiki/Kodak_35_Rangefinder"
+formats = ["135"]
 
 [[resources]]
 src = "35-rangefinder.jpg"

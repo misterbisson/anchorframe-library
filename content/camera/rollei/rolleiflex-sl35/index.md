@@ -4,6 +4,7 @@ brand = "Rollei"
 source = "https://en.wikipedia.org/wiki/Rolleiflex_SL35"
 mount = ["qbm"]
 aliases = ["/camera/rolleiflex/sl35/"]
+formats = ["135"]
 
 [[resources]]
 src = "rolleiflex-sl35.jpg"

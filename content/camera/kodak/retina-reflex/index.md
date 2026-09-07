@@ -2,6 +2,7 @@
 title = "Kodak Retina Reflex"
 brand = "Kodak"
 source = "https://en.wikipedia.org/wiki/Kodak_Retina_Reflex"
+formats = ["135"]
 
 [[resources]]
 src = "retina-reflex.jpg"

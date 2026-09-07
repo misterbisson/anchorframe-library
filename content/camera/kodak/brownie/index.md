@@ -2,6 +2,7 @@
 title = "Kodak Brownie"
 brand = "Kodak"
 source = "https://en.wikipedia.org/wiki/Kodak_Brownie"
+formats = ["117"]
 
 [[resources]]
 src = "brownie.jpg"

@@ -2,6 +2,7 @@
 title = "Minolta Maxxum 4"
 brand = "Minolta"
 source = "https://en.wikipedia.org/wiki/Minolta_Maxxum_4"
+formats = ["135"]
 
 [[resources]]
 src = "maxxum-4.jpg"

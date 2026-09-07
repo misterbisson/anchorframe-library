@@ -3,6 +3,7 @@ title = "Minolta X-1"
 brand = "Minolta"
 source = "https://en.wikipedia.org/wiki/Minolta_X-1"
 mount = ["minolta-sr"]
+formats = ["135"]
 
 [[resources]]
 src = "x-1.jpg"

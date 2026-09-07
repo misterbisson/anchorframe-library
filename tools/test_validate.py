@@ -379,17 +379,29 @@ class EmulsionFacts(Fixture):
         self.emulsion('formats = ["135", "135"]')
         self.assertObjects("formats repeats a format")
 
-    def test_each_fact_is_refused_on_a_camera(self):
+    def test_a_camera_may_carry_a_format(self):
+        # A format is the one fact a body and a stock share, so both use the
+        # field and they meet on one term page.
+        self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                               'source = "https://x.example/a"\nformats = ["135"]')
+        self.assertEqual([], validate(self.root))
+
+    def test_a_lens_may_not_carry_a_format(self):
+        self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'
+                                'source = "https://x.example/a"\nformats = ["135"]')
+        self.assertObjects("formats belongs to a film or the camera")
+
+    def test_each_emulsion_fact_is_refused_on_a_camera(self):
         for f, v in (("iso", "400"), ("process", '["C-41"]'),
-                     ("types", '"Print"'), ("formats", '["135"]')):
+                     ("types", '"Print"')):
             with self.subTest(field=f):
                 self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
                                        f'source = "https://x.example/a"\n{f} = {v}')
                 self.assertObjects(f"{f} belongs to a film")
 
-    def test_each_fact_is_refused_on_a_lens(self):
+    def test_each_emulsion_fact_is_refused_on_a_lens(self):
         for f, v in (("iso", "400"), ("process", '["C-41"]'),
-                     ("types", '"Print"'), ("formats", '["135"]')):
+                     ("types", '"Print"')):
             with self.subTest(field=f):
                 self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\n'
                                         'brand = "Nikon"\n'

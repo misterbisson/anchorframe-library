@@ -73,6 +73,10 @@ because there the name and the seller agree.
 - `Leitz Minolta CL` sits on the Minolta shelf and begins with Leitz. Both made
   it, which is the whole point of the camera, so neither prefixing it nor moving
   it is obviously right.
+- The 37 Hasselblad bodies that cite a section of one article get no format,
+  and 36 of them are 120. A ruling could name them; what stopped it is that the
+  37th is the XPan, which is 35 mm, and a rule that has to list its own
+  exception is a list rather than a rule.
 - **1,229 lens titles and 40% begin with their brand**, against 99% of cameras.
   That number is three different things and only one is a defect. 387 begin with
   that maker's own lens marque — `Fujifilm / Fujinon 100mm f/4.0`, `Nikon /
@@ -424,3 +428,45 @@ was called.
 Every slug is unchanged, because the validator already allows a slug to drop a
 brand prefix its title repeats. No URL moved and no alias was needed for the
 renames; the only new aliases are the two merges.
+
+## A format is what joins a body to a stock
+
+Films recorded the format they were sold in and cameras did not, so the two
+halves of the library did not meet: someone holding a 120 body had no way to ask
+what 120 film exists. Cameras now carry the **same `formats` field with the same
+vocabulary**, which is the same reason `mount` is not lens-only — a fact shared
+by two kinds belongs to both or it connects nothing.
+
+**There is no format field on a camera to read.** Films had a Formats column in
+a table; the camera sources have nothing of the kind. What there is: the
+categories a person put the article in, which use the same numbers the film
+tables do, and the infobox `type`. Between them, 213 of 571 — 37%, or 63% of the
+cameras that have an article of their own.
+
+Three refusals, and each is a wrong answer avoided rather than a gap left open.
+
+**The format has to be the first thing `type` says.** A rule matching one
+anywhere in that field also matches the Polaroid Impulse, whose `type` reads
+`3-element 116mm f/9.4 plastic lens`. **116 is a real film format**, so the wrong
+answer would look exactly like a right one and nothing downstream could tell.
+
+**A source naming a section of a shared article is refused**, because a category
+describes an article. 37 Hasselblad bodies cite `Hasselblad#V_System` and its
+neighbours, and that article's `120 film cameras` reached the XPan, which is a
+35 mm camera. Refusing them costs 36 records that really are 120 and takes
+coverage from 44% to 37% — measured both ways before choosing. Being 37% right
+beats being 44% right with a known-false entry nobody would catch.
+
+**Instant cameras get nothing.** The films record their format as physical
+dimensions — Polaroid 600 film is `107x 88mm` — so an `instant` term would join
+nothing to anything.
+
+**Mount is deliberately not used to infer a format.** A Canon FD body takes
+35 mm film and every photographer knows it, and no source here says so. That is
+the inference that is right until the day it files a Hasselblad V mount as
+35 mm.
+
+Terms are links now, on every record that has one. Printing `135` as text on the
+page that has it is a dead end when a page gathering every 135 camera and every
+135 film is one click away, and the taxonomies existed for two releases without
+anything linking into them from a record.

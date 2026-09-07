@@ -3,6 +3,7 @@ title = "Leica M3"
 brand = "Leica"
 source = "https://en.wikipedia.org/wiki/Leica_M3"
 mount = ["leica-m"]
+formats = ["135"]
 
 [[resources]]
 src = "m3.jpg"

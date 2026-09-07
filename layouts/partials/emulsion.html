@@ -1,17 +1,24 @@
 {{- /*
-  A film's emulsion facts, compactly, for a row in a brand list.
+  The facts that tell two things on one shelf apart, compactly, for a list row.
 
-  Speed, process and whether it prints or projects are what tell two films on
-  one shelf apart, so they belong on the row. `formats` does not: a film is sold
-  in up to eight of them, and eight more tokens on every line of a 102-film page
-  buries the names the list exists to show. It renders on the record's own page,
-  where there is room.
+  A film shows speed, process and print-or-project. A camera shows the format it
+  takes, which is the same field a film carries and the reason the two meet on
+  one term page.
 
-  Every field is optional and independently so — the source leaves gaps, and a
+  A film does not show its formats here: it was sold in up to eight, and eight
+  more tokens on every line of a 102-film page buries the names the list exists
+  to show. A camera takes one or two, so they fit. Both render on the record's
+  own page, where there is room.
+
+  Every field is optional and independently so — the sources leave gaps, and a
   film with a process but no speed still says what it can.
 */ -}}
 {{- $bits := slice -}}
-{{- with .Params.iso }}{{ $bits = $bits | append (printf "ISO %d" .) }}{{ end -}}
-{{- with .Params.process }}{{ $bits = $bits | append . }}{{ end -}}
-{{- with .Params.types }}{{ $bits = $bits | append . }}{{ end -}}
+{{- if eq .Section "camera" -}}
+  {{- with .Params.formats }}{{ $bits = $bits | append (delimit . ", ") }}{{ end -}}
+{{- else -}}
+  {{- with .Params.iso }}{{ $bits = $bits | append (printf "ISO %d" .) }}{{ end -}}
+  {{- with .Params.process }}{{ $bits = $bits | append (delimit . ", ") }}{{ end -}}
+  {{- with .Params.types }}{{ $bits = $bits | append . }}{{ end -}}
+{{- end -}}
 {{- with $bits }}<span class="spec">{{ delimit . " · " }}</span>{{ end -}}
