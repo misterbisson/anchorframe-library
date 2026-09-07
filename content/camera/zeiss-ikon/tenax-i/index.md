@@ -1,5 +1,5 @@
 +++
-title = "Tenax I"
+title = "Zeiss Ikon Tenax I"
 brand = "Zeiss Ikon"
 source = "https://en.wikipedia.org/wiki/Tenax_I"
 fixed_lens = "Zeiss Tessar 37.5mm f/3.5 lens"

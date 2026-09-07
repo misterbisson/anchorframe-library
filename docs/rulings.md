@@ -66,9 +66,22 @@ because there the name and the seller agree.
   rather than silently folded into its neighbour.
 - `content/mount/contax-rf/` — the source says only `Contax bayonet`, which
   names the rangefinder mount and the SLR mount equally well.
-- The Hasselblad V lenses are incomplete: the source lists four 50 mm f/4
-  Distagons and five 80 mm f/2.8 Planars where this carries two of each. That
-  is a re-extraction, not a ruling.
+- Five camera titles say `Fuji` where the shelf says `Fujifilm` — `Fuji GS645`,
+  and four GX680 bodies. Wikipedia titles them that way and the company has used
+  both names. That is a question about the brand's spelling, not about name
+  ordering, and folding it into the maker-first rule would answer the wrong one.
+- `Leitz Minolta CL` sits on the Minolta shelf and begins with Leitz. Both made
+  it, which is the whole point of the camera, so neither prefixing it nor moving
+  it is obviously right.
+- **1,229 lens titles and 40% begin with their brand**, against 99% of cameras.
+  That number is three different things and only one is a defect. 387 begin with
+  that maker's own lens marque — `Fujifilm / Fujinon 100mm f/4.0`, `Nikon /
+  Nikkor` — which carries the maker under the name the glass was sold as. 78
+  begin with *another* maker's name — `Hasselblad / Schneider Variogon` — and
+  that is this repository's central idea rather than a mistake: the brand is who
+  sold it, the title says who ground the glass. The remaining **267 begin with
+  neither**, and they are the camera problem at scale: `Canon / FD 100–200mm
+  f/5.6` is a name nobody finds by typing Canon.
 
 ## A brand is a shelf, and a shelf can have more than one name
 
@@ -376,3 +389,38 @@ directory instead.
 CI never saw any of it, because CI checks out fresh. That is exactly what makes
 it worth fixing: the wrong answer only ever appeared on the machine where
 someone was deciding whether their change was done.
+
+
+## A name that does not begin with its maker, and the three reasons it might not
+
+The maker-first ruling landed for `Girl Scout Kodak` and `Soldier's Kodak` and
+stopped there. Nineteen camera titles did not begin with their brand, and
+looking at all nineteen at once showed they were four problems rather than one.
+
+**Two were the same camera twice.** `Nikkor F` and `Nikon F` were separate
+records, and `Nikkor F` is a *redirect* to `Nikon F` on Wikipedia. `Kodak Vest
+Pocket` and `Vest Pocket Kodak` were likewise one camera under two names, and
+every one of the five Vest Pocket sources — including Model B, Series III and
+Autographic — resolves to the single article `Vest Pocket Kodak`. The models are
+real and distinct, described there as first and second generation; the two bare
+records were not. Both merged into the record that had something to show, each
+keeping the other's address as an alias.
+
+**Checking the source article resolves this, and checking the title does not.**
+A source URL that is a redirect is invisible from the record, from the diff, and
+from the rendered page. Two of 573 cameras were duplicates and nothing had
+looked.
+
+**Nine had the maker inside the official name** — `Vest Pocket Kodak Model B`,
+`Semi Olympus`. These follow the precedent already recorded for `Soldier's
+Kodak`: keep the official name whole and put the maker in front of it, giving
+`Kodak Vest Pocket Kodak Model B`. It reads oddly and it is right, because both
+words are doing work — the first says who sold it and the rest is what the thing
+was called.
+
+**Four had no maker at all** — `Tenax I`, `Tenax II`, `Spice Cam`, `Instax Mini
+11` — and those simply take the prefix.
+
+Every slug is unchanged, because the validator already allows a slug to drop a
+brand prefix its title repeats. No URL moved and no alias was needed for the
+renames; the only new aliases are the two merges.

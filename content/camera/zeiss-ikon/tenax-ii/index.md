@@ -1,5 +1,5 @@
 +++
-title = "Tenax II"
+title = "Zeiss Ikon Tenax II"
 brand = "Zeiss Ikon"
 source = "https://en.wikipedia.org/wiki/Tenax_II"
 mount = ["tenax-bayonet"]
