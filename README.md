@@ -9,12 +9,19 @@ a macOS app for scanned film. Neither of those is a reason to be shy about
 contributing: the data is CC BY-SA 4.0 and useful to anything that needs to know
 what a camera is called.
 
-| | records | brands |
-| --- | --- | --- |
-| cameras | 573 | 23 |
-| lenses | 1,206 | 33 |
-| films | 980 | 57 |
-| mounts | 28 | — |
+<!-- counts:start -->
+| | records | brands | with a photograph |
+| --- | --- | --- | --- |
+| cameras | 571 | 23 | 190 |
+| lenses | 1,229 | 33 | 0 |
+| films | 980 | 52 | 70 |
+| mounts | 28 | — | — |
+
+Of the 980 films, **292 are still in production**.
+What the two source articles say about them: speed on 889, process on
+932, format on 900, and print-or-slide on 973 —
+each one a term you can browse by.
+<!-- counts:end -->
 
 ## The one idea the whole thing turns on
 
@@ -159,9 +166,10 @@ applies**: build on this and say so, under the same terms.
 
 Named because a documented gap is a decision and an undocumented one is a trap.
 
-- **Photographs, so far, only of cameras.** 190 of 573 have one, which is what
-  Wikipedia has: 341 cameras have an article of their own, 201 of those have a
-  lead image, and 11 of *those* are refused — 8 name no author, so the licence
+- **Photographs are mostly of cameras.** The table above says how many of each
+  kind carry one. That ceiling is Wikipedia's rather than ours: measured on
+  2026-09-04, 341 cameras had an article of their own, 201 of those a lead
+  image, and 11 of *those* are refused — 8 name no author, so the licence
   cannot be satisfied, 2 are local en.wiki uploads rather than Commons files,
   and 1 states no licence.
 
@@ -175,23 +183,27 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   photograph of a box has two copyright holders — whoever pressed the shutter
   and whoever drew the box — and a contributor can only license their half. The
   free-licensed snapshot is the *unsafe* one; the manufacturer's own product
-  shot, where one owner holds both halves, is not. Five films carry one, marked
+  shot, where one owner holds both halves, is not. The films that carry one are counted above, each marked
   `fair-use`, which is a use and not a licence and so does not travel to anyone
   reusing this data. [`tools/film-boxes`](https://github.com/misterbisson/anchorframe/tree/main/tools/film-boxes) in the app repository says
   where each brand's own catalogue is and which brands have none — it is not
   here for the same reason `tools/vocabulary-build` is not: a public index
   should not also ship the thing that fetches from vendors under its name.
-  292 films are in production and 688 are not, and a discontinued stock has
-  nobody left to ask.
-- **No film detail.** Manufacturer, ISO, process, type and colour were all
-  extracted and then cut, because nothing read them. A published reference is a
-  reader, so they can come back — that is a re-run of the extraction, not a
-  ruling.
-- **The Hasselblad V lenses are incomplete.** The source distinguishes barrel
-  versions — C, CF, CFi, CFE, F, FE, CB — in a column the extraction never read.
-  Four names collided and were resolved from the source; several products the
-  table lists are still missing entirely. The H-system lenses are absent for a
-  different reason: the article does not enumerate them.
+  Most of the films here are discontinued, and a discontinued stock has nobody
+  left to ask.
+- **Four of the source's eleven columns, not all of them.** Speed, process,
+  format and print-or-slide are recorded and browsable; the counts are in the
+  table above. Five columns are refused for reasons in
+  [docs/rulings.md](docs/rulings.md), and the short version is that each would
+  mean publishing something the source does not support: `Base` is a column of
+  `T` and `P` the article never defines, `Dates` is mostly a question mark or a
+  decade, `Origin` describes the factory rather than the emulsion, and `Details`
+  and `Replaced by` are prose and a relation that would change the shape of the
+  site.
+- **The Hasselblad H-system lenses are absent**, because the article does not
+  enumerate them. The V-system barrel versions it does enumerate — C, CF, CFi,
+  CFE, F, FE, CB — are all here; that column went unread until it was measured
+  against the source and 23 editions were missing.
 - **Only 9 of the 28 mounts actually join a body to its glass.** Sixteen have
   bodies and no lenses — Canon FL, Contax G, Konica AR and KM, M42, both Mamiya
   mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM, Ricoh RK
