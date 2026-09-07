@@ -14,12 +14,12 @@ what a camera is called.
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
 | lenses | 1,229 | 33 | 0 |
-| films | 980 | 52 | 70 |
+| films | 987 | 52 | 95 |
 | mounts | 28 | — | — |
 
-Of the 980 films, **292 are still in production**.
-What the two source articles say about them: speed on 889, process on
-932, format on 900, and print-or-slide on 973 —
+Of the 987 films, **299 are still in production**.
+What the two source articles say about them: speed on 896, process on
+939, format on 907, and print-or-slide on 980 —
 each one a term you can browse by.
 <!-- counts:end -->
 
