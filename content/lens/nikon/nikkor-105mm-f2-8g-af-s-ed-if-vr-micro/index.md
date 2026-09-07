@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 105mm f/2.8G AF-S ED IF VR Micro"
+title = "Nikon Nikkor 105mm f/2.8G AF-S ED IF VR Micro"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Macro"
 mount = ["nikon-f"]

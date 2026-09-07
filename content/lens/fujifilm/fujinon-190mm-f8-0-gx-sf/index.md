@@ -1,5 +1,5 @@
 +++
-title = "Fujinon 190mm f/8.0 GX SF"
+title = "Fujifilm Fujinon 190mm f/8.0 GX SF"
 brand = "Fujifilm"
 source = "https://en.wikipedia.org/wiki/Fuji_GX680#Lenses"
 mount = ["fuji-gx680"]

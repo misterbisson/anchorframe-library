@@ -59,6 +59,47 @@ Every other multi-maker source was checked before this became a rule — the Can
 FD, Leica, Olympus OM and Pen F lists all resolve correctly on their own,
 because there the name and the seller agree.
 
+## A lens name carries its brand, because a list has no directory
+
+The brand is the path here, so `FD 100mm f/2` under `/lens/canon/` says Canon
+without repeating it, and for two hundred pull requests that was enough. It is
+not enough anywhere the path is gone. Read as a flat list — a suggestion field,
+an export, a search result — Nikon's 275 lenses said `Nikkor` and never `Nikon`,
+and 741 of 1,229 names did not name the shelf they came off.
+
+So a lens title carries its brand. 605 titles gained one across nine brands, and
+**no slug moved**: `validate.py` already accepted a title whose slug drops a
+repeated brand prefix, which is what made this a rename of names rather than of
+addresses. The cost, named: on `/lens/canon/` every row now begins with the word
+Canon, under a heading that says Canon. That is the price of the name being true
+away from the page, and away from the page is where a name is used.
+
+The rule is **the brand's words appear in the title**, not *at the front of* it.
+`SMC Pentax 500mm f/8` and `Carl Zeiss 100mm f2 Makro-Planar` already say who
+sold them; prefixing on position alone would have written `Pentax SMC Pentax`
+and `Zeiss Carl Zeiss`, and `Schneider-Kreuznach D-Xenogon` — one brand spelled
+with a hyphen — would have gained a second copy of itself. 515 titles were left
+alone by that test.
+
+**Nine brands took it; Pentax did not, and that is a defect rather than a
+style.** 109 lenses filed under Pentax came off `Pentax K-mount`, an article
+that lists the **third-party** glass fitting K: Kiron, Revuenon, Porst, Sun,
+Laowa, Irix, and the whole Zenit line — Zenitar, Helios, Mir, Peleng, Volna.
+Their brand is the mount's brand because the article they were read from is the
+mount's. `Pentax Kiron 28–70mm f4 Macro` is a lens that never existed, and
+writing it would turn a filing error into a claim.
+
+This is the same mechanism as [the section heading was the
+factory](#the-section-heading-was-the-factory-not-the-badge) and the reason
+`Canon P` once arrived as `Leica Canon P`: **the article's own organising
+principle is not a fact about the thing.** The difference is that here it was
+caught before the name was written rather than after. Two of the 109 are
+genuinely Pentax — `Takumar 135mm f2.5` and `Takumar A 28–80mm` — and the rest
+want a person establishing who sold each one.
+
+`test_a_lens_name_says_whose_shelf_it_came_off` counts the held set rather than
+describing it, so the number may only go down, and only deliberately.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes

@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 10mm f/5.6 OP"
+title = "Nikon Nikkor 10mm f/5.6 OP"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Fisheye_lenses"
 mount = ["nikon-f"]

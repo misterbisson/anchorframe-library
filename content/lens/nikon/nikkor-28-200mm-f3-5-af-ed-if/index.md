@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 28–200mm f/3.5 AF ED IF"
+title = "Nikon Nikkor 28–200mm f/3.5 AF ED IF"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#FX_format_zooms"
 mount = ["nikon-f"]

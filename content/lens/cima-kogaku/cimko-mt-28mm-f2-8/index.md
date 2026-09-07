@@ -1,5 +1,5 @@
 +++
-title = "Cimko MT 28mm f2.8"
+title = "Cima Kogaku Cimko MT 28mm f2.8"
 brand = "Cima Kogaku"
 source = "https://en.wikipedia.org/wiki/Pentax_K-mount#Cima_Kogaku"
 mount = ["pentax-k"]

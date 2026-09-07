@@ -1,5 +1,5 @@
 +++
-title = "FD 80–200mm f/4 S.S.C."
+title = "Canon FD 80–200mm f/4 S.S.C."
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_FD_lens_mount#FD_lenses"
 mount = ["canon-fd"]

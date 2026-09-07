@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 85mm f/2.8D"
+title = "Nikon Nikkor 85mm f/2.8D"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Specifications"
 mount = ["nikon-f"]

@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 18–55mm f/3.5-5.6G AF-P VR DX"
+title = "Nikon Nikkor 18–55mm f/3.5-5.6G AF-P VR DX"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#DX_format_zooms"
 mount = ["nikon-f"]

@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 600mm f/4D ED-IF AF-I"
+title = "Nikon Nikkor 600mm f/4D ED-IF AF-I"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Super-telephoto"
 mount = ["nikon-f"]

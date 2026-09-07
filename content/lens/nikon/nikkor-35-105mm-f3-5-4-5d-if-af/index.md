@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 35–105mm f/3.5-4.5D IF AF"
+title = "Nikon Nikkor 35–105mm f/3.5-4.5D IF AF"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#FX_format_zooms"
 mount = ["nikon-f"]

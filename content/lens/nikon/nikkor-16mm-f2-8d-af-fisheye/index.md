@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 16mm f/2.8D AF Fisheye"
+title = "Nikon Nikkor 16mm f/2.8D AF Fisheye"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Wide-angle"
 mount = ["nikon-f"]

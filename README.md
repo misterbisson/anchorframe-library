@@ -44,6 +44,13 @@ lens is filed under Hasselblad —
 alternate under `zeiss` that redirects to it. Who made a camera and whose name
 is on it are different questions, and this answers the second.
 
+**The brand is in the name as well as the path**, because a name is used away
+from the path: read as a flat list, `FD 100mm f/2` names no shelf and `Nikkor`
+is not a company anyone bought from. 109 lenses are the exception and it is a
+known defect rather than a style — they came off `Pentax K-mount`, which lists
+third-party glass fitting K, so their brand is the mount's rather than the
+seller's. [`docs/rulings.md`](docs/rulings.md) has both halves.
+
 ## URLs
 
 ```

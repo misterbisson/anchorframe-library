@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 180mm f/2.3 DEM APO"
+title = "Nikon Nikkor 180mm f/2.3 DEM APO"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Ang%C3%A9nieux"
 mount = ["nikon-f"]

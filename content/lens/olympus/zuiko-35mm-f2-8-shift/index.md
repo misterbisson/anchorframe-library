@@ -1,5 +1,5 @@
 +++
-title = "Zuiko 35mm F2.8 Shift"
+title = "Olympus Zuiko 35mm F2.8 Shift"
 brand = "Olympus"
 source = "https://en.wikipedia.org/wiki/Olympus_OM_system#Lenses"
 mount = ["olympus-om"]

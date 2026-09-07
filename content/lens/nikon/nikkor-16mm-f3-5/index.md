@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 16mm f/3.5"
+title = "Nikon Nikkor 16mm f/3.5"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Fisheye_lenses"
 mount = ["nikon-f"]

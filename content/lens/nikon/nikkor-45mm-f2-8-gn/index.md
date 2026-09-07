@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 45mm f/2.8 GN"
+title = "Nikon Nikkor 45mm f/2.8 GN"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Normal_lenses"
 mount = ["nikon-f"]

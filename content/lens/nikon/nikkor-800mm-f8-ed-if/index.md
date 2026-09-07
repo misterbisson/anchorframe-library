@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 800mm f/8 ED-IF"
+title = "Nikon Nikkor 800mm f/8 ED-IF"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Telephoto_lenses"
 mount = ["nikon-f"]
