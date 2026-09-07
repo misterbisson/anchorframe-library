@@ -58,6 +58,16 @@ enableRobotsTXT = false
   film = "film stocks"
 
 [params]
+  # The site this is a section of. `baseURL` above is this section's root, so
+  # nothing here could reach the apex without naming it: for months every page
+  # linked back only to /library/ and the two halves of one hostname could not
+  # reach each other.
+  #
+  # The identical literal is pinned in misterbisson/anchorframe-site's
+  # tools/test_library_link.py. Neither repository can read the other, so both
+  # assert the same string and either one drifting turns its own side red --
+  # the arrangement already used for the OIDC subject in test_deploy_subject.py.
+  app = "https://anchorframe.app/"
   license = "CC BY-SA 4.0"
   licenseURL = "https://creativecommons.org/licenses/by-sa/4.0/"
   repo = "https://github.com/misterbisson/anchorframe-library"

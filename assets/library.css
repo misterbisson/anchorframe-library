@@ -39,7 +39,13 @@ a:hover { text-decoration-thickness: 2px; }
 header.masthead { border-bottom: 1px solid var(--rule); }
 header.masthead .wrap { display: flex; align-items: baseline; gap: 1rem;
                         padding-block: 0.9rem; flex-wrap: wrap; }
-header.masthead a.wordmark { font-weight: 600; color: var(--ink); text-decoration: none; }
+/* One wordmark, two links: "Anchorframe" leaves this section, "equipment
+   library" returns to its root. inline-flex with a gap rather than relying on
+   the whitespace between the tags, which --minify is entitled to collapse. */
+header.masthead .wordmark { display: inline-flex; gap: 0.35rem; font-weight: 600; }
+header.masthead .wordmark a { color: var(--ink); text-decoration: none; }
+header.masthead .wordmark a:hover { text-decoration: underline; }
+header.masthead .wordmark a + a { font-weight: 400; color: var(--ink-soft); }
 header.masthead nav { display: flex; gap: 1rem; font-size: 0.875rem; }
 
 /* Breadcrumbs: four levels deep is easy to get lost in. */
