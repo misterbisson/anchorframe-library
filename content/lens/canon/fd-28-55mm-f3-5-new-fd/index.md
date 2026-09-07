@@ -1,5 +1,5 @@
 +++
-title = "FD 28–55mm f/3.5"
+title = "Canon FD 28–55mm f/3.5"
 variant = "New FD"
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_FD_lens_mount#FD_lenses"

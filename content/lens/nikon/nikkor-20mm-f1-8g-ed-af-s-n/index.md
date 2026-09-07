@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 20mm f/1.8G ED AF-S N"
+title = "Nikon Nikkor 20mm f/1.8G ED AF-S N"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Wide-angle"
 mount = ["nikon-f"]

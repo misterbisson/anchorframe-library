@@ -1,5 +1,5 @@
 +++
-title = "FD 24mm f/1.4L"
+title = "Canon FD 24mm f/1.4L"
 variant = "New FD"
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_FD_lens_mount#FD_lenses"

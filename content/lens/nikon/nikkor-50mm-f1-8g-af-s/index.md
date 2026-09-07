@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 50mm f/1.8G AF-S"
+title = "Nikon Nikkor 50mm f/1.8G AF-S"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Mid-range"
 mount = ["nikon-f"]

@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 10.5mm f/2.8G ED AF DX Fisheye"
+title = "Nikon Nikkor 10.5mm f/2.8G ED AF DX Fisheye"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#DX_format_primes"
 mount = ["nikon-f"]

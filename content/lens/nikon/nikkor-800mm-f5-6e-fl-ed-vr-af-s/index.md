@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 800mm f/5.6E FL ED VR AF-S"
+title = "Nikon Nikkor 800mm f/5.6E FL ED VR AF-S"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Super-telephoto"
 mount = ["nikon-f"]

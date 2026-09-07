@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 105mm f/2.8"
+title = "Nikon Nikkor 105mm f/2.8"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Micro_and_Medical"
 mount = ["nikon-f"]

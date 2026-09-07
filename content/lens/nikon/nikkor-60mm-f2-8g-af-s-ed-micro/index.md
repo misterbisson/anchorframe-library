@@ -1,5 +1,5 @@
 +++
-title = "Nikkor 60mm f/2.8G AF-S ED Micro"
+title = "Nikon Nikkor 60mm f/2.8G AF-S ED Micro"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F-mount#Macro"
 mount = ["nikon-f"]

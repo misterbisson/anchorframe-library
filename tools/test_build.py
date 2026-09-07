@@ -1,6 +1,7 @@
 """The sheets and the redirect manifest, checked against the real corpus."""
 
 import os
+import re
 import unittest
 
 from build import redirects, sheets
@@ -55,6 +56,43 @@ class Build(unittest.TestCase):
                               "print identically")
                 seen[key] = e["slug"]
 
+    def test_a_lens_name_says_whose_shelf_it_came_off(self):
+        """A lens name carries its brand, because a flat list has no directory.
+
+        On this site the brand is the path, so `FD 100mm f/2` under
+        `/lens/canon/` is unambiguous. Read as a list it is not: a person typing
+        into a field, or reading an export, gets `FD 100mm f/2` with nothing
+        saying Canon. Nikon's 275 lenses said Nikkor and never Nikon.
+
+        The exception is counted rather than described, because it is a defect
+        and not a style. Every Pentax lens still missing its brand came off
+        `Pentax K-mount`, which lists **third-party** glass that fits K — Kiron,
+        Revuenon, Porst, Laowa, the Zenit line — filed under the mount's brand
+        because that is the article it was read from. Their `brand` is wrong
+        today; prefixing would only state it out loud, and `Pentax Kiron 28–70mm
+        f4 Macro` is a lens that never existed. See docs/rulings.md.
+
+        So the number may only go **down**, and only by someone establishing who
+        actually sold one of them.
+        """
+        def tokens(value):
+            # Split the way the slug does. `Schneider-Kreuznach D-Xenogon` is
+            # two words of the brand written with a hyphen, and splitting on
+            # whitespace alone reads it as neither.
+            return {w for w in re.split(r"[^0-9a-z]+", value.casefold()) if w}
+
+        held = []
+        for e in sheets(ROOT)["lens"]["entries"]:
+            if tokens(e["brand"]) <= tokens(e["name"]):
+                continue
+            held.append(e)
+            if e["brand"] != "Pentax":
+                self.fail(f"{e['name']!r} is a {e['brand']} and does not say so — "
+                          "a lens name carries its brand")
+        self.assertEqual(len(held), 109,
+                         "the K-mount third-party lenses are the only ones held; "
+                         "this may only shrink, by resolving who sold one")
+
     def test_the_editions_the_source_distinguishes_survive_the_sheet(self):
         """The thirty collisions, by name, rather than only in the aggregate.
 
@@ -64,7 +102,7 @@ class Build(unittest.TestCase):
         of a lens the source lists twice, distinguishable, from one sheet.
         """
         lenses = [e for e in sheets(ROOT)["lens"]["entries"]
-                  if e["name"] == "FD 100mm f/2.8"]
+                  if e["name"] == "Canon FD 100mm f/2.8"]
         self.assertEqual(len(lenses), 2, "the source lists both barrels")
         self.assertEqual({e.get("variant") for e in lenses}, {None, "New FD"})
 

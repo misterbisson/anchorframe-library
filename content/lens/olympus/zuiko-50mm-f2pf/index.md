@@ -1,5 +1,5 @@
 +++
-title = "Zuiko 50mm F2PF"
+title = "Olympus Zuiko 50mm F2PF"
 brand = "Olympus"
 source = "https://en.wikipedia.org/wiki/Olympus_OM_system#Lenses"
 mount = ["olympus-om"]
