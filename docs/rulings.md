@@ -343,3 +343,36 @@ anyone wants; the useful version of it is a word, not a flag.
 The link into each taxonomy is computed from what a kind's records actually
 carry, so film offers speeds and cameras do not, and adding a field does not
 mean remembering to add a link.
+
+## The Mounts link 404'd for two days on every page
+
+The masthead pointed at `/mount/` while the pages were at `/library/mount/`.
+The three links beside it were built with `(site.GetPage "/camera").RelPermalink`
+and were right; the fourth used `{{ "/mount/" | relURL }}`, and **`relURL` does
+not prepend the `baseURL` path.** It looks like the function for exactly this
+and it is not, which is why one line out of four was wrong and read fine.
+
+Two things follow, and the second matters more.
+
+**Ask Hugo for a URL rather than constructing one.** `url_prefix()` in
+`content.py` already says this for the Python side — *"Hugo is the authority on
+what a URL is"* — and the templates had an exception nobody had noticed. There
+is now no hand-built internal link in `layouts/`.
+
+**Nothing checked links, which is why it lived.** `tools/check_stubs.py` walked
+every built page to reconcile it against the manifest and never looked at what
+those pages linked to. It does now: every internal href ending in `/` has to be
+a page that was built. Putting the old line back turns the check red, on 500-odd
+pages at once.
+
+That check immediately found a second thing. **Hugo leaves behind output it no
+longer generates**, and `check_stubs.py` reads `public/` as though it were the
+build — so renamed taxonomy terms were still sitting there, the page count was
+19 too high, and the link check reported links from pages that no longer exist.
+`--cleanDestinationDir` is the flag that sounds like it fixes this and does not:
+a page planted in `public/` survives a build carrying it. `check.sh` removes the
+directory instead.
+
+CI never saw any of it, because CI checks out fresh. That is exactly what makes
+it worth fixing: the wrong answer only ever appeared on the machine where
+someone was deciding whether their change was done.
