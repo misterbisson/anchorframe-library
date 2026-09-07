@@ -40,7 +40,15 @@ def sheets(root: str) -> dict[str, dict]:
                  "url": r.url, "source": r.meta["source"], "promoted": r.promoted}
             if r.meta.get("mount"):
                 e["mount"] = r.meta["mount"][0]
-            for k in ("fixed_lens", "discontinued", "note", "aliases"):
+            # `variant` is part of what a record *is*, not decoration on it.
+            # Thirty lens titles here name two products — `FD 100mm f/2.8` is
+            # both the breech-lock original and the 1979 New FD — and the
+            # edition is the only thing that tells them apart. Four templates
+            # ask `partials/name.html` for a name and get the edition with it;
+            # the sheets were the fifth asker and the one that did not, so a
+            # consumer building a flat list of names printed 72 records as 30
+            # repeated lines with no way to choose between them.
+            for k in ("variant", "fixed_lens", "discontinued", "note", "aliases"):
                 if k in r.meta:
                     e[k] = r.meta[k]
             entries.append(e)
