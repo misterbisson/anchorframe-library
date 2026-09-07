@@ -134,6 +134,40 @@ per company, who counts as the seller — are in
 [`docs/rulings.md`](docs/rulings.md), each with the evidence that decided it, so
 they can be argued with rather than rediscovered.
 
+## A section of another site, and the links that say so
+
+This is published under a **prefix of `anchorframe.app`**, not on a host of its
+own — `misterbisson/anchorframe-site` owns the bucket and the distribution, and
+its IAM policy permits this repository exactly one prefix, `library/`. That is
+the boundary; there is no licensing reason for a separate origin, because CC
+BY-SA attaches to works rather than to hosts.
+
+Sharing a hostname is not the same as being reachable from it, and for months it
+was not: `baseURL` here is this section's root, so every page linked back only to
+`/library/`, and nothing on the site linked in. Two halves of one hostname that
+could not reach each other. Nothing 404s when that is true and no build goes red,
+which is why it lasted — the cost is a reader who arrives on a camera from a
+search engine and has no path to the app this index feeds, and these are the
+pages a search engine has any reason to return.
+
+So the masthead's wordmark is **two links**: `Anchorframe` leaves for the apex,
+`equipment library` returns to this root. The breadcrumbs start one level higher
+for the same reason, and the footer says what the index is for. The apex is
+`params.app` in `hugo.toml`, written once.
+
+**`tools/test_library_masthead.py` pins the literal, and the other repository
+pins the same one** in its `tools/test_library_link.py`, which also asserts the
+inbound half — `Library` in that site's nav and footer. Neither repository can
+read the other; both assert the same string; either one drifting turns its own
+side red. Exactly the arrangement already used for the OIDC subject in
+[`tools/test_deploy_subject.py`](tools/test_deploy_subject.py).
+
+What no test here can do is prove the apex answers. `tools/check_stubs.py` checks
+links into *this* site and skips absolute URLs by construction, which is right —
+a link checker that fetched the wider web would go red on somebody else's outage.
+What does cover it is `deploy.yml`, which already curls `/privacy` and `/support`
+on every publish because this job shares a distribution with them.
+
 ## Where it came from, and what that means for licensing
 
 The seed corpus was extracted from English Wikipedia by

@@ -34,7 +34,14 @@
 </head>
 <body>
 <header class="masthead"><div class="wrap">
-  <a class="wordmark" href="{{ site.BaseURL }}">{{ site.Title }}</a>
+  {{/* Two targets, one wordmark. The first word is the way out of this
+       section: without it a visitor who arrives on a camera from a search
+       engine has no path to the app the index exists to serve, which was the
+       state of every page here until this. */}}
+  <span class="wordmark">
+    <a href="{{ site.Params.app }}">Anchorframe</a>
+    <a href="{{ site.BaseURL }}">equipment library</a>
+  </span>
   <nav>
     <a href="{{ (site.GetPage "/camera").RelPermalink }}">Cameras</a>
     <a href="{{ (site.GetPage "/lens").RelPermalink }}">Lenses</a>
@@ -46,6 +53,7 @@
 {{ if not .IsHome }}
 {{/* Four levels is easy to get lost in: library › lens › hasselblad › a lens. */}}
 <nav class="crumbs">
+  <span><a href="{{ site.Params.app }}">Anchorframe</a></span>
   <span><a href="{{ site.BaseURL }}">Library</a></span>
   {{ range .Ancestors.Reverse }}{{ if not .IsHome }}<span><a href="{{ .RelPermalink }}">{{ .Title }}</a></span>{{ end }}{{ end }}
   {{ .Title }}
@@ -58,6 +66,10 @@
   and were extracted from English&nbsp;Wikipedia. Each entry links the source it
   was read from; images carry their own credit beside them.
   <a href="{{ site.Params.repo }}">Corrections and additions</a> are a pull request.</p>
+  <p>This index is where <a href="{{ site.Params.app }}">Anchorframe</a>, a macOS
+  app for scanned film, gets the camera, lens and film&nbsp;stock names it
+  suggests — and it is useful on its own to anything that needs to know what a
+  camera is called.</p>
 </footer>
 </div>
 </body>
