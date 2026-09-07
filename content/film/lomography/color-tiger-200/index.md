@@ -7,4 +7,14 @@ iso = 200
 process = ["C-41"]
 types = "Print"
 formats = ["110"]
+
+[[resources]]
+src = "color-tiger-200.jpg"
+[resources.params]
+credit = "Lomographische AG"
+license = "fair-use"
+copyright = "Lomographische AG"
+alt = "An olive Color Tiger 110 carton beside its 110 cartridge, marked 110 POCKET FILM 200"
+sourcePage = "https://shop.lomography.com/us/film"
+verified = "2026-09-07"
 +++
