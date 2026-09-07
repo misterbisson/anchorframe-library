@@ -14,7 +14,7 @@ what a camera is called.
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
 | lenses | 1,229 | 33 | 0 |
-| films | 987 | 52 | 119 |
+| films | 987 | 52 | 120 |
 | mounts | 28 | — | — |
 
 Of the 987 films, **299 are still in production**.
