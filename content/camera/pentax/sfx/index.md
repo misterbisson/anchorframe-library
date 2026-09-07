@@ -2,6 +2,7 @@
 title = "Pentax SFX"
 brand = "Pentax"
 source = "https://en.wikipedia.org/wiki/Pentax_SFX"
+formats = ["135"]
 
 [[resources]]
 src = "sfx.jpg"

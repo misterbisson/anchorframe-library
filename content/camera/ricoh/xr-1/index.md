@@ -3,6 +3,7 @@ title = "Ricoh XR-1"
 brand = "Ricoh"
 source = "https://en.wikipedia.org/wiki/Ricoh_XR-1"
 mount = ["pentax-k"]
+formats = ["135"]
 
 [[resources]]
 src = "xr-1.jpg"

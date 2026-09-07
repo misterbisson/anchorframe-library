@@ -30,7 +30,12 @@ OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant",
 # Facts about an emulsion, and only about an emulsion: a camera has no ISO of
 # its own and a lens has no development process, so these are refused elsewhere
 # the same way `discontinued` is.
-FILM_FIELDS = ("iso", "process", "types", "formats")
+#
+# `formats` is deliberately not among them. A format is the one fact a body and
+# a stock share — it is what says a camera can take a film — so a camera carries
+# the same field with the same vocabulary and they meet on one term page. That
+# is the same reason `mount` is not lens-only.
+FILM_FIELDS = ("iso", "process", "types")
 
 # `types`, plural, because Hugo owns the singular `type` in front matter and
 # uses it to pick a layout: `type = "Print"` would send every print film looking
@@ -275,6 +280,8 @@ def validate(root: str) -> list[str]:
         if ft is not None and ft not in FILM_TYPES:
             bad(rel, f"types is one of {FILM_TYPES}, not {ft!r}")
         fmts = r.meta.get("formats")
+        if r.kind == "lens" and fmts is not None:
+            bad(rel, "formats belongs to a film or the camera that takes it")
         if fmts is not None:
             if (not isinstance(fmts, list) or not fmts
                     or not all(isinstance(x, str) and x.strip() for x in fmts)):

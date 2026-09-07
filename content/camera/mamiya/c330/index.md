@@ -2,6 +2,7 @@
 title = "Mamiya C330"
 brand = "Mamiya"
 source = "https://en.wikipedia.org/wiki/Mamiya_C330"
+formats = ["120"]
 
 [[resources]]
 src = "c330.jpg"

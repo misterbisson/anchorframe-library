@@ -3,6 +3,7 @@ title = "Canon VT"
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_VT"
 mount = ["leica-m39"]
+formats = ["135"]
 
 [[resources]]
 src = "vt.jpg"

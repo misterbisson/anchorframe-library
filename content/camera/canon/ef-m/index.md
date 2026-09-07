@@ -4,6 +4,7 @@ aliases = ["/camera/canon/ef-m-camera/"]
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_EF-M_camera"
 mount = ["canon-ef"]
+formats = ["135"]
 
 [[resources]]
 src = "ef-m.jpg"

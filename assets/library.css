@@ -77,6 +77,9 @@ ul.items li:target { background: color-mix(in srgb, var(--accent) 14%, transpare
                      margin-inline: -0.35rem; }
 ul.items li .variant, ul.items li .mount, ul.items li .spec {
   color: var(--ink-faint); font-size: 0.8125rem; }
+/* A camera can carry both a mount and a format, and the two spans are adjacent
+   in the markup: without this they render as "Canon FD135". */
+ul.items li .mount + .spec, ul.items li .spec + .spec { margin-left: 0.5em; }
 ul.brands li a { font-weight: 500; }
 
 /* A record: label/value pairs, scannable down the left edge. */

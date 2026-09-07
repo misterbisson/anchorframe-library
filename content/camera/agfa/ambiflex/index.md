@@ -2,6 +2,7 @@
 title = "Agfa Ambiflex"
 brand = "Agfa"
 source = "https://en.wikipedia.org/wiki/Agfa_Ambiflex"
+formats = ["135"]
 
 [[resources]]
 src = "ambiflex.jpg"

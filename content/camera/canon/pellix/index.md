@@ -2,6 +2,7 @@
 title = "Canon Pellix"
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_Pellix"
+formats = ["135"]
 
 [[resources]]
 src = "pellix.jpg"
