@@ -29,6 +29,45 @@ class Build(unittest.TestCase):
             self.assertEqual(sheet["license"], "CC-BY-SA-4.0")
             self.assertIn("Wikipedia", sheet["attribution"])
 
+    def test_a_name_and_its_edition_identify_one_record(self):
+        """A consumer can tell two records apart without fetching either.
+
+        A sheet is read as a flat list — the app puts these names in a field a
+        person types into — so two entries that print the same string are two
+        entries nobody can choose between. Thirty lens titles here name two
+        products, and `variant` is the whole difference: the slug carries it
+        (`validate.py` refuses one that does not) but a slug is an address, and
+        a person picking a lens is not reading addresses.
+
+        `name` alone is therefore *not* the identity and asserting it were would
+        fail against the real corpus. The pair is, everywhere, in all four
+        sheets.
+        """
+        for kind, sheet in sheets(ROOT).items():
+            seen = {}
+            for e in sheet["entries"]:
+                key = (e.get("name", e.get("title")), e.get("variant"))
+                # Not `assertNotIn`: it prints the container, and the container
+                # is every entry in the sheet. The two slugs are the answer.
+                if key in seen:
+                    self.fail(f"{kind}: {key[0]!r} is both {seen[key]} and "
+                              f"{e['slug']} — two records a consumer would "
+                              "print identically")
+                seen[key] = e["slug"]
+
+    def test_the_editions_the_source_distinguishes_survive_the_sheet(self):
+        """The thirty collisions, by name, rather than only in the aggregate.
+
+        A sheet that dropped `variant` still passes the pair test above by
+        accident on any corpus where no two titles collide, and this corpus is
+        one edit away from being that. So one real pair is named: both barrels
+        of a lens the source lists twice, distinguishable, from one sheet.
+        """
+        lenses = [e for e in sheets(ROOT)["lens"]["entries"]
+                  if e["name"] == "FD 100mm f/2.8"]
+        self.assertEqual(len(lenses), 2, "the source lists both barrels")
+        self.assertEqual({e.get("variant") for e in lenses}, {None, "New FD"})
+
     def test_no_image_reaches_the_sheets(self):
         """The sheets are what the app bundles, and images do not go in it.
 
