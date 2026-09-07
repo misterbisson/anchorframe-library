@@ -2,6 +2,7 @@
 title = "Mamiya 6"
 brand = "Mamiya"
 source = "https://en.wikipedia.org/wiki/Mamiya_6"
+formats = ["120"]
 
 [[resources]]
 src = "6.jpg"

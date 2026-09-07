@@ -3,6 +3,7 @@ title = "Nikon F2"
 brand = "Nikon"
 source = "https://en.wikipedia.org/wiki/Nikon_F2"
 mount = ["nikon-f"]
+formats = ["135"]
 
 [[resources]]
 src = "f2.jpg"

@@ -3,6 +3,7 @@ title = "Contax II"
 brand = "Contax"
 source = "https://en.wikipedia.org/wiki/Contax_II"
 mount = ["contax-rf"]
+formats = ["135"]
 
 [[resources]]
 src = "ii.jpg"

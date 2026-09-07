@@ -2,6 +2,7 @@
 title = "Pentax SF7"
 brand = "Pentax"
 source = "https://en.wikipedia.org/wiki/Pentax_SF7"
+formats = ["135"]
 
 [[resources]]
 src = "sf7.jpg"

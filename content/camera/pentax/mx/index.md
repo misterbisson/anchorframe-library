@@ -3,6 +3,7 @@ title = "Pentax MX"
 brand = "Pentax"
 source = "https://en.wikipedia.org/wiki/Pentax_MX"
 mount = ["pentax-k"]
+formats = ["135"]
 
 [[resources]]
 src = "mx.jpg"

@@ -3,6 +3,7 @@ title = "Pentax 645"
 brand = "Pentax"
 source = "https://en.wikipedia.org/wiki/Pentax_645"
 mount = ["pentax-645"]
+formats = ["120"]
 
 [[resources]]
 src = "645.jpg"

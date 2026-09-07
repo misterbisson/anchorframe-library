@@ -2,6 +2,7 @@
 title = "Konica C35 AF"
 brand = "Konica"
 source = "https://en.wikipedia.org/wiki/Konica_C35_AF"
+formats = ["135"]
 
 [[resources]]
 src = "c35-af.jpg"

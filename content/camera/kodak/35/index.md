@@ -2,6 +2,7 @@
 title = "Kodak 35"
 brand = "Kodak"
 source = "https://en.wikipedia.org/wiki/Kodak_35"
+formats = ["135"]
 
 [[resources]]
 src = "35.jpg"

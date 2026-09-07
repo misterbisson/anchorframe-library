@@ -2,6 +2,7 @@
 title = "Cosina CT-1"
 brand = "Cosina"
 source = "https://en.wikipedia.org/wiki/Cosina_CT-1"
+formats = ["135"]
 
 [[resources]]
 src = "ct-1.jpg"

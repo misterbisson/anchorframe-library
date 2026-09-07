@@ -3,6 +3,7 @@ title = "Canon AL-1"
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_AL-1"
 mount = ["canon-fd"]
+formats = ["135"]
 
 [[resources]]
 src = "al-1.jpg"
