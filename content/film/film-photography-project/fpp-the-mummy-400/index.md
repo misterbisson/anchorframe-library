@@ -7,4 +7,13 @@ iso = 400
 process = ["B&W"]
 types = "Print"
 formats = ["120", "135", "620", "4x5", "8x10", "Double 8", "16mm"]
+[[resources]]
+src = "fpp-the-mummy-400.jpg"
+[resources.params]
+credit = "Film Photography Project"
+license = "fair-use"
+copyright = "Film Photography Project"
+alt = "A black 35 mm canister lettered the MUMMY in white under a drawing of a bandaged face, marked ISO 400 / 24 EXP"
+sourcePage = "https://filmphotographystore.com/products/35mm-bw-film-the-mummy-400-1-roll"
+verified = "2026-09-07"
 +++
