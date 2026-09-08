@@ -198,10 +198,20 @@ the X1D and its XCD lenses — is the case that asked the question, and the
 answer is no: there is no X-system body anywhere in this corpus and there
 should not be.
 
-Nothing was removed to establish this. Four of the six Hasselblad lens sections
-were never imported at all, so the X system was already absent, and the ruling
-settles only whether [issue #44](https://github.com/misterbisson/anchorframe-library/issues/44)
-should go back for it. It should not. The other three sections — 1600F / 1000F,
+When the ruling was written nothing had to be removed to establish it: four of
+the six Hasselblad lens sections were never imported at all, so the X system was
+already absent. **The Leica S was not.** Sixteen S-system lenses and their
+`leica-s` mount were in the corpus, and the article's own first sentence settles
+them: *the Leica S-System is a medium format **digital** single lens reflex
+camera system*. Every body it names — S1, S2, S, S3 — is digital. They are
+removed.
+
+That is the first deletion of published URLs here, so the cost is worth naming.
+None of the sixteen had earned a page: each was a provisional redirect to its
+row on the Leica shelf, the kind this README already calls *designed to be
+revoked*. What breaks is sixteen redirects, not sixteen pages. A redirect to the
+Leica shelf instead would have been worse than a 404 — it would keep asserting
+that Leica sells this as film glass. The other three sections — 1600F / 1000F,
 H system and XPan — stay in scope, because this corpus already holds those
 bodies.
 
