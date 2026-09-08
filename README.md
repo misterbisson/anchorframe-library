@@ -13,7 +13,7 @@ what a camera is called.
 | | records | brands | with a photograph |
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
-| lenses | 1,255 | 72 | 0 |
+| lenses | 1,255 | 72 | 113 |
 | films | 987 | 52 | 182 |
 | mounts | 31 | — | — |
 
