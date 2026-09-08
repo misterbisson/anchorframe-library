@@ -7,4 +7,13 @@ note = "ILFORD publishes no photograph of this box, which is why the record carr
 iso = 100
 process = ["B&W"]
 types = "Print"
+[[resources]]
+src = "pan-100.jpg"
+[resources.params]
+credit = "El Grafo"
+license = "CC BY-SA 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
+alt = "A 35 mm cassette of ILFORD PAN 100, black with a yellow panel lettered in white, marked BLACK AND WHITE FILM"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Ilford_Pan_100_135_film_cartridge_02.jpg"
+verified = "2026-09-08"
 +++

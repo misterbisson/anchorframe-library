@@ -7,4 +7,13 @@ iso = 100
 process = ["CN-16", "C-41"]
 types = "Print"
 formats = ["110", "135", "120"]
+[[resources]]
+src = "fujicolor-f-ii.jpg"
+[resources.params]
+credit = "Solomon203"
+license = "CC BY-SA 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
+alt = "Fujifilm Fujicolor F-II, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Fujicolor_F-II_ad_box_at_Songshan_Tobacco_Factory_20220305.jpg"
+verified = "2026-09-08"
 +++

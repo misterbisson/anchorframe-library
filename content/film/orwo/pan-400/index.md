@@ -6,4 +6,13 @@ discontinued = true
 iso = 400
 process = ["B&W"]
 types = "Print"
+[[resources]]
+src = "pan-400.jpg"
+[resources.params]
+credit = "Core0"
+license = "CC BY-SA 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
+alt = "ORWO PAN 400, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:ORWO_PAN_400.jpg"
+verified = "2026-09-08"
 +++

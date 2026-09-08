@@ -7,4 +7,13 @@ iso = 10
 process = ["Agfa"]
 types = "Slide"
 formats = ["135", "120", "sheet film"]
+[[resources]]
+src = "fujicolor.jpg"
+[resources.params]
+credit = "2019046062 최혜린"
+license = "CC BY-SA 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
+alt = "Fujifilm Fujicolor, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Fuji_color_film_c200.jpg"
+verified = "2026-09-08"
 +++

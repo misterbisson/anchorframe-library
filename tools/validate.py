@@ -397,7 +397,14 @@ def validate(root: str) -> list[str]:
             # here would catch it.
             filename = urllib.parse.unquote(
                 source_page.split("File:")[-1]).replace("_", " ")
-            generation = digital_generation(filename)
+            # Lenses and cameras only. On a film cassette `DX` is DX coding, the
+            # barcode every 35 mm cassette has carried since 1983, and it is
+            # printed on the packaging: `Agfa Agfacolor XRG 400 135 24 DX
+            # Process AP70 C-41` is a correct photograph of the right film. `DC`
+            # is a Sigma image circle to a lens and a develop-in-camera marking
+            # to a film. Neither says anything about a film being digital, which
+            # no film is.
+            generation = digital_generation(filename) if r.kind != "film" else None
             if generation and not digital_generation(str(r.meta.get("title", ""))):
                 bad(r.path, f"{img} comes from a file named {generation!r}, a mount or "
                             "image circle that exists only on digital bodies, and "

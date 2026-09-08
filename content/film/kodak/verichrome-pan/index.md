@@ -6,4 +6,13 @@ discontinued = true
 process = ["B&W"]
 types = "Print"
 formats = ["116", "616", "120", "620", "122", "126", "127", "828"]
+[[resources]]
+src = "verichrome-pan.jpg"
+[resources.params]
+credit = "Kevinfarrugia"
+license = "CC0"
+licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+alt = "Kodak Verichrome Pan, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Verichrome_Pan_120_box_and_roll.jpg"
+verified = "2026-09-08"
 +++

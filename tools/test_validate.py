@@ -785,6 +785,53 @@ class DigitalGeneration(Fixture):
                       self.on("Canon 50mm f/1.2", "Canon_RF_50mm_F1.2_L_USM.jpg",
                               brand="Canon"))
 
+    def on_film(self, title, filename, brand="Agfa"):
+        """The same, on a `film` record rather than a lens."""
+        from slug import slugify
+        full = slugify(title)
+        prefix = slugify(brand) + "-"
+        slug = full[len(prefix):] if full.startswith(prefix) else full
+        shelf = os.path.join(self.root, "content/film", slugify(brand))
+        d = os.path.join(shelf, slug)
+        os.makedirs(d, exist_ok=True)
+        if not os.path.exists(os.path.join(shelf, "_index.md")):
+            page(os.path.join(shelf, "_index.md"),
+                 f'title = "{brand}"\nbrand = "{brand}"')
+        open(os.path.join(d, "x.jpg"), "wb").close()
+        params = {"credit": "Henry", "license": "Public domain",
+                  "licenseUrl": "https://commons.example/l", "alt": "A film box",
+                  "sourcePage": f"https://commons.wikimedia.org/wiki/File:{filename}",
+                  "verified": datetime.date.today().isoformat()}
+        body = "".join(f'{k} = "{v}"\n' for k, v in params.items())
+        page(os.path.join(d, "index.md"),
+             f'title = "{title}"\nbrand = "{brand}"\n'
+             'source = "https://x.example/a"\ndiscontinued = true\n\n'
+             f'[[resources]]\nsrc = "x.jpg"\n[resources.params]\n{body}'.rstrip("\n"))
+        return " ".join(validate(self.root))
+
+    def test_dx_on_a_film_is_dx_coding_and_not_an_image_circle(self):
+        """No film is digital, and `DX` on one means something else entirely.
+
+        Every 35 mm cassette made since 1983 carries DX coding — the barcode a
+        camera reads the speed from — and it is printed on the packaging. This
+        file is a correct photograph of the right film:
+
+            Agfa Agfacolor XRG 400 135 24 DX Process AP70 C-41 Agfa-Gevaert
+
+        The marker vocabulary is about lenses and the message says so, so the
+        check does not run over film records. `DC` is the same shape of problem:
+        a Sigma image circle to a lens, a develop-in-camera marking to a film.
+        """
+        self.assertEqual("", self.on_film(
+            "Agfa Agfacolor XRG 400",
+            "Agfa_Agfacolor_XRG_400_135_24_DX_Process_AP70_C-41.jpg"))
+
+    def test_a_lens_is_still_checked(self):
+        # The mutation: skip the check for everything, not just film, and the
+        # six barrels this guard exists for come back.
+        self.assertIn("only on digital bodies",
+                      self.on("Nikon Nikkor 85mm f/1.8", "Nikon_NIKKOR_Z_85mm.jpg"))
+
     def test_every_generation_in_the_vocabulary_is_reachable(self):
         for name in ("Nikon_NIKKOR_Z_50mm.jpg", "Canon_RF_50mm_f1.2.jpg",
                      "Canon_EF-M_22mm.jpg", "Canon_EF-S_18-55mm.jpg",

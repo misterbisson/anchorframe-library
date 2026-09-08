@@ -7,4 +7,13 @@ iso = 64
 process = ["E-6"]
 types = "Slide"
 formats = ["135", "120", "sheet film"]
+[[resources]]
+src = "ektachrome-64t.jpg"
+[resources.params]
+credit = "Ashley Pomeroy"
+license = "CC BY-SA 3.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
+alt = "Kodak Ektachrome 64T, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Ektachrome_64T_7881.jpg"
+verified = "2026-09-08"
 +++
