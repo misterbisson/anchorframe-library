@@ -92,6 +92,28 @@ IMAGE_PARAMS = {
 #
 # So `fair-use` is admitted, and it is admitted as what it is: a use, not a
 # licence. It cannot be sublicensed, the corpus's CC BY-SA 4.0 does not reach
+# it, and a reuser of this data does not inherit it. `licenseUrl` is meaningless
+# for one — there are no terms to link — so it is replaced by the name of the
+# holder, which is what makes the claim checkable rather than decorative.
+# How long a claim may go unconfirmed before this refuses to pass it.
+#
+# It is a gate rather than a warning because the failure mode it exists for is
+# nobody looking. A `sourcePage` is a URL and it will die: Silberra's domain
+# already redirects somewhere unrelated, and Commons deletes files — routinely,
+# and for the licensing reasons this whole scheme is about. A deleted Commons
+# file leaves a photograph here whose credit Commons itself has withdrawn, and
+# nothing in the repository would say so.
+#
+# So this will one day turn a pull request red for a reason that has nothing to
+# do with it. That is the intended cost: the alternative is a repository full of
+# claims nobody has checked since the day they were made, which is the state
+# every one-shot importer leaves behind. The remedy is to re-check the sources
+# and move the dates — not to raise the number because it went off.
+STALE_AFTER_DAYS = 550          # about eighteen months
+NON_FREE = "fair-use"
+NON_FREE_PARAMS = {
+    "copyright": "who owns the photograph and the packaging in it",
+}
 # Mounts and image circles that exist only on digital bodies. A file whose own
 # name claims one of these, for a record that does not, is a photograph of a
 # different lens: same focal length, same maximum aperture, thirty years and one
@@ -126,28 +148,6 @@ def digital_generation(text: str) -> str | None:
     return m.group(0) if m else None
 
 
-# it, and a reuser of this data does not inherit it. `licenseUrl` is meaningless
-# for one — there are no terms to link — so it is replaced by the name of the
-# holder, which is what makes the claim checkable rather than decorative.
-# How long a claim may go unconfirmed before this refuses to pass it.
-#
-# It is a gate rather than a warning because the failure mode it exists for is
-# nobody looking. A `sourcePage` is a URL and it will die: Silberra's domain
-# already redirects somewhere unrelated, and Commons deletes files — routinely,
-# and for the licensing reasons this whole scheme is about. A deleted Commons
-# file leaves a photograph here whose credit Commons itself has withdrawn, and
-# nothing in the repository would say so.
-#
-# So this will one day turn a pull request red for a reason that has nothing to
-# do with it. That is the intended cost: the alternative is a repository full of
-# claims nobody has checked since the day they were made, which is the state
-# every one-shot importer leaves behind. The remedy is to re-check the sources
-# and move the dates — not to raise the number because it went off.
-STALE_AFTER_DAYS = 550          # about eighteen months
-NON_FREE = "fair-use"
-NON_FREE_PARAMS = {
-    "copyright": "who owns the photograph and the packaging in it",
-}
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
 BRAND_KEYS = ("title", "brand", "aliases", "note")
 
