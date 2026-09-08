@@ -1,0 +1,4 @@
++++
+title = "Panagor"
+brand = "Panagor"
++++

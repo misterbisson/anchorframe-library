@@ -147,6 +147,49 @@ a title already carrying both of the brand's words looked finished.
 Each keeps its `/lens/schneider-kreuznach/…` address as an alias, and the
 earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
 
+## The mount was never the seller
+
+109 lenses were filed under Pentax and Pentax sold none of them. They came off
+`Pentax K-mount`, an article enumerating the **third-party** glass that fits K,
+so the extraction took the article's own subject as the brand — the same
+mechanism that once produced `Leica Canon P` and that filed six Samsung lenses
+under a name Samsung had only licensed.
+
+They are now on the shelf of whoever sold each one: **38 new brands**, from
+Kiron and Kiron's rebadger Lester A. Dine to Revuenon, Porst, Zenitar and
+Venus Optics. Every one keeps its `/lens/pentax/…` address as an alias.
+
+**The section heading was the answer**, which is worth stating because the
+opposite ruling exists two sections up. There, `Ferrania` headed films whose
+boxes said 3M — the heading named the plant. Here the headings name what is
+written on the lens, and twenty shelves in this corpus were already built from
+them: `access`, `beroflex`, `kalimar`, `makinon`, `miranda`, `soligor`,
+`spiratone` all came from sections of this same article. The 109 are the ones
+whose maker had no shelf yet, so they fell through to the mount. **A heading is
+neither trustworthy nor suspect on principle; what it names has to be checked.**
+
+Several are house brands rather than manufacturers — Revuenon and Revue are
+Foto-Quelle's, Porst is Photo Porst's, Focal was Kmart's, Quantaray was Ritz's,
+JC Penney sold under its own name. A house brand is the right answer, not a
+defect: it is exactly what "who sold it" asks.
+
+Three exceptions, each on an existing rule.
+
+**`Special lenses` is not a brand.** Two records sat under an optical category;
+both titles say Zenitar and both went there.
+
+**Takumar is Pentax's own line, and a product line is not a company.** The two
+Takumars were the only members of the held set that really were Pentax. They
+keep their address and gained only a name: `Pentax Takumar 135mm f2.5 prime`.
+
+**One importer, two spellings.** Eight titles read `Tou/Five Star` and one read
+`Toyo/Five Star`; the section heading says Tou, so that is the spelling kept.
+
+With this the naming rule from #41 loses its exception list. **1,229 of 1,229
+lens names carry their brand**, and the test that held 109 slugs now asserts
+the empty set — a lens that cannot satisfy it has a `brand` that is wrong,
+which is what all 109 turned out to be.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes
@@ -181,13 +224,14 @@ earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
   [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44),
   which also asks whether the digital-only X system belongs in a film library
   at all.
-- **109 of 1,229 lens titles do not carry their brand**, and every one is a
-  record whose `brand` is wrong rather than a naming choice — tracked in
-  [issue #42](https://github.com/misterbisson/anchorframe-library/issues/42).
-  The other 1,120 carry it. This entry used to read *40% begin with their
-  brand* and describe 387 marque-led and 78 maker-led titles as open questions;
-  both were settled, the first by the naming rule above and the second by the
-  ruling that a maker's name in a title records how the thing was marketed.
+- **Mir lenses are filed two ways, because the source files them two ways.**
+  `Mir-20K` came from a section headed `Mir` and `Mir-47K` from one headed
+  `VOMZ`, the plant that built it, so they now sit on different shelves. The
+  same is true of `Volna`, which arrived under `LOMO`. Nothing in the source
+  says which Soviet plant sold which line under its own name, and inventing a
+  plant shelf for lenses that were bought as `Mir` would answer a question
+  nobody asked. Eight records: five Laowa under Venus Optics, two Volna under
+  LOMO, one Mir under VOMZ.
 
 ## A brand is a shelf, and a shelf can have more than one name
 
