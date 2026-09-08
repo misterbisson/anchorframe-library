@@ -11,6 +11,59 @@ from validate import validate
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
+# Lenses whose name does not carry their brand: issue #42, frozen by slug so
+# that resolving one and gaining another cannot cancel out. Only ever shrinks.
+HELD = frozenset({
+    "cosmicar-70-200mm-f4", "cpc-135mm-f2-8-mc-auto-a", "cpc-28-80mm-f3-5-4-5",
+    "cpc-28-85mm-f3-5-4-5", "cpc-28mm-f2-8-auto-a", "eikor-28mm-f2-8",
+    "eikor-80-200mm-f4-5", "focal-135mm-f2-8-mc-auto", "focal-28mm-f2-8-mc-auto",
+    "gemini-28mm-f2-8", "hanimex-mc-80-200mm-f4-5", "hervic-zivnon-23mm-f3-5",
+    "irix-11mm-f4-0-blackstone", "irix-11mm-f4-0-firefly", "irix-15mm-f2-4-blackstone",
+    "irix-15mm-f2-4-firefly", "jc-penney-135mm-f2-8", "kiron-105mm-f2-8-macro",
+    "kiron-24mm-f2-rl", "kiron-28-70mm-f4-macro", "kiron-28mm-f2",
+    "laowa-105mm-f2-smooth-trans-focus", "laowa-12mm-f2-8-zero-d",
+    "laowa-15mm-f4-wide-angle-macro", "laowa-25mm-f2-8-2-5-5x-ultra-macro",
+    "laowa-60mm-f2-8-2x-ultra-macro", "lester-a-dine-kiron-105mm-f2-8-macro",
+    "loreo-35mm-f11-22-shift-lens", "loreo-38mm-f11-3d-stereo", "luxon-50mm-f2-0-mc",
+    "mc-apo-telezenitar-k-1-2-8-135mm-telephoto",
+    "mc-apo-telezenitar-k-300mm-f4-5-2008-telephoto", "mc-cosmicar-28-80mm-f3-5-4-5",
+    "mc-cosmicar-28mm-f2-8", "mc-helios-44k-4-58mm-f2", "mc-helios-77k-4-50mm-f1-8",
+    "mc-variozenitar-k-1-3-5-4-5-35-105mm-zoom",
+    "mc-variozenitar-k-1-4-0-70-210mm-zoom",
+    "mc-variozenitar-k-25-45mm-f2-8-3-5-2008-zoom",
+    "mc-variozenitar-k-35-100mm-f2-8-1980-zoom", "mc-zenitar-1-1-4-50mm",
+    "mc-zenitar-1k-1-1-4-85mm-telephoto", "mc-zenitar-k-1-1-9-50mm",
+    "mc-zenitar-k-1-2-8-20mm", "mc-zenitar-k-1-2-8-28mm", "mc-zenitar-k-16mm-f2-8",
+    "mc-zenitar-k2-50mm-f2", "mir-20k-20mm-f3-5", "mir-47k-20mm-f2-5",
+    "mitakon-28-200mm-f3-8-5-5", "mitakon-80-200mm-f4-5-mc-zoom",
+    "oberon-11k-200mm-f2-8", "opteka-opt500mir-c-500mm-f8", "ozunon-35mm-75mm-f3-5-4-5",
+    "panagor-e-pmc-auto-zoom-28mm-80mm-f3-5-4-5", "pcs-arsat-35mm-f2-8-shift",
+    "peleng-8mm-f3-5", "phoenix-500mm-f8-reflex-catadioptric",
+    "phoenix-800mm-f8-reflex-catadioptric", "polar-800mm-f8-reflex-catadioptric",
+    "polar-85mm-portrait-lens-f1-4-aspherical-if", "porst-135mm-f2-8-tele-as-mc-e",
+    "porst-200mm-f3-5", "porst-28mm-f2-8-mc-auto", "porst-40mm-f2-5-mc-auto",
+    "porst-55mm-f1-2-mc-auto", "porst-55mm-f1-2-reflex-mc-auto", "porst-75-260mm-f4-5",
+    "quantaray-af-100-300mm-f4-5-6-7-ldo", "revu-50mm-f1-2", "revue-28-50mm-f3-5-4-5",
+    "revue-28-70mm-f3-5-4-5", "revue-35mm-f2-8", "revue-70-210mm-f4-5-af",
+    "revue-80-200mm-f4-5", "revuenon-135mm-f2-8", "revuenon-200mm-f3-3",
+    "revuenon-200mm-f3-5", "revuenon-300mm-f5-6", "revuenon-500mm-f8-0-mirror",
+    "revuenon-55mm-f1-2", "revuenon-auto-45mm-f2-8", "revuenon-auto-mc-135mm-f2-8",
+    "revuenon-auto-mc-28mm-f2-8", "revuenon-auto-mc-55mm-f1-4",
+    "revuenon-auto-mc-55mm-f1-7", "revuenon-auto-multicoated-28mm-f2-8",
+    "rokinon-500mm-f6-3-reflex", "sun-28-80mm-f3-5-4-5-macro",
+    "sun-70-140mm-f3-8-auto-zoom", "sun-80-200mm-f4-5-macro",
+    "sun-85-210mm-f4-8-telephoto-zoom", "sunagor-75-300mm-f5-6",
+    "suntop-28-135mm-f3-8-5-2-mc", "takumar-135mm-f2-5-prime",
+    "takumar-a-28-80mm-f3-5-4-5-macro", "tou-five-star-28-135mm-1-3-5-5-2-macro",
+    "tou-five-star-28-80mm-1-3-5-4-5-macro", "tou-five-star-500mm-1-8",
+    "tou-five-star-70-210mm-1-4-5-22-macro", "tou-five-star-75-200mm-1-4-5-macro",
+    "tou-five-star-mc-auto-200mm-1-4-5", "tou-five-star-mc-auto-28mm-1-2-8-to-f22",
+    "tou-five-star-mc-auto-35-75mm-1-3-5-4-8-macro",
+    "toyo-five-star-mc-auto-28mm-1-2-8-to-f16", "volna-10k-35mm-f1-8",
+    "volna-50mm-f1-8", "zenitar-mc-35mm-tilt-and-shift-f2-8",
+    "zenitar-mc-80mm-tilt-and-shift-f2-8",
+})
 class Build(unittest.TestCase):
     def test_the_real_corpus_validates(self):
         self.assertEqual(validate(ROOT), [])
@@ -64,16 +117,20 @@ class Build(unittest.TestCase):
         into a field, or reading an export, gets `FD 100mm f/2` with nothing
         saying Canon. Nikon's 275 lenses said Nikkor and never Nikon.
 
-        The exception is counted rather than described, because it is a defect
-        and not a style. Every Pentax lens still missing its brand came off
-        `Pentax K-mount`, which lists **third-party** glass that fits K — Kiron,
-        Revuenon, Porst, Laowa, the Zenit line — filed under the mount's brand
-        because that is the article it was read from. Their `brand` is wrong
-        today; prefixing would only state it out loud, and `Pentax Kiron 28–70mm
-        f4 Macro` is a lens that never existed. See docs/rulings.md.
+        The exception is listed rather than described, because it is a defect
+        and not a style. 107 of the 109 came off `Pentax K-mount`, which lists
+        **third-party** glass that fits K — Kiron, Revuenon, Porst, Laowa, the
+        Zenit line — filed under the mount's brand because that is the article
+        it was read from. Their `brand` is wrong today; prefixing would only
+        state it out loud, and `Pentax Kiron 28-70mm f4 Macro` is a lens that
+        never existed. The other two, `Takumar 135mm f2.5 prime` and `Takumar A
+        28-80mm`, are genuinely Pentax and want only their name fixed. Both
+        kinds are in `HELD` and both are in issue #42.
 
-        So the number may only go **down**, and only by someone establishing who
-        actually sold one of them.
+        The set is frozen by slug rather than counted. A count passes if one
+        record is resolved and another arrives unbranded in the same change,
+        and #42 resolves these one at a time across many pull requests, which
+        is exactly when that trade would go unnoticed.
         """
         def tokens(value):
             # Split the way the slug does. `Schneider-Kreuznach D-Xenogon` is
@@ -81,17 +138,20 @@ class Build(unittest.TestCase):
             # whitespace alone reads it as neither.
             return {w for w in re.split(r"[^0-9a-z]+", value.casefold()) if w}
 
-        held = []
+        held = {}
         for e in sheets(ROOT)["lens"]["entries"]:
             if tokens(e["brand"]) <= tokens(e["name"]):
                 continue
-            held.append(e)
+            held[e["slug"]] = e
             if e["brand"] != "Pentax":
                 self.fail(f"{e['name']!r} is a {e['brand']} and does not say so — "
                           "a lens name carries its brand")
-        self.assertEqual(len(held), 109,
-                         "the K-mount third-party lenses are the only ones held; "
-                         "this may only shrink, by resolving who sold one")
+        arrived = sorted(set(held) - HELD)
+        self.assertEqual(arrived, [], f"{arrived} has no brand in its name, and "
+                         "a new one may not join the held set")
+        resolved = sorted(HELD - set(held))
+        self.assertEqual(resolved, [], f"{resolved} left the held set; that is the "
+                         "point of #42, so take it out of HELD in the same change")
 
     def test_the_editions_the_source_distinguishes_survive_the_sheet(self):
         """The thirty collisions, by name, rather than only in the aggregate.

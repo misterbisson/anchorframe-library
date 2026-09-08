@@ -13,7 +13,7 @@ what a camera is called.
 | | records | brands | with a photograph |
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
-| lenses | 1,229 | 33 | 0 |
+| lenses | 1,229 | 34 | 0 |
 | films | 987 | 52 | 158 |
 | mounts | 28 | — | — |
 
@@ -40,16 +40,25 @@ lens is filed under Hasselblad —
 /library/lens/hasselblad/zeiss-planar-t-80mm-f2-8-c
 ```
 
-— with the maker still in the lens's own name, where a person reads it, and an
-alternate under `zeiss` that redirects to it. Who made a camera and whose name
-is on it are different questions, and this answers the second.
+— with an alternate under `zeiss` that redirects to it. Who made a thing and
+who sold it are different questions, and this answers the second.
+
+Zeiss is in that name because **Hasselblad marketed those lenses under the
+Zeiss name**, not because Zeiss made them. Angénieux designed several Nikkors
+and appears in none of their titles, because Nikon sold them as Nikkor — were
+a title a record of who built a thing, those would say Angénieux. A maker's
+name in a title is part of what the thing was sold as; who built it is a fact
+for the record's body. Six lenses badged `Schneider-Kreuznach` sit under
+Samsung on the same rule — Samsung sold them and marketed them under a name it
+had licensed.
 
 **The brand is in the name as well as the path**, because a name is used away
 from the path: read as a flat list, `FD 100mm f/2` names no shelf and `Nikkor`
 is not a company anyone bought from. 109 lenses are the exception and it is a
 known defect rather than a style — they came off `Pentax K-mount`, which lists
 third-party glass fitting K, so their brand is the mount's rather than the
-seller's. [`docs/rulings.md`](docs/rulings.md) has both halves.
+seller's, and [issue #42](https://github.com/misterbisson/anchorframe-library/issues/42)
+tracks them. [`docs/rulings.md`](docs/rulings.md) has both halves.
 
 ## URLs
 

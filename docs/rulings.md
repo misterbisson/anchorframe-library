@@ -20,9 +20,27 @@ wrong in a well-meant pull request.
 
 `manufacturer` is a fact about a supply chain: often unrecorded, sometimes
 contested, and not what is written on the front. Minolta built the Leica CL.
-Vivitar never ground a lens. Zeiss made Hasselblad's V-system glass and Fuji
-made its H-system glass, and neither got a badge. This index is reached by
-typing what is on the front, so it answers the second question.
+Vivitar never ground a lens. This index is reached by typing what is on the
+front, so it answers the second question.
+
+**A maker's name in a title is there because the seller marketed it that way,
+not because the maker made it.** `Hasselblad Zeiss Planar T* 80mm f/2.8 C`
+carries Zeiss because **Hasselblad marketed the V-system lenses under the Zeiss
+name**, not because Zeiss ground the glass. Fuji built the H-system lenses and
+Hasselblad did not sell them under Fuji's name, so a Fuji-carrying title would
+be wrong — though nothing here demonstrates that, because all 67 Hasselblad
+lenses in this corpus are V-system and there is not one H-system lens to check
+against. That gap is [issue #44](https://github.com/misterbisson/anchorframe-library/issues/44).
+
+The case that proves it is Angénieux. Angénieux designed the Nikkor 200mm
+f/2.8 DEM ED and its neighbours, and **no Angénieux name appears in any of
+those titles**, because Nikon sold them as Nikkor. Were the title a record of
+who made a thing, it would say Angénieux; it says Nikon Nikkor, which is how
+the lens was sold. The Angénieux detail belongs in a record's body, where an
+interesting fact about a thing goes.
+
+So a title may carry a second company's name, and when it does that name is
+part of what the thing was sold as — never a claim about the factory.
 
 ## A product line is not a company
 
@@ -100,6 +118,35 @@ want a person establishing who sold each one.
 `test_a_lens_name_says_whose_shelf_it_came_off` counts the held set rather than
 describing it, so the number may only go down, and only deliberately.
 
+## A licensed name is not the seller either
+
+Six lenses sat on the Schneider Kreuznach shelf — half of everything on it —
+and Schneider Kreuznach neither sold them nor made them. The source says so
+outright, in the section the records were read from:
+
+> All these lenses had been **marketed by Samsung** […] They **license their
+> name to Samsung** […] All the Schneider branded glass from Samsung is
+> **manufactured by Pentax**
+
+So the badge reads Schneider-Kreuznach, the glass is Pentax's, and the company
+that sold them is Samsung. The brand is who sold it, which makes these
+`Samsung`, and the corpus had no Samsung shelf at all until now. The licensed
+name stays in the title the way `Hasselblad Rodenstock Apo-Grandagon` keeps
+Rodenstock: the brand says who sold it, and the name says what the seller
+marketed it as, which here is a name Samsung licensed rather than one it
+owned.
+
+This is the same defect as [the 109 K-mount lenses filed under
+Pentax](https://github.com/misterbisson/anchorframe-library/issues/42) arriving
+by a different route, and it is worth separating the two. Those took the brand
+from the **article** they were read from. These took it from their own **title**
+— which is why they slipped through the rename in #41 that had to hold the other
+109: `Schneider-Kreuznach` is one word with a hyphen and two words to a slug, so
+a title already carrying both of the brand's words looked finished.
+
+Each keeps its `/lens/schneider-kreuznach/…` address as an alias, and the
+earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes
@@ -127,15 +174,20 @@ describing it, so the number may only go down, and only deliberately.
 - `List of Olympus products` names exactly one format, `135`, so nothing stops
   a future format category on it from reaching all 196 records including the
   120 and APS ones. Nothing in the tooling would notice.
-- **1,229 lens titles and 40% begin with their brand**, against 99% of cameras.
-  That number is three different things and only one is a defect. 387 begin with
-  that maker's own lens marque — `Fujifilm / Fujinon 100mm f/4.0`, `Nikon /
-  Nikkor` — which carries the maker under the name the glass was sold as. 78
-  begin with *another* maker's name — `Hasselblad / Schneider Variogon` — and
-  that is this repository's central idea rather than a mistake: the brand is who
-  sold it, the title says who ground the glass. The remaining **267 begin with
-  neither**, and they are the camera problem at scale: `Canon / FD 100–200mm
-  f/5.6` is a name nobody finds by typing Canon.
+- **Four of the six Hasselblad lens sections were never imported**, so all 67
+  lenses here are V-system while the corpus holds the 1600F, the 1000F, the
+  XPan and four H bodies whose glass it does not list. An import gap rather
+  than a source gap — the article has the sections.
+  [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44),
+  which also asks whether the digital-only X system belongs in a film library
+  at all.
+- **109 of 1,229 lens titles do not carry their brand**, and every one is a
+  record whose `brand` is wrong rather than a naming choice — tracked in
+  [issue #42](https://github.com/misterbisson/anchorframe-library/issues/42).
+  The other 1,120 carry it. This entry used to read *40% begin with their
+  brand* and describe 387 marque-led and 78 maker-led titles as open questions;
+  both were settled, the first by the naming rule above and the second by the
+  ruling that a maker's name in a title records how the thing was marketed.
 
 ## A brand is a shelf, and a shelf can have more than one name
 
