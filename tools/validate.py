@@ -18,7 +18,9 @@ from __future__ import annotations
 
 import datetime
 import os
+import re
 import sys
+import urllib.parse
 
 from content import KINDS, is_free, load, load_brands
 from slug import RESERVED, VALID, slugify
@@ -90,6 +92,40 @@ IMAGE_PARAMS = {
 #
 # So `fair-use` is admitted, and it is admitted as what it is: a use, not a
 # licence. It cannot be sublicensed, the corpus's CC BY-SA 4.0 does not reach
+# Mounts and image circles that exist only on digital bodies. A file whose own
+# name claims one of these, for a record that does not, is a photograph of a
+# different lens: same focal length, same maximum aperture, thirty years and one
+# incompatible mount apart. Five Nikon Z barrels and a Sigma DG DN shipped that
+# way against F-mount and K-mount records, and every one of them was named in
+# the file's title.
+#
+# The test is the ASYMMETRY, never the presence. `Sigma 30mm f/1.4 EX DC` is a
+# real record in this corpus and its photograph is correctly a DC lens; nine
+# more like it would be refused by a rule that only looked for the marker.
+DIGITAL_ONLY = re.compile(
+    r"\b(?:nikkor|nikon)[ _-]?Z\b|\bZ[ _-]?(?:nikkor|mc)\b"   # Nikon Z
+    # `RF` alone is too cheap: `Hexar_rf-1-weba.jpg` is a film rangefinder whose
+    # RF means rangefinder. Canon's mount is named beside its focal length.
+    r"|\bcanon[ _-]?RF\b|\bRF[ _-]?\d{2,4}\s*mm\b"
+    r"|\bEF[ _-]?M\b|\bEF[ _-]?S\b"                             # Canon EF-M, EF-S
+    r"|\bDG[ _-]?DN\b|\bDN\b"                                 # mirrorless-only Sigma/Tamron
+    r"|\bDX\b|\bDC\b|\bDi[ _-]?II\b"                          # APS-C image circles
+    r"|\bM\.?[ _]?Zuiko\b|micro[ _-]four[ _-]thirds"           # Micro Four Thirds
+    r"|\bXF[ _-]?\d|\bXC[ _-]?\d"                              # Fujifilm X
+    # Leica's L-mount glass carries the mount as a suffix on the lens name,
+    # `APO-Summicron-SL`, as often as it says `Leica SL`.
+    r"|\bleica[ _-]?(?:SL|TL|CL)\b"
+    r"|(?:summicron|summilux|elmarit|noctilux|vario-elmarit|apo-summicron)"
+    r"[ _-]?(?:SL|TL)\b",                                       # Leica L-mount
+    re.I)
+
+
+def digital_generation(text: str) -> str | None:
+    """The digital-only generation a string names, if it names one."""
+    m = DIGITAL_ONLY.search(text)
+    return m.group(0) if m else None
+
+
 # it, and a reuser of this data does not inherit it. `licenseUrl` is meaningless
 # for one — there are no terms to link — so it is replaced by the name of the
 # holder, which is what makes the claim checkable rather than decorative.
@@ -352,8 +388,21 @@ def validate(root: str) -> list[str]:
                             "licence this repository can redistribute under. A "
                             "fair-use file looks exactly like a free one from the "
                             "article side; check the file page.")
-            if not str(params.get("sourcePage", "")).startswith("https://"):
+            source_page = str(params.get("sourcePage", ""))
+            if not source_page.startswith("https://"):
                 bad(r.path, f"{img} sourcePage must be an https URL to the file's own page")
+            # A file that names a digital-only generation the record does not is
+            # a photograph of a different lens. The focal length and aperture
+            # will match — they are what a name is made of — so nothing else
+            # here would catch it.
+            filename = urllib.parse.unquote(
+                source_page.split("File:")[-1]).replace("_", " ")
+            generation = digital_generation(filename)
+            if generation and not digital_generation(str(r.meta.get("title", ""))):
+                bad(r.path, f"{img} comes from a file named {generation!r}, a mount or "
+                            "image circle that exists only on digital bodies, and "
+                            "this record does not carry it. Same numbers, different "
+                            "lens — check the barrel before trusting the match.")
             checked = str(params.get("verified", "")).strip()
             if checked:
                 try:

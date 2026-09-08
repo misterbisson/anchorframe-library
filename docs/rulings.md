@@ -264,6 +264,47 @@ leaving it to a regex nobody reads.
 
 Three mounts are new: `hasselblad-1600f`, `hasselblad-h`, `hasselblad-xpan`.
 
+## A mount marker that does not look like a mount name
+
+113 lens photographs arrived and six were the wrong lens. Every one was a modern
+mirrorless barrel standing in for its film-era namesake: `NIKKOR Z 85mm f/1.8 S`
+against the F-mount `Nikkor 85mm f/1.8`, `Sigma 28-70mm DG DN` against the
+K-mount `EX DF ASP`. Thirty years and one incompatible mount apart, and
+identical on the two facts a lens name is made of.
+
+**A lens name is a focal length, an aperture and a pile of mount letters nobody
+spells the same way**, so matching runs on the numbers. The numbers were right.
+The importer did check mounts — and that check compares mount *names*, which
+cannot see a bare `Z` sitting between the brand and the focal length, or a `DN`
+at the end. A mount marker that does not look like a mount name is invisible to
+a matcher that is looking for mount names.
+
+So the vocabulary is explicit, and the refusal is on **asymmetry**: a file whose
+own name claims a digital-only generation the record does not. Presence alone
+would be wrong — `Sigma 30mm f/1.4 EX DC` is a real record here whose photograph
+is correctly a DC lens, and nine more like it would have been thrown away.
+
+Two refinements the corpus itself forced.
+
+**`RF` on its own is too cheap.** `Hexar_rf-1-weba.jpg` is a Konica film
+rangefinder, and the first draft refused it as a Canon RF-mount lens. Canon's
+mount is named beside a focal length, so the pattern says so.
+
+**Leica writes its mount as a suffix.** `APO-Summicron-SL` never says
+`Leica SL`, so a rule keyed on the brand-plus-mount form would miss the whole
+L-mount range.
+
+This lives in `validate.py` rather than in the importer that made the mistake,
+and that is the more useful half of the ruling. **The importer was never
+committed** — 113 files landed in this repository from a tool that exists in
+neither, so there was no importer to fix. A rule in the validator holds for any
+image, from any tool, from anybody, including the next person doing this by
+hand.
+
+Its near relative is [the Polaroid Impulse](#a-format-is-what-joins-a-body-to-a-stock),
+whose `type` reads `3-element 116mm f/9.4 plastic lens` and where 116 is a real
+film format. Both are a matcher finding the right numbers on the wrong object.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes

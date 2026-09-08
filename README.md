@@ -1,7 +1,7 @@
 # anchorframe-library
 
 An open index of **film photography equipment** — camera bodies, lenses, film
-stocks and lens mounts — one JSON file per thing, editable by pull request.
+stocks and lens mounts — one file per thing, editable by pull request.
 
 It is published at <https://anchorframe.app/library> and it is the source of the
 name suggestions in [Anchorframe](https://github.com/misterbisson/anchorframe),
@@ -13,7 +13,7 @@ what a camera is called.
 | | records | brands | with a photograph |
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
-| lenses | 1,239 | 72 | 113 |
+| lenses | 1,239 | 72 | 107 |
 | films | 987 | 52 | 182 |
 | mounts | 30 | — | — |
 
@@ -70,7 +70,7 @@ cannot carry its brand turns out to be a record whose brand is wrong.
 ```
 
 The path is the address, and it comes straight from the file's own path in
-`data/`. Two consequences worth knowing before you file a pull request:
+`content/`. Two consequences worth knowing before you file a pull request:
 
 - **The filename is the slug, and it is frozen.** Correcting a `name` does not
   move a URL. Deliberately moving one means adding the old address to
@@ -199,7 +199,7 @@ in the app repository. Every record still carries the article and section it was
 read from.
 
 That extraction was **not** pure code — it took judgement at every turn, and
-reproducing it would take more. So the files in `data/` are the source of truth
+reproducing it would take more. So the files in `content/` are the source of truth
 here rather than an output, and nothing regenerates them. A contributor edits
 the data; [`tools/validate.py`](tools/validate.py) is what makes that safe to
 accept by reading a diff instead of the whole corpus.
@@ -250,10 +250,12 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   decade, `Origin` describes the factory rather than the emulsion, and `Details`
   and `Replaced by` are prose and a relation that would change the shape of the
   site.
-- **The Hasselblad H-system lenses are absent**, because the article does not
-  enumerate them. The V-system barrel versions it does enumerate — C, CF, CFi,
-  CFE, F, FE, CB — are all here; that column went unread until it was measured
-  against the source and 23 editions were missing.
+- **One of the source's six Hasselblad lens sections is deliberately unread.**
+  The V-system, Aerial, 1600F/1000F, H-system and XPan lenses are all here; the
+  X-system ones are refused because that system is digital and no X body exists
+  in a library of film equipment. The V-system barrel versions — C, CF, CFi,
+  CFE, F, FE, CB — went unread until the column was measured against the source
+  and 23 editions were missing.
 - **Only 9 of the 30 mounts actually join a body to its glass.** Sixteen have
   bodies and no lenses — Canon FL, Contax G and RF, Konica AR and KM, M42, both
   Mamiya mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM,
