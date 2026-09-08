@@ -7,4 +7,13 @@ iso = 100
 process = ["B&W"]
 types = "Print"
 formats = ["135", "120", "4x5", "8x10"]
+[[resources]]
+src = "neopan-100-acros.jpg"
+[resources.params]
+credit = "Markus Winkler (markuswinkler.de)"
+license = "CC BY 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by/4.0"
+alt = "A green and white FUJIFILM NEOPAN 100 ACROS carton standing beside its 35 mm cassette, marked FILM FOR BLACK & WHITE PRINTS and ULTRA FINE GRAIN"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Fujifilm_Neopan_100_Acros.jpg"
+verified = "2026-09-08"
 +++
