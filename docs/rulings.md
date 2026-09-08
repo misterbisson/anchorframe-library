@@ -190,6 +190,70 @@ lens names carry their brand**, and the test that held 109 slugs now asserts
 the empty set — a lens that cannot satisfy it has a `brand` that is wrong,
 which is what all 109 turned out to be.
 
+## A digital-only system is out of scope
+
+This is a library of film equipment, so a body that never took film does not
+belong in it and neither does glass made only for one. Hasselblad's X system —
+the X1D and its XCD lenses — is the case that asked the question, and the
+answer is no: there is no X-system body anywhere in this corpus and there
+should not be.
+
+Nothing was removed to establish this. Four of the six Hasselblad lens sections
+were never imported at all, so the X system was already absent, and the ruling
+settles only whether [issue #44](https://github.com/misterbisson/anchorframe-library/issues/44)
+should go back for it. It should not. The other three sections — 1600F / 1000F,
+H system and XPan — stay in scope, because this corpus already holds those
+bodies.
+
+**A system that took film and later went digital is in.** The H1 and H2 accept
+film magazines, so H-system lenses are film lenses that happen to have outlived
+film. The test is whether a body ever took film, not whether its maker still
+sells one.
+
+Checked rather than assumed: the corpus was searched for the digital-only lines
+most likely to have arrived by accident — Canon EOS R, Nikon Z, Sony E, Leica
+M8 through SL, Micro Four Thirds, the Fujifilm X bodies, the Pentax K digital
+range — and holds none of them. The three records that matched on a word are
+`Lomography Peacock X-Pro`, which is a cross-processing film, and the film
+`Canon EOS-1` and `Minolta Maxxum 4`, whose bodies mention their digital
+successors.
+
+## Four sections of one article, and only two were read
+
+`List of lenses for Hasselblad cameras` has six lens sections. The first pass
+took two — V system and Aerial — so the library held the 1600F, the 1000F, the
+XPan and four H bodies and listed no glass for any of them. Nobody noticed for
+forty pull requests, because a gap looks exactly like a subject with nothing to
+say. It surfaced only when a ruling here claimed something about H-system
+lenses and there was not one in the corpus to check it against.
+
+**26 lenses now come from the three film sections.** The X system is not among
+them, on the ruling above.
+
+These tables needed their own reader, which is the part worth recording.
+`wikitable.py` was written for the film lists, where `!` marks a header and `|`
+marks data. **Here a data row leads with `!` cells** — the focal length and
+aperture are styled as headings — so that parser files half of every row as a
+column name and yields nothing at all.
+
+`{{f/|3.5|22}}` had to survive too. `wikitable.clean` drops every template,
+which is right for the film tables and would have silently deleted the aperture
+from every row here, leaving 26 lenses with no maximum aperture and no error.
+
+**The 1600F section carries `variant = "1600F"` throughout.** The V system
+reissued several of those Zeiss designs and the corpus already tells its C, CF
+and CFi editions apart that way; two of the eleven collide by title alone, the
+Biogon 38mm f/4.5 and the Sonnar 250mm f/5.6. Setting the variant only on the
+two that collide would make a record depend on what else happened to be in the
+corpus that day.
+
+**The teleconverter is not a lens.** `H 1.7X Converter` sits in the H table and
+no converter is a record anywhere in this corpus, so it is refused by its focal
+length column failing to be a focal length — with a test saying so, rather than
+leaving it to a regex nobody reads.
+
+Three mounts are new: `hasselblad-1600f`, `hasselblad-h`, `hasselblad-xpan`.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes
@@ -217,13 +281,12 @@ which is what all 109 turned out to be.
 - `List of Olympus products` names exactly one format, `135`, so nothing stops
   a future format category on it from reaching all 196 records including the
   120 and APS ones. Nothing in the tooling would notice.
-- **Four of the six Hasselblad lens sections were never imported**, so all 67
-  lenses here are V-system while the corpus holds the 1600F, the 1000F, the
-  XPan and four H bodies whose glass it does not list. An import gap rather
-  than a source gap — the article has the sections.
-  [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44),
-  which also asks whether the digital-only X system belongs in a film library
-  at all.
+- **Every lens carries a mount and only 25% of cameras do**, so six mounts hold
+  glass that fits nothing here: `hasselblad-v` with 67 lenses and no body,
+  `fuji-gx680` with 17, `leica-s` with 16, and the three added above. All 37
+  Hasselblad bodies are among the cameras with no mount. The lens tables name
+  the cameras they are for in their own headings, so this is readable rather
+  than guessable.
 - **Mir lenses are filed two ways, because the source files them two ways.**
   `Mir-20K` came from a section headed `Mir` and `Mir-47K` from one headed
   `VOMZ`, the plant that built it, so they now sit on different shelves. The
