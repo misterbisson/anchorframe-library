@@ -30,7 +30,7 @@ name**, not because Zeiss ground the glass. Fuji built the H-system lenses and
 Hasselblad did not sell them under Fuji's name, so a Fuji-carrying title would
 be wrong — though nothing here demonstrates that, because all 67 Hasselblad
 lenses in this corpus are V-system and there is not one H-system lens to check
-against.
+against. That gap is [issue #44](https://github.com/misterbisson/anchorframe-library/issues/44).
 
 The case that proves it is Angénieux. Angénieux designed the Nikkor 200mm
 f/2.8 DEM ED and its neighbours, and **no Angénieux name appears in any of
@@ -174,6 +174,13 @@ earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
 - `List of Olympus products` names exactly one format, `135`, so nothing stops
   a future format category on it from reaching all 196 records including the
   120 and APS ones. Nothing in the tooling would notice.
+- **Four of the six Hasselblad lens sections were never imported**, so all 67
+  lenses here are V-system while the corpus holds the 1600F, the 1000F, the
+  XPan and four H bodies whose glass it does not list. An import gap rather
+  than a source gap — the article has the sections.
+  [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44),
+  which also asks whether the digital-only X system belongs in a film library
+  at all.
 - **109 of 1,229 lens titles do not carry their brand**, and every one is a
   record whose `brand` is wrong rather than a naming choice — tracked in
   [issue #42](https://github.com/misterbisson/anchorframe-library/issues/42).
