@@ -147,6 +147,34 @@ a title already carrying both of the brand's words looked finished.
 Each keeps its `/lens/schneider-kreuznach/…` address as an alias, and the
 earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
 
+## A digital-only system is out of scope
+
+This is a library of film equipment, so a body that never took film does not
+belong in it and neither does glass made only for one. Hasselblad's X system —
+the X1D and its XCD lenses — is the case that asked the question, and the
+answer is no: there is no X-system body anywhere in this corpus and there
+should not be.
+
+Nothing was removed to establish this. Four of the six Hasselblad lens sections
+were never imported at all, so the X system was already absent, and the ruling
+settles only whether [issue #44](https://github.com/misterbisson/anchorframe-library/issues/44)
+should go back for it. It should not. The other three sections — 1600F / 1000F,
+H system and XPan — stay in scope, because this corpus already holds those
+bodies.
+
+**A system that took film and later went digital is in.** The H1 and H2 accept
+film magazines, so H-system lenses are film lenses that happen to have outlived
+film. The test is whether a body ever took film, not whether its maker still
+sells one.
+
+Checked rather than assumed: the corpus was searched for the digital-only lines
+most likely to have arrived by accident — Canon EOS R, Nikon Z, Sony E, Leica
+M8 through SL, Micro Four Thirds, the Fujifilm X bodies, the Pentax K digital
+range — and holds none of them. The three records that matched on a word are
+`Lomography Peacock X-Pro`, which is a cross-processing film, and the film
+`Canon EOS-1` and `Minolta Maxxum 4`, whose bodies mention their digital
+successors.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes
@@ -178,9 +206,8 @@ earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
   lenses here are V-system while the corpus holds the 1600F, the 1000F, the
   XPan and four H bodies whose glass it does not list. An import gap rather
   than a source gap — the article has the sections.
-  [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44),
-  which also asks whether the digital-only X system belongs in a film library
-  at all.
+  [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44)
+  covers three of the four; the fourth is the X system, ruled out above.
 - **109 of 1,229 lens titles do not carry their brand**, and every one is a
   record whose `brand` is wrong rather than a naming choice — tracked in
   [issue #42](https://github.com/misterbisson/anchorframe-library/issues/42).
