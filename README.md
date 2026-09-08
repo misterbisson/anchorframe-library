@@ -13,9 +13,9 @@ what a camera is called.
 | | records | brands | with a photograph |
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
-| lenses | 1,255 | 72 | 113 |
+| lenses | 1,239 | 72 | 113 |
 | films | 987 | 52 | 182 |
-| mounts | 31 | — | — |
+| mounts | 30 | — | — |
 
 Of the 987 films, **299 are still in production**.
 What the two source articles say about them: speed on 896, process on
@@ -254,20 +254,23 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   enumerate them. The V-system barrel versions it does enumerate — C, CF, CFi,
   CFE, F, FE, CB — are all here; that column went unread until it was measured
   against the source and 23 editions were missing.
-- **Only 9 of the 28 mounts actually join a body to its glass.** Sixteen have
-  bodies and no lenses — Canon FL, Contax G, Konica AR and KM, M42, both Mamiya
-  mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM, Ricoh RK
-  and Tenax — because the camera side names 28 mounts while the lens sources
-  enumerate about a dozen. An earlier version of this file said "two mounts
-  enumerate no lenses"; that was the count of lens sources that came back empty,
-  not the count of mounts with nothing on the other side, and it understated the
-  gap by eight times. The mount index says so on every row now rather than
-  leaving it here.
+- **Only 9 of the 30 mounts actually join a body to its glass.** Sixteen have
+  bodies and no lenses — Canon FL, Contax G and RF, Konica AR and KM, M42, both
+  Mamiya mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM,
+  Ricoh RK and Tenax — because the camera side names more mounts than the lens
+  sources enumerate. An earlier version of this file said "two mounts enumerate
+  no lenses"; that was the count of lens sources that came back empty, not the
+  count of mounts with nothing on the other side, and it understated the gap by
+  eight times. The mount index says so on every row now rather than leaving it
+  here.
 
-  Three go the other way. `Leica S` is not a gap: its bodies are digital and
-  correctly absent. `Hasselblad V` and `Fuji GX680` have lenses and bodies, but
-  those bodies were read from articles that list them rather than from articles
-  of their own, so there was no infobox to name a mount.
+  Five go the other way, and all five are the same defect rather than a
+  shortage: `Hasselblad V`, `1600F`, `H` and `XPan`, and `Fuji GX680` have
+  lenses *and* bodies, but those bodies were read from articles listing many
+  cameras rather than from articles of their own, so there was no infobox to
+  name a mount. **Of the 231 cameras established to take interchangeable
+  lenses, 148 — 64% — say which mount.** The rest is measured in
+  [docs/rulings.md](docs/rulings.md).
 - **The camera list is film-only by construction.** The app fills its Camera
   field from any digital body that has written EXIF into the user's own library,
   so what a shipped list is *for* is the bodies no EXIF can supply.
