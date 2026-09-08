@@ -7,4 +7,13 @@ note = "ILFORD publishes no photograph of this box, which is why the record carr
 iso = 400
 process = ["B&W"]
 types = "Print"
+[[resources]]
+src = "pan-400.jpg"
+[resources.params]
+credit = "El Grafo"
+license = "CC BY-SA 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
+alt = "A 35 mm cassette of ILFORD PAN 400, black with a magenta panel lettered in white, marked 36 EXP"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Ilford_Pan_400_135_film_cartridge_01.jpg"
+verified = "2026-09-08"
 +++
