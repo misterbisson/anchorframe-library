@@ -110,6 +110,22 @@ IMAGE_PARAMS = {
 # every one-shot importer leaves behind. The remedy is to re-check the sources
 # and move the dates — not to raise the number because it went off.
 STALE_AFTER_DAYS = 550          # about eighteen months
+# What a photograph may carry and need not. `caption` is the source's own words
+# about the file, kept apart from `alt` rather than instead of it.
+#
+# The two were one field until 190 camera images showed what that costs. `alt`
+# held whatever the uploader wrote: fifteen in the first person, nineteen
+# running past 140 characters into serial numbers and eBay advice, several in
+# Danish, German and Hebrew on an English-language site. A reader who cannot
+# see the photograph got a stranger's reminiscence.
+#
+# It is kept rather than dropped because it is evidence, and better evidence
+# than anything else here. Three photographs of the wrong camera were found by
+# reading it — the `Fuji GX680` record's caption said `GX680III Professional
+# Body`, and the body plate agreed.
+OPTIONAL_IMAGE_PARAMS = {
+    "caption": "what the source says about the file, in its own words",
+}
 NON_FREE = "fair-use"
 NON_FREE_PARAMS = {
     "copyright": "who owns the photograph and the packaging in it",
@@ -354,7 +370,8 @@ def validate(root: str) -> list[str]:
                 if key not in ("src", "params"):
                     bad(r.path, f"resource {res['src']} has an unknown key {key!r}")
             for key in res.get("params") or {}:
-                if key not in set(IMAGE_PARAMS) | set(NON_FREE_PARAMS):
+                if key not in (set(IMAGE_PARAMS) | set(NON_FREE_PARAMS)
+                               | set(OPTIONAL_IMAGE_PARAMS)):
                     bad(r.path, f"{res['src']} carries {key!r}, which is not something "
                                 "an image can say. A record's own field written below "
                                 "a [[resources]] header lands here.")

@@ -840,3 +840,41 @@ class DigitalGeneration(Fixture):
                      "Leica_APO-Summicron-SL_50mm.jpg"):
             self.assertIn("only on digital bodies",
                           self.on("Nikon Nikkor 85mm f/1.8", name), name)
+
+
+class Caption(Fixture):
+    """The source's own words about a file, kept apart from `alt`.
+
+    They were one field until 190 camera images showed the cost: `alt` held
+    whatever the uploader wrote, and a reader who cannot see the photograph got
+    a stranger's reminiscence. Keeping the caption is what let nine photographs
+    of the wrong camera be found.
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.cam = os.path.join(self.root, "content/camera/canon/ae-1/index.md")
+        open(os.path.join(os.path.dirname(self.cam), "ae-1.jpg"), "wb").close()
+
+    def on(self, extra=""):
+        params = {"credit": "Rpvdk", "license": "Public domain",
+                  "licenseUrl": "https://commons.example/l",
+                  "alt": "Canon AE-1, photographed on its own",
+                  "sourcePage": "https://commons.example/File:x.jpg",
+                  "verified": datetime.date.today().isoformat()}
+        body = "".join(f'{k} = "{v}"\n' for k, v in params.items()) + extra
+        page(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                       'source = "https://x.example/a"\n\n[[resources]]\n'
+                       f'src = "ae-1.jpg"\n[resources.params]\n{body}'.rstrip("\n"))
+        return " ".join(validate(self.root))
+
+    def test_a_caption_is_allowed(self):
+        self.assertEqual("", self.on('caption = "Canon AE-1 with FD 50mm f/1.8"\n'))
+
+    def test_it_is_optional(self):
+        self.assertEqual("", self.on())
+
+    def test_something_that_is_not_a_param_is_still_refused(self):
+        # The allowed set grew; it did not stop being a set.
+        self.assertIn("which is not something an image can say",
+                      self.on('photographer_mood = "content"\n'))
