@@ -218,6 +218,42 @@ range — and holds none of them. The three records that matched on a word are
 `Canon EOS-1` and `Minolta Maxxum 4`, whose bodies mention their digital
 successors.
 
+## Four sections of one article, and only two were read
+
+`List of lenses for Hasselblad cameras` has six lens sections. The first pass
+took two — V system and Aerial — so the library held the 1600F, the 1000F, the
+XPan and four H bodies and listed no glass for any of them. Nobody noticed for
+forty pull requests, because a gap looks exactly like a subject with nothing to
+say. It surfaced only when a ruling here claimed something about H-system
+lenses and there was not one in the corpus to check it against.
+
+**26 lenses now come from the three film sections.** The X system is not among
+them, on the ruling above.
+
+These tables needed their own reader, which is the part worth recording.
+`wikitable.py` was written for the film lists, where `!` marks a header and `|`
+marks data. **Here a data row leads with `!` cells** — the focal length and
+aperture are styled as headings — so that parser files half of every row as a
+column name and yields nothing at all.
+
+`{{f/|3.5|22}}` had to survive too. `wikitable.clean` drops every template,
+which is right for the film tables and would have silently deleted the aperture
+from every row here, leaving 26 lenses with no maximum aperture and no error.
+
+**The 1600F section carries `variant = "1600F"` throughout.** The V system
+reissued several of those Zeiss designs and the corpus already tells its C, CF
+and CFi editions apart that way; two of the eleven collide by title alone, the
+Biogon 38mm f/4.5 and the Sonnar 250mm f/5.6. Setting the variant only on the
+two that collide would make a record depend on what else happened to be in the
+corpus that day.
+
+**The teleconverter is not a lens.** `H 1.7X Converter` sits in the H table and
+no converter is a record anywhere in this corpus, so it is refused by its focal
+length column failing to be a focal length — with a test saying so, rather than
+leaving it to a regex nobody reads.
+
+Three mounts are new: `hasselblad-1600f`, `hasselblad-h`, `hasselblad-xpan`.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes
@@ -245,12 +281,12 @@ successors.
 - `List of Olympus products` names exactly one format, `135`, so nothing stops
   a future format category on it from reaching all 196 records including the
   120 and APS ones. Nothing in the tooling would notice.
-- **Four of the six Hasselblad lens sections were never imported**, so all 67
-  lenses here are V-system while the corpus holds the 1600F, the 1000F, the
-  XPan and four H bodies whose glass it does not list. An import gap rather
-  than a source gap — the article has the sections.
-  [Issue #44](https://github.com/misterbisson/anchorframe-library/issues/44)
-  covers three of the four; the fourth is the X system, ruled out above.
+- **Every lens carries a mount and only 25% of cameras do**, so six mounts hold
+  glass that fits nothing here: `hasselblad-v` with 67 lenses and no body,
+  `fuji-gx680` with 17, `leica-s` with 16, and the three added above. All 37
+  Hasselblad bodies are among the cameras with no mount. The lens tables name
+  the cameras they are for in their own headings, so this is readable rather
+  than guessable.
 - **Mir lenses are filed two ways, because the source files them two ways.**
   `Mir-20K` came from a section headed `Mir` and `Mir-47K` from one headed
   `VOMZ`, the plant that built it, so they now sit on different shelves. The
