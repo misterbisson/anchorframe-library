@@ -1,0 +1,7 @@
++++
+title = "Samsung Schneider-Kreuznach D-Xenon 18–55mm f3.5-5.6 AF (2007- )"
+brand = "Samsung"
+source = "https://en.wikipedia.org/wiki/Pentax_K-mount#Samsung"
+mount = ["pentax-k"]
+aliases = ["/lens/schneider/kreuznach-d-xenon-18-55mm-f3-5-5-6-af-2007/", "/lens/schneider-kreuznach/d-xenon-18-55mm-f3-5-5-6-af-2007/"]
++++

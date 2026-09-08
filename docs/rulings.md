@@ -100,6 +100,34 @@ want a person establishing who sold each one.
 `test_a_lens_name_says_whose_shelf_it_came_off` counts the held set rather than
 describing it, so the number may only go down, and only deliberately.
 
+## A licensed name is not the seller either
+
+Six lenses sat on the Schneider Kreuznach shelf — half of everything on it —
+and Schneider Kreuznach neither sold them nor made them. The source says so
+outright, in the section the records were read from:
+
+> All these lenses had been **marketed by Samsung** […] They **license their
+> name to Samsung** […] All the Schneider branded glass from Samsung is
+> **manufactured by Pentax**
+
+So the badge reads Schneider-Kreuznach, the glass is Pentax's, and the company
+that sold them is Samsung. The brand is who sold it, which makes these
+`Samsung`, and the corpus had no Samsung shelf at all until now. The licensed
+name stays in the title the way `Hasselblad Rodenstock Apo-Grandagon` keeps
+Rodenstock: the brand says whose shelf it came off, the name says what is
+written on the barrel.
+
+This is the same defect as [the 109 K-mount lenses filed under
+Pentax](https://github.com/misterbisson/anchorframe-library/issues/42) arriving
+by a different route, and it is worth separating the two. Those took the brand
+from the **article** they were read from. These took it from their own **title**
+— which is why they slipped through the rename in #41 that had to hold the other
+109: `Schneider-Kreuznach` is one word with a hyphen and two words to a slug, so
+a title already carrying both of the brand's words looked finished.
+
+Each keeps its `/lens/schneider-kreuznach/…` address as an alias, and the
+earlier `/lens/schneider/…` alias with it, so neither move costs a URL.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes

@@ -1,0 +1,4 @@
++++
+title = "Samsung"
+brand = "Samsung"
++++
