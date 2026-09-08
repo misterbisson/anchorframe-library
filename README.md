@@ -13,7 +13,7 @@ what a camera is called.
 | | records | brands | with a photograph |
 | --- | --- | --- | --- |
 | cameras | 571 | 23 | 190 |
-| lenses | 1,229 | 34 | 0 |
+| lenses | 1,229 | 72 | 0 |
 | films | 987 | 52 | 182 |
 | mounts | 28 | — | — |
 
@@ -54,11 +54,11 @@ had licensed.
 
 **The brand is in the name as well as the path**, because a name is used away
 from the path: read as a flat list, `FD 100mm f/2` names no shelf and `Nikkor`
-is not a company anyone bought from. 109 lenses are the exception and it is a
-known defect rather than a style — they came off `Pentax K-mount`, which lists
-third-party glass fitting K, so their brand is the mount's rather than the
-seller's, and [issue #42](https://github.com/misterbisson/anchorframe-library/issues/42)
-tracks them. [`docs/rulings.md`](docs/rulings.md) has both halves.
+is not a company anyone bought from. All 1,229 lens names carry their brand.
+The last 109 that did not were lenses filed under Pentax that Pentax never
+sold — third-party glass listed on the `Pentax K-mount` page, which took the
+mount for the seller. They are on 38 new shelves now, and a lens name that
+cannot carry its brand turns out to be a record whose brand is wrong.
 
 ## URLs
 
