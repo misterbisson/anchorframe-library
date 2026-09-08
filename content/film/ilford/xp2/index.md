@@ -7,4 +7,13 @@ iso = 400
 process = ["C-41"]
 types = "Print"
 formats = ["135", "120", "sheet film"]
+[[resources]]
+src = "xp2.jpg"
+[resources.params]
+credit = "Zeitblick"
+license = "CC BY-SA 3.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
+alt = "Ilford XP2, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Ilford_XP2_.JPG"
+verified = "2026-09-08"
 +++

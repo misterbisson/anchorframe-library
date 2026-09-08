@@ -5,4 +5,13 @@ source = "https://en.wikipedia.org/wiki/List_of_discontinued_photographic_films#
 discontinued = true
 iso = 125
 types = "Print"
+[[resources]]
+src = "np-22.jpg"
+[resources.params]
+credit = "Talonola"
+license = "CC BY-SA 4.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
+alt = "ORWO NP 22, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:NP22_von_Orwo_(Schwarz-Wei%C3%9F).jpg"
+verified = "2026-09-08"
 +++

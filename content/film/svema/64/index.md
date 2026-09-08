@@ -8,4 +8,13 @@ iso = 64
 process = ["B&W"]
 types = "Print"
 formats = ["135", "120", "sheet film"]
+[[resources]]
+src = "64.jpg"
+[resources.params]
+credit = "Radoslaw Ziomber"
+license = "CC BY-SA 3.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
+alt = "Svema ФН 64, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Svema_FN_64_ORWO_UT_18_ORWO_UT_21.jpg"
+verified = "2026-09-08"
 +++

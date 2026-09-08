@@ -7,4 +7,13 @@ iso = 800
 process = ["C-41"]
 types = "Print"
 formats = ["135", "120"]
+[[resources]]
+src = "portra-800.jpg"
+[resources.params]
+credit = "Eastwind41"
+license = "Copyrighted free use"
+licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
+alt = "Kodak Portra 800, photographed on its own"
+sourcePage = "https://commons.wikimedia.org/wiki/File:KODAK_PORTRA800_Pkg.JPG"
+verified = "2026-09-08"
 +++
