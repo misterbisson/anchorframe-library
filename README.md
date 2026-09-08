@@ -40,12 +40,17 @@ lens is filed under Hasselblad —
 /library/lens/hasselblad/zeiss-planar-t-80mm-f2-8-c
 ```
 
-— with the maker still in the lens's own name, where a person reads it, and an
-alternate under `zeiss` that redirects to it. Who made a thing and who sold it
-are different questions, and this answers the second. The barrel there says
-Carl Zeiss and the shelf says Hasselblad, which is the whole distinction: six
-lenses badged `Schneider-Kreuznach` are filed under Samsung for the same
-reason, because Samsung is who sold them and Schneider only licensed the name.
+— with an alternate under `zeiss` that redirects to it. Who made a thing and
+who sold it are different questions, and this answers the second.
+
+Zeiss is in that name because **Hasselblad marketed those lenses under the
+Zeiss name**, not because Zeiss made them. Angénieux designed several Nikkors
+and appears in none of their titles, because Nikon sold them as Nikkor — were
+a title a record of who built a thing, those would say Angénieux. A maker's
+name in a title is part of what the thing was sold as; who built it is a fact
+for the record's body. Six lenses badged `Schneider-Kreuznach` sit under
+Samsung on the same rule — Samsung sold them and marketed them under a name it
+had licensed.
 
 **The brand is in the name as well as the path**, because a name is used away
 from the path: read as a flat list, `FD 100mm f/2` names no shelf and `Nikkor`
