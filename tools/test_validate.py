@@ -708,3 +708,88 @@ class Freshness(Fixture):
     def test_it_is_still_fresh_the_day_before(self):
         # The boundary, so the threshold is the number it says it is.
         self.assertEqual(self.on(self.days_ago(STALE_AFTER_DAYS)), "")
+
+
+class DigitalGeneration(Fixture):
+    """A photograph of a lens that shares its numbers and not its mount.
+
+    A lens name is a focal length and a maximum aperture, so a matcher working
+    on numbers cannot tell the Nikkor 85mm f/1.8 from the NIKKOR Z 85mm f/1.8 S
+    — thirty years and one incompatible mount apart. Five Nikon Z barrels and a
+    Sigma DG DN reached the corpus that way, and every one of them was named in
+    its own file title.
+    """
+
+    def on(self, title, filename, brand="Nikon"):
+        # The bundle follows the title, because the slug rule is checked too and
+        # a fixed path would fail on the name rather than on the photograph.
+        from slug import slugify
+        full = slugify(title)
+        prefix = slugify(brand) + "-"
+        slug = full[len(prefix):] if full.startswith(prefix) else full
+        shelf = os.path.join(self.root, "content/lens", slugify(brand))
+        d = os.path.join(shelf, slug)
+        os.makedirs(d, exist_ok=True)
+        if not os.path.exists(os.path.join(shelf, "_index.md")):
+            page(os.path.join(shelf, "_index.md"),
+                 f'title = "{brand}"\nbrand = "{brand}"')
+        open(os.path.join(d, "x.jpg"), "wb").close()
+        self.lens = os.path.join(d, "index.md")
+        params = {"credit": "Henry", "license": "Public domain",
+                  "licenseUrl": "https://commons.example/l", "alt": "A lens",
+                  "sourcePage": f"https://commons.wikimedia.org/wiki/File:{filename}",
+                  "verified": datetime.date.today().isoformat()}
+        body = "".join(f'{k} = "{v}"\n' for k, v in params.items())
+        page(self.lens, f'title = "{title}"\nbrand = "{brand}"\n'
+                        'source = "https://x.example/a"\n\n'
+                        f'[[resources]]\nsrc = "x.jpg"\n[resources.params]\n{body}'.rstrip("\n"))
+        return " ".join(validate(self.root))
+
+    def test_a_mirrorless_barrel_on_a_film_record_is_refused(self):
+        problem = self.on("Nikon Nikkor 85mm f/1.8",
+                          "Nikon_NIKKOR_Z_85mm_f_1.8_S_(48706710723).jpg")
+        self.assertIn("only on digital bodies", problem)
+        self.assertIn("NIKKOR Z", problem)
+
+    def test_the_right_photograph_passes(self):
+        self.assertEqual("", self.on("Nikon Nikkor 85mm f/1.8",
+                                     "Nikon_AI-s_Nikkor_85mm_f1.8.jpg"))
+
+    def test_the_test_is_asymmetry_and_not_presence(self):
+        # `Sigma 30mm f/1.4 EX DC` is a real record here and its photograph is
+        # correctly a DC lens. A rule that only looked for the marker would
+        # refuse nine correct images to catch six wrong ones.
+        self.assertEqual("", self.on("Nikon Nikkor 35mm f/1.8G AF-S DX",
+                                     "Nikon_AF-S_DX_Nikkor_35mm_f1.8G.jpg"))
+
+    def test_a_percent_escaped_filename_is_still_read(self):
+        # Commons URLs escape their titles, so the marker hides behind `%20`
+        # unless the name is unquoted first.
+        self.assertIn("only on digital bodies",
+                      self.on("Sigma 28–70mm f/2.8 EX DF ASP",
+                              "Sigma_28-70%20mm%20F2.8%20DG%20DN%20Contemporary.jpg",
+                              brand="Sigma"))
+
+    def test_rangefinder_is_not_canon_rf(self):
+        # `Hexar_rf-1-weba.jpg` is a film rangefinder. `RF` on its own is too
+        # cheap a marker; Canon's mount is named beside its focal length.
+        #
+        # The title here deliberately does NOT say RF. With `Hexar RF` in it the
+        # asymmetry test passes either way, and a loosened pattern would look
+        # correct — which is how this case first went unnoticed.
+        self.assertEqual("", self.on("Konica Hexar", "Hexar_rf-1-weba.jpg",
+                                     brand="Konica"))
+
+    def test_canon_rf_named_beside_a_focal_length_is_still_caught(self):
+        self.assertIn("only on digital bodies",
+                      self.on("Canon 50mm f/1.2", "Canon_RF_50mm_F1.2_L_USM.jpg",
+                              brand="Canon"))
+
+    def test_every_generation_in_the_vocabulary_is_reachable(self):
+        for name in ("Nikon_NIKKOR_Z_50mm.jpg", "Canon_RF_50mm_f1.2.jpg",
+                     "Canon_EF-M_22mm.jpg", "Canon_EF-S_18-55mm.jpg",
+                     "Sigma_28-70_DG_DN.jpg", "Nikon_AF-S_DX_35mm.jpg",
+                     "Olympus_M.Zuiko_60mm.jpg", "Fujinon_XF_35mm.jpg",
+                     "Leica_APO-Summicron-SL_50mm.jpg"):
+            self.assertIn("only on digital bodies",
+                          self.on("Nikon Nikkor 85mm f/1.8", name), name)
