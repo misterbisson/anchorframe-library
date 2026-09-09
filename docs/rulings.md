@@ -1258,3 +1258,73 @@ The pattern is the whole term and case-insensitive — the source is a table
 people hand-edit, `Suc-27` is an ordinary typo, and a format that merely begins
 with those three letters must survive.
 
+
+## An absent mount was two different facts written the same way
+
+572 cameras; 149 named a mount and 26 named a fixed lens, and the other 397
+said nothing. That silence covered a camera whose mount nobody had looked up
+and a camera that has no mount to look up, and the corpus wrote both the same
+way. A reader could not separate them, a test could not assert about either,
+and the number that would have measured the gap could not be computed.
+
+Both halves are now written from one field. `{{Infobox camera}}` states the
+mount in `lens_mount` on modern articles and `lens_system` on older ones, and
+the same field says `fixed`, `fixed lens` or `integrated` where there is none.
+
+**The vocabulary is the corpus, not a table in the importer.** Mount records
+carry `spellings`, and `validate.py` already refuses to let two mounts answer
+to one — so the library is a lookup table that is checked on every build, and
+adding a spelling to a record teaches the importer without anyone editing it.
+
+That mattered immediately. One camera infobox reads `[[R mount]]`, which is
+the redlink that put the Canonflex under `leica-r` and cost two records their
+claim to the spelling. Because neither mount answers to it now, the importer
+gets no answer instead of a confident wrong one — and a hardcoded table would
+have had to be told about that separately, afterwards, by somebody who
+remembered why.
+
+## An infobox describes its article, not the section a redirect landed in
+
+`camera_formats.py` reads a record that reaches a section of a shared article
+where the article names exactly one film format, on the grounds that there is
+then nothing to be wrong about. The same rule applied to mounts would be wrong,
+and the Konica Hexar says why in one line.
+
+Nine Hexar records — Classic, Gold, Rhodium, Silver, Titanium, 72, RF, RF
+Limited and the base model — redirect to one article. Its infobox reads
+`lens_mount = fixed 35mm f2 lens`, which is true of the Hexar AF the article
+leads with. **The Hexar RF is a Leica M-mount rangefinder.** Taking the
+article's word would file an interchangeable-lens M-mount body as a fixed-lens
+compact, and it would look exactly like the eight correct ones beside it.
+
+A format can be a property of an article because an article about many cameras
+is usually about many cameras taking one film. A mount cannot: it is the fact
+that most often distinguishes the variants a shared article exists to hold. So
+a camera reached through a section gets nothing, and 275 of the 397 are refused
+on that ground alone — 196 of them from `List of Olympus products` and 37 from
+`Hasselblad`.
+
+This is the ceiling on the infobox as a source, and it is worth stating
+plainly: the remaining gap is not behind the infobox. It is behind the fact
+that two thirds of these cameras have never had an article of their own.
+
+## Two mounts the corpus does not hold, and did not invent
+
+Eleven cameras name a mount with no record here: ten point at Deckel's
+`DKL-mount` — the Retina Reflex bodies and the Voigtländer Vitessa T — and one
+at a `Mamiya 645 bayonet`. Both are film mounts and both would be legitimate
+records under the rule that a mount exists if something carries it.
+
+Neither was created. A mount record is a claim about geometry, and this pass
+had one field of one infobox to go on, which names the mount and says nothing
+about it. Writing `dkl` with a title and nothing else would have put a record
+in the corpus whose only content is that a camera pointed at it — and the
+five mounts that already carry no figures at least say why on their own pages.
+These are recorded here instead, where they can be picked up by someone with a
+source in front of them.
+
+**One value was refused for saying two things at once.** The Vitessa's field
+reads `fixed or [[DKL-mount]] (Vitessa T)`: most Vitessas have a fixed lens and
+the T takes Deckel glass, in one field, describing two cameras. It is neither
+answer, and a reader that took the first word would have written a fixed lens
+onto a camera that has a mount.

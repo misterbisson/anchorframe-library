@@ -53,6 +53,14 @@ def counts(root: str) -> dict:
     }
     for field in ("iso", "process", "formats", "types"):
         out[field] = sum(1 for r in films if field in r.meta)
+    # How a body takes its glass, three ways. The third is the one worth
+    # counting: a camera naming neither is not a camera with no mount, it is a
+    # camera nobody has asked. Those two were one number until they were split.
+    cameras = [r for r in records if r.kind == "camera"]
+    out["cameras"] = len(cameras)
+    out["with_mount"] = sum(1 for r in cameras if r.meta.get("mount"))
+    out["with_fixed"] = sum(1 for r in cameras if r.meta.get("fixed_lens"))
+    out["lens_silent"] = (out["cameras"] - out["with_mount"] - out["with_fixed"])
     return out
 
 
@@ -66,6 +74,12 @@ def render(c: dict) -> str:
 | --- | --- | --- | --- |
 {rows}
 | mounts | {c['mounts']} | — | — |
+
+Of the {c['cameras']} cameras, {c['with_mount']} name the mount they take
+and {c['with_fixed']} name the fixed lens they cannot change.
+**{c['lens_silent']} say neither**, which is not the same as having nothing to
+say: absent is how this corpus writes both "has no mount" and "nobody has
+looked", and only one of those is a fact.
 
 Of the {c['films']:,} films, **{c['in_production']} are still in production**.
 What the two source articles say about them: speed on {c['iso']}, process on

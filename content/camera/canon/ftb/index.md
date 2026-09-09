@@ -2,6 +2,7 @@
 title = "Canon FTb"
 brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canon_FTb"
+mount = ["canon-fd"]
 
 [[resources]]
 src = "ftb.jpg"
