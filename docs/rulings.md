@@ -305,6 +305,50 @@ Its near relative is [the Polaroid Impulse](#a-format-is-what-joins-a-body-to-a-
 whose `type` reads `3-element 116mm f/9.4 plastic lens` and where 116 is a real
 film format. Both are a matcher finding the right numbers on the wrong object.
 
+## The caption was bad alt text and good evidence
+
+`fetch_images.py` wrote `alt` from the Commons description, truncated to 160
+characters. That is not alt text; it is whatever the uploader happened to say.
+Of 190 camera images, **fifteen were in the first person** — `My photo of my
+camera taken by me free image`, `Bought by my mother in c1980 - her favorite
+camera` — nineteen ran past 140 characters into serial numbers and advice about
+buying on eBay, and several were in Danish, German or Hebrew on an
+English-language site. A reader who cannot see the photograph was handed a
+stranger's reminiscence.
+
+**Thirty-seven were replaced, not all 190.** The rest describe the photograph
+well enough to do the job, and the film captions written by hand here — *A 35 mm
+cassette of ADOX CHS 100 II, leader out, orange label with the ADOX
+double-circle mark* — are better alt text than any template. A first draft of
+this change overwrote all 382 images in the corpus with a uniform sentence,
+which would have thrown those away to fix a different problem.
+
+The old text is kept as `caption`, and that is the part worth recording,
+because **it is the best evidence in the corpus.** Reading it found nine
+photographs of the wrong camera:
+
+*Two belong to records that already exist here.* The `Fuji GX680` image is a
+body plated `GX680 III`, and `Fuji GX680III` is its own record; the `Leica M6`
+image is captioned `Leica M6 TTL front`, and `Leica M6 TTL` is its own record.
+Both were moved to the record they depict rather than deleted.
+
+*Seven had no record to go to and were removed.* `Canon EOS-1` carried a body
+badged `EOS-1 V`. `Contax RTS` carried what its own caption calls a Contax RX —
+a moulded grip and an AE switch, where the 1975 RTS is flat-topped and has
+neither. Then `Leica III` holding a IIIf, `Minolta 16` a 16 II, `Nikon F90` an
+F90x, `Olympus OM-4` an OM-4T, `Konica Autoreflex` an Autoreflex TC.
+
+**The cause is not the one that produced the six wrong lenses.** Those came from
+matching a name against a pool of candidate files. These came from an article's
+lead image, and the article is about a *family* — so the picture is whichever
+member somebody photographed. Both are the same shape of error and neither rule
+would have caught the other.
+
+Two were left alone. `Nikon F80` says only `Nikon F80`, and `Minolta 35` says
+`second version`, which is a version of the right camera rather than a different
+one. Removing a photograph on a caption's say-so is the same trust the six wrong
+lenses were given, pointed the other way.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes
