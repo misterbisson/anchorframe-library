@@ -6,7 +6,7 @@ discontinued = false
 iso = 800
 process = ["Instant"]
 types = "Print"
-formats = ["99 mm x 62 mm"]
+formats = ["Instax Wide"]
 [[resources]]
 src = "instax-wide.png"
 [resources.params]
