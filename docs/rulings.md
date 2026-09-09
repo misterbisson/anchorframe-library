@@ -339,7 +339,27 @@ in this corpus — `OM-4ti` is. **A camera sold under two names in two markets h
 two names**, and looking for only one of them is how a photograph gets thrown
 away next to the record it belonged on.
 
-*Six had no record to go to and were removed.* `Canon EOS-1` carried a body
+That deletion pass was too quick, and five of the six went back. **Deleting a
+photograph is a claim too** — that nothing in the corpus is what it shows — and
+it needs the same evidence as keeping one.
+
+*Four are the record's own family.* `Nikon F90` and `Leica III` had their
+article's **own lead image** removed: `Nikon F90X` redirects to `Nikon F90`, and
+that article's infobox names `Nikon F90x.jpg`; the `Leica III` article names
+`Leica IIIf 50mm f1.5.jpg`. Deleting those substituted a reading of the caption
+for what the source itself says the camera looks like. `Minolta 16` and `Konica
+Autoreflex` are family records whose sub-models — the 16 II, the Autoreflex TC —
+have no article and so can never be records here. All four are back, with the
+caption naming which member is in the frame.
+
+*One was a camera missing from the corpus.* `Canon EOS-1V` has its own article
+and is a 35 mm SLR, so the photograph was right and the record was absent. It
+exists now, and the photograph is on it.
+
+*One stayed out.* `Contax RTS` had a file named `Contax RTS III` whose caption
+says `Contax RX` — two different cameras, neither of which has an article. The
+evidence contradicts itself and nothing here can settle it, which is the only
+honest reason to leave a photograph out. `Canon EOS-1` carried a body
 badged `EOS-1 V`. `Contax RTS` carried what its own caption calls a Contax RX —
 a moulded grip and an AE switch, where the 1975 RTS is flat-topped and has
 neither. Then `Leica III` holding a IIIf, `Minolta 16` a 16 II, `Nikon F90` an
