@@ -148,6 +148,50 @@ class Build(unittest.TestCase):
         self.assertEqual(len(lenses), 2, "the source lists both barrels")
         self.assertEqual({e.get("variant") for e in lenses}, {None, "New FD"})
 
+    def test_a_derived_figure_equals_the_mount_it_was_derived_from(self):
+        """`derived` means the number was never stated of this mount.
+
+        `pentax-kf` and `ricoh-rk` are the Pentax K plus five contacts and one
+        pin; `canon-r` shares the FD's flange because `Canon R lens mount` says
+        the lugs, flange focal distance and breech-lock ring are mutually
+        compatible. Nothing states 45.46 mm of the K-F or 42 mm of the R, so
+        the figures are inherited — and an inherited figure that stops matching
+        its parent is either a corrected parent nobody propagated or a claim
+        that quietly became original.
+        """
+        _, mounts, _ = load(ROOT)
+        for child, parent in (("pentax-kf", "pentax-k"),
+                              ("ricoh-rk", "pentax-k"),
+                              ("canon-r", "canon-fd")):
+            for field in ("flange", "throat", "tabs"):
+                if field not in mounts[child]:
+                    continue
+                self.assertEqual(
+                    mounts[child][field], mounts[parent].get(field),
+                    f"{child}.{field} is derived from {parent} and no longer "
+                    "matches it; either propagate the correction or give "
+                    f"{child} a source of its own")
+                self.assertEqual(mounts[child]["measured"][field], "derived")
+
+    def test_the_two_mamiya_67_mounts_are_what_the_split_claimed(self):
+        """The split is only justified by the numbers that differ.
+
+        `mamiya-breech-lock` held the RB67 and the RZ67 because both articles
+        use the identical phrase "Custom Mamiya breech-lock bayonet mount".
+        Splitting them says that phrase names a family, and the evidence is two
+        flange distances stated on two pages. If those ever agree, the split
+        has no basis left and the records should be one again.
+        """
+        _, mounts, _ = load(ROOT)
+        rb, rz = mounts["mamiya-rb67"], mounts["mamiya-rz67"]
+        self.assertNotEqual(rb["flange"], rz["flange"])
+        self.assertEqual((rb["flange"], rz["flange"]), (110.0, 105.0))
+        for m in (rb, rz):
+            # Not the list's "Bayonet": both bodies' own pages say breech-lock,
+            # and the list is the source that also says the RB is 112 mm.
+            self.assertEqual(m["measured"]["flange"], "article")
+            self.assertEqual(m["type"], "Breech-lock bayonet")
+
     def test_no_image_reaches_the_sheets(self):
         """The sheets are what the app bundles, and images do not go in it.
 

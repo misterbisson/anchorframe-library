@@ -199,7 +199,29 @@ def digital_generation(text: str) -> str | None:
     return m.group(0) if m else None
 
 
-MOUNT_KEYS = ("title", "brand", "spellings", "note")
+MOUNT_KEYS = ("title", "brand", "spellings", "note", "aliases",
+              "type", "flange", "throat", "pitch", "tabs", "measured")
+
+# What a mount measures, and where the figure came from. Two Wikipedia pages
+# state these and they do not agree — `Lens mount`'s table gives the Mamiya
+# RB67 a 112 mm flange and calls it a bayonet; `Mamiya RB67` says 110 mm and
+# breech-lock — so a number with no provenance is a number nobody can check.
+# `[measured]` carries the article and a tier per fact:
+#
+#   infobox   `{{Infobox camera mount}}`, purpose-built, on a dedicated article
+#   article   stated in that article's prose, transcribed by hand
+#   list      the summary table, and nothing better exists
+#   derived   stated of a mount this one is a variant of. `ricoh-rk` is the K
+#             mount plus one pin, so it inherits the K's geometry; no page
+#             states 45.46 mm of the R-K itself.
+#
+# The tier is not decoration. `derived` is the one a reader should distrust,
+# and it is invisible without this.
+MOUNT_FIGURES = {"flange": float, "throat": float, "tabs": int,
+                 "type": str, "pitch": str}
+TIERS = ("infobox", "article", "list", "derived")
+NAMES = {float: "millimetre figure", int: "whole number", str: "string"}
+
 # What a format's own page may carry. `carrier` is the article's `Type` column
 # under a name Hugo has not already taken — the singular picks a layout and the
 # plural is a film's print-or-slide — and its values say how the film is
@@ -234,6 +256,42 @@ def validate(root: str) -> list[str]:
                 bad(rel, f"unknown field {k!r}")
         # A brand is optional here, and that is the point: M42 is a thread, not
         # a product, so no maker owns it and its URL carries no brand segment.
+        # A mount alias is `/mount/<slug>/`, two segments where a record's is
+        # three: a mount has no brand in its URL, because M42 has no owner.
+        # The one in use retires `mamiya-breech-lock`, which split in two.
+        for alias in meta.get("aliases", []):
+            parts = str(alias).strip("/").split("/")
+            if not str(alias).startswith("/") or len(parts) != 2 \
+                    or parts[0] != "mount" or not VALID.match(parts[1]):
+                bad(rel, f"alias {alias!r} is not /mount/<slug>/")
+            elif parts[1] in mounts:
+                # An alias that shadows a live mount is a redirect nobody can
+                # follow: Hugo writes the alias page over the real one.
+                bad(rel, f"alias {alias!r} is a mount that still exists")
+
+        measured = meta.get("measured", {})
+        if measured and not isinstance(measured, dict):
+            bad(rel, "measured is a table of field -> tier")
+            measured = {}
+        for field, want in MOUNT_FIGURES.items():
+            if field not in meta:
+                # A tier for a fact the record does not carry is a leftover
+                # from an edit, and it reads as evidence for nothing.
+                if field in measured:
+                    bad(rel, f"measured names {field!r}, which the record has not")
+                continue
+            if not isinstance(meta[field], want) or isinstance(meta[field], bool):
+                bad(rel, f"{field} is a {NAMES[want]}")
+            elif want is float and not 0 < meta[field] < 200:
+                # Every flange distance in this corpus is between 27.8 mm
+                # (Leica M) and 110 mm (Mamiya RB67). A figure outside that is
+                # a unit error or a transcription, not a mount.
+                bad(rel, f"{field} of {meta[field]} is not a millimetre figure")
+            if measured.get(field) not in TIERS:
+                bad(rel, f"{field} has no tier in [measured]; one of {TIERS}")
+        if measured and not measured.get("source", "").startswith("https://"):
+            bad(rel, "measured.source names the article the figures came from")
+
         for sp in meta.get("spellings", []):
             # Two mounts claiming one spelling makes the join between a body and
             # its glass ambiguous in exactly the way a mount record prevents.
