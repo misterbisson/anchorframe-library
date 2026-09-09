@@ -1239,19 +1239,33 @@ is the only job the field has.
 
 Four records carried it. Three keep their real formats and lose only the term.
 
-**The fourth is the interesting one, and it is a loss.** `kodak/ultramax-800`
-had `formats = ["SUC-27", "SUC-39"]` and nothing else, because the source says
-that since 2008 it is sold only inside those cameras. Removing the term leaves
-it naming no format at all — and that is the true answer to "what can you buy
-this in", but a field that has simply gone quiet explains nothing. The record
-carries a note saying why, and saying the part the corpus cannot source: the
-film inside is 35 mm, and no source here states it. Guessing `135` would have
-been the same move as inferring a format from a mount, which is refused
-[above](#a-format-is-what-joins-a-body-to-a-stock).
+**The fourth needed a second look, and the first answer here was wrong.**
+`kodak/ultramax-800` had `formats = ["SUC-27", "SUC-39"]` and nothing else,
+because its row says that since 2008 it is sold only inside those cameras.
+Removing the term left it naming no format at all, and that was recorded as the
+true answer with a note saying the film inside is 35 mm but no source says so.
+
+That reads the row as if it began in 2008. It does not: **"since 2008" is a
+statement that before 2008 it was sold some other way**, and the corpus
+documents what a thing was as readily as what it is. Two neighbouring rows say
+which way. `List of discontinued photographic films` carries `Max Zoom 800`,
+c2002–2007, format `135`, whose own Replaced-by column names UltraMax 800; and
+`UltraMax 400`, the sibling launched the same year off the same Gold line, is
+`135`. The film had a year on the shelf as a roll you could buy, and the record
+says `135` again.
+
+Three sourced rows read together is not the same as inferring a format from a
+mount, which is refused [above](#a-format-is-what-joins-a-body-to-a-stock).
+The difference is that every step here is a sentence in a source; there, the
+sentence does not exist and the format is guessed from a lens fitting. The
+ruling lives in `film_facts.FORMATS_ELSEWHERE`, keyed by record, with the three
+rows named beside it — so a regeneration reproduces it rather than dropping it
+back to nothing.
 
 The note has a side effect worth naming: it earns UltraMax 800 a page of its
-own, where before it redirected to the Kodak list. A record whose only
-interesting fact is why a field is empty is exactly a record worth a page.
+own, where before it redirected to the Kodak list. A record whose most
+interesting fact is the shape of its own sourcing is exactly a record worth a
+page.
 
 `validate.py` refuses the term now, so it cannot come back the way it arrived.
 The pattern is the whole term and case-insensitive — the source is a table

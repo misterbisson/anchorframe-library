@@ -6,5 +6,6 @@ discontinued = false
 iso = 800
 process = ["C-41"]
 types = "Print"
-note = "Sold only inside Kodak single-use cameras since 2008, per the source, which is why this record names no format: a single-use camera is not one, and there is no roll of UltraMax 800 to put in a camera of your own. The film inside is 35 mm, but no source here says so."
+formats = ["135"]
+note = "Sold as a 135 roll from 2007 and, since 2008, only inside Kodak single-use cameras. Its own row states the second half and not the first, so the format is read from the rows around it: Max Zoom 800, the film it replaced, was 135, and UltraMax 400 off the same Gold line is 135. A single-use camera is not a format, so the SUC-27 and SUC-39 the row names are not recorded here."
 +++
