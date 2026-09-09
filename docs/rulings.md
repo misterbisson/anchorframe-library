@@ -921,9 +921,13 @@ bodies cite `Hasselblad#V_System` and its neighbours, and that article's
 120, 220 and 35 mm, so none of the 37 is read. The rule that first shipped here
 refused every fragment outright; what replaced it is below.
 
-**Instant cameras get nothing.** The films record their format as physical
-dimensions — Polaroid 600 film is `107x 88mm` — so an `instant` term would join
-nothing to anything.
+**Instant cameras get nothing.** That was because the films recorded their
+format as physical dimensions — Polaroid 600 film read `107x 88mm` — so an
+`instant` term would have joined nothing to anything. The dimensions are gone
+now: the record reads `Type 600`, and the reason has to be restated rather than
+left standing. It is still nothing, because the camera sources say `instant`
+and nothing finer, and `instant` is not a format by the test above — an Instax
+Wide pack and a Polaroid 600 pack do not go in the same camera.
 
 **Mount is deliberately not used to infer a format.** A Canon FD body takes
 35 mm film and every photographer knows it, and no source here says so. That is
@@ -1178,3 +1182,44 @@ The evidence and the conclusion are the same fact here, which is unusual and
 worth a guard: `test_the_two_mamiya_67_mounts_are_what_the_split_claimed`
 asserts the two flange distances differ and are 110 and 105. If they ever
 agree, the split has no basis left.
+
+## The designation was reused, and one of the two is what people mean
+
+`110` is two rows of the article and `126` is two more: an 1898 roll film and a
+1972 cartridge, a 1906 roll film and a 1963 one. The article is explicit that
+the pairs are unrelated — "No relation to the later 110 cartridge format" — so
+there is no averaging them, and the first reader refused both terms and left
+them with a title and no facts.
+
+A refusal is the right default and was the wrong answer here. **Every record
+that sends somebody to one of those pages means the cartridge**: 45 records name
+`110` and 32 name `126`, and reading every title says so — the Pentax Auto 110,
+the Minolta 110 Zoom SLR, Lomography's current stocks, Kodacolor VR. A page
+describing the roll film would have been wrong about all 77.
+
+So the later row is taken, and the earlier one becomes a sentence at the end of
+the note: "Kodak used the designation 110 earlier, for an unrelated film made
+from 1898 to 1929." Choosing is the ruling; choosing silently is what is still
+refused. That sentence is built from the displaced row rather than written out,
+so it stays true if the article is corrected — and the displaced row's own
+comment is not carried over, because "No relation to the later 110 cartridge
+format" printed on the cartridge's page points at itself.
+
+**The year decides, and nothing else.** Not which one survived: 126 ended in
+2008 and is still the 126 anybody means. Not which row has more fields: the
+1898 roll film has a `discontinued` year the cartridge lacks, and would win on
+completeness. Where a year cannot decide — two rows of one year, or a row that
+gives none — the refusal stands, because an undated row is not an early one.
+
+### The spool names went with the number, not the film
+
+Writing the page is what exposed this. The cross-reference table that gives
+`120` its other makers' names — Agfa B2-6, Ansco 4A — is a table of **spools**;
+its own last column is `Spool length (in)`. Its `126` row is the 1906 roll film,
+4.898 inches of it, and it handed `Ansco 19A` and `Vulcan 252` to an Instamatic
+cartridge that has no spool at all.
+
+All 23 numbers in that table are `roll film` rows and `126` is the only one any
+other format shares, so the fix costs nothing measurable: a spool's name is
+offered only to a row carried on a spool. It was invisible while `126` was
+refused, which is the shape of a bug that a fix uncovers rather than causes.
