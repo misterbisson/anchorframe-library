@@ -85,6 +85,56 @@ class Build(unittest.TestCase):
                          "cannot, check whether its brand is the seller or only "
                          "the mount it fits")
 
+    # A body whose brand is not its mount's, and the reason each is allowed.
+    # Every one of these is a maker building to a standard someone else set,
+    # which is a real and ordinary thing; what is not real is a body joined to
+    # a mount because the mount's *name* contained the string the importer had.
+    OTHER_MAKERS_MOUNTS = {
+        ("Leitz Minolta CL", "leica-m"),   # Leitz and Minolta built it together
+        ("Minolta CLE", "leica-m"),        # Minolta's own M-mount rangefinder
+        ("Canon VT", "leica-m39"),         # Canon's rangefinders took LTM glass
+        ("Canon 7", "leica-m39"),
+        ("Canon P", "leica-m39"),
+        ("Ricoh XR-1", "pentax-k"),        # the K mount was licensed widely
+    }
+
+    def test_a_body_wears_another_maker_s_mount_only_on_the_record(self):
+        """A camera joined to a mount no one at that company designed.
+
+        Six of these are true: Leitz and Minolta built the CL together, Canon's
+        rangefinders took Leica screw glass, Ricoh licensed the K. The seventh
+        was not. The Canonflex was filed under `leica-r` because its infobox
+        says `[[R mount]]` — a redlink — and `leica-r` claimed the bare
+        spelling `R mount`. Canon's own R mount is a breech-lock of 1959 that
+        became the FL; the two share a letter and nothing else. The spelling is
+        now claimed by neither, so the next importer gets no answer instead of
+        a confident wrong one.
+
+        A mount is the one field on a body that cannot be checked against its
+        name, so a wrong one is invisible: the record reads fine and joins the
+        body to a shelf of glass that will not fit it. This list is short
+        enough to read, which is the point — a new entry is a claim that some
+        maker built to another's standard, and it gets made here, in a file
+        someone reviews, rather than inside an importer nobody re-reads.
+
+        Third-party glass is the opposite case and is not tested: 423 lenses
+        here carry another maker's mount, because being built to fit someone
+        else's camera is what a third-party lens is.
+        """
+        # From the records, not the sheets: the sheets carry no `mount`, and
+        # deliberately so — the app fills a name field and joins nothing.
+        records, mounts, _ = load(ROOT)
+        brand_of = {slug: meta.get("brand") for slug, meta in mounts.items()}
+        crossed = {(r.meta["title"], m)
+                   for r in records if r.kind == "camera"
+                   for m in (r.meta.get("mount") or [])
+                   if brand_of.get(m) and brand_of[m] != r.meta.get("brand")}
+        self.assertEqual(crossed - self.OTHER_MAKERS_MOUNTS, set(),
+                         "a body on another maker's mount: confirm the maker "
+                         "built to that standard, then name it above")
+        self.assertEqual(self.OTHER_MAKERS_MOUNTS - crossed, set(),
+                         "an exception no record needs any more")
+
     def test_the_editions_the_source_distinguishes_survive_the_sheet(self):
         """The thirty collisions, by name, rather than only in the aggregate.
 
