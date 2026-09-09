@@ -5,7 +5,7 @@ source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Kodak"
 discontinued = false
 process = ["B&W"]
 types = "Print"
-formats = ["135", "100 ft", "120", "4x5", "5x7", "8x10"]
+formats = ["135", "120", "4x5", "5x7", "8x10"]
 
 [[resources]]
 src = "tri-x.jpg"

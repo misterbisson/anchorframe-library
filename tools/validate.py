@@ -51,6 +51,22 @@ FILM_FIELDS = ("iso", "process", "types")
 # about a film that changes what you can do with the result.
 FILM_TYPES = ("Print", "Slide")
 
+# How much film is on the roll, which is packaging and not a format.
+#
+# The field's own rule decides this: a format is the one fact a body and a stock
+# share, the thing that says a camera can take a film. No length answers that —
+# a 100-foot roll of Tri-X goes in the same camera as a 36-exposure cartridge,
+# and the answer for both is 135. The same reasoning already collapsed `135-36`
+# to `135` upstream; the bulk lengths came in by a different door and kept their
+# own term pages, `/formats/100-ft/`, `/formats/17m/`, `/formats/30.5m/` and
+# `/formats/50m/` — the first and third of which are one length written twice.
+#
+# Metres and feet only, and `mm` is deliberately absent, because `16mm` and
+# `35mm` are cine gauges and a gauge is a format a camera really does take.
+# Those two are the values here that most look like the thing being refused, so
+# a pattern like `\d+\s*mm?` would have taken exactly the wrong two.
+BULK_LENGTH = re.compile(r"^\d+(?:\.\d+)?\s*(?:m|ft)$", re.I)
+
 # Characters the sources use to put two things in one cell: `CN-16 / C-41` is
 # Fujifilm's name and the standard it matches, `Agfacolor, C-22` uses a comma,
 # `E-6 (C-41)` uses brackets. Every one of those is two processes, and each gets
@@ -344,6 +360,12 @@ def validate(root: str) -> list[str]:
                 bad(rel, f"a format containing any of {COMBINING} names more than "
                          "one format; each is its own term in the same taxonomy, "
                          "never a combined one")
+            elif any(BULK_LENGTH.match(x) for x in fmts):
+                bad(rel, "a format that is a length is how much film is on the "
+                         "roll, not what the roll is. `100 ft`, `17m`, `30.5m` "
+                         "and `50m` each had a term page, and `100 ft` and "
+                         "`30.5m` are the same length in different units. The "
+                         "format of a 100-foot roll of Tri-X is 135.")
         # A body takes a mount or has a lens built into it, never both: the two
         # infobox fields these came from answer one question between them.
         if mount and r.meta.get("fixed_lens"):

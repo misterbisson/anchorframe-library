@@ -351,6 +351,26 @@ class EmulsionFacts(Fixture):
                 self.emulsion(f'formats = ["{junk}"]')
                 self.assertObjects("never a combined one")
 
+    def test_a_format_that_is_a_length_is_caught(self):
+        # `/formats/100-ft/`, `/17m/`, `/30.5m/` and `/50m/` were four term
+        # pages, and the first and third are one length written in two units.
+        # A format says what camera can take the film; a length says how much
+        # of it is on the roll.
+        for junk in ("100 ft", "17m", "30.5m", "50m", "30m", "100ft"):
+            with self.subTest(junk=junk):
+                self.emulsion(f'formats = ["135", "{junk}"]\n')
+                self.assertObjects("a format that is a length")
+
+    def test_a_cine_gauge_is_not_a_length(self):
+        # The two values in this field that most look like a length and are
+        # not. 16 mm and 35 mm are widths of film, and a width is exactly what
+        # decides whether a camera can take it — so a rule catching `30m` with
+        # `\d+\s*mm?` would refuse the two formats it should keep.
+        for good in ("16mm", "35mm", "8mm", "70mm"):
+            with self.subTest(good=good):
+                self.emulsion(f'formats = ["{good}"]\n')
+                self.assertEqual([], validate(self.root))
+
     def test_a_types_outside_the_two_values_is_caught(self):
         self.emulsion('types = "Positive"')
         self.assertObjects("types is one of")

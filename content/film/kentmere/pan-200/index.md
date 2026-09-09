@@ -6,7 +6,7 @@ discontinued = false
 iso = 200
 process = ["B&W"]
 types = "Print"
-formats = ["135", "30.5m", "120"]
+formats = ["135", "120"]
 
 [[resources]]
 src = "pan-200.jpg"

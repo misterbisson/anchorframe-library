@@ -6,7 +6,7 @@ discontinued = false
 iso = 100
 process = ["B&W"]
 types = "Print"
-formats = ["135", "17m", "30.5m", "50m", "120", "sheet film"]
+formats = ["135", "120", "sheet film"]
 [[resources]]
 src = "fomapan-100-classic.jpg"
 [resources.params]

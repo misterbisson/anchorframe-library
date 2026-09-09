@@ -6,7 +6,7 @@ discontinued = false
 iso = 100
 process = ["B&W"]
 types = "Print"
-formats = ["135", "100 ft", "120"]
+formats = ["135", "120"]
 
 [[resources]]
 src = "xtreme-100.png"
