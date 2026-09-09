@@ -17,6 +17,12 @@ what a camera is called.
 | films | 987 | 52 | 274 |
 | mounts | 32 | — | — |
 
+Of the 572 cameras, 152 name the mount they take
+and 26 name the fixed lens they cannot change.
+**394 say neither**, which is not the same as having nothing to
+say: absent is how this corpus writes both "has no mount" and "nobody has
+looked", and only one of those is a fact.
+
 Of the 987 films, **299 are still in production**.
 What the two source articles say about them: speed on 896, process on
 939, format on 904, and print-or-slide on 980 —
@@ -288,9 +294,19 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   shortage: `Hasselblad V`, `1600F`, `H` and `XPan`, and `Fuji GX680` have
   lenses *and* bodies, but those bodies were read from articles listing many
   cameras rather than from articles of their own, so there was no infobox to
-  name a mount. **Of the 231 cameras established to take interchangeable
-  lenses, 148 — 64% — say which mount.** The rest is measured in
-  [docs/rulings.md](docs/rulings.md).
+  name a mount.
+- **394 cameras say neither a mount nor a fixed lens, and 275 of them cannot
+  be asked.** Their source is a section of an article about many cameras —
+  196 of them `List of Olympus products` and 37 `Hasselblad` — and an infobox
+  describes the article's subject, not the section a redirect landed in. A
+  further 109 have an article of their own whose infobox is silent on the
+  question. The remaining handful name a mount this corpus does not hold:
+  ten point at Deckel's `DKL-mount` and one at a `Mamiya 645 bayonet`, both
+  film mounts, neither invented here to fill the hole. This paragraph replaced
+  one saying 148 of 231 cameras "established to take interchangeable lenses"
+  named a mount; nothing recorded what established it, and a number whose
+  definition is lost cannot be checked or brought up to date. The three counts
+  above it are generated now, so they cannot go stale the same way.
 - **The camera list is film-only by construction.** The app fills its Camera
   field from any digital body that has written EXIF into the user's own library,
   so what a shipped list is *for* is the bodies no EXIF can supply.
