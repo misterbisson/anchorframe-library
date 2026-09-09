@@ -12,6 +12,7 @@ credit = "Hmeade13"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Picture of a Minolta X-570 using a Nikon D3000"
+caption = "Picture of a Minolta X-570 using a Nikon D3000"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_X-570.jpg"
 verified = "2026-09-04"
 +++

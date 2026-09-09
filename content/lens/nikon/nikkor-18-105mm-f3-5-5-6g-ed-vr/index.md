@@ -11,6 +11,7 @@ credit = "larsjuh"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Nikon Nikkor 18–105mm f/3.5-5.6G ED VR, photographed on its own, off the camera"
+caption = "AF-S Nikkor 18-105mm 3.5-5.6"
 sourcePage = "https://commons.wikimedia.org/wiki/File:AF-S_Nikkor_18-105mm_3.5-5.6_(4746343749).jpg"
 verified = "2026-09-07"
 +++

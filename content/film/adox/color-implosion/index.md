@@ -15,6 +15,7 @@ credit = "El Grafo"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "ADOX Color Implosion, photographed on its own"
+caption = "Adox Color Implosion\" 135 format ISO 100 film (C-41 process)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:ADOX_Color_Implosion_135_film_cartridge_(01).jpg"
 verified = "2026-09-08"
 +++

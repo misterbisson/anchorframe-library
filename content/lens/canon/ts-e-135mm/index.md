@@ -10,6 +10,7 @@ credit = "Bernatargentona"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Canon TS-E 135mm, photographed on its own, off the camera"
+caption = "Objectiu Canon TS-E 135mm f/4L macro"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_TS-E_135mm.jpg"
 verified = "2026-09-07"
 +++

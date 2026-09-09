@@ -10,6 +10,7 @@ credit = "Tobias \"ToMar\" Maier"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Canon EF 35-70mm, photographed on its own, off the camera"
+caption = "Canon Zoom Lens EF 35-70mm 1:3.5-4.5"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_Zoom_Lens_EF_35-70mm_1to3.5-4.5.jpg"
 verified = "2026-09-07"
 +++

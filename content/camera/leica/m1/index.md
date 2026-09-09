@@ -12,6 +12,7 @@ credit = "Rama"
 license = "CC BY-SA 3.0 fr"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en"
 alt = "Leica M1 body"
+caption = "Leica M1 body"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Leica_M1-IMG_5850-gradient.jpg"
 verified = "2026-09-04"
 +++

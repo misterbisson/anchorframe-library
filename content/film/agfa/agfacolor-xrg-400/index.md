@@ -14,6 +14,7 @@ credit = "Joost J. Bakker IJmuiden"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Agfacolor XRG 400, photographed on its own"
+caption = "Agfa Agfacolor XRG 400 135 24 DX Process AP70 C-41 Agfa-Gevaert Made in Germany"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfa_Agfacolor_XRG_400_135_24_DX_Process_AP70_C-41_Agfa-Gevaert_Made_in_Germany_(51885919272).jpg"
 verified = "2026-09-08"
 +++

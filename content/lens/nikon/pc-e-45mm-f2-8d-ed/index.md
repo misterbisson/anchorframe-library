@@ -10,6 +10,7 @@ credit = "Alekos"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Nikon PC-E 45mm f/2.8D ED, photographed on its own, off the camera"
+caption = "Nikon 45mm f/2.8D ED PC-E Perspective control lens with electronic aperture"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_45mm_pc-e.jpg"
 verified = "2026-09-07"
 +++

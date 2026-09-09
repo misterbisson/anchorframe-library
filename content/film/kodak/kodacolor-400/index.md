@@ -14,6 +14,7 @@ credit = "Joost J. Bakker IJmuiden"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Kodak Kodacolor 400, photographed on its own"
+caption = "Kodacolor 400 135-36 film ASA 400-27 Din Cat 344 4247 Expired 1982 made in England"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodacolor_400_135-36_film_ASA_400-27_Din_Cat_344_4247_Expired_1982_made_in_England_(51879465115).jpg"
 verified = "2026-09-08"
 +++

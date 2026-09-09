@@ -14,6 +14,7 @@ credit = "Joost J. Bakker IJmuiden"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Fujifilm Fujicolor C200, photographed on its own"
+caption = "Fujicolor C 200 36 exp 200 iso Made in Japan"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Fujicolor_C_200_36_exp_200_iso_Made_in_Japan_(51877855392).jpg"
 verified = "2026-09-08"
 +++

@@ -14,6 +14,7 @@ credit = "Markmons"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "ORWO CHROM UT 15, photographed on its own"
+caption = "ORWO Chrom UT15"
 sourcePage = "https://commons.wikimedia.org/wiki/File:ORWO_Chrom_UT15.jpg"
 verified = "2026-09-08"
 +++

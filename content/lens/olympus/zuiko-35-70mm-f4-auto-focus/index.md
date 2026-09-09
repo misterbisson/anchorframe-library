@@ -11,6 +11,7 @@ credit = "Ermell"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Olympus Zuiko 35–70mm F4 Auto Focus, photographed on its own, off the camera"
+caption = "OM Auto Zoom 3,6 f=35-70mm"
 sourcePage = "https://commons.wikimedia.org/wiki/File:OM_Auto_Zoom_3,6_f%3D35-70mm-19840912-RM-123616.jpg"
 verified = "2026-09-07"
 +++

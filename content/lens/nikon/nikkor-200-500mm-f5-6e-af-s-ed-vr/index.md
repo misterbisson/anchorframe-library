@@ -11,6 +11,7 @@ credit = "Alex P. Kok"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Nikon Nikkor 200–500mm f/5.6E AF-S ED VR, photographed on its own, off the camera"
+caption = "Nikon AF-S NIKKOR 200-500mm f/5.6E ED VR"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_AF-S_NIKKOR_200-500mm_f-5.6E_ED_VR.jpg"
 verified = "2026-09-07"
 +++

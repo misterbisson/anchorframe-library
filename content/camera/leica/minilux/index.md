@@ -12,6 +12,7 @@ credit = "Dddeco"
 license = "CC BY 2.5"
 licenseUrl = "https://creativecommons.org/licenses/by/2.5"
 alt = "\"LEICA minilux\" Summarit f2.4/40"
+caption = "\"LEICA minilux\" Summarit f2.4/40"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minilux.JPG"
 verified = "2026-09-04"
 +++

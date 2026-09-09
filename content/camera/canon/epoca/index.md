@@ -12,6 +12,7 @@ credit = "Rémi Kaupp"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Canon Epoca camera."
+caption = "Canon Epoca camera."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_Epoca_-_global_1.jpg"
 verified = "2026-09-04"
 +++

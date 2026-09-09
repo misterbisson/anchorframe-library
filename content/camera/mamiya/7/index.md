@@ -11,6 +11,7 @@ credit = "Albert Leung"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Mamiya 7 càmera"
+caption = "Mamiya 7 càmera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Mamiya_7camera.jpg"
 verified = "2026-09-04"
 +++

@@ -14,6 +14,7 @@ credit = "El Grafo"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "A 35 mm cassette of ILFORD PAN 100, black with a yellow panel lettered in white, marked BLACK AND WHITE FILM"
+caption = "A roll of Ilford Pan 100 Black and White film, expiring in July 2021, DX cartridge barcode : 017464."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Ilford_Pan_100_135_film_cartridge_02.jpg"
 verified = "2026-09-08"
 +++

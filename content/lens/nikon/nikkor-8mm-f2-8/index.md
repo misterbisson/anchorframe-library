@@ -11,6 +11,7 @@ credit = "Mliu92"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Nikon Nikkor 8mm f/2.8, photographed on its own, off the camera"
+caption = "Circular fisheye lens for Nikon F mount"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Fisheye-Nikkor_8mm_f2.8.jpg"
 verified = "2026-09-07"
 +++

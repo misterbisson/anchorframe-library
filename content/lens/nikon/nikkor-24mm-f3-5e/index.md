@@ -11,6 +11,7 @@ credit = "Хрюша"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Nikon Nikkor 24mm f/3.5E, photographed on its own, off the camera"
+caption = "Nikon shift and tilt-lens PC-E Nikkor 24 mm f/3.5D ED, with NC front filter, covers and lens hood."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_PC-E_Nikkor_24_mm_f3.5D_ED_01_11.jpg"
 verified = "2026-09-07"
 +++

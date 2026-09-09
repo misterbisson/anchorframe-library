@@ -12,6 +12,7 @@ credit = "Ben Eenhoorn (flickr.com user Devar)"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Canon T50 SLR camera with Canon FD 50 mm f/1.8 lens"
+caption = "Canon T50 SLR camera with Canon FD 50 mm f/1.8 lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_T50.jpg"
 verified = "2026-09-04"
 +++

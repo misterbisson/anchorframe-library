@@ -14,6 +14,7 @@ credit = "Veronidae"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Agfachrome 100 RS, photographed on its own"
+caption = "Rollo de pelicula fotografica de 35 mm (Polaroid) 2006"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Rollo_de_pelicula_fotografica_de_35_mm_(AgfaChrome_100_RS)_2006_007.jpg"
 verified = "2026-09-08"
 +++

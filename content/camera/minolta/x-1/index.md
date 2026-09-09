@@ -12,6 +12,7 @@ credit = "Wolfgang Thanner at de.wikipedia"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Minolta X-1 mit 1.8/50mm Objektiv"
+caption = "Minolta X-1 mit 1.8/50mm Objektiv"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_X1_01_kln.jpg"
 verified = "2026-09-04"
 +++

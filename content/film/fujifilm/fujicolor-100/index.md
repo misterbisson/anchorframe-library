@@ -14,6 +14,7 @@ credit = "Quercus acuta"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Fujifilm Fujicolor 100, photographed on its own"
+caption = "富士フイルム・フジカラー100"
 sourcePage = "https://commons.wikimedia.org/wiki/File:FUJICOLOR_100_-_FUJIFILM_-_01.jpg"
 verified = "2026-09-08"
 +++

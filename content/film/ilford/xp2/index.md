@@ -14,6 +14,7 @@ credit = "Zeitblick"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Ilford XP2, photographed on its own"
+caption = "Ilford 35 mm black and white film package Ilford XP2"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Ilford_XP2_.JPG"
 verified = "2026-09-08"
 +++

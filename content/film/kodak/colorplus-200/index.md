@@ -14,6 +14,7 @@ credit = "Joost J. Bakker IJmuiden"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Kodak ColorPlus 200, photographed on its own"
+caption = "Kodak Color Plus 200 Made in U.S.A. 200 iso 36 exp not for export to EEA"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Color_Plus_200_Made_in_U.S.A._200_iso_36_exp_not_for_export_to_EEA_(51879465055).jpg"
 verified = "2026-09-08"
 +++

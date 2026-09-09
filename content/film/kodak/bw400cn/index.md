@@ -14,6 +14,7 @@ credit = "Dnalor 01"
 license = "CC BY-SA 3.0 at"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en"
 alt = "A 35 mm cassette of Kodak Professional BW400CN with its leader out, yellow and white label marked FILM FOR BLACK & WHITE PRINTS and Process C-41"
+caption = "Kodak Professional BW400CN - Film for black & white prints"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Professional_BW400CN_-_Film_for_black_%26_white_prints.jpg"
 verified = "2026-09-08"
 +++

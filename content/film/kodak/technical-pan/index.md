@@ -14,6 +14,7 @@ credit = "Rleffmann"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Kodak Technical Pan, photographed on its own"
+caption = "An unused roll of Kodak Technical Pan 35 mm film."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Technical_Pan.jpg"
 verified = "2026-09-08"
 +++

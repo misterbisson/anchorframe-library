@@ -11,6 +11,7 @@ credit = "Luke Nadeau from U.S."
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Nikon Nikkor 35mm f/1.8G AF-S DX, photographed on its own, off the camera"
+caption = "Nikon AF-S DX Nikkor 35mm f1.8G lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_AF-S_DX_Nikkor_35mm_f1.8G.jpg"
 verified = "2026-09-07"
 +++

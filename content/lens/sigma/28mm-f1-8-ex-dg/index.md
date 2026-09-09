@@ -10,6 +10,7 @@ credit = "Pascal"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Sigma 28mm f/1.8 EX DG, photographed on its own, off the camera"
+caption = "Sigma 28mm F1.8 EX DG Aspherical Macro lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Sigma_28mm_F1.8_01.jpg"
 verified = "2026-09-07"
 +++

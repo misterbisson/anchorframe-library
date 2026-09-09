@@ -12,6 +12,7 @@ credit = "Jan von Erpecom"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Image of early black Leica Standart with Elmar lens"
+caption = "Image of early black Leica Standart with Elmar lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:EL_Standard.JPG"
 verified = "2026-09-04"
 +++

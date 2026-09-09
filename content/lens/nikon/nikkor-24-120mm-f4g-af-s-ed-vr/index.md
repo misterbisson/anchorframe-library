@@ -11,6 +11,7 @@ credit = "Jacek Halicki"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Nikon Nikkor 24–120mm f/4G AF-S ED VR, photographed on its own, off the camera"
+caption = "Nikkor AF-S 24-120 mm f/4 G ED VR lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:2023_Obiektyw_Nikkor_AF-S_24-120_mm_f_4_G_ED_VR_(1).jpg"
 verified = "2026-09-07"
 +++

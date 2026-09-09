@@ -11,6 +11,7 @@ credit = "Rpvdk"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Agfa Clack camera"
+caption = "Agfa Clack camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfa-clack.jpg"
 verified = "2026-09-04"
 +++

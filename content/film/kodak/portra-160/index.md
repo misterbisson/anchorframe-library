@@ -14,6 +14,7 @@ credit = "SkywalkerPL"
 license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Kodak Portra 160, photographed on its own"
+caption = "135 film Kodak Portra 160 ISO , 36 frames. 2 cassettes (front-right), 5-pack (background) and cassette holder (top-right). On right cassette you can clearly see DX encoding . Manufactured in 2011, best before 01/2014."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Portra_160.jpg"
 verified = "2026-09-08"
 +++

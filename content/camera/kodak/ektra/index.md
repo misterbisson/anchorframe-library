@@ -10,6 +10,7 @@ credit = "Mike Eckman"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "A Kodak Ektra, 35mm rangefinder camera, produced by the Eastman Kodak Company."
+caption = "A Kodak Ektra, 35mm rangefinder camera, produced by the Eastman Kodak Company."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Ektra_1_(cropped).jpg"
 verified = "2026-09-04"
 +++

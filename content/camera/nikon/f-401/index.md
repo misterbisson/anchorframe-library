@@ -10,6 +10,7 @@ credit = "LoopZilla"
 license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Nikon F-401 with standard lens."
+caption = "Nikon F-401 with standard lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_(AF)_F-401.jpg"
 verified = "2026-09-04"
 +++

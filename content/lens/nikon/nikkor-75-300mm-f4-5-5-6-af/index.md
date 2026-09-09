@@ -11,6 +11,7 @@ credit = "Raimond Spekking"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Nikon Nikkor 75–300mm f/4.5-5.6 AF, photographed on its own, off the camera"
+caption = "AF Zoom-Nikkor 75-300mm f/4.5-5.6"
 sourcePage = "https://commons.wikimedia.org/wiki/File:AF_Zoom-Nikkor_75-300mm_f-4.5-5.6-7297.jpg"
 verified = "2026-09-07"
 +++

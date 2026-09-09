@@ -12,6 +12,7 @@ credit = "Lordcolus from Taoyuan country, Taiwan"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Minolta TC-1 Front"
+caption = "Minolta TC-1 Front"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta_TC-1_Front_(4393144127).jpg"
 verified = "2026-09-04"
 +++

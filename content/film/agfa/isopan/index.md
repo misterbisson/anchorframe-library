@@ -14,6 +14,7 @@ credit = "Echtner"
 license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Agfa Isopan, photographed on its own"
+caption = "Rollfilm der Filmfabrik AGFA Wolfen, 1960er Jahre"
 sourcePage = "https://commons.wikimedia.org/wiki/File:AGFA_Wolfen_Isopan.JPG"
 verified = "2026-09-08"
 +++

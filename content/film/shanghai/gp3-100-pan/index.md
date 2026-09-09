@@ -13,6 +13,7 @@ credit = "Veera.sj"
 license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "Shanghai GP3 100 PAN, photographed on its own"
+caption = "Shanghai GP3100 PAN Film"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Shanghai_GP3100_PAN_Film.jpg"
 verified = "2026-09-08"
 +++

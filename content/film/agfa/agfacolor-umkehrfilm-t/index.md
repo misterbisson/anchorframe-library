@@ -14,6 +14,7 @@ credit = "Andreas Franzkowiak (User:Bullenwächter)"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Agfacolor Umkehrfilm T, photographed on its own"
+caption = "Agfacolor Reversal-flm T for Trasparecnies. Box with aluminium cartridge and original film material inside. Lot No. 7480/826, April 1957. AGFA A.G. für Photofabrikation Leverkusen - Bayerwerk. Germany."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfacolor_Umkehr-Film_T_1957.jpg"
 verified = "2026-09-08"
 +++

@@ -14,6 +14,7 @@ credit = "Markus Winkler (markuswinkler.de)"
 license = "CC BY 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by/4.0"
 alt = "A green and white FUJIFILM NEOPAN 100 ACROS carton standing beside its 35 mm cassette, marked FILM FOR BLACK & WHITE PRINTS and ULTRA FINE GRAIN"
+caption = "The Fujifilm Neopan 100 Acros B/W film 35mm"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Fujifilm_Neopan_100_Acros.jpg"
 verified = "2026-09-08"
 +++

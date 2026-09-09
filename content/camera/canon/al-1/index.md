@@ -12,6 +12,7 @@ credit = "Riverguardian"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "This is a Canon AL-1 film single reflex (SLR) camera."
+caption = "This is a Canon AL-1 film single reflex (SLR) camera."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AL-1_film_camera.jpg"
 verified = "2026-09-04"
 +++

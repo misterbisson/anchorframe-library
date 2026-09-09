@@ -13,6 +13,7 @@ credit = "Dnalor 01"
 license = "CC BY-SA 3.0 at"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en"
 alt = "Kodak Kodacolor II, photographed on its own"
+caption = "Kodacolor II - Film for colour prints"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodacolor_II_-_Film_for_colour_prints.jpg"
 verified = "2026-09-08"
 +++

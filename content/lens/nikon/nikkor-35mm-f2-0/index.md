@@ -11,6 +11,7 @@ credit = "Marufish from Alor Setar, Malaysia"
 license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Nikon Nikkor 35mm f/2.0, photographed on its own, off the camera"
+caption = "Nikon 35mm F2D"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_35mm_F2D_(4086487278).jpg"
 verified = "2026-09-07"
 +++

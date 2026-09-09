@@ -11,6 +11,7 @@ credit = "Thilo Parg"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Nikon Nikkor 14–24mm f/2.8G AF-S ED, photographed on its own, off the camera"
+caption = "AF-S Nikkor 14-24 mm 1-2,8G ED, F-mount"
 sourcePage = "https://commons.wikimedia.org/wiki/File:AF-S_Nikkor_14-24_mm_1-2,8G_ED_F-mount_01.jpg"
 verified = "2026-09-07"
 +++

@@ -14,6 +14,7 @@ credit = "Kodak"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Kodak Kodacolor VR 100, photographed on its own"
+caption = "Kodacolor VR 100 carton box.jpg"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodacolor_VR_100_carton_box.jpg"
 verified = "2026-09-08"
 +++

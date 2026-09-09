@@ -12,6 +12,7 @@ credit = "Kevin Murray"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Canon Canonflex"
+caption = "Canon Canonflex"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canonflex_camera_trio.jpg"
 verified = "2026-09-04"
 +++

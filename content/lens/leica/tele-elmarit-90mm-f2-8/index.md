@@ -10,6 +10,7 @@ credit = "Sodacan"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Leica Tele-Elmarit 90mm f/2.8, photographed on its own, off the camera"
+caption = "Leica 90mm f-2.8 Tele-Elmarit-M (1969) Black Rangefinder lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Leica_90mm_f-2.8_Tele-Elmarit-M_(1969)_Black.jpg"
 verified = "2026-09-07"
 +++

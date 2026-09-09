@@ -14,6 +14,7 @@ credit = "Thistle33"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Kodak Super-XX, photographed on its own"
+caption = "Kodak Super-XX Panchromatic High Speed 120 Film (Expired: December 1939)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Super_XX_120_Film_1939.jpg"
 verified = "2026-09-08"
 +++

@@ -14,6 +14,7 @@ credit = "Pierre Marshall"
 license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "Kodak Ektar 25, photographed on its own"
+caption = "Film canister and cartridge of Kodak Ektar 25 film, with an expiry date of December 1995. Despite the advanced age of the film, it produced some wonderful photos!"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Ektar_25_film_cartridge_and_canister_1995.jpg"
 verified = "2026-09-08"
 +++
