@@ -25,7 +25,7 @@ looked", and only one of those is a fact.
 
 Of the 987 films, **299 are still in production**.
 What the two source articles say about them: speed on 896, process on
-939, format on 904, and print-or-slide on 980 —
+939, format on 905, and print-or-slide on 980 —
 each one a term you can browse by.
 <!-- counts:end -->
 
