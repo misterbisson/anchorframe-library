@@ -666,6 +666,29 @@ collapses to `135`, which now gathers 785. The five cells that mechanical rules
 mangled — `17/30.5m` became `17` — are ruled by hand in the tool rather than by
 a regex general enough to break something else.
 
+**A bulk length is not a format either, and that took a second pass to see.**
+The ruling above fixed `17/30.5m` becoming `17` and left `17m` and `30.5m`
+standing as terms, which treated the problem as a parsing bug when it was a
+category error. `/formats/100-ft/`, `/formats/17m/`, `/formats/30.5m/` and
+`/formats/50m/` were four term pages, and the first and third are one length
+written in two units. The field's own rule settles it: a format is the fact a
+body and a stock share, the thing that says a camera can take a film, and the
+answer for a 100-foot roll of Tri-X is `135` — the same camera, the same
+cartridge width, a different amount of film in the box.
+
+22 records lost a term. Two of them, FOTON's two microfilms, lose `formats`
+altogether: their Formats cell was `17m` and `17m, 30.5m, 50m` and nothing else,
+so the column never said what the format was. An absent optional field is the
+honest version of that. The article's description column calls one of them a
+35 mm film, and mining the description column is a separate ruling nobody has
+made.
+
+`validate.py` refuses it now, so the corpus cannot drift back if the reader
+changes. **The pattern is metres and feet, never `mm`:** `16mm` and `35mm` are
+cine gauges, a gauge is a width, and a width is exactly what decides whether a
+camera can take the film. They are the two values in this column that most look
+like the thing being refused, and `\d+\s*mm?` would have taken both.
+
 **`types`, plural, not `film_type`.** Hugo owns the singular `type` in front
 matter and uses it to choose a layout. The plural is not reserved, is what Hugo
 wants as a taxonomy key anyway, and keeps the workaround out of a public URL:

@@ -6,5 +6,5 @@ discontinued = false
 iso = 100
 process = ["B&W"]
 types = "Print"
-formats = ["135", "100 ft", "120", "4x5"]
+formats = ["135", "120", "4x5"]
 +++

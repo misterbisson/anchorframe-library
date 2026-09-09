@@ -6,7 +6,7 @@ discontinued = false
 iso = 400
 process = ["C-41"]
 types = "Print"
-formats = ["135", "30.5m", "120", "SUC-27"]
+formats = ["135", "120", "SUC-27"]
 
 [[resources]]
 src = "xp2-super.jpg"

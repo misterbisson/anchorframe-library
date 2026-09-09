@@ -6,7 +6,7 @@ discontinued = false
 iso = 100
 process = ["B&W"]
 types = "Print"
-formats = ["135", "100 ft"]
+formats = ["135"]
 
 [[resources]]
 src = "wolfen-100.jpg"

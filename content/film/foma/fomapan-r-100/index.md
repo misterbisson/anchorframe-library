@@ -6,7 +6,7 @@ discontinued = false
 iso = 100
 process = ["B&W"]
 types = "Slide"
-formats = ["135", "30.5m"]
+formats = ["135"]
 [[resources]]
 src = "fomapan-r-100.jpg"
 [resources.params]

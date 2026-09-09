@@ -6,7 +6,7 @@ discontinued = false
 iso = 50
 process = ["B&W"]
 types = "Print"
-formats = ["135", "30.5m", "120"]
+formats = ["135", "120"]
 
 [[resources]]
 src = "panf-plus.jpg"

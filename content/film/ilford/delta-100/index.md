@@ -6,7 +6,7 @@ discontinued = false
 iso = 100
 process = ["B&W"]
 types = "Print"
-formats = ["135", "30.5m", "120", "sheet film"]
+formats = ["135", "120", "sheet film"]
 
 [[resources]]
 src = "delta-100.jpg"

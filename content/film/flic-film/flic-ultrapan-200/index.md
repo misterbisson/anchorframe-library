@@ -6,7 +6,7 @@ discontinued = false
 iso = 200
 process = ["B&W"]
 types = "Print"
-formats = ["135", "120", "100 ft"]
+formats = ["135", "120"]
 
 [[resources]]
 src = "flic-ultrapan-200.jpg"
