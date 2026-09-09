@@ -327,16 +327,24 @@ The old text is kept as `caption`, and that is the part worth recording,
 because **it is the best evidence in the corpus.** Reading it found nine
 photographs of the wrong camera:
 
-*Two belong to records that already exist here.* The `Fuji GX680` image is a
-body plated `GX680 III`, and `Fuji GX680III` is its own record; the `Leica M6`
-image is captioned `Leica M6 TTL front`, and `Leica M6 TTL` is its own record.
-Both were moved to the record they depict rather than deleted.
+*Three belong to records that already exist here.* The `Fuji GX680` image is a
+body plated `GX680 III`; the `Leica M6` image is captioned `Leica M6 TTL front`;
+the `Olympus OM-4` image is a champagne top plate reading `OM-4 T`, which is the
+name that body was sold under in the United States and `Olympus OM-4ti`
+everywhere else. All three were moved to the record they depict.
 
-*Seven had no record to go to and were removed.* `Canon EOS-1` carried a body
+The third was nearly lost. The first pass deleted it with the others, because
+the search for a home was run against record titles and `OM-4T` is not a string
+in this corpus — `OM-4ti` is. **A camera sold under two names in two markets has
+two names**, and looking for only one of them is how a photograph gets thrown
+away next to the record it belonged on.
+
+*Six had no record to go to and were removed.* `Canon EOS-1` carried a body
 badged `EOS-1 V`. `Contax RTS` carried what its own caption calls a Contax RX —
 a moulded grip and an AE switch, where the 1975 RTS is flat-topped and has
 neither. Then `Leica III` holding a IIIf, `Minolta 16` a 16 II, `Nikon F90` an
-F90x, `Olympus OM-4` an OM-4T, `Konica Autoreflex` an Autoreflex TC.
+F90x, `Konica Autoreflex` an Autoreflex TC. Titles, aliases and paths were all
+searched for each.
 
 **The cause is not the one that produced the six wrong lenses.** Those came from
 matching a name against a pool of candidate files. These came from an article's
