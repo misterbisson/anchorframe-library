@@ -1223,3 +1223,38 @@ All 23 numbers in that table are `roll film` rows and `126` is the only one any
 other format shares, so the fix costs nothing measurable: a spool's name is
 offered only to a row carried on a spool. It was invisible while `126` was
 refused, which is the shape of a bug that a fix uncovers rather than causes.
+
+## A single-use camera is a camera
+
+`SUC-27` and `SUC-39` had term pages under `/library/formats/`, and the source
+that put them there defines the abbreviation itself, in the key above the film
+tables: "SUC-27/39 – Single use camera with 27/39 exposures."
+
+So the cell names a camera and an exposure count, and this corpus had already
+ruled that neither is a format — `135-36` collapses to `135` because the count
+is packaging, and `100 ft` went because no length says whether a camera can
+take the film. A single-use camera fails that test hardest of all: **nobody
+loads one.** There is no body here a `SUC-27` term could join a stock to, which
+is the only job the field has.
+
+Four records carried it. Three keep their real formats and lose only the term.
+
+**The fourth is the interesting one, and it is a loss.** `kodak/ultramax-800`
+had `formats = ["SUC-27", "SUC-39"]` and nothing else, because the source says
+that since 2008 it is sold only inside those cameras. Removing the term leaves
+it naming no format at all — and that is the true answer to "what can you buy
+this in", but a field that has simply gone quiet explains nothing. The record
+carries a note saying why, and saying the part the corpus cannot source: the
+film inside is 35 mm, and no source here states it. Guessing `135` would have
+been the same move as inferring a format from a mount, which is refused
+[above](#a-format-is-what-joins-a-body-to-a-stock).
+
+The note has a side effect worth naming: it earns UltraMax 800 a page of its
+own, where before it redirected to the Kodak list. A record whose only
+interesting fact is why a field is empty is exactly a record worth a page.
+
+`validate.py` refuses the term now, so it cannot come back the way it arrived.
+The pattern is the whole term and case-insensitive — the source is a table
+people hand-edit, `Suc-27` is an ordinary typo, and a format that merely begins
+with those three letters must survive.
+

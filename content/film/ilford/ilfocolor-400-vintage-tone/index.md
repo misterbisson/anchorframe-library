@@ -8,5 +8,5 @@ aliases = ["/film/ilford-imaging-europe/ilford-ilfocolor-400-vintage-tone/"]
 iso = 400
 process = ["C-41"]
 types = "Print"
-formats = ["135", "SUC-27"]
+formats = ["135"]
 +++

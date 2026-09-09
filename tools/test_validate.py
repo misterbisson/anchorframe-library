@@ -384,6 +384,23 @@ class EmulsionFacts(Fixture):
                 self.emulsion(f'formats = ["135", "{junk}"]\n')
                 self.assertObjects("a format that is a length")
 
+    def test_a_format_that_is_a_single_use_camera_is_caught(self):
+        # The source's own key: "SUC-27/39 - Single use camera with 27/39
+        # exposures." Nobody loads one, so the term joins no body to any stock.
+        # `Suc-27` is in here because the source is a table people hand-edit.
+        for junk in ("SUC-27", "SUC-39", "Suc-27", "suc-27"):
+            with self.subTest(junk=junk):
+                self.emulsion(f'formats = ["135", "{junk}"]\n')
+                self.assertObjects("a single-use camera")
+
+    def test_a_format_that_merely_begins_with_those_letters_survives(self):
+        # The rule is the whole term. No format in the corpus starts `SUC`, and
+        # one arriving tomorrow must not be refused for its first three letters.
+        for good in ("SUCH-9", "SUC-27x", "SUC"):
+            with self.subTest(good=good):
+                self.emulsion(f'formats = ["{good}"]\n')
+                self.assertEqual([], validate(self.root))
+
     def test_a_format_that_is_a_measurement_is_caught(self):
         # The instant films recorded their frame instead of their format.
         # `107x 88mm` was Polaroid 600, SX-70 and i-Type at once — one term for

@@ -67,6 +67,21 @@ FILM_TYPES = ("Print", "Slide")
 # a pattern like `\d+\s*mm?` would have taken exactly the wrong two.
 BULK_LENGTH = re.compile(r"^\d+(?:\.\d+)?\s*(?:m|ft)$", re.I)
 
+# A single-use camera, which the film source abbreviates and this corpus does
+# not keep.
+#
+# `SUC-27` and `SUC-39` had term pages of their own. The source's own key reads
+# "SUC-27/39 - Single use camera with 27/39 exposures", so the term names a
+# camera and an exposure count, and this file already refuses both of those in
+# other clothes -- a length above, a measurement below. Nobody loads a
+# single-use camera, so the term joins no body to any stock, which is the only
+# job this field has.
+#
+# `re.I` because the source is hand-edited and `Suc-27` is an ordinary typo.
+# The trailing `$` is what keeps this off a format that merely begins with the
+# same three letters; the leading `^` is for the reader, as above.
+SINGLE_USE = re.compile(r"^SUC-\d+$", re.I)
+
 # An image size standing in for the format's name.
 #
 # The instant films recorded their frame instead of their format: Instax Mini
@@ -482,6 +497,11 @@ def validate(root: str) -> list[str]:
                          "frame, not the name of the format. `46 mm x 62 mm` is "
                          "Instax Mini; `107x 88mm` was Polaroid 600, SX-70 and "
                          "i-Type at once, which the source keeps apart.")
+            elif any(SINGLE_USE.match(x) for x in fmts):
+                bad(rel, "a format that is a single-use camera is a camera, "
+                         "not a format. The source's key reads \"SUC-27/39 - "
+                         "Single use camera with 27/39 exposures\"; nobody "
+                         "loads one, so the term joins no body to any stock.")
             elif any(BULK_LENGTH.match(x) for x in fmts):
                 bad(rel, "a format that is a length is how much film is on the "
                          "roll, not what the roll is. `100 ft`, `17m`, `30.5m` "
