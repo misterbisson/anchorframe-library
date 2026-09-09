@@ -1,0 +1,28 @@
+{{- /*
+  What a mount measures, with a link to the page each figure came from.
+
+  The provenance is on the page and not only in the record because the two
+  sources for these numbers disagree — `Lens mount`'s table gives the Mamiya
+  RB67 a 112 mm flange and calls it a bayonet, and `Mamiya RB67` says 110 mm
+  and breech-lock. A reader who wants to check one needs to know which page to
+  open, and `derived` is the tier that most deserves the doubt: nothing states
+  45.46 mm of the R-K mount itself, only of the K mount it is a variant of.
+
+  A record with no figures renders nothing rather than an empty definition
+  list, which is why every row is guarded by `with` and not printed in a range
+  over a fixed set of keys.
+*/ -}}
+{{- $m := .Params.measured -}}
+{{- if $m -}}
+<dl class="measured">
+  {{- with .Params.type }}<dt>Type</dt><dd>{{ . }}{{ with $.Params.tabs }} · {{ . }} lugs{{ end }}</dd>{{ end -}}
+  {{- with .Params.flange }}<dt>Flange focal distance</dt><dd>{{ . }} mm</dd>{{ end -}}
+  {{- with .Params.throat }}<dt>Throat</dt><dd>{{ . }} mm</dd>{{ end -}}
+  {{- with .Params.pitch }}<dt>Thread pitch</dt><dd>{{ . }}</dd>{{ end -}}
+</dl>
+{{- $tiers := slice -}}
+{{- range $field, $tier := $m -}}
+  {{- if ne $field "source" }}{{ $tiers = $tiers | append $tier }}{{ end -}}
+{{- end -}}
+<p class="provenance">Measured from <a href="{{ $m.source }}">{{ $m.source | replaceRE `^https://en\.wikipedia\.org/wiki/` "" | replaceRE `_` " " }}</a>{{ if in $tiers "derived" }}, which describes the mount this one is a variant of and not this one{{ end }}.</p>
+{{- end -}}

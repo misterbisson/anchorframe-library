@@ -1084,3 +1084,97 @@ the reverse lookup: **423 of 572 cameras here name no mount**, and among them
 are the Pentax 6×7 and Auto 110, the Mamiya 6, 7 and 645, the Konica F and the
 Contax RTS — all of them bodies whose mount this list names and whose own
 articles were read from lists that had no infobox to read.
+
+## Two sources for one number, and neither is the authority
+
+A mount now carries what it measures — `type`, `flange`, `throat`, `pitch`,
+`tabs` — and a `[measured]` table saying, per figure, which page it came from
+and how directly. 27 of the 32 mounts have figures. Five have no source that
+names one: `fuji-gx680`, `hasselblad-1600f`, `hasselblad-h`, `mamiya-press`,
+`tenax-bayonet`.
+
+The provenance is not decoration. Two Wikipedia pages state these numbers and
+they disagree, and the disagreements are not rounding:
+
+| mount | the summary table | the mount's own page | kept |
+| --- | --- | --- | --- |
+| Mamiya RB67 | 112 mm, bayonet | 110 mm, breech-lock | 110 mm, breech-lock |
+| M42 | 45.46 mm | 45.5 mm | 45.5 mm |
+| Rollei QBM | 44.46 mm | 44.5 mm | 44.5 mm |
+| Minolta SR | Bayonet (54°) | Bayonet | Bayonet |
+| Nikon S | Bayonet, throat 34 mm | internal *and* external bayonet, 36.5 and 49 mm | the pair, and no throat |
+
+The rule Casey set is the one implemented: **trust the page about the specific
+thing, and record the disagreement rather than resolve it.** Seven conflicts
+are reported by `mount_facts.py` on every run and none is resolved by it.
+
+Three details of that turned out to matter more than the rule.
+
+**A number the better source cannot state is not a licence to use a worse
+one.** `Nikon S-mount` gives its throat as "36.5 mm (internal bayonet) and
+49 mm (external bayonet)". That is two numbers, so it is not a throat, and the
+summary table's 34 mm is a third. Filling the field in tier order takes 34
+because it is the only float in sight. The record gets no throat.
+
+**Which infobox field holds the throat is not consistent.** The Canon EF's
+`external_diameter` is 65 mm and its `inner_diameter` 54 — the list says 54.
+The Nikon F and Leica M put 44 mm, which their own prose calls a throat, in
+`external_diameter` and leave the inner blank. So neither field *is* the
+throat, and choosing by field name is a guess. What is not a guess is a figure
+both sources give: where the table's throat equals some infobox diameter, that
+is two independent statements of one measurement. Where they name different
+numbers, the record gets none.
+
+**A pitch keeps the unit it was written in.** That column holds `26 TPI`,
+`1 mm` and `0.75mm`. 26 threads per inch is 0.977 mm, so stored as floats under
+one field name the Leica screw mount's thread would read as the coarsest in the
+corpus instead of nearly the finest. It is a string.
+
+And the `derived` tier exists for three records that inherit rather than state.
+`pentax-kf` and `ricoh-rk` are the Pentax K plus five contacts and one pin;
+`canon-r` shares the FD's flange because `Canon R lens mount` says the lugs,
+flange focal distance and breech-lock ring are mutually compatible. No page
+states 45.46 mm of the K-F. The mount page says so in words — "which describes
+the mount this one is a variant of and not this one" — and
+`test_a_derived_figure_equals_the_mount_it_was_derived_from` fails if a child
+stops matching its parent, which is what a corrected parent nobody propagated
+looks like.
+
+## The prose said 20 mm and meant a different mount
+
+The hand-transcribed figures in `PROSE` are hand-transcribed because the
+obvious alternative fails on the second article it meets.
+
+`Canon FD lens mount` says "The 42mm flange focal distance of the FD mount is
+shorter than that of most other lens mounts." It also says, of a digital body
+three paragraphs later, "It has a flange focal distance of only 20mm and a 2×
+crop factor." A regex taking the number nearest the word takes 20.
+
+`M42 lens mount` is worse: it names the flange distance of six other mounts
+before it is done with its own, because an article about a mount is mostly
+sentences about what else that number lets you adapt. And `Pentax K-mount`
+leaves its infobox `flange` empty, so its only statement of 45.46 mm is inside
+a sentence about mounting M42 lenses.
+
+So each entry carries the sentence it came from, in the file, next to the
+number. It is 11 entries. A regex would have been shorter and would have
+written 20 mm as the Canon FD's flange, which is the kind of wrong that
+validates, renders, and sits there.
+
+## The mount split that the flange distances justified
+
+`mamiya-breech-lock` held the RB67 and the RZ67 together, and faithfully: both
+camera articles use the identical phrase "Custom Mamiya breech-lock bayonet
+mount". The summary table splits them, at 112 mm and 105 mm.
+
+Following the table alone would have been following the source that is wrong
+about the RB67 — its own page says 110 mm. But the two pages agree on the thing
+that matters: **110 and 105 are different numbers**, stated on each body's own
+article, so the shared phrase names a family and not a mount. Split into
+`mamiya-rb67` and `mamiya-rz67`, with the retired slug aliased to the RB
+because the RB came first.
+
+The evidence and the conclusion are the same fact here, which is unusual and
+worth a guard: `test_the_two_mamiya_67_mounts_are_what_the_split_claimed`
+asserts the two flange distances differ and are 110 and 105. If they ever
+agree, the split has no basis left.

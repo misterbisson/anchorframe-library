@@ -3,7 +3,9 @@
 {{ with .Params.brand }}<p>Sold by {{ . }}.</p>{{ end }}
 {{/* What the term is, for the terms that know. A format carries these; a mount,
      a process and a speed carry none of them, and `with` on each keeps one
-     template serving all five taxonomies rather than forking it per kind. */}}
+     template serving all five taxonomies rather than forking it per kind.
+     A mount's own facts are a separate block below, in `measured.html`, because
+     every one of them has to name the page it was read off — these do not. */}}
 {{ if or .Params.carrier .Params.introduced .Params.image_sizes }}
 <dl class="facts">
   {{ with .Params.carrier }}<dt>Carried as</dt><dd>{{ . }}</dd>{{ end }}
@@ -26,6 +28,7 @@
 </dl>
 {{ end }}
 {{ .Content }}
+{{ partial "measured.html" . }}
 {{ with .Params.note }}<p class="note">{{ . }}</p>{{ end }}
 {{/* The canonical name is already the heading; listing it again as an "also"
      is noise. What earns the line is the spellings that differ. */}}

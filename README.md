@@ -15,7 +15,7 @@ what a camera is called.
 | cameras | 572 | 23 | 189 |
 | lenses | 1,239 | 72 | 107 |
 | films | 987 | 52 | 274 |
-| mounts | 31 | — | — |
+| mounts | 32 | — | — |
 
 Of the 987 films, **299 are still in production**.
 What the two source articles say about them: speed on 896, process on
@@ -120,6 +120,24 @@ version-shaped.
 and never both. Other names a thing was sold under go in `aliases`, which is
 Hugo's own field — so Hugo generates the redirect page and nothing here has to.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the whole shape.
+
+A mount also carries what it measures — `type`, `flange`, `throat`, `pitch`,
+`tabs` — and a `[measured]` table saying where each figure came from, because
+**the two sources for these numbers disagree**. `Lens mount`'s summary table
+gives the Mamiya RB67 a 112 mm flange and calls it a bayonet; `Mamiya RB67`
+says 110 mm and breech-lock. So every figure names a tier:
+
+| tier | means |
+| --- | --- |
+| `infobox` | `{{Infobox camera mount}}`, purpose-built, on a dedicated article |
+| `article` | stated in that article's prose, transcribed by hand |
+| `list` | the summary table, and nothing better exists |
+| `derived` | stated of the mount this one is a variant of, not of this one |
+
+`derived` is the tier to distrust, and it is invisible without this: no page
+states 45.46 mm of the Ricoh R-K mount, only of the Pentax K it adds one pin
+to. 27 of the 32 mounts carry figures; the five that do not have no source that
+names one, which the mount page says rather than leaving a blank.
 
 ## How a record earns a page
 
@@ -256,11 +274,11 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   in a library of film equipment. The V-system barrel versions — C, CF, CFi,
   CFE, F, FE, CB — went unread until the column was measured against the source
   and 23 editions were missing.
-- **Only 9 of the 31 mounts actually join a body to its glass.** Seventeen have
+- **Only 9 of the 32 mounts actually join a body to its glass.** Eighteen have
   bodies and no lenses — Canon FL and R, Contax G and RF, Konica AR and KM, M42,
-  both Mamiya mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM,
-  Ricoh RK and Tenax — because the camera side names more mounts than the lens
-  sources enumerate. An earlier version of this file said "two mounts enumerate
+  Mamiya Press and both Mamiya 67 mounts, Minolta A and SR, Nikon S, Pentax 645
+  and K-F, Rollei QBM, Ricoh RK and Tenax — because the camera side names more
+  mounts than the lens sources enumerate. An earlier version of this file said "two mounts enumerate
   no lenses"; that was the count of lens sources that came back empty, not the
   count of mounts with nothing on the other side, and it understated the gap by
   eight times. The mount index says so on every row now rather than leaving it
