@@ -6,7 +6,7 @@ discontinued = false
 iso = 640
 process = ["Instant"]
 types = "Print"
-formats = ["107x 88mm"]
+formats = ["I-Type"]
 [[resources]]
 src = "i-type-film.png"
 [resources.params]

@@ -6,7 +6,7 @@ discontinued = false
 iso = 160
 process = ["Instant"]
 types = "Print"
-formats = ["107x 88mm"]
+formats = ["SX-70"]
 [[resources]]
 src = "sx-70-film.png"
 [resources.params]

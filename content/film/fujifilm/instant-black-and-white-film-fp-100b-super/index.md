@@ -6,5 +6,5 @@ discontinued = true
 iso = 100
 process = ["Instant"]
 types = "Print"
-formats = ["3.25x4.25", "4x5"]
+formats = ["Type 100", "4x5"]
 +++

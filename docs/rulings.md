@@ -726,6 +726,36 @@ cine gauges, a gauge is a width, and a width is exactly what decides whether a
 camera can take the film. They are the two values in this column that most look
 like the thing being refused, and `\d+\s*mm?` would have taken both.
 
+**A measurement is not a name.** The instant films recorded their frame instead
+of their format: Instax Mini arrived as `46 mm x 62 mm`, Instax Square as
+`62 mm x 62 mm`, Instax Wide as `99 mm x 62 mm`, Spectra as `103x 101mm`. The
+film lists carry the measurement and
+[List of photographic film formats](https://en.wikipedia.org/wiki/List_of_photographic_film_formats)
+carries the designation, and for three of them the measurement is the join —
+Instax Mini's row gives its image size as 46 × 62 mm exactly.
+
+**One cell named three formats,** which is why this ruling is keyed by record
+and not by cell. `polaroid/600-film`, `polaroid/sx-70-film` and
+`polaroid/i-type-film` all read `107x 88mm`, and the format list keeps them
+apart: `SX-70, Type 600` is one row and `I-Type`, from Impossible in 2016, is
+another. An i-Type pack carries no battery, so it will not run an SX-70 or a 600
+camera — which is precisely the question this field exists to answer, and the
+answer differs.
+
+**Two of them were left as measurements-turned-inches on purpose,** and it is
+the same test seen from the other side. `polaroid/8x10-film` becomes `8x10` and
+the two Fujifilm FP-100 films keep `4x5`, because Polaroid 8×10 goes in an 8×10
+back and Fujifilm's 4×5 peel-apart goes in a 4×5 back, beside the sheet film
+already filed under those terms. `4x5` looked at first like one term doing
+double duty for sheet film and pack film; it is not, because both go in the same
+camera. The source agrees with the narrower reading too — its cell reads
+`325x 215mm (8x10")`, and the parenthetical is the name.
+
+So `4x5`, `5x7`, `8x10` and `3.25x4.25` stay. For those the dimension really is
+the name, they are inches rather than millimetres, and `validate.py` refuses a
+measurement only when it is two numbers ending in `mm` — which leaves `16mm` and
+`35mm` alone as well.
+
 **`types`, plural, not `film_type`.** Hugo owns the singular `type` in front
 matter and uses it to choose a layout. The plural is not reserved, is what Hugo
 wants as a taxonomy key anyway, and keeps the workaround out of a public URL:

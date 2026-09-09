@@ -7,5 +7,5 @@ aliases = ["/film/polaroid-b-v/polaroid-originals-spectra-film/"]
 iso = 640
 process = ["Instant"]
 types = "Print"
-formats = ["103x 101mm"]
+formats = ["Spectra"]
 +++

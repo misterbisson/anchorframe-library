@@ -361,6 +361,26 @@ class EmulsionFacts(Fixture):
                 self.emulsion(f'formats = ["135", "{junk}"]\n')
                 self.assertObjects("a format that is a length")
 
+    def test_a_format_that_is_a_measurement_is_caught(self):
+        # The instant films recorded their frame instead of their format.
+        # `107x 88mm` was Polaroid 600, SX-70 and i-Type at once — one term for
+        # three formats the source keeps apart.
+        for junk in ("46 mm x 62 mm", "62 mm x 62 mm", "99 mm x 62 mm",
+                     "107x 88mm", "103x 101mm", "325x 215mm", "46 mm \u00d7 62 mm"):
+            with self.subTest(junk=junk):
+                self.emulsion(f'formats = ["{junk}"]\n')
+                self.assertObjects("a format that is a measurement")
+
+    def test_a_sheet_size_is_a_name_and_survives(self):
+        # For these the dimension really is the name, and they are inches with
+        # no unit rather than millimetres. A 4x5 sheet of Tri-X and Fujifilm's
+        # 4x5 peel-apart both go in a 4x5 back, which is the question this
+        # field exists to answer, so one term is right for both.
+        for good in ("4x5", "5x7", "8x10", "3.25x4.25"):
+            with self.subTest(good=good):
+                self.emulsion(f'formats = ["{good}"]\n')
+                self.assertEqual([], validate(self.root))
+
     def test_a_cine_gauge_is_not_a_length(self):
         # The two values in this field that most look like a length and are
         # not. 16 mm and 35 mm are widths of film, and a width is exactly what

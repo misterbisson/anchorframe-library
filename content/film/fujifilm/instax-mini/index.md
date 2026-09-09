@@ -6,7 +6,7 @@ discontinued = false
 iso = 800
 process = ["Instant"]
 types = "Print"
-formats = ["46 mm x 62 mm"]
+formats = ["Instax Mini"]
 [[resources]]
 src = "instax-mini.png"
 [resources.params]

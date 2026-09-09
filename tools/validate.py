@@ -67,6 +67,25 @@ FILM_TYPES = ("Print", "Slide")
 # a pattern like `\d+\s*mm?` would have taken exactly the wrong two.
 BULK_LENGTH = re.compile(r"^\d+(?:\.\d+)?\s*(?:m|ft)$", re.I)
 
+# An image size standing in for the format's name.
+#
+# The instant films recorded their frame instead of their format: Instax Mini
+# arrived as `46 mm x 62 mm`, Instax Square as `62 mm x 62 mm`, and Polaroid
+# 600, SX-70 and i-Type all as `107x 88mm` — one term for three formats the
+# source keeps apart. `List of photographic film formats` names every one of
+# them, and three match on the measurement exactly.
+#
+# Two numbers and a `mm`, which is what makes this safe: `16mm` and `35mm` are
+# one number and survive, and so does every sheet size — `4x5`, `5x7`, `8x10`
+# and `3.25x4.25` are inches and carry no unit, and for those the dimension
+# really is the name. A 4x5 sheet of Tri-X and Fujifilm's 4x5 peel-apart both go
+# in a 4x5 back, which is the question this field exists to answer.
+# The leading `^` in both this and BULK_LENGTH is for whoever reads them:
+# `re.match` anchors the start already, so removing it kills no test and changes
+# no answer. The trailing `$` is the one doing work — without it `135` inside a
+# longer string would match — and its mutant dies.
+MEASURED = re.compile(r"^\d+(?:\.\d+)?\s*(?:mm)?\s*[x×]\s*\d+(?:\.\d+)?\s*mm$", re.I)
+
 # Characters the sources use to put two things in one cell: `CN-16 / C-41` is
 # Fujifilm's name and the standard it matches, `Agfacolor, C-22` uses a comma,
 # `E-6 (C-41)` uses brackets. Every one of those is two processes, and each gets
@@ -360,6 +379,11 @@ def validate(root: str) -> list[str]:
                 bad(rel, f"a format containing any of {COMBINING} names more than "
                          "one format; each is its own term in the same taxonomy, "
                          "never a combined one")
+            elif any(MEASURED.match(x) for x in fmts):
+                bad(rel, "a format that is a measurement is the size of the "
+                         "frame, not the name of the format. `46 mm x 62 mm` is "
+                         "Instax Mini; `107x 88mm` was Polaroid 600, SX-70 and "
+                         "i-Type at once, which the source keeps apart.")
             elif any(BULK_LENGTH.match(x) for x in fmts):
                 bad(rel, "a format that is a length is how much film is on the "
                          "roll, not what the roll is. `100 ft`, `17m`, `30.5m` "
