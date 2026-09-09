@@ -11,6 +11,7 @@ credit = "John Nuttall from Hampshire, United Kingdom"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Pentax SFX camera with Vivitar macro lens."
+caption = "Pentax SFX camera with Vivitar macro lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Pentax_SFX.jpg"
 verified = "2026-09-04"
 +++

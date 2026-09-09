@@ -11,6 +11,7 @@ credit = "Dnalor 01"
 license = "CC BY-SA 3.0 at"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en"
 alt = "Kodak Retina (Typ 117), 1934"
+caption = "Kodak Retina (Typ 117), 1934"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Retina_(Typ_117),_1934.JPG"
 verified = "2026-09-04"
 +++

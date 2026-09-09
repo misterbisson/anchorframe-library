@@ -10,6 +10,7 @@ credit = "Ashley Pomeroy"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "A Nikon F-301"
+caption = "A Nikon F-301"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_F-301_0769.jpg"
 verified = "2026-09-04"
 +++

@@ -10,6 +10,7 @@ credit = "Javier M. de Lucas Cruz"
 license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Canon T60 SLR (Single Lens Reflex) Camera"
+caption = "Canon T60 SLR (Single Lens Reflex) Camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_T60.jpg"
 verified = "2026-09-04"
 +++

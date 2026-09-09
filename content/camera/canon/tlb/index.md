@@ -10,6 +10,7 @@ credit = "TaitaFkm"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Canon TLb SLR camera with Canon FD 50 mm f/1.8 lens"
+caption = "Canon TLb SLR camera with Canon FD 50 mm f/1.8 lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_TLb.jpg"
 verified = "2026-09-04"
 +++

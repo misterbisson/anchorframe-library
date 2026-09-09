@@ -10,6 +10,7 @@ credit = "Sigma_24-70mm_F2.8_by_anieto2k.jpg: Andrés Nieto Porras derivative wo
 license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "Sigma 24–70mm f/2.8 IF EX DG HSM, photographed on its own, off the camera"
+caption = "Sigma 24-70mm F2.8 IF EX DG HSM lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Sigma_24-70mm_F2.8_IF_EX_DG_HSM_black.jpg"
 verified = "2026-09-07"
 +++

@@ -11,6 +11,7 @@ credit = "DANYvanvee at English Wikipedia"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "DANYvanvee"
+caption = "DANYvanvee"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Mamiya_C220front.JPG"
 verified = "2026-09-04"
 +++

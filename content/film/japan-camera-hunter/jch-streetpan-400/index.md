@@ -14,6 +14,7 @@ credit = "Veera.sj"
 license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "JCH Streetpan 400, photographed on its own"
+caption = "JCH Street PAN 400 Black And White"
 sourcePage = "https://commons.wikimedia.org/wiki/File:JCH_Street_PAN_400_Black_And_White.jpg"
 verified = "2026-09-08"
 +++

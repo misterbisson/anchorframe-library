@@ -10,6 +10,7 @@ credit = "Geni"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Canon EF 11–24mm, photographed on its own, off the camera"
+caption = "photo of a Canon EF 11-24mm f/4L USM Lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_11-24mm.JPG"
 verified = "2026-09-07"
 +++

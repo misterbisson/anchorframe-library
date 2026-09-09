@@ -11,6 +11,7 @@ credit = "BastienM"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Rollei Rolleiflex SL66 + Distagon 50mm f/4"
+caption = "Rollei Rolleiflex SL66 + Distagon 50mm f/4"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Rollei-Rolleiflex_SL66.jpg"
 verified = "2026-09-04"
 +++

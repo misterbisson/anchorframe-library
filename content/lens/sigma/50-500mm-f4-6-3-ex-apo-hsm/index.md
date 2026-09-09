@@ -10,6 +10,7 @@ credit = "Materialscientist"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Sigma 50–500mm f/4-6.3 EX APO HSM, photographed on its own, off the camera"
+caption = "Sigma 50-500mm f/4-6.3 EX DG HSM APO lens (Pentax mount) + grip"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Sigma_50-500mm_f4-6.3.jpg"
 verified = "2026-09-07"
 +++

@@ -12,6 +12,7 @@ credit = "Franz Pförtsch"
 license = "CC BY-SA 2.0 de"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en"
 alt = "Schrägansicht einer Rollei SL 2000 F"
+caption = "Schrägansicht einer Rollei SL 2000 F"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Rollei_SL2000F-schraeg.jpg"
 verified = "2026-09-04"
 +++

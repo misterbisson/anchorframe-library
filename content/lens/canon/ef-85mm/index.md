@@ -10,6 +10,7 @@ credit = "Explo"
 license = "CC BY 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by/3.0"
 alt = "Canon EF 85mm, photographed on its own, off the camera"
+caption = "The Canon EF 85mm f/1.2L lens viewed from behind"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EF_85mm_f12L_lens_back_view.jpg"
 verified = "2026-09-07"
 +++

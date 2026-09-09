@@ -11,6 +11,7 @@ credit = "Jastrow"
 license = "CC BY 2.5"
 licenseUrl = "https://creativecommons.org/licenses/by/2.5"
 alt = "Nikon Nikkor 105mm f/2.8G AF-S ED IF VR Micro, photographed on its own, off the camera"
+caption = "Micro-Nikkor AFS VR 105 mm f/2.8 IF-ED."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Micro-Nikkor_AFS_VR_105_mm_f2.8_IF-ED.jpg"
 verified = "2026-09-07"
 +++

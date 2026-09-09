@@ -10,6 +10,7 @@ credit = "Rama"
 license = "CC BY-SA 3.0 fr"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en"
 alt = "Sigma 180mm f/3.5 EX Macro, photographed on its own, off the camera"
+caption = "Sigma 180mm f/3.5 EX DG lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Sigma_180mm_macro-IMG_2740.JPG"
 verified = "2026-09-07"
 +++

@@ -14,6 +14,7 @@ credit = "Kjetil Ree"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Fujifilm Fujicolor Superia 200, photographed on its own"
+caption = "Fujifilm Fujicolor Superia 200."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Fujifilm_Fujicolor_Superia_200_-_2010-02-17_at_20-17-04.jpg"
 verified = "2026-09-08"
 +++

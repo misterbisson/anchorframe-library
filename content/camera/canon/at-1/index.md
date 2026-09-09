@@ -12,6 +12,7 @@ credit = "Nismo834"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Canon AT-1 with a 50mm f/1.8 Lens"
+caption = "Canon AT-1 with a 50mm f/1.8 Lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_AT-1-_50mm.jpg"
 verified = "2026-09-04"
 +++

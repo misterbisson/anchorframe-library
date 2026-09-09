@@ -14,6 +14,7 @@ credit = "Dnalor 01"
 license = "CC BY-SA 3.0 at"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en"
 alt = "Kodak Kodachrome II, photographed on its own"
+caption = "Kodachrome II - Film for colour slides. Kodachrome is a brand name for a non-substantive, color reversal film introduced by Eastman Kodak in 1935."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodachrome_II_-_Film_for_colour_slides.jpg"
 verified = "2026-09-08"
 +++

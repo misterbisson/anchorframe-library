@@ -11,6 +11,7 @@ credit = "paulclee"
 license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "Nikon Nikkor 35–70mm f/3.3-4.5 AF, photographed on its own, off the camera"
+caption = "Nikon AF Nikkor 35-70 mm 1:3.3-4.5 (I) Lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_AF_Nikkor_35-70_mm_F3.3-4.5_(I)_Lens.jpg"
 verified = "2026-09-07"
 +++

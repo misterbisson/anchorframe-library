@@ -10,6 +10,7 @@ credit = "Jonathan Zander (Digon3)"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Canon EF 75–300mm, photographed on its own, off the camera"
+caption = "Photo of a Canon EF 75-300mm lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EF_75-300mm_Lens.png"
 verified = "2026-09-07"
 +++

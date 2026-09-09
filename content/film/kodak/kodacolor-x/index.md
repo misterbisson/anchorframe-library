@@ -13,6 +13,7 @@ credit = "Thistle33"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Kodak Kodacolor-X, photographed on its own"
+caption = "Kodacolor-X 35mm Film Cassette & Box, ca. 1970's"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodacolor-X_35mm_Film_Cassette_%26_Box.jpg"
 verified = "2026-09-08"
 +++

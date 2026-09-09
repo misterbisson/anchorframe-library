@@ -12,6 +12,7 @@ credit = "huzu1959 from Saitama, Japan"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Canon FD 35–105mm f/3.5, photographed on its own, off the camera"
+caption = "New FD35-105mm ｆ/3.5 www.flickr.com/search/?q=New+FD35-105mm+%ef%bd%86/3.5&amp..."
 sourcePage = "https://commons.wikimedia.org/wiki/File:New_FD35-105mm_f-3.5_(4631137678).jpg"
 verified = "2026-09-07"
 +++

@@ -10,6 +10,7 @@ credit = "D. Meyer"
 license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Rollei 35 S. Smallest non-electronic-shutter 35mm camera ever made."
+caption = "Rollei 35 S. Smallest non-electronic-shutter 35mm camera ever made."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Rollei_35_S.jpg"
 verified = "2026-09-04"
 +++

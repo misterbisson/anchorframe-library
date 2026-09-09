@@ -14,6 +14,7 @@ credit = "Mnemorino"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Ilford HP5, photographed on its own"
+caption = "Picture of a box of ILFORD HP5 film for black and white prints"
 sourcePage = "https://commons.wikimedia.org/wiki/File:ILFORD_HP5.jpg"
 verified = "2026-09-08"
 +++

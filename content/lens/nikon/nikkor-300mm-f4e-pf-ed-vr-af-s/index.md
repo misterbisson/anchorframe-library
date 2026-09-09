@@ -11,6 +11,7 @@ credit = "Phiarc"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Nikon Nikkor 300mm f/4E PF ED VR AF-S, photographed on its own, off the camera"
+caption = "Nikon Nikkor AF-S 300mm f4 PF ED"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_AF-S_Nikkor_300mm_f4_PF_ED_VR.jpg"
 verified = "2026-09-07"
 +++

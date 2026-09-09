@@ -12,6 +12,7 @@ credit = "Berthold Werner"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Vest Pocket Kodak"
+caption = "Vest Pocket Kodak"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak_Vest_Pocket_BW_2015-02-21_14-45-57.jpg"
 verified = "2026-09-04"
 +++

@@ -10,6 +10,7 @@ credit = "Jacek Halicki"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Sigma 10–20mm f/4.0-5.6 AF EX DC, photographed on its own, off the camera"
+caption = "Sigma 10-20mm F4-5,6 EX DC"
 sourcePage = "https://commons.wikimedia.org/wiki/File:2014_Sigma_10-20mm_F4-5,6_EX_DC.jpg"
 verified = "2026-09-07"
 +++

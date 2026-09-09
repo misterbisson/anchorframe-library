@@ -14,6 +14,7 @@ credit = "Oliopinto"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "ORWO PAN 25, photographed on its own"
+caption = "Discontinued film in 120 format by ORWO, ORWO PAN 25 iso, expired in 1995. Develop in Rodinal 1:50 at 20° for 8min45s"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Orwo_PAN_25_120_roll_film_and_box.jpg"
 verified = "2026-09-08"
 +++

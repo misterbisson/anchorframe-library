@@ -377,6 +377,43 @@ Two were left alone. `Nikon F80` says only `Nikon F80`, and `Minolta 35` says
 one. Removing a photograph on a caption's say-so is the same trust the six wrong
 lenses were given, pointed the other way.
 
+## The evidence the importers threw away, fetched back
+
+Three importers wrote images into this corpus and all three discarded the
+source's own description of the file. The camera one pasted it into `alt`,
+where it was bad alt text; the lens and film ones dropped it entirely. So the
+field that found nine photographs of the wrong camera did not exist for 318 of
+the 357 images here.
+
+**316 descriptions were fetched from Commons and written as `caption`.** Two
+files have none of their own. Nothing was invented: this is the source's text,
+capped at 400 characters, on the file each record already cites.
+
+**The audit it enables found nothing new**, and that is the result worth
+recording rather than the ones that would have been more interesting. Three
+tests over the new captions:
+
+*Does the description name a model the record does not?* Twelve matched and all
+twelve are noise or known — `135` and `20` are formats on a film box, `35` is a
+frame size, `AI` is a Nikon lens generation that is still F-mount and still
+film-era, and the Konica Autoreflex TC and Minolta 16 II were already settled.
+
+*Does it name a digital-only mount or image circle?* One, and it is a warning
+rather than a finding.
+
+*Is a lens photograph actually of a camera?* None.
+
+So the lens importer's own guards worked. The one class that escaped them —
+a mount marker that does not look like a mount name — was caught by reading
+filenames, and the descriptions would not have added to it.
+
+**The guard reads the filename and must keep doing so.** `Yashica Electro 35`
+carries the caption `Yashica, electro, 35, rangefinder, 1964, yashinon, dx`: a
+1964 rangefinder whose lens is a Yashinon DX. Extending the digital-generation
+test to captions would refuse it. A caption is prose and these markers are two
+letters; a filename is a name somebody chose for one file, which is a far
+narrower thing to read.
+
 ## What is still unsettled, and visible
 
 - `content/mount/pentax-kf/` — one spelling, one body, and nothing establishes

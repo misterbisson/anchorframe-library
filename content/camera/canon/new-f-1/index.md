@@ -12,6 +12,7 @@ credit = "Ing. Richard Hilber at de.wikipedia"
 license = "CC BY-SA 3.0 de"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en"
 alt = "Canon New F-1 min 50mm 1,5 FD von rechts"
+caption = "Canon New F-1 min 50mm 1,5 FD von rechts"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_new_f1_r.jpg"
 verified = "2026-09-04"
 +++

@@ -14,6 +14,7 @@ credit = "Joost J. Bakker IJmuiden"
 license = "CC BY 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by/2.0"
 alt = "Fujifilm Fujichrome 100, photographed on its own"
+caption = "Fujichrome 100"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Fujichrome_100_(51883859782).jpg"
 verified = "2026-09-08"
 +++

@@ -11,6 +11,7 @@ credit = "Dbroglin"
 license = "CC BY-SA 3.0"
 licenseUrl = "http://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Voigtländer Prominent type 128"
+caption = "Voigtländer Prominent type 128"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Voigtlander_prominent_3_gd.jpg"
 verified = "2026-09-04"
 +++

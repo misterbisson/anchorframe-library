@@ -11,6 +11,7 @@ credit = "Cvmontuy"
 license = "CC BY 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by/4.0"
 alt = "Nikon Nikkor 105mm f/2.8D AF Micro, photographed on its own, off the camera"
+caption = "Nikon Lens AF Micro-Nikkor 105 mm 1:2.8"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Nikon_Lens_Af_Micro-Nikkor_105_mm_F2.8_p1.jpg"
 verified = "2026-09-07"
 +++

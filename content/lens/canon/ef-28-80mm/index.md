@@ -10,6 +10,7 @@ credit = "Печугин Михаил Вячеславович"
 license = "CC0"
 licenseUrl = "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
 alt = "Canon EF 28-80mm, photographed on its own, off the camera"
+caption = "Canon EF 28-80 mm 1:3.5-5.6 Ultrasonic первая версия"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EF_28-80_mm_3.5-5.6_USM_01.jpg"
 verified = "2026-09-07"
 +++

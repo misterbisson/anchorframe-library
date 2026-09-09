@@ -14,6 +14,7 @@ credit = "Banffy"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Agfacolor XRG 200, photographed on its own"
+caption = "AGFA Agfacolor XRG 200. Tageslicht Farbnegativfilm in Kleinbildpatrone 135/27, für den Entwicklungprozess AP70/C41."
 sourcePage = "https://commons.wikimedia.org/wiki/File:AGFA_Agfacolor_XRG_200_Kleinbildpatrone_27.jpg"
 verified = "2026-09-08"
 +++

@@ -11,6 +11,7 @@ credit = "Iiii I I I"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Canon TX"
+caption = "Canon TX"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_TX,_8_September_2018.jpg"
 verified = "2026-09-04"
 +++

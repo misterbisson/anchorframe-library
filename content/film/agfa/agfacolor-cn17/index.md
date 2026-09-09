@@ -14,6 +14,7 @@ credit = "Banffy"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Agfacolor CN17, photographed on its own"
+caption = "Agfacolor CN 17 „universal\", unmaskierter Farbnegativfilm Kleinbildpatrone, 135/12"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfacolor_CN_17_Patrone.jpg"
 verified = "2026-09-08"
 +++

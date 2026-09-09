@@ -11,6 +11,7 @@ credit = "Hinnerk11"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Olympus Zuiko 85mm F2, photographed on its own, off the camera"
+caption = "Olympus-Objektiv OM-System Zuiko 85mm f=2"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Olympus_85mm_(1).jpg"
 verified = "2026-09-07"
 +++

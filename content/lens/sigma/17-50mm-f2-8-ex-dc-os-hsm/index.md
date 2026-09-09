@@ -10,6 +10,7 @@ credit = "Xosema"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Sigma 17–50mm f/2.8 EX DC OS HSM, photographed on its own, off the camera"
+caption = "Sigma 17-50mm F2.8 EX DC OS HSM lens."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Sigma_17-50mm_F2.8_EX_DC_OS_HSM_-_01.jpg"
 verified = "2026-09-07"
 +++

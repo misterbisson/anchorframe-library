@@ -13,6 +13,7 @@ credit = "Thistle33"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Kodak Kodacolor, photographed on its own"
+caption = "Kodacolor 120 Color Film (Expired: 1957)"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodacolor_120_1957_Film.jpg"
 verified = "2026-09-08"
 +++

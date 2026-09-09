@@ -10,6 +10,7 @@ credit = "TonyTheTiger"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Canon EF 40mm, photographed on its own, off the camera"
+caption = "Canon EF 40mm f/2.8 STM w:pancake lens"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EF_40mm_STM_lens_(clean).JPG"
 verified = "2026-09-07"
 +++

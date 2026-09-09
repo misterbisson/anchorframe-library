@@ -14,6 +14,7 @@ credit = "Evan-Amos"
 license = "Public domain"
 licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Kodak Max 400, photographed on its own"
+caption = "A roll of Kodak Max 35mm film, 400 speed."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Kodak-Max-400-35mm-Film.jpg"
 verified = "2026-09-08"
 +++

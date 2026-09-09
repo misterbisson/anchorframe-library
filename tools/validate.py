@@ -414,6 +414,12 @@ def validate(root: str) -> list[str]:
             # here would catch it.
             filename = urllib.parse.unquote(
                 source_page.split("File:")[-1]).replace("_", " ")
+            # The FILENAME, never the caption. A caption is prose and the
+            # markers are two letters: `Yashica, electro, 35, rangefinder, 1964,
+            # yashinon, dx` is a 1964 rangefinder whose lens is a Yashinon DX,
+            # and reading captions would refuse it. The filename is a name
+            # somebody chose for the file, which is a much narrower thing.
+            #
             # Lenses and cameras only. On a film cassette `DX` is DX coding, the
             # barcode every 35 mm cassette has carried since 1983, and it is
             # printed on the packaging: `Agfa Agfacolor XRG 400 135 24 DX

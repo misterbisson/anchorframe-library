@@ -10,6 +10,7 @@ credit = "Kitakaze (Chris Lüders)"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Polaroid Land Camera 1000"
+caption = "Polaroid Land Camera 1000"
 sourcePage = "https://commons.wikimedia.org/wiki/File:PolaroidLandCamera1000.JPG"
 verified = "2026-09-04"
 +++

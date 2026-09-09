@@ -12,6 +12,7 @@ credit = "Jan von Erpecom"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Minolta-35 second version with C.K.S. markings"
+caption = "Minolta-35 second version with C.K.S. markings"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Minolta-35B.JPG"
 verified = "2026-09-04"
 +++

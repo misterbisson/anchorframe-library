@@ -10,6 +10,7 @@ credit = "Mike"
 license = "CC BY-SA 2.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/2.0"
 alt = "1971 vintage, with the 50mm f2 Summicron and 2 lugs on the end for the strap."
+caption = "1971 vintage, with the 50mm f2 Summicron and 2 lugs on the end for the strap."
 sourcePage = "https://commons.wikimedia.org/wiki/File:Leica_M5_50mm_f2_Summicron.jpg"
 verified = "2026-09-04"
 +++

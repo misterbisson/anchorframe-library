@@ -13,6 +13,7 @@ credit = "Holger.Ellgaard"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Agfacolor, photographed on its own"
+caption = "Agfacolor bildfickor från 1950-1965"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Agfacolor_1964.jpg"
 verified = "2026-09-08"
 +++

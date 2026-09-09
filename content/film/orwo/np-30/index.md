@@ -14,6 +14,7 @@ credit = "Core0"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "ORWO NP 30, photographed on its own"
+caption = "ORWO NP30 120 Film"
 sourcePage = "https://commons.wikimedia.org/wiki/File:ORWO_NP30_120.jpg"
 verified = "2026-09-08"
 +++

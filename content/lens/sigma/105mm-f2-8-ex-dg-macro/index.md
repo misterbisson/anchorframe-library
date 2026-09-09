@@ -10,6 +10,7 @@ credit = "Stephan Sprinz"
 license = "CC BY 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by/4.0"
 alt = "Sigma 105mm f/2.8 EX DG Macro, photographed on its own, off the camera"
+caption = "Sigma 105mm F2.8 EX DG OS HSM Macro for Nikon F-mount"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Sigma_105mm_F2.8_EX_DG_OS_HSM_Macro.jpg"
 verified = "2026-09-07"
 +++

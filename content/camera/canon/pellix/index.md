@@ -11,6 +11,7 @@ credit = "Hiyotada"
 license = "CC BY-SA 3.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0"
 alt = "Canon pellix w/FL 35mmF3.5"
+caption = "Canon pellix w/FL 35mmF3.5"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_pellix.jpg"
 verified = "2026-09-04"
 +++

@@ -10,6 +10,7 @@ credit = "Diego Delso"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Canon MP-E 65mm f/2.8 1–5x Macro, photographed on its own, off the camera"
+caption = "Canon MP-E 65mm F2.8 1-5x Macro"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_MP-E_65mm_1-5x_macro_f2.8.jpg"
 verified = "2026-09-07"
 +++

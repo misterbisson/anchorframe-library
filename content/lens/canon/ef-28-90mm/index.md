@@ -10,6 +10,7 @@ credit = "Lars A"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0"
 alt = "Canon EF 28-90mm, photographed on its own, off the camera"
+caption = "Canon EF 28–90 mm"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EF_28%E2%80%9390_mm.jpg"
 verified = "2026-09-07"
 +++
