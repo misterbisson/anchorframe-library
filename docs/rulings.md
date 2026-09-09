@@ -907,3 +907,108 @@ so it passes — while its table lists the Newpic series, which is APS, and the
 Six and Flex series, which are 120, describing both without ever naming a
 format. It is harmless only because that article has no format category and no
 infobox, so there is nothing to read from it either way.
+
+## The bare spelling that two mounts answered to
+
+The `Canon Canonflex` was filed under `leica-r`. Its infobox says
+`lens_mount = [[R mount]]`, and `content/mount/leica-r/` claimed the spelling
+`R mount` alongside `Leica R` and `Leica R mount`. So the join was a *correct*
+reading of a wrong claim, which is why nothing downstream complained: the record
+validated, rendered, and sat a 1959 Canon breech-lock body on a shelf of Leica
+glass that will not fit it by any adapter.
+
+Three things about it are worth keeping.
+
+**`[[R mount]]` is a redlink.** It reaches no article on Wikipedia. Canon's is
+`Canon R lens mount` and Leica's is written `Leica R` everywhere. The one string
+that would settle it is the one string nobody wrote.
+
+**`Wikipedia:Lens mount` could not have caught this.** Its list of 118 mounts
+does not include the Canon R at all. The audit that found it was not against the
+authority; it was the corpus checked against itself — a body whose brand is not
+its mount's — and the authority's silence is the reason that check had to exist.
+
+**The fix is a withdrawal, not a reassignment.** `R mount` is now claimed by
+neither record. Giving it to `canon-r` would have been the same bet with the
+other side of the coin up, and `validate.py` already refuses two mounts one
+spelling — that rule is what surfaced the collision the moment `canon-r` was
+written. An importer that meets `R mount` now gets no answer, which is the
+answer: it has to go and look.
+
+`test_a_body_wears_another_maker_s_mount_only_on_the_record` names the six real
+cases — Leitz Minolta CL, Minolta CLE, three Canon LTM rangefinders, Ricoh
+XR-1 — and fails on a seventh. It is deliberately bodies-only: 423 lenses here
+carry another maker's mount, because that is what third-party glass is.
+
+## A label is not a link target
+
+`Pentax ME Super` carried `mount = ["pentax-kf"]`. Its infobox says
+
+    | lens_mount = [[Pentax K mount|Pentax K-F mount]]
+
+which is a link to the **K** mount wearing the **K-F**'s label. An importer
+reading what the page displays gets `Pentax K-F mount`; one reading where the
+page points gets `Pentax K mount`. Only the second is a claim the encyclopaedia
+is making.
+
+`Pentax K-mount` settles it three separate times: "Bodies equipped with the
+original K-mount include the K series, the M series *except the ME F*"; "Only
+one camera and one lens ever used this mount, the Pentax ME F and the SMC
+Pentax-AF 35-70/2.8"; and its own body table lists the ME Super under *K*. The
+`Pentax ME Super` article's prose agrees with all three — "the lenses are
+interchangeable with the K bayonet mount" — and it is categorised under
+`Pentax K-mount cameras`.
+
+So the infobox is the only thing on the page that says K-F, and it says it in
+the half of a piped link that carries no claim.
+
+This also closed the open question `content/mount/pentax-kf/` was carrying.
+That record used to say nothing here established whether the source meant a
+distinct mount or a spelling of the K. It is distinct: the K plus five
+electrical contacts, Pentax's first autofocus attempt, one body and one lens.
+Both facts arrived together — what the mount is, and that only the ME F has it.
+
+## The authority is coarser in one place and finer in another
+
+`Wikipedia:Lens mount` lists 118 mounts with flange focal distance, throat
+diameter, thread pitch, type and frame size. It is the best single reference
+for this and it cannot be taken as the only one.
+
+**It is coarser than this corpus on Hasselblad.** One row: `Hasselblad`,
+74.9 mm, 6×6, bayonet. Four records here — `hasselblad-1600f`, `-v`, `-h`,
+`-xpan`. The row can only be describing the V. Copying it across all four would
+print three false facts, and each would look like the others.
+
+**It is finer than this corpus on Mamiya.** Two rows, `Mamiya RB67` at 112 mm
+and `Mamiya RZ67` at 105 mm. Both bodies here sit on one record,
+`mamiya-breech-lock`, because both articles use the identical phrase "Custom
+Mamiya breech-lock bayonet mount" — the corpus is faithful to its source and
+its source joined them.
+
+**And it contradicts Wikipedia.** The list gives the RB67 112 mm and calls the
+mount a bayonet. `Mamiya RB67` gives "The flange distance is 110 mm" and calls
+it a breech-lock. Two pages of one encyclopaedia, disagreeing on both the number
+and the kind of thing.
+
+The rule that follows: **a fact from the list may be written only where nothing
+here already says otherwise, and a disagreement is recorded rather than
+resolved.** An importer that overwrites is an importer that turns the finest
+thing this corpus has — a body-level reading of the body's own article — into
+the coarsest.
+
+## What the list is not, by its own column
+
+39% of the 118 rows are not film photography: 14 digital, 14 cinematography,
+5 video, 4 microscope, 2 machine vision, plus mixed. The discriminator is in
+the table — a `Primary use` column reading `Photography`, `Photography
+(Digital)`, `Cinematography` — so this one does not need inferring, which is
+unusual here and worth saying. `Photography` with no parenthesis is the film
+set: 72 rows.
+
+Of those 72, this corpus holds 25. The other 47 are not a backlog. A mount
+exists here because something in the corpus carries it, and importing 47 empty
+ones would be importing a taxonomy nothing uses. What the list *is* good for is
+the reverse lookup: **423 of 572 cameras here name no mount**, and among them
+are the Pentax 6×7 and Auto 110, the Mamiya 6, 7 and 645, the Konica F and the
+Contax RTS — all of them bodies whose mount this list names and whose own
+articles were read from lists that had no infobox to read.

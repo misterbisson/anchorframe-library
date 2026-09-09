@@ -1,5 +1,6 @@
 +++
 title = "Leica R"
 brand = "Leica"
-spellings = ["Leica R", "Leica R mount", "R mount"]
+spellings = ["Leica R", "Leica R mount"]
+note = "The bare spelling `R mount` was claimed here and is claimed nowhere now. It fits Canon's 1959 breech-lock as well as it fits this one, and the Canonflex arrived here through it. An importer that cannot resolve `R mount` should stop; that is the outcome this record is arranged to produce."
 +++

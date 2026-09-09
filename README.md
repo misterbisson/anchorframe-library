@@ -15,7 +15,7 @@ what a camera is called.
 | cameras | 572 | 23 | 189 |
 | lenses | 1,239 | 72 | 107 |
 | films | 987 | 52 | 274 |
-| mounts | 30 | — | — |
+| mounts | 31 | — | — |
 
 Of the 987 films, **299 are still in production**.
 What the two source articles say about them: speed on 896, process on
@@ -256,9 +256,9 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   in a library of film equipment. The V-system barrel versions — C, CF, CFi,
   CFE, F, FE, CB — went unread until the column was measured against the source
   and 23 editions were missing.
-- **Only 9 of the 30 mounts actually join a body to its glass.** Sixteen have
-  bodies and no lenses — Canon FL, Contax G and RF, Konica AR and KM, M42, both
-  Mamiya mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM,
+- **Only 9 of the 31 mounts actually join a body to its glass.** Seventeen have
+  bodies and no lenses — Canon FL and R, Contax G and RF, Konica AR and KM, M42,
+  both Mamiya mounts, Minolta A and SR, Nikon S, Pentax 645 and K-F, Rollei QBM,
   Ricoh RK and Tenax — because the camera side names more mounts than the lens
   sources enumerate. An earlier version of this file said "two mounts enumerate
   no lenses"; that was the count of lens sources that came back empty, not the
