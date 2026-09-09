@@ -6,7 +6,7 @@ discontinued = false
 iso = 400
 process = ["B&W"]
 types = "Print"
-formats = ["135", "120", "sheet film", "SUC-27"]
+formats = ["135", "120", "sheet film"]
 
 [[resources]]
 src = "hp5-plus.jpg"
