@@ -1,6 +1,30 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ with .Params.brand }}<p>Sold by {{ . }}.</p>{{ end }}
+{{/* What the term is, for the terms that know. A format carries these; a mount,
+     a process and a speed carry none of them, and `with` on each keeps one
+     template serving all five taxonomies rather than forking it per kind. */}}
+{{ if or .Params.carrier .Params.introduced .Params.image_sizes }}
+<dl class="facts">
+  {{ with .Params.carrier }}<dt>Carried as</dt><dd>{{ . }}</dd>{{ end }}
+  {{ with .Params.introduced }}<dt>Introduced</dt>
+    <dd>{{ . }}{{ with $.Params.introduced_by }} by {{ . }}{{ end }}</dd>{{ end }}
+  {{/* An absent `discontinued` means still made. The article writes that four
+       ways — `Present`, a dash, an em dash, an empty cell — and the reader drops
+       all of them rather than letting a term page say `discontinued = "–"`. */}}
+  {{/* `Availability` rather than `Discontinued`, which is the word a record's
+       own page uses for the same question — and a row reading
+       `Discontinued: Still made` is a sentence nobody wants to parse. */}}
+  <dt>Availability</dt>
+  <dd>{{ with .Params.discontinued }}Discontinued {{ . }}{{ else }}Still made{{ end }}</dd>
+  {{ with .Params.image_sizes }}<dt>Image size{{ if gt (len .) 1 }}s{{ end }}</dt>
+    <dd>{{ delimit . ", " " and " }}</dd>{{ end }}
+  {{ with .Params.exposures }}<dt>Exposures</dt>
+    <dd>{{ delimit . ", " " and " }}</dd>{{ end }}
+  {{ with .Params.source }}<dt>Source</dt>
+    <dd><a href="{{ . }}" rel="nofollow">{{ . }}</a></dd>{{ end }}
+</dl>
+{{ end }}
 {{ .Content }}
 {{ with .Params.note }}<p class="note">{{ . }}</p>{{ end }}
 {{/* The canonical name is already the heading; listing it again as an "also"

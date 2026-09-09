@@ -139,6 +139,41 @@ def parse_front_matter(text: str, path: str) -> tuple[dict, str]:
     return meta, body
 
 
+def load_formats(root: str) -> tuple[dict[str, dict], list[str]]:
+    """Every format's own page: `content/formats/<term>/_index.md`.
+
+    A second collection beside `load`, the way `load_brands` is, rather than a
+    fourth thing for `load` to return: three callers across two repositories
+    unpack that tuple by position, and widening it to carry a dictionary most of
+    them never look at is a change to all of them.
+
+    A format term page is the same idea as a mount's — the term page *is* the
+    record — and it exists for two reasons at once. It says what the format is,
+    which nothing else in the corpus does; and its `title` is what stops Hugo
+    title-casing the term, which is how `/formats/` came to render
+    `46 Mm X 62 Mm` and `Sheet Film`.
+    """
+    formats: dict[str, dict] = {}
+    broken: list[str] = []
+    fdir = os.path.join(root, "content", "formats")
+    for term in sorted(os.listdir(fdir)) if os.path.isdir(fdir) else []:
+        tdir = os.path.join(fdir, term)
+        if not os.path.isdir(tdir):
+            continue
+        page = os.path.join(tdir, "_index.md")
+        rel = f"content/formats/{term}/_index.md"
+        if not os.path.isfile(page):
+            broken.append(f"content/formats/{term}: no _index.md")
+            continue
+        try:
+            meta, _ = parse_front_matter(open(page, encoding="utf-8").read(), rel)
+        except ValueError as e:
+            broken.append(str(e))
+            continue
+        formats[term] = meta
+    return formats, broken
+
+
 def load_brands(root: str) -> tuple[dict[tuple[str, str], dict], list[str]]:
     """Every brand's own page: `content/<kind>/<brand>/_index.md`.
 

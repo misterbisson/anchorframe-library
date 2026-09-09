@@ -7,11 +7,13 @@ rule — not merely *some* rule — objects.
 
 import datetime
 import os
+import re
 import shutil
 import tempfile
 import unittest
 
 from content import load
+from slug import slugify
 from validate import STALE_AFTER_DAYS, validate
 
 
@@ -21,6 +23,12 @@ def page(path, front, body=""):
         fh.write("+++\n" + front.strip() + "\n+++\n")
         if body:
             fh.write("\n" + body + "\n")
+
+
+class _NoMatch:
+    @staticmethod
+    def group(_):
+        return ""
 
 
 class Fixture(unittest.TestCase):
@@ -297,7 +305,22 @@ class EmulsionFacts(Fixture):
     FILM = ('title = "Kodak Portra 400"\nbrand = "Kodak"\ndiscontinued = false\n'
             'source = "https://x.example/a"\n')
 
+    def format_pages(self, *terms):
+        """Give each term the page `validate` now requires it to have.
+
+        Every format a record names must have one, the way every mount already
+        did, so a test about `iso` should not have to know that. `emulsion`
+        calls this for whatever it finds in the front matter it is handed; the
+        rule itself is tested on its own below.
+        """
+        for term in terms:
+            page(os.path.join(self.content, "formats", slugify(term), "_index.md"),
+                 f'title = "{term}"')
+
     def emulsion(self, extra):
+        self.format_pages(*re.findall(r'"([^"]+)"',
+                                      (re.search(r"formats = \[(.*?)\]", extra,
+                                                 re.S) or _NoMatch()).group(1)))
         self.rewrite(self.film, self.FILM + extra)
 
     def test_the_four_facts_together_are_accepted(self):
@@ -420,6 +443,7 @@ class EmulsionFacts(Fixture):
         self.assertObjects("formats repeats a format")
 
     def test_a_camera_may_carry_a_format(self):
+        self.format_pages("135")
         # A format is the one fact a body and a stock share, so both use the
         # field and they meet on one term page.
         self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
@@ -918,3 +942,71 @@ class Caption(Fixture):
         # The allowed set grew; it did not stop being a set.
         self.assertIn("which is not something an image can say",
                       self.on('photographer_mood = "content"\n'))
+
+
+class FormatTerms(Fixture):
+    """A format's own page, which is the only thing that says what a format is."""
+
+    FILM = ('title = "Kodak Portra 400"\nbrand = "Kodak"\ndiscontinued = false\n'
+            'source = "https://x.example/a"\n')
+
+    def term(self, slug, front):
+        page(os.path.join(self.content, "formats", slug, "_index.md"), front)
+
+    def test_a_format_a_record_names_must_have_a_page(self):
+        # The same rule mounts have had all along. A term with no page is a page
+        # whose title Hugo guessed, which is how `/formats/` rendered
+        # `46 Mm X 62 Mm` and still renders `Sheet Film`.
+        self.rewrite(self.film, self.FILM + 'formats = ["135"]\n')
+        self.assertObjects("has no term page in content/formats/")
+
+    def test_a_format_with_a_page_is_quiet(self):
+        self.term("135", 'title = "135"')
+        self.rewrite(self.film, self.FILM + 'formats = ["135"]\n')
+        self.assertEqual([], validate(self.root))
+
+    def test_the_page_is_found_by_the_librarys_own_slug(self):
+        # Hugo builds the term page at the slug it derives, so a directory that
+        # does not match it is a page nobody ever reaches.
+        self.term(slugify("Instax Mini"), 'title = "Instax Mini"')
+        self.rewrite(self.film, self.FILM + 'formats = ["Instax Mini"]\n')
+        self.assertEqual([], validate(self.root))
+
+    def test_a_term_page_with_no_title_is_caught(self):
+        self.term("135", 'carrier = "cartridge"')
+        self.assertObjects("no title")
+
+    def test_a_field_the_page_may_not_carry_is_caught(self):
+        self.term("135", 'title = "135"\nbrand = "Kodak"')
+        self.assertObjects("unknown field 'brand'")
+
+    def test_every_column_the_article_gives_is_allowed(self):
+        self.term("135", 'title = "135"\ncarrier = "cartridge"\nintroduced = "1934"\n'
+                         'introduced_by = "Kodak"\ndiscontinued = "1999"\n'
+                         'image_sizes = ["24 × 36 mm"]\nexposures = ["24 or 36"]\n'
+                         'spellings = ["Agfa K"]\nnote = "35 mm stock."\n'
+                         'source = "https://en.wikipedia.org/wiki/X"')
+        self.rewrite(self.film, self.FILM + 'formats = ["135"]\n')
+        self.assertEqual([], validate(self.root))
+
+    def test_discontinued_on_a_format_is_a_year_and_not_a_flag(self):
+        # A record's `discontinued` is a boolean answering whether the film is
+        # still made. A format's is the year it stopped, and a format still in
+        # production carries no key at all — `discontinued = false` would read
+        # as a year that is not one.
+        self.term("135", 'title = "135"\ndiscontinued = false')
+        self.assertObjects("not a flag")
+
+    def test_a_list_field_that_is_not_a_list_is_caught(self):
+        self.term("135", 'title = "135"\nimage_sizes = "24 × 36 mm"')
+        self.assertObjects("image_sizes is a non-empty list")
+
+    def test_an_empty_list_field_is_caught(self):
+        self.term("135", 'title = "135"\nexposures = []')
+        self.assertObjects("exposures is a non-empty list")
+
+    def test_a_format_directory_with_no_index_is_reported(self):
+        # A directory Hugo will happily build a bare term page from, and that
+        # nothing here would otherwise mention.
+        os.makedirs(os.path.join(self.content, "formats", "135"))
+        self.assertObjects("content/formats/135: no _index.md")
