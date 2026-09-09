@@ -1342,3 +1342,38 @@ reads `fixed or [[DKL-mount]] (Vitessa T)`: most Vitessas have a fixed lens and
 the T takes Deckel glass, in one field, describing two cameras. It is neither
 answer, and a reader that took the first word would have written a fixed lens
 onto a camera that has a mount.
+
+## `sheet film` is a carrier, and it stays anyway
+
+158 records name it — more than any format term except `135` and `120` — and its
+page carried a title and nothing else, which reads as a fact nobody had got
+round to sourcing. It is not. `List of photographic film formats` has no row for
+`sheet film` because it is not that kind of word: it is a **carrier**, the same
+kind as `roll film`, `cartridge` and `film pack` in the article's own Type
+column. By the test this field exists to answer it is barely a format at all —
+a 4×5 sheet does not go in an 8×10 camera, so knowing a film came in sheets
+does not tell you whether your camera can take it.
+
+The obvious alternative was to replace the term with the sizes, and **the source
+will not support it**. Across the film lists, `Sheet` appears bare in almost
+every row that has it and spells out `4x5", 5x7", 8x10"` in two. So the choice
+was a coarse term or no term, and dropping it would lose 158 records' only
+statement that the film was sold in sheets — while `4x5`, `5x7`, `8x10` and
+`3.25x4.25` already exist as their own terms for the records whose sources do
+say.
+
+So the term stays and the page says which kind of word it is. **The sizes are a
+separate question, deliberately left open** rather than answered by guessing per
+record.
+
+The page is a note and no fields, which the first draft got wrong twice over.
+`carrier = "sheet film"` renders as "Carried as sheet film" beneath a heading
+reading `sheet film`; and any fact at all opens the facts list, where the
+template answers an absent `discontinued` with "Availability: Still made". That
+happens to be true of sheet film, and it is not something this page went and
+found out — a term page should not put its name to a sentence that arrived as a
+template default.
+
+`glass plates` is the same kind of word and has one record. It still carries a
+title and nothing else, which is a smaller version of the same gap, named here
+so it is a decision rather than an oversight.
