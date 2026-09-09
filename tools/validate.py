@@ -22,7 +22,7 @@ import re
 import sys
 import urllib.parse
 
-from content import KINDS, is_free, load, load_brands
+from content import KINDS, is_free, load, load_brands, load_formats
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
@@ -200,6 +200,17 @@ def digital_generation(text: str) -> str | None:
 
 
 MOUNT_KEYS = ("title", "brand", "spellings", "note")
+# What a format's own page may carry. `carrier` is the article's `Type` column
+# under a name Hugo has not already taken — the singular picks a layout and the
+# plural is a film's print-or-slide — and its values say how the film is
+# carried: roll film, cartridge, film pack.
+#
+# `discontinued` is a *string* here and a boolean on a record. That is not a
+# collision to tidy away: a record answers whether the film is still made and a
+# format answers when it stopped, and the honest value for a format still in
+# production is no key at all.
+FORMAT_KEYS = ("title", "carrier", "introduced", "introduced_by", "discontinued",
+               "image_sizes", "exposures", "spellings", "note", "source")
 BRAND_KEYS = ("title", "brand", "aliases", "note")
 
 
@@ -229,6 +240,30 @@ def validate(root: str) -> list[str]:
             if sp in spelling_owner:
                 bad(rel, f"spelling {sp!r} is already claimed by {spelling_owner[sp]}")
             spelling_owner[sp] = term
+
+    # --- formats ------------------------------------------------------------
+    formats, format_broken = load_formats(root)
+    problems.extend(format_broken)
+    for term, meta in sorted(formats.items()):
+        rel = f"content/formats/{term}/_index.md"
+        if not VALID.match(term):
+            bad(rel, f"{term!r} is not a slug")
+        if not meta.get("title"):
+            # The title is why most of these pages exist. Hugo title-cases a
+            # taxonomy term that has none, which is how `/formats/` rendered
+            # `46 Mm X 62 Mm` and `Sheet Film`.
+            bad(rel, "no title")
+        for k in meta:
+            if k not in FORMAT_KEYS:
+                bad(rel, f"unknown field {k!r}")
+        if isinstance(meta.get("discontinued"), bool):
+            bad(rel, "discontinued on a format is the year it stopped, not a "
+                     "flag; a format still made carries no key at all")
+        for k in ("image_sizes", "exposures", "spellings"):
+            v = meta.get(k)
+            if v is not None and (not isinstance(v, list) or not v
+                                  or not all(isinstance(x, str) and x.strip() for x in v)):
+                bad(rel, f"{k} is a non-empty list of non-empty strings")
 
     # --- brands -------------------------------------------------------------
     brands, brand_broken = load_brands(root)
@@ -367,6 +402,11 @@ def validate(root: str) -> list[str]:
         if ft is not None and ft not in FILM_TYPES:
             bad(rel, f"types is one of {FILM_TYPES}, not {ft!r}")
         fmts = r.meta.get("formats")
+        for f in fmts or []:
+            # The same rule mounts have had all along: a term a record names and
+            # nothing describes is a page with a title Hugo guessed.
+            if slugify(f) not in formats:
+                bad(rel, f"format {f!r} has no term page in content/formats/")
         if r.kind == "lens" and fmts is not None:
             bad(rel, "formats belongs to a film or the camera that takes it")
         if fmts is not None:

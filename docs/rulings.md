@@ -756,6 +756,48 @@ the name, they are inches rather than millimetres, and `validate.py` refuses a
 measurement only when it is two numbers ending in `mm` — which leaves `16mm` and
 `35mm` alone as well.
 
+**A format term page is a format's record.** `/formats/120/` listed 462 films
+and said nothing about 120 — not when it arrived, not who made it, not how big
+the frame is. `content/mount/canon-ef/_index.md` had already answered the shape
+question: a taxonomy term can have a page of its own, and then the term page is
+the record. So every format the corpus names now has
+`content/formats/<slug>/_index.md`, read out of
+[List of photographic film formats](https://en.wikipedia.org/wiki/List_of_photographic_film_formats)
+by `film_formats.py` in the app repository.
+
+**A page is written even for the terms the article never mentions,** and that is
+most of what fixes `/formats/`. Hugo title-cases a taxonomy term that has no
+page: `sheet film` rendered as `Sheet Film`, and `46 mm x 62 mm` as
+`46 Mm X 62 Mm`. Twelve terms — the sheet sizes, the cine gauges, the two
+single-use-camera entries — get a title and nothing else, and the title alone is
+the fix.
+
+**`carrier`, because Hugo owns `type` and the corpus already spent `types`.**
+The article's column is `Type` and its values are `roll film`, `cartridge`,
+`film pack`. The singular picks a Hugo layout and the plural is a film's
+print-or-slide, so the third name says what the column means.
+
+**`discontinued` is a year on a format and a boolean on a record,** and that is
+not a collision to tidy away. A record answers whether the film is still made; a
+format answers when it stopped. A format still in production carries no key at
+all, because the article writes "still made" four ways — `Present`, a hyphen, an
+em dash, an empty cell — and a page reading `discontinued = "–"` is worse than
+one that omits the field. `validate.py` refuses a boolean here.
+
+**Millimetres, not inches.** The article gives image size in both columns and
+the inches one is `{{frac}}` templates, which the wikitext parser drops — the
+cell arrives as `× in`. 26 of 26 roll formats have millimetres and 14 have
+inches, so only the millimetre column is read, and a cell with no digit left in
+it is refused rather than published as half a measurement.
+
+**Two rows naming one designation is refused.** `110` is an 1898 roll film and a
+1972 cartridge, and the article says in as many words: "No relation to the later
+110 cartridge format." Same for `126`. Their term pages carry a title and
+nothing else rather than one row's facts chosen quietly. Every one of the 77
+records under those two terms is the cartridge — checked, not assumed — so
+nothing in the corpus is currently mis-filed; the term is ambiguous as a *name*,
+and that is what stops it having a page.
+
 **`types`, plural, not `film_type`.** Hugo owns the singular `type` in front
 matter and uses it to choose a layout. The plural is not reserved, is what Hugo
 wants as a taxonomy key anyway, and keeps the workaround out of a public URL:
