@@ -1388,17 +1388,33 @@ it `35mm`** — `catlabs/x-film-100-color`, whose source cell reads
 
 The record says `135` now and the `35mm` term page is gone.
 
-**`35mm` stays in the vocabulary all the same.** It is a cine gauge as well as a
-careless spelling, and 35 mm movie film does not go in a still camera — which is
-the whole reason `16mm` and `Double 8` are their own terms, both of them on
-`fpp/the-mummy-400` beside `135`. A rule rewriting `35mm` wherever it appeared
-would file the first 35 mm motion picture stock in this corpus as 135. Which one
-a row means is read from the row, and this one is a still film sold beside 120
-and 4×5.
+**This first shipped as a ruling on the one record, on the grounds that `35mm`
+was also a cine gauge and 35 mm movie film does not go in a still camera. That
+is false**, and the sources say so plainly. `135 film` opens "more popularly
+referred to as 35 mm film or 35 mm"; it gives 135 "the same dimensions and
+perforation pitch as 35 mm movie print film"; it captions the Leica I as "the
+first successful camera worldwide for 35 cine film". And this corpus's own film
+list says CineStill "converts Eastman Kodak motion picture stock into 135 and
+120 still camera formats" — and three of the five CineStill records here carry
+`135`, which *is* motion picture stock in a still camera.
 
-There is a small guard in that: no record names `35mm` now, so no page exists
-for it, and `validate.py` refuses a format term with no term page. The next
-record that spells it this way fails in CI rather than quietly splitting the
+So 35 mm and 135 are one format under two names. What separates a cine roll from
+a cassette is how much film is on it and what it is wound on, and a length has
+already been ruled not to be a format
+[above](#a-format-is-what-joins-a-body-to-a-stock) — the format of a 100-foot
+roll of Tri-X is 135. The reader maps `35mm` to `135` wherever it appears, which
+is a rule rather than a ruling because the reasoning does not depend on which
+record it lands on.
+
+**`16mm` and `Double 8` are untouched, and the reason is width, not
+movie-versus-still.** Neither goes in a 35 mm camera at all. Both sit on
+`fpp/the-mummy-400` beside `135`, which is one film sold for two kinds of
+camera — and that record is the reason to get this distinction right rather
+than draw it in the wrong place.
+
+There is a small guard as well: no record names `35mm` now, so no page exists
+for it, and `validate.py` refuses a format term with no term page. A hand-edited
+record spelling it that way fails in CI rather than quietly splitting the
 taxonomy again.
 
 **The asterisk is a footnote into the row's own description**, where CatLABS say
