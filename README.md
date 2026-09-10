@@ -17,11 +17,11 @@ what a camera is called.
 | films | 987 | 52 | 274 |
 | mounts | 32 | — | — |
 
-Of the 572 cameras, 152 name the mount they take
-and 26 name the fixed lens they cannot change.
-**394 say neither**, which is not the same as having nothing to
-say: absent is how this corpus writes both "has no mount" and "nobody has
-looked", and only one of those is a fact.
+Of the 572 cameras, 152 name the mount they take and
+31 have a lens that does not come off — 26 of
+those also name the glass. **389 say neither**, which is not the
+same as having nothing to say: absent is how this corpus writes both "has no
+mount" and "nobody has looked", and only one of those is a fact.
 
 Of the 987 films, **299 are still in production**.
 What the two source articles say about them: speed on 896, process on

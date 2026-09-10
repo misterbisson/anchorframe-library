@@ -8,7 +8,13 @@
       {{ range . }}{{ $m := site.GetPage (printf "/mount/%s" .) }}
       <a href="{{ $m.RelPermalink }}">{{ $m.Title }}</a>{{ end }}
     </dd>{{ end }}
-    {{ with .Params.fixed_lens }}<dt>Fixed lens</dt><dd>{{ . }}</dd>{{ end }}
+    {{/* The lens does not come off, whether or not a source names it. A row
+         reading `Lens: Integrated` says the thing the reader came for; leaving
+         it out because the glass is unrecorded would put this page back where
+         a blank meant both "built in" and "nobody looked". */}}
+    {{ if .Params.integrated }}<dt>Lens</dt>
+      <dd>{{ with .Params.fixed_lens }}{{ . }}, built in
+      {{- else }}Integrated, and no source here names it{{ end }}</dd>{{ end }}
     {{ if eq .Section "film" }}<dt>Availability</dt>
       <dd>{{ if .Params.discontinued }}Discontinued{{ else }}In production{{ end }}</dd>{{ end }}
     {{ with .Params.iso }}<dt>Speed</dt>

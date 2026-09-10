@@ -1431,3 +1431,47 @@ daylight loading spool**, 1960s to 1990s, 24 × 36 mm, 36 exposures, cited to a
 Agfa stocks, which is exactly the geography that should be expected. Their term
 pages already carry those facts, and they are recorded here so the next audit
 does not have to re-derive that they are real.
+
+## An integrated lens is a fact; the glass is a detail that may be missing
+
+`fixed_lens` held two things and could state only one of them. It said what the
+glass is, and a camera could say its lens does not come off *only* by naming
+that glass — so a body whose article states the first and not the second was
+written nowhere, and its blank was identical to the blank on a camera nobody
+had looked up.
+
+That is the defect this corpus had just spent two changes fixing one level up,
+appearing one level down inside the field that fixed it. `Canonet G-III QL17`
+is the case in one line: its infobox reads `lens_mount = integrated`, and no
+source here names its lens.
+
+So there are two keys. **`integrated = true` is the fact that the lens does not
+come off. `fixed_lens` is what that lens is, and it may be absent.** It is the
+same shape as a mount and its `[measured]` block — something that can stand
+alone, and detail that can go missing without taking it along.
+
+Four rules hold the pair together, and each one exists because the alternative
+is a record that reads as an answer:
+
+- **A body claims a mount or an integrated lens, never both.** This replaces
+  the older rule about a mount and a `fixed_lens`, which could not see a body
+  that claimed a mount and an integrated lens whose glass went unnamed.
+- **`fixed_lens` without `integrated` is refused.** Naming the glass does not
+  say the glass is fixed there, and a reader asking which bodies take no
+  interchangeable lens would miss every such record. The 26 records that
+  carried `fixed_lens` before this were backfilled rather than grandfathered.
+- **`integrated = false` is refused.** A lens that comes off is a mount, and a
+  second way to write what an absent key already says is how a corpus begins
+  disagreeing with itself.
+- **An empty `fixed_lens` is refused.** A camera whose glass no source names
+  carries `integrated` alone; an empty string would be a third spelling of
+  "unknown" beside the two that already exist.
+
+**The count that motivated this is still mostly unanswered, and deliberately.**
+31 cameras now say their lens is built in, 26 of them naming it. The ~190
+Olympus compacts that dominate the remaining silence have no source that
+answers either question: `List of Olympus products` has no lens column and no
+mount column, 156 of its 211 rows have an empty description, and of the 202
+silent Olympus records only 11 have any article of their own. Wikipedia does
+not hold this. Nothing here guesses it, and this paragraph exists so that the
+next person to look does not have to measure it again to find that out.

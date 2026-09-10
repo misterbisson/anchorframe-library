@@ -2,6 +2,7 @@
 title = "Fujifilm Instax Wide 300"
 brand = "Fujifilm"
 source = "https://en.wikipedia.org/wiki/Fujifilm_Instax_Wide_300"
+integrated = true
 fixed_lens = "95 mm"
 
 [[resources]]
