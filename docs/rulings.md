@@ -1529,3 +1529,63 @@ that the second does not always agree with the first.
 One existing test had been asserting the old behaviour and passing for the
 wrong reason: it used the QBM's `44.5` against the list's `44.46` as its
 example of a disagreement worth keeping. It was pinning a false alarm.
+
+## Two mounts the cameras named, and what naming them cost
+
+Eleven camera records pointed at a mount this corpus did not hold: ten at
+Deckel's DKL and one at the Mamiya 645 bayonet. Both are film mounts, both are
+carried by something here, and the rule is that a mount exists if something
+carries it. They were left out of the earlier pass because a mount record is a
+claim about geometry and that pass had one field of one infobox to go on. Both
+have a source now.
+
+**`mamiya-645` comes entirely from the list.** 63.3 mm flange, 62 mm throat,
+bayonet, and the row's own `Primary use` column says photography. It is the
+fourth Mamiya mount here and unrelated to the other three.
+
+**`dkl` has no article at all.** `DKL-mount` is a redirect, and not to a mount:
+it lands on `Friedrich Deckel`, the company that made Compur shutters. One
+section of that page is the only source there is, and it gives the flange as
+44.7 mm, shared with Exakta, and the type as a bayonet introduced in 1956.
+
+**That section also says the mount is seven mounts.** Makers "introduced
+variations in the mounting lug profiles and inclusion of an aperture control
+ring to physically prevent the attachment of lenses from other DKL-mount
+systems" — Retina lenses need their lugs filed to fit a Voigtländer. So the
+record says out loud that it is a family: 44.7 mm is the distance every variant
+shares and not a promise that a lens will mount. The corpus splits a mount when
+its flange distances differ, which is what separated the Mamiya RB67 from the
+RZ67. No source states a per-variant geometry for these seven, so there is
+nothing to split on yet.
+
+### The mount's own article can answer what the camera's does not
+
+Five Kodak Retina records give their mount as `model specific: Retina
+convertible or DKL-mount`, which names two and settles neither. The Deckel
+section settles two of them from the other side: it names `Kodak Retina IIIS`
+and `Kodak Retina Reflex S`, by those names, among the bodies the bayonet was
+built for. Those two carry `dkl` and a note saying where the answer came from.
+The other three Retina Reflex records are not in that sentence and keep no
+mount.
+
+Nothing was extended to the Voigtländer Bessamatic variants on the same
+grounds. The article names "Voigtländer Bessamatic"; the corpus holds
+Bessamatic CS, deLuxe and m, and treating a line's name as covering its
+variants is the inference the Konica Hexar rule exists to refuse.
+
+### What a missing mount had been hiding
+
+A mount the corpus lacked was making three bad readings look like good
+refusals, and creating it turned them live.
+
+- `fixed or [[DKL-mount]] (Vitessa T)` holds exactly one link, so following
+  links answers `dkl` — for the plain Vitessa, most of which have a fixed lens.
+- `Konica KM-mount (the same as or similar to the [[Leica M-mount]])` is worse
+  and older. The camera has the KM mount, which this corpus holds; the only
+  link points at the mount it is being *compared to*. Three Konica bodies would
+  have been filed under `leica-m`, and the reason nobody saw it is that all
+  three were recorded by hand and the never-overwrite rule declined to touch
+  them. A latent wrong answer is not a right one.
+- The five Kodak records above, which say `model specific:` outright.
+
+**A field with `or` in it has not answered**, and is reported rather than read.

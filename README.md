@@ -15,11 +15,11 @@ what a camera is called.
 | cameras | 572 | 23 | 189 |
 | lenses | 1,239 | 72 | 107 |
 | films | 987 | 52 | 279 |
-| mounts | 32 | — | — |
+| mounts | 34 | — | — |
 
-Of the 572 cameras, 152 name the mount they take and
+Of the 572 cameras, 156 name the mount they take and
 31 have a lens that does not come off — 26 of
-those also name the glass. **389 say neither**, which is not the
+those also name the glass. **385 say neither**, which is not the
 same as having nothing to say: absent is how this corpus writes both "has no
 mount" and "nobody has looked", and only one of those is a fact.
 
@@ -290,11 +290,11 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   in a library of film equipment. The V-system barrel versions — C, CF, CFi,
   CFE, F, FE, CB — went unread until the column was measured against the source
   and 23 editions were missing.
-- **Only 9 of the 32 mounts actually join a body to its glass.** Eighteen have
-  bodies and no lenses — Canon FL and R, Contax G and RF, Konica AR and KM, M42,
-  Mamiya Press and both Mamiya 67 mounts, Minolta A and SR, Nikon S, Pentax 645
-  and K-F, Rollei QBM, Ricoh RK and Tenax — because the camera side names more
-  mounts than the lens sources enumerate. An earlier version of this file said "two mounts enumerate
+- **Only 9 of the 34 mounts actually join a body to its glass.** Twenty have
+  bodies and no lenses — Canon FL and R, Contax G and RF, DKL, Konica AR and KM,
+  M42, Mamiya 645, Mamiya Press and both Mamiya 67 mounts, Minolta A and SR,
+  Nikon S, Pentax 645 and K-F, Rollei QBM, Ricoh RK and Tenax — because the
+  camera side names more mounts than the lens sources enumerate. An earlier version of this file said "two mounts enumerate
   no lenses"; that was the count of lens sources that came back empty, not the
   count of mounts with nothing on the other side, and it understated the gap by
   eight times. The mount index says so on every row now rather than leaving it
