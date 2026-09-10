@@ -23,7 +23,7 @@ those also name the glass. **389 say neither**, which is not the
 same as having nothing to say: absent is how this corpus writes both "has no
 mount" and "nobody has looked", and only one of those is a fact.
 
-Of the 987 films, **299 are still in production**.
+Of the 987 films, **296 are still in production**.
 What the two source articles say about them: speed on 896, process on
 939, format on 905, and print-or-slide on 980 —
 each one a term you can browse by.
