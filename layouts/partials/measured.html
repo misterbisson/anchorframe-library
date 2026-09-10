@@ -24,5 +24,18 @@
 {{- range $field, $tier := $m -}}
   {{- if ne $field "source" }}{{ $tiers = $tiers | append $tier }}{{ end -}}
 {{- end -}}
-<p class="provenance">Measured from <a href="{{ $m.source }}">{{ $m.source | replaceRE `^https://en\.wikipedia\.org/wiki/` "" | replaceRE `_` " " }}</a>{{ if in $tiers "derived" }}, which describes the mount this one is a variant of and not this one{{ end }}.</p>
+{{- /*
+  Both pages get named when both were read. `list` does not mean a part of the
+  article above — it means the summary table in `Lens mount`, a different page
+  that disagrees with the article often enough to be worth the doubt. A line
+  crediting only the article sent a reader to check the QBM's flange on a page
+  that does not state it.
+*/ -}}
+{{- $article := in $tiers "infobox" | or (in $tiers "article") | or (in $tiers "derived") -}}
+{{- $listed := in $tiers "list" -}}
+{{- $LIST := "https://en.wikipedia.org/wiki/Lens_mount#List_of_lens_mounts" -}}
+<p class="provenance">Measured from
+{{- if $article }} <a href="{{ $m.source }}">{{ $m.source | replaceRE `^https://en\.wikipedia\.org/wiki/` "" | replaceRE `_` " " }}</a>{{ if in $tiers "derived" }}, which describes the mount this one is a variant of and not this one{{ end }}{{ end -}}
+{{- if and $article $listed }}, and{{ end -}}
+{{- if $listed }} the <a href="{{ $LIST }}">list of lens mounts</a>{{ if $article }}, which that page does not always agree with{{ end }}{{ end }}.</p>
 {{- end -}}

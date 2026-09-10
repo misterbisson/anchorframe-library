@@ -1475,3 +1475,57 @@ mount column, 156 of its 211 rows have an empty description, and of the 202
 silent Olympus records only 11 have any article of their own. Wikipedia does
 not hold this. Nothing here guesses it, and this paragraph exists so that the
 next person to look does not have to measure it again to find that out.
+
+## A refinement is not a disagreement, and an unreadable value is neither
+
+`mount_facts.py --check` reported nine conflicts. One of them was a conflict.
+
+Both comparisons behind that report were equality, and equality is the wrong
+test for two of the three ways these two sources differ.
+
+**One measurement written to two precisions.** The list gives the M42 flange as
+`45.46 mm` and `M42 lens mount` gives `45.5 mm`. Those are not two claims:
+45.46 rounded to the precision the article states *is* 45.5. Compared for
+equality they differ by 0.04 and read as a disagreement; compared at the
+coarser of the two precisions they agree exactly, which is what anybody looking
+at the pair would say. The finer figure is kept and the tier follows the
+value — the extra digit came from the list, and the record credits the list.
+QBM is the same pair at 44.46 and 44.5.
+
+The rounding has to be to the **coarser** of the two. Rounding to the finer
+puts 45.5 and 45.46 back into conflict; rounding both to nothing would make the
+Mamiya RB67's 110 and 112 the same number, which is the one case here where the
+sources really do contradict each other.
+
+**One source saying more than the other.** `Breech-lock bayonet` and `Bayonet`
+are not two answers; the first is the second plus the part that distinguishes
+it. The case that matters runs the other way, though, and nobody was watching
+it: `Minolta SR-mount`'s infobox says `Bayonet` and **only the list says
+`Bayonet (54°)`**. Preferring the better source was throwing away the one fact
+that told this bayonet from every other one in the corpus.
+
+So the more specific value wins regardless of tier. That is not a reversal of
+the tier order — **the tiers rank sources for whether to believe them, and
+these two agree; one of them just says more.** The test is word containment
+rather than string length, so `Screw` and `Bayonet` share nothing and stay a
+disagreement.
+
+**A source that cannot be read has not disagreed.** `konica-km`'s flange column
+reads `28 mm (27.80 mm?)`, question mark and all, and `Nikon S-mount` states
+its throat twice because it has two bayonets. Those ask for a better source,
+not for a decision, and they are listed apart now. So is a third kind — a
+record that already answers differently, which asks somebody to check which is
+right.
+
+What survives is one conflict, and it is the one that always mattered: 110 mm
+on the camera's own page against 112 mm in the list.
+
+**A page named one source where two had been read.** The provenance line said
+"Measured from *QBM*" on a record whose throat, and now flange, came from the
+list — a different page. Twelve mounts mix tiers that way, and a reader sent to
+check a figure would not have found it. The line names both pages now, and says
+that the second does not always agree with the first.
+
+One existing test had been asserting the old behaviour and passing for the
+wrong reason: it used the QBM's `44.5` against the list's `44.46` as its
+example of a disagreement worth keeping. It was pinning a false alarm.
