@@ -6,7 +6,8 @@ discontinued = false
 iso = 100
 process = ["Color"]
 types = "Print"
-formats = ["35mm", "120", "4x5"]
+formats = ["135", "120", "4x5"]
+note = "The source writes this film's 35 mm as `35mm*`, where 976 other records write 135, and the asterisk points at its own description: \"35mm coming soon\". CatLABS' product page shows the 35 mm box, so the format is recorded as 135 rather than as a promise. 35mm is kept in this vocabulary for the cine gauge, which is a different thing that goes in a different camera."
 
 [[resources]]
 src = "x-film-100-color.jpg"

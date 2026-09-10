@@ -1377,3 +1377,41 @@ template default.
 `glass plates` is the same kind of word and has one record. It still carries a
 title and nothing else, which is a smaller version of the same gap, named here
 so it is a decision rather than an oversight.
+
+## The `35mm` that meant `135`, and the two numbers that did not
+
+Counting every format term by how many records name it is a cheap audit and it
+found one wrong answer in 41. **976 records spell 35 mm film `135`. One spelled
+it `35mm`** — `catlabs/x-film-100-color`, whose source cell reads
+`35mm*, 120, 4x5"`. So somebody asking what 35 mm film exists found 976 of the
+977, and the odd one out had a term page of its own to itself.
+
+The record says `135` now and the `35mm` term page is gone.
+
+**`35mm` stays in the vocabulary all the same.** It is a cine gauge as well as a
+careless spelling, and 35 mm movie film does not go in a still camera — which is
+the whole reason `16mm` and `Double 8` are their own terms, both of them on
+`fpp/the-mummy-400` beside `135`. A rule rewriting `35mm` wherever it appeared
+would file the first 35 mm motion picture stock in this corpus as 135. Which one
+a row means is read from the row, and this one is a still film sold beside 120
+and 4×5.
+
+There is a small guard in that: no record names `35mm` now, so no page exists
+for it, and `validate.py` refuses a format term with no term page. The next
+record that spells it this way fails in CI rather than quietly splitting the
+taxonomy again.
+
+**The asterisk is a footnote into the row's own description**, where CatLABS say
+"35mm coming soon". The record notes it, because a format the source hedges on
+is worth flagging even when the maker's product page — the one this record's
+photograph comes from — shows the 35 mm box.
+
+### The two numbers that looked wrong and were not
+
+`935` on 23 records and `635` on 26 look like typos for `135` and they are
+neither. Both are in the article: **Comecon designations for 35 mm film on a
+daylight loading spool**, 1960s to 1990s, 24 × 36 mm, 36 exposures, cited to a
+1982 Prague reference book. They turn up together on Foma, Foton, dekopan and
+Agfa stocks, which is exactly the geography that should be expected. Their term
+pages already carry those facts, and they are recorded here so the next audit
+does not have to re-derive that they are real.
