@@ -14,7 +14,7 @@ what a camera is called.
 | --- | --- | --- | --- |
 | cameras | 572 | 23 | 189 |
 | lenses | 1,239 | 72 | 107 |
-| films | 987 | 52 | 274 |
+| films | 987 | 52 | 279 |
 | mounts | 32 | — | — |
 
 Of the 572 cameras, 152 name the mount they take and

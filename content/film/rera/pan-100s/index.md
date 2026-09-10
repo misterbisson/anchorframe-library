@@ -7,4 +7,13 @@ iso = 100
 process = ["B&W"]
 types = "Print"
 formats = ["127"]
+[[resources]]
+src = "rera-pan-100s.jpg"
+[resources.params]
+credit = "Kawauso-Shoten"
+license = "fair-use"
+copyright = "Kawauso-Shoten"
+alt = "A 127 roll of Rera Pan 100S standing upright, its black-and-white label facing the camera"
+sourcePage = "https://kawauso.biz/products/detail/1665"
+verified = "2026-09-09"
 +++
