@@ -137,12 +137,22 @@ says 110 mm and breech-lock. So every figure names a tier:
 | --- | --- |
 | `infobox` | `{{Infobox camera mount}}`, purpose-built, on a dedicated article |
 | `article` | stated in that article's prose, transcribed by hand |
-| `list` | the summary table, and nothing better exists |
+| `list` | the summary table on `Lens mount`, which is a different page |
 | `derived` | stated of the mount this one is a variant of, not of this one |
 
 `derived` is the tier to distrust, and it is invisible without this: no page
 states 45.46 mm of the Ricoh R-K mount, only of the Pentax K it adds one pin
-to. 27 of the 32 mounts carry figures; the five that do not have no source that
+to.
+
+**The tiers rank sources for whether to believe them, not for how much they
+say.** Where the two agree, the one that says more wins whichever tier it is:
+`Minolta SR-mount` gives the type as `Bayonet` and only the list adds the
+angle, so the record reads `Bayonet (54°)` and credits the list. Where they
+state one measurement to different precision — the M42 flange is `45.5 mm` in
+its article and `45.46 mm` in the list, which is that number with a digit
+rounded off — the finer figure wins on the same grounds. Neither of those is
+a disagreement, and treating them as one cost the corpus a digit here and a
+bayonet angle there. 27 of the 32 mounts carry figures; the five that do not have no source that
 names one, which the mount page says rather than leaving a blank.
 
 ## How a record earns a page
