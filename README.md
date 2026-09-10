@@ -13,7 +13,7 @@ what a camera is called.
 | | records | brands | with a photograph |
 | --- | --- | --- | --- |
 | cameras | 572 | 23 | 189 |
-| lenses | 1,239 | 72 | 107 |
+| lenses | 1,288 | 72 | 107 |
 | films | 987 | 52 | 279 |
 | mounts | 34 | — | — |
 
@@ -290,11 +290,14 @@ Named because a documented gap is a decision and an undocumented one is a trap.
   in a library of film equipment. The V-system barrel versions — C, CF, CFi,
   CFE, F, FE, CB — went unread until the column was measured against the source
   and 23 editions were missing.
-- **Only 9 of the 34 mounts actually join a body to its glass.** Twenty have
-  bodies and no lenses — Canon FL and R, Contax G and RF, DKL, Konica AR and KM,
-  M42, Mamiya 645, Mamiya Press and both Mamiya 67 mounts, Minolta A and SR,
+- **Only 11 of the 34 mounts actually join a body to its glass.** Eighteen
+  have bodies and no lenses — Contax G and RF, DKL, Konica AR and KM, M42,
+  Mamiya 645, Mamiya Press and both Mamiya 67 mounts, Minolta A and SR,
   Nikon S, Pentax 645 and K-F, Rollei QBM, Ricoh RK and Tenax — because the
-  camera side names more mounts than the lens sources enumerate. An earlier version of this file said "two mounts enumerate
+  camera side names more mounts than the lens sources enumerate. Canon FL
+  and Canon R were on that list until their two articles were read; both had
+  enumerated their glass all along, in a table whose lens names sit in a cell
+  shape the reader could not see. An earlier version of this file said "two mounts enumerate
   no lenses"; that was the count of lens sources that came back empty, not the
   count of mounts with nothing on the other side, and it understated the gap by
   eight times. The mount index says so on every row now rather than leaving it
