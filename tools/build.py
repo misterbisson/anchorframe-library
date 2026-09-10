@@ -48,7 +48,8 @@ def sheets(root: str) -> dict[str, dict]:
             # the sheets were the fifth asker and the one that did not, so a
             # consumer building a flat list of names printed 72 records as 30
             # repeated lines with no way to choose between them.
-            for k in ("variant", "fixed_lens", "discontinued", "note", "aliases"):
+            for k in ("variant", "integrated", "fixed_lens", "discontinued",
+                      "note", "aliases"):
                 if k in r.meta:
                     e[k] = r.meta[k]
             entries.append(e)

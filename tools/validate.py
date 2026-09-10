@@ -26,8 +26,8 @@ from content import KINDS, is_free, load, load_brands, load_formats
 from slug import RESERVED, VALID, slugify
 
 REQUIRED = ("title", "brand", "source")
-OPTIONAL = ("mount", "fixed_lens", "discontinued", "aliases", "note", "variant",
-            "resources", "iso", "process", "types", "formats")
+OPTIONAL = ("mount", "integrated", "fixed_lens", "discontinued", "aliases",
+            "note", "variant", "resources", "iso", "process", "types", "formats")
 
 # Facts about an emulsion, and only about an emulsion: a camera has no ISO of
 # its own and a lens has no development process, so these are refused elsewhere
@@ -508,10 +508,35 @@ def validate(root: str) -> list[str]:
                          "and `50m` each had a term page, and `100 ft` and "
                          "`30.5m` are the same length in different units. The "
                          "format of a 100-foot roll of Tri-X is 135.")
-        # A body takes a mount or has a lens built into it, never both: the two
-        # infobox fields these came from answer one question between them.
-        if mount and r.meta.get("fixed_lens"):
-            bad(rel, "claims both a mount and a fixed lens")
+        # How a body takes its glass, in two fields that answer two questions.
+        #
+        # `integrated` is the fact: the lens does not come off. `fixed_lens` is
+        # what that lens is, and a great many sources state the first and never
+        # the second — `Canonet G-III QL17` says `integrated` in as many words
+        # and names no glass anywhere. Those were one field until now, so a
+        # camera whose lens is known not to come off could not say so unless
+        # somebody had also written down the lens, and its silence was
+        # identical to that of a camera nobody had looked up.
+        #
+        # The same shape as a mount and its `[measured]` block: a fact that can
+        # stand alone, and detail that may be missing without taking the fact
+        # with it.
+        integrated = r.meta.get("integrated")
+        if integrated is not None and integrated is not True:
+            bad(rel, "integrated is `true` or absent. A lens that comes off is "
+                     "a mount, and `false` would be a second way to say what "
+                     "an absent key already says")
+        if mount and integrated:
+            bad(rel, "claims both a mount and an integrated lens")
+        if r.meta.get("fixed_lens") and not integrated:
+            bad(rel, "names a fixed lens without saying the lens is integrated. "
+                     "`fixed_lens` is what the glass is; `integrated = true` is "
+                     "the fact that it does not come off, and the second does "
+                     "not follow from the first for a reader or a test")
+        if r.meta.get("fixed_lens") is not None and not str(
+                r.meta.get("fixed_lens") or "").strip():
+            bad(rel, "fixed_lens is a non-empty string. A camera whose glass no "
+                     "source names carries `integrated` alone")
 
     # --- photographs --------------------------------------------------------
     # An image is the one thing here that can put someone in breach of a licence

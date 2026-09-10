@@ -3,6 +3,7 @@ title = "Minolta Hi-Matic"
 brand = "Minolta"
 source = "https://en.wikipedia.org/wiki/Minolta_Hi-Matic"
 formats = ["135"]
+integrated = true
 
 [[resources]]
 src = "hi-matic.jpg"

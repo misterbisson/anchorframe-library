@@ -3,6 +3,7 @@ title = "Minolta AL-F"
 brand = "Minolta"
 source = "https://en.wikipedia.org/wiki/Minolta_AL-F"
 formats = ["135"]
+integrated = true
 
 [[resources]]
 src = "al-f.jpg"

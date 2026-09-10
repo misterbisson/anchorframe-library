@@ -2,6 +2,7 @@
 title = "Agfa Optima 1535 Sensor"
 brand = "Agfa"
 source = "https://en.wikipedia.org/wiki/Agfa_Optima_1535_Sensor"
+integrated = true
 fixed_lens = "Agfa Solitar S f2.8/40"
 formats = ["135"]
 

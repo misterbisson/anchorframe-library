@@ -2,6 +2,7 @@
 title = "Minolta 35"
 brand = "Minolta"
 source = "https://en.wikipedia.org/wiki/Minolta_35"
+integrated = true
 fixed_lens = "39mm thread"
 formats = ["135"]
 

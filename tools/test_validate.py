@@ -53,7 +53,8 @@ class Fixture(unittest.TestCase):
              'source = "https://en.wikipedia.org/wiki/Canon_AE-1"\nmount = ["canon-fd"]')
         page(f"{c}/camera/canon/trip-35/index.md",
              'title = "Canon Trip 35"\nbrand = "Canon"\n'
-             'source = "https://en.wikipedia.org/wiki/Canon_Trip"\nfixed_lens = "Zuiko 40mm"')
+             'source = "https://en.wikipedia.org/wiki/Canon_Trip"\n'
+             'integrated = true\nfixed_lens = "Zuiko 40mm"')
         page(f"{c}/film/kodak/portra-400/index.md",
              'title = "Kodak Portra 400"\nbrand = "Kodak"\ndiscontinued = false\n'
              'source = "https://en.wikipedia.org/wiki/List_of_photographic_films#Kodak"')
@@ -141,11 +142,42 @@ class Corpus(Fixture):
                                'source = "https://x.example/a"\ndiscontinued = true')
         self.assertObjects("belongs to a film")
 
-    def test_a_body_claiming_both_a_mount_and_a_fixed_lens_is_caught(self):
+    def test_a_body_claiming_both_a_mount_and_an_integrated_lens_is_caught(self):
         self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
                                'source = "https://x.example/a"\nmount = ["canon-fd"]\n'
+                               'integrated = true\nfixed_lens = "Canon 40mm"')
+        self.assertObjects("both a mount and an integrated lens")
+
+    def test_glass_named_without_the_fact_that_it_is_built_in_is_caught(self):
+        # `fixed_lens` says what the glass is. It does not say the lens cannot
+        # be changed — that is `integrated`, and a reader filtering for bodies
+        # with no mount would miss this record entirely.
+        self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                               'source = "https://x.example/a"\n'
                                'fixed_lens = "Canon 40mm"')
-        self.assertObjects("both a mount and a fixed lens")
+        self.assertObjects("without saying the lens is integrated")
+
+    def test_an_integrated_lens_needs_no_glass_named(self):
+        # `Canonet G-III QL17` says `integrated` and names no lens anywhere.
+        # The fact is the record; the description is the part that may be
+        # missing, and its absence must not take the fact with it.
+        self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                               'source = "https://x.example/a"\nintegrated = true')
+        self.assertEqual(validate(self.root), [])
+
+    def test_integrated_false_is_caught(self):
+        # A lens that comes off is a mount. `false` would be a second spelling
+        # of what an absent key already says, and two spellings of one fact is
+        # how a corpus starts disagreeing with itself.
+        self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                               'source = "https://x.example/a"\nintegrated = false')
+        self.assertObjects("integrated is `true` or absent")
+
+    def test_an_empty_fixed_lens_is_caught(self):
+        self.rewrite(self.cam, 'title = "Canon AE-1"\nbrand = "Canon"\n'
+                               'source = "https://x.example/a"\n'
+                               'integrated = true\nfixed_lens = "  "')
+        self.assertObjects("fixed_lens is a non-empty string")
 
     def test_an_alias_that_shadows_a_record_is_caught(self):
         self.rewrite(self.lens, 'title = "Nikkor 45mm f/2.8E ED"\nbrand = "Nikon"\n'

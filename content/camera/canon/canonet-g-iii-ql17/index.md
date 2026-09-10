@@ -4,6 +4,7 @@ brand = "Canon"
 source = "https://en.wikipedia.org/wiki/Canonet_G-III_QL17"
 aliases = ["/camera/canonet/g-iii-ql17/"]
 formats = ["135"]
+integrated = true
 
 [[resources]]
 src = "canonet-g-iii-ql17.jpg"
