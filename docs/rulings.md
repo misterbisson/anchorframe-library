@@ -1633,3 +1633,30 @@ Four FL super-teles and the Canon R `TV 2000mm f/11` are like this, and none of
 them is written. The importer reports them for a person to settle, which is the
 same treatment the ambiguous camera mount fields get and for the same reason: a
 field that says two things has not said one.
+
+### Canon R is not Canon RF, and the record now says so
+
+The 49 lenses above were held up on the reading that Canon R is a digital
+mount. It is not, and the two are one letter apart:
+
+| | Canon R | Canon RF |
+| --- | --- | --- |
+| introduced | March 1959, with the Canonflex | 2018 |
+| for | 35 mm SLR bodies | full-frame mirrorless |
+| flange | 42 mm | 20 mm |
+| contacts | none | twelve electrical pins |
+| ended | 1964, replaced by the FL | current |
+
+Every lens in the R table dates from 1959 to 1963, `canon-r`'s only body is
+the Canonflex, and `validate.py` already lists `Canon RF` among the
+digital-only markers that keep a modern barrel off a film record — none of the
+49 trips it. Canon RF is absent from this corpus on purpose, the same call
+made for the Leica S and the Hasselblad X system.
+
+**The record had no way to say any of that.** Its note explained why the mount
+exists here and never mentioned the one it gets confused with, while Wikipedia
+opens the same article with a `{{Distinguish|Canon RF mount}}` hatnote,
+because the confusion is universal. A record that answers the question a
+reader actually arrives with is worth more than one that is merely correct,
+and the note says it now.
+
