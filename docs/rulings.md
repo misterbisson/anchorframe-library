@@ -1589,3 +1589,74 @@ refusals, and creating it turned them live.
 - The five Kodak records above, which say `model specific:` outright.
 
 **A field with `or` in it has not answered**, and is reported rather than read.
+## The lens side of a mount, and the cell shape that hid it
+
+Nine of the corpus's 32 mounts joined a body to its glass. Twenty had cameras
+and no lenses at all — the largest structural gap left here, because a mount is
+the fact that joins the two halves and a mount with one half joins nothing.
+
+The camera side was filled from infoboxes, one body at a time. The lens side
+cannot be: nobody writes an article per lens. It comes from a handful of
+articles that enumerate a whole mount's glass in one table, which is how the
+125 Canon FD, 285 Nikon F and 418 Pentax K lenses arrived.
+
+**Two of the empty mounts had enumerated their glass all along.** `Canon FL
+lens mount` lists 33 lenses and `Canon R lens mount` 21, in tables the same
+shape as the FD one beside them. They read as empty because of one cell:
+
+    | rowspan=2 | 19
+    ! [[Canon FL 19mm lens|FL 19mm f/3.5]]
+    | {{f/|3.5|16}}
+
+MediaWiki lets a data row carry a `!` cell — a *row* header, the cell that
+names the row — and on a lens table that cell is the lens. The Python reader
+treated every `!` line as a table header, so the name went into the header list
+and every later cell shifted one column left. The row still parsed. Every value
+in it was filed under the wrong key, and nothing looked broken from outside,
+which is why it was never chased. The Swift tool that seeded this corpus has
+handled the shape since it was written; the Python reader had not caught up.
+
+Nothing already here moved: the three articles the Python side reads —
+`List of photographic films`, `List of lenses for Hasselblad cameras` and
+`Lens mount` — contain no such cell between them.
+
+### Five lenses the article names two ways
+
+`[[Canon FL 400mm lens|400mm f/4.5]]` displays a name with no `FL` in it, under
+a link target that has one. Both readings are defensible and they produce
+different records. `Canon 400mm f/4.5` is an address a Canon FD lens of the
+same focal length and aperture could also claim, and a title is this corpus's
+identity for a thing — two lenses cannot share one. `Canon FL 400mm f/4.5` is a
+name no source writes.
+
+Four FL super-teles and the Canon R `TV 2000mm f/11` are like this, and none of
+them is written. The importer reports them for a person to settle, which is the
+same treatment the ambiguous camera mount fields get and for the same reason: a
+field that says two things has not said one.
+
+### Canon R is not Canon RF, and the record now says so
+
+The 49 lenses above were held up on the reading that Canon R is a digital
+mount. It is not, and the two are one letter apart:
+
+| | Canon R | Canon RF |
+| --- | --- | --- |
+| introduced | March 1959, with the Canonflex | 2018 |
+| for | 35 mm SLR bodies | full-frame mirrorless |
+| flange | 42 mm | 20 mm |
+| contacts | none | twelve electrical pins |
+| ended | 1964, replaced by the FL | current |
+
+Every lens in the R table dates from 1959 to 1963, `canon-r`'s only body is
+the Canonflex, and `validate.py` already lists `Canon RF` among the
+digital-only markers that keep a modern barrel off a film record — none of the
+49 trips it. Canon RF is absent from this corpus on purpose, the same call
+made for the Leica S and the Hasselblad X system.
+
+**The record had no way to say any of that.** Its note explained why the mount
+exists here and never mentioned the one it gets confused with, while Wikipedia
+opens the same article with a `{{Distinguish|Canon RF mount}}` hatnote,
+because the confusion is universal. A record that answers the question a
+reader actually arrives with is worth more than one that is merely correct,
+and the note says it now.
+
