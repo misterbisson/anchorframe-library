@@ -196,10 +196,13 @@ not on the web, say so in `note` and link the closest thing.
 the filename alone. If the address itself must change, move the file and add the
 old `brand`/`slug` pair to `alternates` so the old URL keeps answering.
 
-**A rebadge is two records, not one.** The Leica CL and the Leitz Minolta CL are
-one camera sold under two names in two markets, so they are two records — two
-things a person types. An *alternate* is for one product with two names under
-**the same** brand.
+**A rebadge is two records when two companies sold it.** The Leica CL and the
+Leitz Minolta CL are one camera sold under two names by two firms, Leitz and
+Minolta, so they are two records — two things a person types. Where **one**
+seller used two names it is one record, and the other name is an `aliases`
+entry: Kyocera had owned Yashica for four years when it put both badges on the
+Samurai x3.0. The test is who did the selling, not how many names reached a
+shelf.
 
 **The camera list is film only.** Digital bodies are covered elsewhere and are
 removed on sight.
