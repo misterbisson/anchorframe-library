@@ -1660,3 +1660,48 @@ because the confusion is universal. A record that answers the question a
 reader actually arrives with is worth more than one that is merely correct,
 and the note says it now.
 
+
+## One camera, two badges, and the question is who sold it
+
+`Kyocera Samurai x3.0` and `Yashica Samurai x3.0` are the same body.
+camera-wiki says so in one sentence — "The Samurai X3.0 can be found with both
+Yashica and Kyocera branding" — and the reason is corporate: Wikipedia's
+`Yashica` article dates it, "In October 1983, Yashica Company Ltd. was acquired
+by ceramics giant Kyocera", and the Samurai arrived four years later.
+
+**The published rule said two records, and it was written for the other case.**
+`CONTRIBUTING.md` held that a rebadge is two records because the Leica CL and
+the Leitz Minolta CL are — and those were sold by two firms, Leitz in Europe and
+Minolta in Japan. Two sellers is two answers to the question `brand` asks.
+Kyocera is one seller that used two names, so there is one answer and one
+record. The rule now carries that test instead of its example.
+
+**Filed under the badge, not the owner.** That is already how this corpus treats
+Kyocera: the Contax G1 and G2 are Kyocera-sold and file under `contax`, because
+`Contax` is what the front of the camera says. For this one the front says
+Yashica more often than not — Wikipedia's `Half-frame camera` calls it "the
+Yashica Samurai single lens reflex", the instruction manual is a Yashica manual,
+and camera-wiki's specification names the glass `Yashica Zoom Lens
+1:3,5-4,3/25-75mm` — so `/camera/yashica/samurai-x3-0/` is the record and
+`/camera/kyocera/samurai-x3-0/` is an alias redirecting to it.
+
+`/camera/kyocera/` itself 404s, because no shelf is created for a name no record
+files under. That is true of 471 of the 786 record aliases already here,
+`/camera/leitz/minolta-cl/` among them: **an alias is a name somebody types, not
+a claim that a shelf exists.**
+
+**The first camera record not sourced to Wikipedia.** The other 572 are, and
+there is no Wikipedia article for this camera. Three articles name the Samurai
+in passing — Kyocera's says "The Samurai SLR camera was released in 1987" — and
+none of them names the `x3.0` that tells it from the `x4.0`, which is the whole
+job of a source here. camera-wiki names the model, the lens and both badges.
+Its own two sentences give the frame as 17×24 mm and as 18×24 mm, so neither
+number is in the record: there is no field for it, and nothing to be gained by
+picking between a source and itself.
+
+**The name was reused, and the later one is out of scope.** The `Samurai 1300DG`
+of 1998 and `Samurai 2100DG` of 1999 are digital compacts, so the note says so.
+A reader who types *Samurai* may want a camera this index removes on sight, and
+[the Canon R hatnote](#canon-r-is-not-canon-rf-and-the-record-now-says-so) is
+the precedent: answering the question a reader arrives with beats being quietly
+correct.
