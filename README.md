@@ -17,9 +17,9 @@ what a camera is called.
 | films | 987 | 52 | 279 |
 | mounts | 34 | — | — |
 
-Of the 573 cameras, 156 name the mount they take and
+Of the 573 cameras, 188 name the mount they take and
 32 have a lens that does not come off — 27 of
-those also name the glass. **385 say neither**, which is not the
+those also name the glass. **353 say neither**, which is not the
 same as having nothing to say: absent is how this corpus writes both "has no
 mount" and "nobody has looked", and only one of those is a fact.
 
