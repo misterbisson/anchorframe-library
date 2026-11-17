@@ -1,0 +1,57 @@
+name: counts
+
+# The README's count block is an output, not a claim: every number in it comes
+# from `load()` with no judgement in between. It used to be asserted instead,
+# and the cost landed on the wrong person — every pull request that adds a
+# record changes a count, so every content pull request went red until someone
+# ran a generator that CONTRIBUTING.md never mentions. For a fork, where
+# `check` is the only thing that reports back, that was the first thing a
+# first-time contributor saw, against a file promising that adding a record
+# "needs you to run nothing".
+#
+# So the block is regenerated here, on main, after the merge that moved it. The
+# guarantee `readme_counts.py` was written for is unchanged — four counts
+# drifted between #8 and #28 and a stale number in a README is the first thing
+# a reader trusts — it is simply kept by a machine rather than by remembering.
+#
+# This is the only workflow here that can write, and what makes that safe is
+# the trigger: `push` on main and nothing else. It never runs on a pull
+# request, so it never checks out or executes a branch somebody else wrote.
+# `check.yml` keeps `contents: read` and stays creditless, which is what lets a
+# fork get the same green tick as anyone else.
+#
+# A push made with GITHUB_TOKEN does not start another workflow run, so this
+# cannot loop.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  # Two merges in close succession would otherwise race to push the same file.
+  group: counts
+  cancel-in-progress: false
+
+jobs:
+  counts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 tools/readme_counts.py --write
+      - name: commit the block if the numbers moved
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "counts unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: the README counts, after the merge that moved them"
+          git push
