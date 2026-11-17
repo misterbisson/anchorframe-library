@@ -78,10 +78,12 @@ cannot carry its brand turns out to be a record whose brand is wrong.
 The path is the address, and it comes straight from the file's own path in
 `content/`. Two consequences worth knowing before you file a pull request:
 
-- **The filename is the slug, and it is frozen.** Correcting a `name` does not
-  move a URL. Deliberately moving one means adding the old address to
-  `alternates`, which is also how renames are handled — every name a thing has
-  ever had keeps working, and the ones that are not canonical redirect.
+- **The filename is the slug, and it is frozen.** Correcting a `title` does not
+  move a URL. Deliberately moving one means adding the old address to `aliases`
+  — a root-relative path, `/<kind>/<brand>/<slug>/` for a record and
+  `/<kind>/<brand>/` for a brand shelf — which is also how renames are
+  handled: every name a thing has ever had keeps working, and the ones that
+  are not canonical redirect.
 - **No dots in a slug.** The site is served from a private S3 bucket behind
   CloudFront, whose router decides "file or directory" by looking for a dot in
   the last path segment. `f/2.8` therefore becomes `f2-8`, not `f2.8`, and a
