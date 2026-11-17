@@ -568,6 +568,25 @@ def validate(root: str) -> list[str]:
         for src in declared:
             if src not in r.images:
                 bad(r.path, f"resources names {src!r}, which is not in the bundle")
+        # The credit check below reads `r.images`, which is every name in the
+        # bundle ending in an extension this repository knows. A photograph
+        # whose extension is mistyped is therefore not a photograph as far as
+        # that check is concerned, and the one guard that exists to stop an
+        # uncredited image entering the repository does not run on it.
+        #
+        # `eos-1.jpgo` arrived that way — a 265 KB JPEG beside the record it
+        # belonged to, undeclared, with no credit and no licence, and
+        # `validate.py` said the corpus had no problems. Widening
+        # IMAGE_SUFFIXES would not have caught it: `.jpgo` is not an image
+        # extension anyone would add. So the rule is inverted — a bundle holds
+        # `index.md` and declared photographs, and anything else is refused by
+        # name rather than ignored for not looking like a picture.
+        for extra in r.extras:
+            bad(r.path, f"{extra} is in the bundle and is not something this "
+                        f"repository can see as a photograph, so no credit or "
+                        f"licence is ever checked on it. Give it a real image "
+                        f"extension and declare it under [[resources]], or "
+                        f"delete it.")
         for img in r.images:
             params = declared.get(img)
             if params is None:

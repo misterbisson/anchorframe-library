@@ -234,6 +234,41 @@ class Corpus(Fixture):
         os.makedirs(f"{self.content}/camera/canon/f-1", exist_ok=True)
         self.assertObjects("no index.md")
 
+    def test_a_record_pasted_into_itself_is_caught(self):
+        # Fifteen records arrived in one pull request with the whole file
+        # repeated — front matter, fences and body. Hugo reads the first block
+        # and renders the second as prose, so the page served its own TOML as
+        # body text while every check here passed.
+        front = ('title = "Canon AE-1"\nbrand = "Canon"\n'
+                 'source = "https://x.example/a"')
+        with open(self.cam, "w", encoding="utf-8") as fh:
+            one = f"+++\n{front}\n+++\n\nThe Canon AE-1 of 1976.\n"
+            fh.write(one + one)
+        self.assertObjects("the record is in the file twice")
+
+    def test_a_body_that_merely_mentions_the_fence_inline_is_fine(self):
+        # The guard reads whole lines, so prose may still say `+++`. Worth
+        # pinning: the cheap version of this check was a substring search, and
+        # it would have refused this.
+        self.rewrite(self.cam,
+                     'title = "Canon AE-1"\nbrand = "Canon"\n'
+                     'source = "https://x.example/a"',
+                     "Front matter here is fenced with +++ on its own line.")
+        self.assertEqual(validate(self.root), [])
+
+    def test_a_photograph_with_a_mistyped_extension_is_caught(self):
+        # `eos-1.jpgo`: a JPEG beside its record, undeclared, uncredited, and
+        # invisible to the credit check because that reads known extensions.
+        # Widening the extension list would not have caught it.
+        open(f"{self.content}/camera/canon/ae-1/ae-1.jpgo", "wb").close()
+        self.assertObjects("is not something this repository can see as a photograph")
+
+    def test_a_finder_artefact_in_a_bundle_is_not_a_problem(self):
+        # Dotfiles are skipped on purpose. A check that goes red on .DS_Store
+        # is a check people stop running.
+        open(f"{self.content}/camera/canon/ae-1/.DS_Store", "wb").close()
+        self.assertEqual(validate(self.root), [])
+
 
 class BrandPages(Fixture):
     """A brand is a shelf, and a shelf can have had more than one name.
