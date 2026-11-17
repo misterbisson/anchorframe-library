@@ -179,22 +179,36 @@ share-alike into. Say so in the record's `note` if you edit one.
 
 **Brand is who sold it.** Vivitar never ground a lens; a Vivitar lens is a
 Vivitar. Hasselblad's V-system glass is Zeiss-built and files under Hasselblad,
-with `zeiss` as an alternate. Minolta built the Leica CL, and it is a Leica.
-This is the single thing most likely to be wrong in a well-meant pull request.
+with `/lens/zeiss/<slug>/` in each record's `aliases`, so the maker's address
+still answers. That alias belongs on the records and not on the shelf: Zeiss
+also sold lenses under its own name, so `/lens/zeiss/` is a live brand, and an
+alias over a live brand is refused — it would send a shelf away from itself.
+Minolta built the Leica CL, and it is a Leica. This is the single thing most
+likely to be wrong in a well-meant pull request.
 
 **A line is not a company.** Nikkor is Nikon, Zuiko is Olympus, Takumar is
-Pentax, Fujinon is Fujifilm. The line name stays in `name` and becomes an
-alternate; it is not a brand directory. The full list is in
-[`docs/rulings.md`](docs/rulings.md).
+Pentax, Fujinon is Fujifilm. The line name stays in the record's `title` —
+`Nikon Nikkor 45mm f/2.8E ED` — and the line's address becomes an alias on
+that record, `/lens/nikkor/45mm-f2-8e-ed/`; it is not a brand directory. The
+full list is in [`docs/rulings.md`](docs/rulings.md).
 
 **Everything cites something.** Wikipedia is where the seed corpus came from,
 but it is not a requirement — a manufacturer's page, a manual, a catalogue scan
 all work. What is refused is a record with nothing behind it. If your source is
 not on the web, say so in `note` and link the closest thing.
 
-**A slug is frozen once published.** If a name was wrong, fix `name` and leave
+**A slug is frozen once published.** If a name was wrong, fix `title` and leave
 the filename alone. If the address itself must change, move the file and add the
-old `brand`/`slug` pair to `alternates` so the old URL keeps answering.
+old address to `aliases` so the old URL keeps answering.
+
+An alias is a root-relative path, not a pair of fields:
+`/<kind>/<brand>/<slug>/` for a record, `/<kind>/<brand>/` for a brand shelf,
+`/mount/<slug>/` for a mount. It is Hugo's own field, so Hugo writes the
+redirect page and no tool here has to. `tools/validate.py` refuses one that is
+shaped wrong, that is filed under a different kind than the thing it points
+at, that two records both claim, or that shadows a record, brand or mount
+which still exists — an alias over a live page would redirect that page away
+from itself.
 
 **A rebadge is two records when two companies sold it.** The Leica CL and the
 Leitz Minolta CL are one camera sold under two names by two firms, Leitz and
@@ -228,11 +242,11 @@ because the old address becomes an alias and keeps answering.
 
 ## Adding a mount
 
-A mount record carries a `name`, every `spelling` seen in the wild, and a
-`brand` **only if one owns it**. M42 does not — it is a thread that Praktica,
-Pentax, Zenit and Chinon all used — which is why mount URLs have no brand
-segment. Two mounts may not claim the same spelling; that is what makes the join
-between a body and its glass unambiguous.
+A mount record carries a `title`, every spelling seen in the wild in
+`spellings`, and a `brand` **only if one owns it**. M42 does not — it is a
+thread that Praktica, Pentax, Zenit and Chinon all used — which is why mount
+URLs have no brand segment. Two mounts may not claim the same spelling; that
+is what makes the join between a body and its glass unambiguous.
 
 ## Licence of what you contribute
 
