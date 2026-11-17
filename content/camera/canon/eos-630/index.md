@@ -11,7 +11,7 @@ src = "eos-630.jpg"
 [resources.params]
 credit = "TTTNIS"
 license = "Public domain"
-licenseUrl = "https://creativecommons.org/publicdomain/zero/1.0/"
+licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Canon EOS 630 film camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EOS_630.JPG"
 verified = "2026-10-17"

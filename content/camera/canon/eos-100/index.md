@@ -11,7 +11,7 @@ src = "eos-100.jpg"
 [resources.params]
 credit = "ML5"
 license = "Public domain"
-licenseUrl = "https://creativecommons.org/publicdomain/zero/1.0/"
+licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
 alt = "Canon EOS 100 film camera"
 sourcePage = "https://commons.wikimedia.org/wiki/File:CanonEOS100with50mmLens.jpg"
 verified = "2026-10-17"
