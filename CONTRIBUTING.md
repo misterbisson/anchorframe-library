@@ -5,6 +5,11 @@ one-line diff. Both are welcome, and neither needs you to run anything —
 CI will tell you if something is off — though running the validator locally is
 faster than waiting for it.
 
+That promise is meant literally. The counts in the README are generated and
+regenerated on merge, so they are never yours to update; if a check ever asks
+you to run a tool this file does not mention, that is a bug here and worth
+saying so in the pull request.
+
 ```bash
 python3 tools/validate.py       # the corpus alone, and fast
 tools/check.sh                  # everything CI runs, including the site build
