@@ -10,10 +10,10 @@ note = "Programmed-auto zone-focus compact (1980–1985). Shutter 2s–1/750s. W
 [[resources]]
 src = "xa2.jpg"
 [resources.params]
-credit = "E Magnuson"
-license = "CC BY 2.0"
-licenseUrl = "https://creativecommons.org/licenses/by/2.0/"
+credit = "Ashley Pomeroy"
+license = "CC BY-SA 3.0"
+licenseUrl = "https://creativecommons.org/licenses/by-sa/3.0/"
 alt = "Olympus XA2 compact camera"
-sourcePage = "https://commons.wikimedia.org/wiki/File:My_Olympus_XA2_(4989175842).jpg"
-verified = "2026-10-17"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Olympus_XA2_7890.jpg"
+verified = "2026-11-17"
 +++

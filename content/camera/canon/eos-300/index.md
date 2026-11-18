@@ -13,6 +13,6 @@ credit = "Ansgar Koreng"
 license = "CC BY-SA 4.0"
 licenseUrl = "https://creativecommons.org/licenses/by-sa/4.0/"
 alt = "Canon EOS 300 film camera"
-sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EOS_300,_1803102122,_ako.jpg"
-verified = "2026-10-17"
+sourcePage = "https://commons.wikimedia.org/wiki/File:Canon_EOS_300,_1803122013,_ako.jpg"
+verified = "2026-11-17"
 +++
