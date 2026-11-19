@@ -94,6 +94,8 @@ class Build(unittest.TestCase):
         ("Minolta CLE", "leica-m"),        # Minolta's own M-mount rangefinder
         ("Canon VT", "leica-m39"),         # Canon's rangefinders took LTM glass
         ("Canon 7", "leica-m39"),
+        ("Canon 7s", "leica-m39"),
+        ("Canon 7sz", "leica-m39"),
         ("Canon P", "leica-m39"),
         ("Ricoh XR-1", "pentax-k"),        # the K mount was licensed widely
     }
