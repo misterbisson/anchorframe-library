@@ -5,6 +5,11 @@ one-line diff. Both are welcome, and neither needs you to run anything —
 CI will tell you if something is off — though running the validator locally is
 faster than waiting for it.
 
+That promise is meant literally. The counts in the README are generated and
+regenerated on merge, so they are never yours to update; if a check ever asks
+you to run a tool this file does not mention, that is a bug here and worth
+saying so in the pull request.
+
 ```bash
 python3 tools/validate.py       # the corpus alone, and fast
 tools/check.sh                  # everything CI runs, including the site build
@@ -114,6 +119,18 @@ answer is to re-check them and move the dates, not to raise the number.
 **The licence has to be one this repository can redistribute.** Public domain,
 CC0, CC BY, CC BY-SA, GFDL and a few others; anything else is refused by name.
 
+**Public domain takes the Commons licensing page, not a CC0 link.** A Commons
+file tagged public domain generally carries no licence URL at all — the uploader
+released it, or it was never copyrightable in the first place — and CC0 is a
+specific instrument that most of them never used. Linking the CC0 deed beside
+such a file states terms the file itself does not, in the one field a reuser
+follows to find out what they may do. Use:
+
+```toml
+license = "Public domain"
+licenseUrl = "https://commons.wikimedia.org/wiki/Commons:Licensing"
+```
+
 **`CC BY-NC` is not `CC BY`**, however much it reads like it, and it is refused.
 These pages support a paid application, so a picture licensed for
 non-commercial use only does not belong on them — that would be our breach as
@@ -185,6 +202,26 @@ also sold lenses under its own name, so `/lens/zeiss/` is a live brand, and an
 alias over a live brand is refused — it would send a shelf away from itself.
 Minolta built the Leica CL, and it is a Leica. This is the single thing most
 likely to be wrong in a well-meant pull request.
+
+**A camera on another maker's mount is named in two places.** Canon's
+rangefinders took Leica screw glass, Ricoh licensed the K mount, Leitz and
+Minolta built the CL together. Six such claims here are true and the seventh was
+not: the Canonflex was filed under `leica-r` because its infobox said
+`[[R mount]]`, a redlink — and Canon's own R mount is a breech-lock of 1959 that
+shares a letter with Leica's and nothing else. A wrong mount is the one field on
+a body that cannot be checked against its name, so the record reads fine and
+joins the camera to a shelf of glass that will not fit it.
+
+So the mount goes on the record, and the claim is *also* listed in
+`OTHER_MAKERS_MOUNTS` in [`tools/test_build.py`](tools/test_build.py) — a list
+short enough to read, in a file someone reviews, rather than a judgement buried
+in a corpus nobody re-reads. Add a body wearing a mount another company designed
+and `test_a_body_wears_another_maker_s_mount_only_on_the_record` fails until the
+`(title, mount)` pair is there too.
+
+**The record and the list entry have to land in the same change.** That same
+test also refuses an entry no record needs any more, so the list cannot be
+prepared ahead of the record it describes, or ahead of a rename.
 
 **A line is not a company.** Nikkor is Nikon, Zuiko is Olympus, Takumar is
 Pentax, Fujinon is Fujifilm. The line name stays in the record's `title` —

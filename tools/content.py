@@ -93,6 +93,11 @@ class Record:
     body: str
     images: list[str] = field(default_factory=list)
     prefix: str = ""                # from hugo.toml's baseURL, never a literal
+    # Everything else in the bundle: not index.md, and not a name `images`
+    # recognised. A photograph whose extension is mistyped lands here instead of
+    # there, which is the only reason anything knows it exists — see
+    # `validate.py`, which refuses the lot.
+    extras: list[str] = field(default_factory=list)
 
     @property
     def url(self) -> str:
@@ -132,6 +137,29 @@ def parse_front_matter(text: str, path: str) -> tuple[dict, str]:
         raise ValueError(f"{path}: front matter is never closed")
     head = text[len(FRONT):end]
     body = text[end + len(FRONT) + 1:]
+    # A `+++` line *below* the closing fence is a record pasted into itself.
+    # Hugo reads the first block as front matter and renders everything after it
+    # as prose, so the page publishes its own TOML — `title = "..."`,
+    # `[[resources]]`, a licence URL — as body text.
+    #
+    # Nothing else here notices. The front matter parses, every field validates,
+    # `build.py` writes a correct sheet, Hugo builds green under
+    # `--panicOnWarning` and `check_stubs.py` reconciles the page counts: the
+    # duplicate is on the far side of the fence, so `tomllib` never sees it and
+    # the only thing that changes is what a reader gets served. Fifteen records
+    # arrived this way in one pull request and every check passed.
+    #
+    # It lives here rather than in `validate.py` because this is the only place
+    # that knows where the body begins. The cost is that no record body may
+    # contain a bare `+++` line; nothing in the corpus does, and a record body
+    # is prose about a camera, not a document with front matter of its own.
+    for n, line in enumerate(body.splitlines(), 1):
+        if line.strip() == FRONT:
+            raise ValueError(
+                f"{path}: a second +++ fence, {n} line(s) into the body — the "
+                f"record is in the file twice. Hugo reads the first block and "
+                f"renders this one as page text. Delete from that fence to the "
+                f"end of the file, keeping the first copy.")
     try:
         meta = tomllib.loads(head)
     except tomllib.TOMLDecodeError as e:
@@ -248,10 +276,15 @@ def load(root: str) -> tuple[list[Record], dict[str, dict], list[str]]:
                 except ValueError as e:
                     broken.append(str(e))
                     continue
-                images = sorted(f for f in os.listdir(sdir)
+                names = [f for f in os.listdir(sdir) if not f.startswith(".")]
+                images = sorted(f for f in names
                                 if f.lower().endswith(IMAGE_SUFFIXES))
+                # Dotfiles are skipped rather than reported: `.DS_Store` is
+                # already gitignored, and a check that goes red on a Finder
+                # artefact teaches people to stop running it.
+                extras = sorted(set(names) - set(images) - {"index.md"})
                 records.append(Record(kind, brand_slug, slug, f"{rel}/index.md",
-                                      meta, body, images, prefix))
+                                      meta, body, images, prefix, extras))
 
     mdir = os.path.join(root, "content", "mount")
     for term in sorted(os.listdir(mdir)) if os.path.isdir(mdir) else []:
